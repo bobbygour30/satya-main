@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 18s linear infinite;
+}
+
+/* ---------- Logo slider optimized styles ---------- */
+
+/* Container styling */
+.logo-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* reduce repaints when animating child transform */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* The track holds exactly TWO copies of the logo list.
+   It should be inline-flex so width = content width.
+   We'll animate translateX from 0 to -50% to make the loop seamless. */
+.logo-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 0; /* spacing handled by .logo-item margin */
+  /* ensure it uses GPU for transform */
+  will-change: transform;
+  transform: translateZ(0);
+  /* keep the track on a single compositing layer */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* animation: adjust duration if you want faster/slower */
+  animation: logo-scroll 20s linear infinite;
+}
+
+/* Individual logo item - prevents the item from shrinking/growing while animating */
+.logo-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* lightly dim logos and add hover effect */
+.logo-img {
+  opacity: 0.9;
+  transition: opacity 200ms ease, transform 200ms ease;
+  user-select: none;
+  pointer-events: none; /* prevents unintended interactions while sliding */
+}
+
+.logo-item:hover .logo-img {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+/* Optional: pause on hover for desktop */
+.logo-slider:hover .logo-track {
+  animation-play-state: paused;
+}
+
+/* Edge gradient fade (optional) — uncomment if desired */
+/*
+.logo-slider::before,
+.logo-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8%;
+  pointer-events: none;
+  z-index: 10;
+}
+.logo-slider::before {
+  left: 0;
+  background: linear-gradient(to right, white 0%, rgba(255,255,255,0) 100%);
+}
+.logo-slider::after {
+  right: 0;
+  background: linear-gradient(to left, white 0%, rgba(255,255,255,0) 100%);
+}
+*/
+
+/* Keyframes:
+   We move -50% because the track contains two identical sets (200% width).
+   TranslateX -50% moves exactly one set left, then loops back to 0 seamlessly.
+*/
+@keyframes logo-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Responsive tweaks (optional) ---------- */
+@media (max-width: 640px) {
+  .logo-img { height: 28px; } /* small phones */
+  .logo-item { margin-left: 12px; margin-right: 12px; }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .logo-img { height: 40px; } /* tablets */
+  .logo-item { margin-left: 16px; margin-right: 16px; }
+}
+@media (min-width: 1025px) {
+  .logo-img { height: 56px; } /* desktop */
+  .logo-item { margin-left: 24px; margin-right: 24px; }
+}

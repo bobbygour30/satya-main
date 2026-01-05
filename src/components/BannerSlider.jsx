@@ -5,39 +5,35 @@ import assets from "../assets/assets"
 /* ================= HERO SLIDES ================= */
 const slides = [
   {
-    image:
-      assets.banner1,
-    headline: "Where Truth Meets Transformation",
+    image: assets.banner3,
+    headline: "Clinically Proven Skin & Hair Treatments",
     subtext:
-      "At Satya, we don’t sell dreams — we restore them. Every result here is built on ethics, artistry, and medical science that stands the test of time.",
+      "Every treatment at Satya is backed by clinical evidence, medical precision, and ethical practice — delivering results that are safe, natural, and scientifically validated.",
     cta: "Find My Treatment",
   },
   {
-    image:
-      assets.banner2,
-    headline: "Reclaim What You Thought You Lost",
+    image: assets.banner4,
+    headline: "Award-Winning Excellence in Hair and Skin Restoration",
     subtext:
-      "From thinning crowns to receding hairlines — we restore your confidence with techniques that preserve your donor, your health, and your natural identity.",
+      "Recognized for consistently delivering natural outcomes through advanced techniques, meticulous planning, and patient-first medical standards.",
     cta: "Explore Hair Restoration",
   },
   {
-    image:
-      assets.banner3,
-    headline: "We Fix What Others Couldn’t",
+    image: assets.banner2,
+    headline: "You're Beautiful we just make you Realize it.",
     subtext:
-      "Thousands come to Satya after failed or unnatural procedures. Our world-recognized repair expertise revives damaged donors, uneven hairlines, and lost trust.",
+      "Our approach enhances what’s already yours — restoring balance, proportion, and confidence without overcorrection or artificial results.",
     cta: "See Real Repair Cases",
   },
   {
-    image:
-      assets.banner4,
-    headline: "Skin That Reflects the Best of You",
+    image: assets.banner1,
+    headline: "Hair Bhi. Health Bhi. Results That Look Natural & Last Longer.",
     subtext:
-      "Erase years of dullness, acne scars, and pigmentation with dermatologist-led solutions — designed for glow that feels natural, not forced.",
+      "We treat hair as part of your overall health — combining dermatology, nutrition, and long-term planning for results that grow stronger with time.",
     cta: "Discover Skin Treatments",
   },
- 
 ];
+
 
 /* ================= HERO COMPONENT ================= */
 export default function BannerSlider() {
@@ -80,7 +76,7 @@ export default function BannerSlider() {
 
             {/* Content */}
             <div className="absolute inset-0 flex items-center justify-center px-6">
-              <div className="max-w-3xl text-center text-[#FFF8EF]">
+              <div className="text-center text-[#FFF8EF]">
                 <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-4">
                   {slide.headline}
                 </h1>
@@ -100,14 +96,14 @@ export default function BannerSlider() {
       {/* ================= NAVIGATION ================= */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#FFF8EF]/90 hover:bg-[#FFF8EF] p-2 rounded-full text-[#2B333C]"
+        className="absolute left-4 top-2/3 sm:top-1/2 -translate-y-2/3 sm:-translate-y-1/2 bg-[#FFF8EF]/90 hover:bg-[#FFF8EF] p-2 rounded-full text-[#2B333C]"
       >
         <ChevronLeft />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#FFF8EF]/90 hover:bg-[#FFF8EF] p-2 rounded-full text-[#2B333C]"
+        className="absolute right-4 top-2/3 sm:top-1/2 -translate-y-2/3 sm:-translate-y-1/2 bg-[#FFF8EF]/90 hover:bg-[#FFF8EF] p-2 rounded-full text-[#2B333C]"
       >
         <ChevronRight />
       </button>

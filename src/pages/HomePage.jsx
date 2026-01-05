@@ -23,12 +23,12 @@ const HomePage = () => {
     <div>
       <Navbar />
       <BannerSlider />
+      <LogoSlider  />
       <SatyaIntroduction />
       <Ratings />
-      <LogoSlider  />
-      <HeroSection />
       <ServicesAndEvolution />
-      <Testimonials />
+      <Testimonials />  
+      <HeroSection />
       <FaceLoveForm />
       <ClinicSection />
       <TeamSlider />

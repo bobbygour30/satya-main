@@ -23,7 +23,7 @@ export default function SatyaIntroduction() {
             Satya Introduction
           </p>
 
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#2B333C] leading-tight">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#2B333C] leading-tight">
             A Clinic Built on <br className="hidden sm:block" />
             Truth, Care & Clinical Integrity
           </h2>
@@ -31,12 +31,12 @@ export default function SatyaIntroduction() {
           <p className="text-[#828D9C] leading-relaxed max-w-xl">
             Choosing a skin or hair clinic is a deeply personal decision. At Satya,
             this choice is respected through honest consultations, customized
-            treatment plans, and evidence-based protocols — never aggressive sales
+            treatment plans, and evidence-based protocols never aggressive sales
             or unrealistic guarantees.
           </p>
 
           <p className="text-[#828D9C] leading-relaxed max-w-xl">
-            Every treatment begins with understanding the individual — their
+            Every treatment begins with understanding the individual their
             medical history, lifestyle, expectations, and long-term goals. This
             ensures outcomes that are not only cosmetically pleasing, but also
             medically sound and sustainable.
@@ -53,7 +53,7 @@ export default function SatyaIntroduction() {
         >
           <p className="text-[#2B333C] font-medium leading-relaxed">
             Satya is widely recognized for its expertise in corrective hair
-            transplants — treating patients who have undergone failed or poorly
+            transplants treating patients who have undergone failed or poorly
             planned procedures elsewhere.
           </p>
 
@@ -68,8 +68,8 @@ export default function SatyaIntroduction() {
 
           <p className="text-[#828D9C] leading-relaxed">
             Transparency is central to Satya’s ethos. Patients are clearly informed
-            about what a treatment can and cannot achieve — including sessions
-            required, recovery timelines, and maintenance needs — reducing anxiety
+            about what a treatment can and cannot achieve including sessions
+            required, recovery timelines, and maintenance needs reducing anxiety
             and building long-term trust.
           </p>
         </motion.div>
@@ -87,7 +87,7 @@ export default function SatyaIntroduction() {
           <p className="text-lg md:text-xl leading-relaxed max-w-4xl">
             From advanced dermatology and laser treatments to sophisticated hair
             restoration techniques, Satya offers integrated solutions under one
-            roof — guided entirely by doctors and specialists, never technicians
+            roof, guided entirely by doctors and specialists, never technicians
             or sales staff.
           </p>
         </div>

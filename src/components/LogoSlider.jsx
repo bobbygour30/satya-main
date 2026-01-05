@@ -39,7 +39,6 @@ const LOGOS = [
   },
 ];
 
-
 export default function LogoSlider() {
   const trackRef = useRef(null);
 
@@ -80,7 +79,7 @@ export default function LogoSlider() {
           <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#FFF8EF] to-transparent z-10" />
 
           <div className="overflow-hidden">
-            <div ref={trackRef} className="flex gap-6 w-max py-4">
+            <div ref={trackRef} className="flex gap-8 w-max py-6">
               {[...LOGOS, ...LOGOS].map((logo, index) => (
                 <LogoItem key={index} {...logo} />
               ))}
@@ -103,13 +102,13 @@ export default function LogoSlider() {
 /* ================= SINGLE LOGO ================= */
 function LogoItem({ image, name, full, hover }) {
   return (
-    <div className="group relative min-w-[220px] sm:min-w-[260px] bg-[#FCEBDE] border border-[#DFDFDD] rounded-2xl px-6 py-6 text-center transition hover:border-[#9E4A47]">
+    <div className="group relative min-w-[260px] sm:min-w-[300px] bg-[#FCEBDE] border border-[#DFDFDD] rounded-2xl px-6 py-6 text-center transition hover:border-[#9E4A47]">
       {/* IMAGE LOGO */}
-      <div className="h-14 flex items-center justify-center mb-3">
+      <div className="h-20 flex items-center justify-center mb-4">
         <img
           src={image}
           alt={name}
-          className="max-h-full max-w-[140px] object-contain"
+          className="max-h-full max-w-[190px] object-contain"
         />
       </div>
 

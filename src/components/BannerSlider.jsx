@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import assets from "../assets/assets"
+import assets from "../assets/assets";
 
 /* ================= HERO SLIDES ================= */
 const slides = [
@@ -33,7 +33,6 @@ const slides = [
     cta: "Discover Skin Treatments",
   },
 ];
-
 
 /* ================= HERO COMPONENT ================= */
 export default function BannerSlider() {
@@ -77,9 +76,16 @@ export default function BannerSlider() {
             {/* Content */}
             <div className="absolute inset-0 flex items-center justify-center px-6">
               <div className="text-center text-[#FFF8EF]">
-                <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-4">
-                  {slide.headline}
-                </h1>
+                {index === 0 ? (
+                  <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-4">
+                    {slide.headline}
+                  </h1>
+                ) : (
+                  <h2 className="text-3xl md:text-5xl font-semibold leading-tight mb-4">
+                    {slide.headline}
+                  </h2>
+                )}
+
                 <p className="text-sm md:text-lg text-[#DFDFDD] mb-8">
                   {slide.subtext}
                 </p>

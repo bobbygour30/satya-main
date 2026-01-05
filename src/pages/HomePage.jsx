@@ -13,24 +13,19 @@ import FAQComponent from "../components/FAQComponent";
 import ProductShowcaseSection from "../components/ProductShowcaseSection";
 import BadgesSection from "../components/BadgesSection";
 import Footer from "../components/Footer";
+import Ratings from "../components/Ratings";
+import SatyaIntroduction from "../components/SatyaIntroduction";
 
 const HomePage = () => {
-  const logos = [
-  "https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png",
-  "https://upload.wikimedia.org/wikipedia/commons/9/95/Logo_of_the_United_Nations_%28UN%29.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/2/24/LEGO_logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/4/44/McDonald%27s_Golden_Arches.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/a/ae/Tesla_logo.png",
-  "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
-];
+
 
   return (
     <div>
       <Navbar />
       <BannerSlider />
-      <LogoSlider logos={logos} />
+      <SatyaIntroduction />
+      <Ratings />
+      <LogoSlider  />
       <HeroSection />
       <ServicesAndEvolution />
       <Testimonials />

@@ -5,31 +5,32 @@ import { AnimatePresence, motion } from "framer-motion";
 // Updated FAQ Data – now on-brand for Maven Clinic
 const faqItems = [
   {
-    question: "How quickly can I book an appointment?",
+    question: "What makes Satya Skin & Hair Solutions different from other clinics?",
     answer:
-      "Most members are matched with a provider and have their first visit within 24–48 hours — often same-day for urgent needs.",
+      "Satya is a doctor-led, ethics-first clinic focused on long-term, natural results. We prioritize medical science, honest guidance, and patient safety over quick fixes or cosmetic shortcuts.",
   },
   {
-    question: "Is Maven covered by my insurance or employer?",
+    question: "Are hair transplant procedures at Satya safe?",
     answer:
-      "Maven is offered at no cost to members through thousands of employers and health plans. Check your eligibility instantly on our homepage.",
+      "Yes. All hair transplant procedures at Satya are performed by experienced doctors following strict medical protocols, advanced techniques, and internationally accepted safety standards.",
   },
   {
-    question: "What types of care does Maven cover?",
+    question: "Does Satya offer customized skin treatments?",
     answer:
-      "Everything from fertility & adoption to pregnancy, postpartum, menopause, pediatrics, mental health, and ongoing women’s health.",
+      "Absolutely. Every skin treatment plan is personalized after a detailed consultation, taking into account your skin type, condition, medical history, and long-term goals.",
   },
   {
-    question: "Can my partner or family access Maven too?",
+    question: "Can Satya correct failed or unnatural hair transplants?",
     answer:
-      "Yes! Many plans include partners and dependents — fertility, parenting, pediatrics, and mental health support are available to the whole family.",
+      "Yes. Satya is widely recognized for its expertise in corrective and repair hair transplant cases, including donor repair, hairline correction, and restoration after failed procedures.",
   },
   {
-    question: "Is care virtual or in-person?",
+    question: "Where is Satya Skin & Hair Solutions located?",
     answer:
-      "Both. You’ll have 24/7 virtual care plus access to top-rated in-person providers when needed (labs, ultrasounds, procedures, etc.).",
+      "Satya has clinics in Gurgaon and Delhi and serves patients from across India and more than 40 countries worldwide.",
   },
 ];
+
 
 export default function FAQComponent() {
   const [active, setActive] = useState(null);

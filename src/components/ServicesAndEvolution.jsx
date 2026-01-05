@@ -18,13 +18,15 @@ const ServicesSection = () => {
         viewport={{ once: true }}
         className="mb-10"
       >
-        <p className="text-[#B87C72] text-sm font-medium tracking-wider">OUR OFFERS</p>
+        <p className="text-[#B87C72] text-sm font-medium tracking-wider">
+          SATYA PHILOSOPHY
+        </p>
         <h2 className="text-4xl md:text-5xl font-semibold text-[#2B333C] mt-1">
           WHAT WE DO
         </h2>
         <p className="text-[#828D9C] mt-3 max-w-xl leading-relaxed">
-          Our team provides personalized care. From preconception to postpartum and every stage in between.
-          Contact us!
+          We do with Science, Artistry, and Love. At Satya Skin & Hair Solutions,
+          medicine exists to serve the patient — not trends, shortcuts, or commerce.
         </p>
       </motion.div>
 
@@ -42,9 +44,10 @@ const ServicesSection = () => {
           hover:shadow-[#9E4A47]/10 hover:scale-[1.03]"
         >
           <span className="text-2xl text-[#B87C72]/50 font-semibold">/1</span>
-          <h3 className="text-xl font-semibold text-[#2B333C]">Fertility & Family Building</h3>
+          <h3 className="text-xl font-semibold text-[#2B333C]">Science First</h3>
           <p className="text-[#828D9C] text-sm">
-            Comprehensive support from fertility care to adoption and surrogacy.
+            Every protocol is evidence-based, medically validated, and continuously
+            refined through global research and clinical data.
           </p>
         </motion.div>
 
@@ -59,9 +62,10 @@ const ServicesSection = () => {
           hover:shadow-[#2B333C]/50 hover:scale-[1.03]"
         >
           <span className="text-2xl text-[#DFDFDD]/40 font-semibold">/2</span>
-          <h3 className="text-xl font-semibold">Pregnancy & Postpartum</h3>
+          <h3 className="text-xl font-semibold">Artistry with Precision</h3>
           <p className="text-[#DFDFDD] text-sm">
-            Expert care throughout pregnancy, birth, and the fourth trimester.
+            Natural results demand balance and restraint. Each face and hairline
+            is treated as a unique canvas — refined, age-appropriate, and never artificial.
           </p>
         </motion.div>
 
@@ -76,9 +80,12 @@ const ServicesSection = () => {
           hover:shadow-[#9E4A47]/10 hover:scale-[1.03]"
         >
           <span className="text-2xl text-[#B87C72]/50 font-semibold">/3</span>
-          <h3 className="text-xl font-semibold text-[#2B333C]">Menopause & Ongoing Care</h3>
+          <h3 className="text-xl font-semibold text-[#2B333C]">
+            Truth & Ethics
+          </h3>
           <p className="text-[#828D9C] text-sm">
-            Specialized support for perimenopause, menopause, and beyond.
+            Patients are educated, not persuaded. Treatments that are unnecessary,
+            unsafe, or unlikely to add value are honestly declined.
           </p>
         </motion.div>
 
@@ -93,9 +100,12 @@ const ServicesSection = () => {
           hover:shadow-[#9E4A47]/40 hover:scale-[1.03]"
         >
           <span className="text-2xl text-white/50 font-semibold">/4</span>
-          <h3 className="text-xl font-semibold">Pediatrics & Parenting</h3>
+          <h3 className="text-xl font-semibold">
+            Long-Term Results
+          </h3>
           <p className="text-[#FFF8EF] text-sm">
-            Dedicated care for newborns, children, and growing families.
+            Decisions are guided by anatomy, health, and durability — ensuring
+            outcomes that age gracefully and stand the test of time.
           </p>
         </motion.div>
       </div>
@@ -111,18 +121,15 @@ const ServicesSection = () => {
       >
         <img
           src="https://images.unsplash.com/photo-1607746882042-944635dfe10e"
-          alt="Maven Care"
+          alt="Satya Philosophy"
           className="w-full h-72 object-cover"
         />
         <button className="absolute bottom-4 left-4 bg-gradient-to-r from-[#9E4A47] to-[#84332F] text-white px-6 py-3 rounded-full text-sm font-medium shadow-lg hover:opacity-90 transition">
-          VIEW ALL SERVICES
+          VIEW OUR PHILOSOPHY
         </button>
       </motion.div>
 
-      {/* ------------------------------------- */}
       {/* REAL RESULTS SECTION */}
-      {/* ------------------------------------- */}
-
       <div className="grid md:grid-cols-3 gap-10 mt-20 items-start">
 
         {/* LEFT CONTENT */}
@@ -138,11 +145,12 @@ const ServicesSection = () => {
           </h2>
 
           <p className="text-[#828D9C] max-w-sm leading-relaxed">
-            Thousands of families trust Maven every day. See how we’ve supported members through every stage of their journey.
+            When ethics lead medicine, outcomes follow naturally. Thousands of
+            patients trust Satya for honest guidance and results that feel real.
           </p>
 
           <button className="bg-gradient-to-r from-[#9E4A47] to-[#84332F] text-white px-7 py-3.5 rounded-full font-medium hover:opacity-90 transition shadow-lg">
-            See member stories
+            See Patient Stories
           </button>
         </motion.div>
 
@@ -157,13 +165,15 @@ const ServicesSection = () => {
         >
           <img
             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f87"
-            alt="Member story"
+            alt="Patient story"
             className="w-full h-72 object-cover"
           />
           <div className="p-5">
-            <h3 className="font-semibold text-[#2B333C]">Sarah M.</h3>
+            <h3 className="font-semibold text-[#2B333C]">
+              Corrective Hair Restoration
+            </h3>
             <p className="text-sm text-[#828D9C]">
-              IVF & Fertility Support
+              Repair & Donor Preservation
             </p>
           </div>
         </motion.div>
@@ -179,13 +189,15 @@ const ServicesSection = () => {
         >
           <img
             src="https://images.unsplash.com/photo-1580489944761-15a19d654956"
-            alt="Member story"
+            alt="Patient story"
             className="w-full h-72 object-cover"
           />
           <div className="p-5">
-            <h3 className="font-semibold text-[#2B333C]">Aisha K.</h3>
+            <h3 className="font-semibold text-[#2B333C]">
+              Natural Skin Rejuvenation
+            </h3>
             <p className="text-sm text-[#828D9C]">
-              Postpartum & Mental Health
+              Dermatology-Led Aesthetic Care
             </p>
           </div>
         </motion.div>

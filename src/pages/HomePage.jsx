@@ -15,6 +15,7 @@ import BadgesSection from "../components/BadgesSection";
 import Footer from "../components/Footer";
 import Ratings from "../components/Ratings";
 import SatyaIntroduction from "../components/SatyaIntroduction";
+import Blogs from "../components/Blogs";
 
 const HomePage = () => {
 
@@ -35,6 +36,7 @@ const HomePage = () => {
       <InsightsSection />
       <FAQComponent />
       <ProductShowcaseSection />
+      <Blogs />
       <BadgesSection />
       <Footer />
     </div>

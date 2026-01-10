@@ -39,11 +39,23 @@ const MENU = [
   },
   {
     title: "Skin",
-    items: ["Concerns", "Treatments", "Case Studies", "Testimonials"],
+    items: [
+      "Concerns",
+      "Treatments",
+      "Testimonials",
+      { label: "Case Studies", path: "/before-after" },
+      ,
+      "Testimonials",
+    ],
   },
   {
     title: "Hair",
-    items: ["Concerns", "Treatments", "Case Studies", "Testimonials"],
+    items: [
+      "Concerns",
+      "Testimonials",
+      { label: "Case Studies", path: "/before-after" },
+      "Treatments",
+    ],
   },
   {
     title: "Knowledge",
@@ -145,7 +157,11 @@ export default function Navbar() {
         <div className="fixed inset-0 bg-black/40 z-50">
           <div className="bg-[#FFF8EF] w-[85%] h-full p-6 overflow-y-auto">
             <div className="flex justify-between mb-6">
-              <Link to="/" className="font-bold text-lg text-[#2B333C]" onClick={() => setMobileOpen(false)}>
+              <Link
+                to="/"
+                className="font-bold text-lg text-[#2B333C]"
+                onClick={() => setMobileOpen(false)}
+              >
                 SATYA
               </Link>
               <button onClick={() => setMobileOpen(false)}>
@@ -191,11 +207,7 @@ function HoverDropdown({ title, items }) {
                   key={index}
                   className="cursor-pointer hover:text-[#9E4A47] transition-colors"
                 >
-                  {path ? (
-                    <Link to={path}>{label}</Link>
-                  ) : (
-                    label
-                  )}
+                  {path ? <Link to={path}>{label}</Link> : label}
                 </li>
               );
             })}
@@ -236,7 +248,9 @@ function MobileAccordion({ title, items }) {
                   <Link
                     to={path}
                     className="hover:text-[#9E4A47] transition-colors"
-                    onClick={() => {/* Optional: close mobile menu on click */}}
+                    onClick={() => {
+                      /* Optional: close mobile menu on click */
+                    }}
                   >
                     {label}
                   </Link>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -17,9 +18,10 @@ export default function Blogs() {
   useEffect(() => {
     setLoading(true);
 
-    fetch(
-      `https://satyaskinhair.com/wp-json/wp/v2/posts?_embed&page=${page}&per_page=${POSTS_PER_PAGE}`
-    )
+   fetch(
+  `https://blogs.satyaskinhair.com/wp-json/wp/v2/posts?_embed&page=${page}&per_page=${POSTS_PER_PAGE}`
+)
+
       .then((res) => {
         const total = res.headers.get("X-WP-TotalPages");
         if (total) setTotalPages(Number(total));
@@ -47,9 +49,11 @@ export default function Blogs() {
           <p className="text-sm uppercase tracking-widest text-[#B87C72] mb-3">
             Knowledge & Care
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#2B333C]">
+
+          <h1 className="text-4xl md:text-5xl font-semibold text-[#2B333C]">
             Satya Insights
-          </h2>
+          </h1>
+
           <p className="mt-4 text-[#828D9C] max-w-2xl mx-auto">
             Honest medical perspectives, patient education, and science-led
             insights from Satya Skin & Hair Clinic.
@@ -63,7 +67,7 @@ export default function Blogs() {
           </div>
         )}
 
-        {/* ================= GRID ================= */}
+        {/* ================= BLOG GRID ================= */}
         {!loading && posts.length > 0 && (
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => {
@@ -100,7 +104,7 @@ export default function Blogs() {
                       {new Date(post.date).toLocaleDateString()} · {author}
                     </p>
 
-                    <h3
+                    <h2
                       className="text-xl font-semibold text-[#2B333C] mb-3 leading-snug"
                       dangerouslySetInnerHTML={{
                         __html: post.title.rendered,
@@ -114,13 +118,14 @@ export default function Blogs() {
                       }}
                     />
 
-                    <a
-                      href={post.link}
+                    {/* 🔥 REACT ROUTE (NOT WORDPRESS LINK) */}
+                    <Link
+                      to={`/blogs/${post.slug}`}
                       className="mt-auto inline-flex items-center gap-2 text-sm font-medium
                       text-[#9E4A47] hover:text-[#84332F] transition"
                     >
                       Read Article →
-                    </a>
+                    </Link>
                   </div>
                 </motion.article>
               );

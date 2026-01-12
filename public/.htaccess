@@ -1,6 +1,18 @@
-Options -MultiViews
+DirectoryIndex index.html
+
+Options -Indexes -MultiViews
 RewriteEngine On
 
+# React Router
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.html [QSA,L]
+RewriteRule ^ index.html [L]
+
+# Kill Hostinger / GoDaddy cache
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+</IfModule>
+
+<IfModule LiteSpeed>
+  CacheDisable public /
+</IfModule>

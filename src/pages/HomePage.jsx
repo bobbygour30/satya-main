@@ -12,7 +12,6 @@ import FAQComponent from "../components/FAQComponent";
 import ProductShowcaseSection from "../components/ProductShowcaseSection";
 import BadgesSection from "../components/BadgesSection";
 import Ratings from "../components/Ratings";
-import SatyaIntroduction from "../components/SatyaIntroduction";
 import Blogs from "../components/Blogs";
 
 const HomePage = () => {
@@ -27,7 +26,6 @@ const HomePage = () => {
       <Ratings />
       <ServicesAndEvolution />
       <Testimonials />  
-     
       <FaceLoveForm />
       <ClinicSection />
       <TeamSlider />

@@ -253,7 +253,7 @@ function StorySection() {
           <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
             <p>
               Every journey begins with a brave decision. Behind each before &
-              after is a real person who chose to trust the process — and the
+              after is a real person who chose to trust the process and the
               result speaks louder than words.
             </p>
             <p>

@@ -8,7 +8,7 @@ const slides = [
     image: assets.banner3,
     headline: "Clinically Proven Skin & Hair Treatments",
     subtext:
-      "Every treatment at Satya is backed by clinical evidence, medical precision, and ethical practice — delivering results that are safe, natural, and scientifically validated.",
+      "Every treatment at Satya is backed by clinical evidence, medical precision, and ethical practice delivering results that are safe, natural, and scientifically validated.",
     cta: "Find My Treatment",
   },
   {
@@ -22,14 +22,14 @@ const slides = [
     image: assets.banner2,
     headline: "You're Beautiful we just make you Realize it.",
     subtext:
-      "Our approach enhances what’s already yours — restoring balance, proportion, and confidence without overcorrection or artificial results.",
+      "Our approach enhances what’s already yours restoring balance, proportion, and confidence without overcorrection or artificial results.",
     cta: "See Real Repair Cases",
   },
   {
     image: assets.banner1,
     headline: "Hair Bhi. Health Bhi. Results That Look Natural & Last Longer.",
     subtext:
-      "We treat hair as part of your overall health — combining dermatology, nutrition, and long-term planning for results that grow stronger with time.",
+      "We treat hair as part of your overall health combining dermatology, nutrition, and long-term planning for results that grow stronger with time.",
     cta: "Discover Skin Treatments",
   },
 ];

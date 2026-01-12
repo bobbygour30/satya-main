@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     id: 2,
-    text: `Exceptional care and attention — they listened carefully, explained every step, and delivered better-than-expected results.`,
+    text: `Exceptional care and attention they listened carefully, explained every step, and delivered better-than-expected results.`,
     author: "Anjali S.",
   },
   {

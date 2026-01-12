@@ -26,7 +26,7 @@ const ServicesSection = () => {
         </h2>
         <p className="text-[#828D9C] mt-3 max-w-xl leading-relaxed">
           We do with Science, Artistry, and Love. At Satya Skin & Hair Solutions,
-          medicine exists to serve the patient — not trends, shortcuts, or commerce.
+          medicine exists to serve the patient not trends, shortcuts, or commerce.
         </p>
       </motion.div>
 
@@ -65,7 +65,7 @@ const ServicesSection = () => {
           <h3 className="text-xl font-semibold">Artistry with Precision</h3>
           <p className="text-[#DFDFDD] text-sm">
             Natural results demand balance and restraint. Each face and hairline
-            is treated as a unique canvas — refined, age-appropriate, and never artificial.
+            is treated as a unique canvas, refined, age-appropriate, and never artificial.
           </p>
         </motion.div>
 
@@ -104,7 +104,7 @@ const ServicesSection = () => {
             Long-Term Results
           </h3>
           <p className="text-[#FFF8EF] text-sm">
-            Decisions are guided by anatomy, health, and durability — ensuring
+            Decisions are guided by anatomy, health, and durability ensuring
             outcomes that age gracefully and stand the test of time.
           </p>
         </motion.div>

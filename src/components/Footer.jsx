@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <img src={assets.logo} className="w-40" alt="" />
             <p className="text-[#DFDFDD] text-base leading-relaxed max-w-md">
-              The world’s largest virtual clinic for women’s and family health — 
+              The world’s largest virtual clinic for women’s and family health, 
               delivering personalized, evidence-based care from fertility to menopause 
               and every stage in between.
             </p>

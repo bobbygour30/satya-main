@@ -18,7 +18,7 @@ const insights = [
     tag: "Awareness",
     title: "Breaking the Silence on Postpartum Mental Health",
     desc:
-      "Why 1 in 5 new mothers experience anxiety or depression — and how early intervention can change everything.",
+      "Why 1 in 5 new mothers experience anxiety or depression and how early intervention can change everything.",
     image:
       "https://images.unsplash.com/photo-1600180758890-6b94519a8ba0?q=80&w=2000",
   },

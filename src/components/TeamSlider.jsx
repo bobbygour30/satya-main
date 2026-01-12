@@ -67,7 +67,7 @@ export default function TeamSlider() {
         </div>
 
         <p className="text-[#828D9C] max-w-3xl leading-relaxed mt-3 mb-10">
-          Meet the experts behind Maven Clinic — board-certified physicians, midwives, mental health providers, and coaches dedicated to delivering personalized, high-quality care at every stage.
+          Meet the experts behind Maven Clinic board-certified physicians, midwives, mental health providers, and coaches dedicated to delivering personalized, high-quality care at every stage.
         </p>
 
         {/* MAIN GRID */}
@@ -87,7 +87,7 @@ export default function TeamSlider() {
                 Leaders in women’s & family health
               </h3>
               <p className="text-[#DFDFDD] text-sm leading-relaxed">
-                Our network includes top-rated specialists across fertility, pregnancy, postpartum, pediatrics, menopause, and mental health — all in one place.
+                Our network includes top-rated specialists across fertility, pregnancy, postpartum, pediatrics, menopause, and mental health all in one place.
               </p>
             </div>
 

@@ -5,7 +5,7 @@ const products = [
   {
     title: "FERTILITY & FAMILY BUILDING",
     description:
-      "From fertility testing and egg freezing to IVF, IUI, adoption, and surrogacy — get personalized support at every step.",
+      "From fertility testing and egg freezing to IVF, IUI, adoption, and surrogacy, get personalized support at every step.",
     image: "https://via.placeholder.com/350x150?text=Fertility+Care",
     cta: "Explore Care"
   },
@@ -30,7 +30,7 @@ export default function ProductShowcaseSection() {
               BUILT FOR FAMILIES,<br/>BY EXPERTS
             </h2>
             <p className="text-[#828D9C] text-base leading-relaxed mb-8">
-              Maven is the world’s largest virtual clinic for women’s and family health — trusted by 15M+ lives and 2,000+ employers to deliver better outcomes, lower costs, and truly personalized care.
+              Maven is the world’s largest virtual clinic for women’s and family health trusted by 15M+ lives and 2,000+ employers to deliver better outcomes, lower costs, and truly personalized care.
             </p>
           </div>
 

@@ -3,26 +3,22 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowLeft, MoveUpRight } from "lucide-react";
+import assets from "../assets/assets";
 
 const doctors = [
   {
-    name: "Dr. Maya Patel",
-    image: "https://cdn.prod.website-files.com/662e5390115777703fa6e8da/663b6ffbbdc285e30c4784b0_DrMarc.webp",
+    name: "Dr. Shail Gupta",
+    image: assets.drShailGupta,
     description:
-      "Dr. Maya Patel is a leading OB-GYN and fertility specialist with over 15 years of experience supporting families through conception and beyond.",
+      "Dr. Shail Gupta is a leading OB-GYN and fertility specialist with over 15 years of experience supporting families through conception and beyond.",
   },
   {
-    name: "Dr. Arjun Mehta",
-    image: "https://cdn.prod.website-files.com/662e5390115777703fa6e8da/663a6d4f43303ddf38050a6a_Team%20Member1%20copy.webp",
+    name: "Dr. Ruchi Agarwal",
+    image: assets.drRuchiAgarwal,
     description:
-      "Dr. Arjun Mehta specializes in high-risk pregnancy and maternal-fetal medicine, delivering compassionate, evidence-based care.",
+      "Dr. Ruchi Agarwal specializes in high-risk pregnancy and maternal-fetal medicine, delivering compassionate, evidence-based care.",
   },
-  {
-    name: "Dr. Sophia Verma",
-    image: "https://cdn.prod.website-files.com/662e5390115777703fa6e8da/663a6d4ee9cc0a87bb0aa5a1_Team%20Member%203%20copy.webp",
-    description:
-      "Dr. Sophia Verma is a renowned pediatrician and lactation expert dedicated to supporting new parents through infancy and early childhood.",
-  },
+
 ];
 
 export default function TeamSlider() {

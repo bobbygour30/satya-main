@@ -22,6 +22,10 @@ import gurgao1 from "./gurgao (1).webp";
 import gurgao2 from "./gurgao (2).webp";
 import gurgao3 from "./gurgao (3).webp";
 
+/* ================= DOCTORS ================= */
+import drRuchiAgarwal from "./Dr Ruchi Agarwal.jpg";
+import drShailGupta from "./Dr Shail Gupta.jpg";
+
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1,
@@ -42,6 +46,9 @@ const assets = {
   gurgao1,
   gurgao2,
   gurgao3,
+
+  drRuchiAgarwal,
+  drShailGupta,
 };
 
 export default assets;

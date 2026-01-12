@@ -27,7 +27,7 @@ const slides = [
   },
   {
     image: assets.banner1,
-    headline: "Hair Bhi. Health Bhi. Results That Look Natural & Last Longer.",
+    headline: "Hair Bhi. Health Bhi. Results That Look Natural & Last Longer.™",
     subtext:
       "We treat hair as part of your overall health combining dermatology, nutrition, and long-term planning for results that grow stronger with time.",
     cta: "Discover Skin Treatments",

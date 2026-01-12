@@ -1,7 +1,4 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
-import { Maximize2 } from "lucide-react";
 import assets from "../assets/assets";
 
 /* ================= IMAGE SETS ================= */

@@ -23,11 +23,11 @@ const HomePage = () => {
       
       <BannerSlider />
       <LogoSlider  />
-      <SatyaIntroduction />
+       <HeroSection />
       <Ratings />
       <ServicesAndEvolution />
       <Testimonials />  
-      <HeroSection />
+     
       <FaceLoveForm />
       <ClinicSection />
       <TeamSlider />

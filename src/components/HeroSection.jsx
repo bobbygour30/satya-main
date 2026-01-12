@@ -33,9 +33,8 @@ const HeroSection = () => {
       <div className="relative z-10 max-w-3xl text-center mx-auto">
         {/* Heading */}
         <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
-          The women's and family <br />
-          care platform improving <br />
-          outcomes <span className="italic font-serif text-[#FFF8EF]">worldwide</span>
+          We will never over
+          treat you
         </h2>
 
         {/* Subtitle */}
@@ -47,7 +46,7 @@ const HeroSection = () => {
         {/* Buttons */}
         <div className="mt-7 flex gap-4 justify-center flex-wrap">
           <button className="px-6 py-3 bg-gradient-to-r from-[#9E4A47] to-[#84332F] hover:opacity-90 text-white font-medium rounded-lg transition shadow-lg">
-            Get a demo
+            Book an appointment
           </button>
 
           <button className="px-6 py-3 bg-[#FFF8EF] hover:bg-[#FCEBDE] text-[#2B333C] font-medium rounded-lg transition shadow-md">

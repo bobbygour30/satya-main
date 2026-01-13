@@ -69,7 +69,7 @@ const HeroSection = () => {
               no: "/1",
               title: "Hair Concerns",
               desc:
-                "All protocols are evidence-based, medically validated, and continuously updated with global research. Whether it is dermatology, laser technology, injectables, or hair transplantation, decisions are guided by clinical data, anatomy, and long-term outcomes.",
+                "Androgenetic Alopecia, Female Pattern Hair Loss, Excessive Hair Fall, DHT-Related Hair Loss, Diffuse Hair Thinning, Early Baldness, Genetic Hair Loss, Stress-Induced Hair Loss.",
               bg: "bg-white",
               text: "text-[#2B333C]",
             },
@@ -77,7 +77,7 @@ const HeroSection = () => {
               no: "/2",
               title: "Hair Treatment",
               desc:
-                "Aesthetic medicine is not mechanical. Natural beauty requires balance, proportion, and restraint. Satya approaches every face and hairline as a unique canvas, ensuring results that look refined, age-appropriate, and natural, never artificial or overdone.",
+                "FUE Hair Transplant, Hairline Reconstruction, Beard Hair Transplant, Moustache Hair Transplant, Eyebrow Reconstruction, Afro Hair Transplant, Body Hair Transplant, Hair Transplant Repair.",
               bg: "bg-[#2B333C] text-white",
               text: "text-white",
             },
@@ -85,7 +85,7 @@ const HeroSection = () => {
               no: "/3",
               title: "Skin Concerns",
               desc:
-                "Patients are educated, not persuaded. If a treatment is unnecessary, unsafe, or unlikely to deliver value, it is honestly declined. This ethical stance has helped Satya build a reputation where trust outweighs marketing.",
+                "Acne Scar, Fungal Infection,Aging, Fine lines/wrinkles, Under eye darkening/hollows, Laugh lines, Thin lips, Neck lines, Sagging, Uneven skin tone, Patchy skin, Sensitive skin, Rosacea, Acne, Acne scars, Dull skin, Open pores.",
               bg: "bg-white",
               text: "text-[#2B333C]",
             },
@@ -93,7 +93,7 @@ const HeroSection = () => {
               no: "/4",
               title: "Skin Treatment",
               desc:
-                "Decisions guided by anatomy, health, and durability. Long-term results that age gracefully.",
+                "Laser Hair Reduction, Chemical Peel, Mole removal, Laser Toning Treatment, Fractional CO2 Laser, HIFU treatment, MNRF treatment, Botox, Carbon laser facial, Dermapen 4, Anti Wrinkle Treatment.",
               bg: "bg-gradient-to-br from-[#9E4A47] to-[#84332F] text-white",
               text: "text-white",
             },

@@ -8,16 +8,7 @@ export default function SatyaIntroduction() {
   return (
     <section className="w-full bg-[#2B333C] pt-20 px-6">
       <div className="max-w-5xl mx-auto">
-        {/* Top Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-[#FFF8EF] font-serif text-3xl md:text-4xl mb-10"
-        >
-          Satya Introduction
-        </motion.h2>
+      
 
         {/* Accordion Header */}
         <motion.button

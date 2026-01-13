@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 import assets from "../assets/assets";
 
 /* ================= IMAGE SETS ================= */
@@ -28,6 +29,38 @@ function useAutoSlider(images, delay = 3500) {
   return index;
 }
 
+/* ================= STAR RATING ================= */
+function StarRating({ rating }) {
+  const percentage = (rating / 5) * 100;
+
+  return (
+    <div className="flex items-center justify-center gap-3 mt-1">
+
+      {/* Google Icon */}
+      <FcGoogle className="text-lg" />
+
+      {/* Stars */}
+      <div className="relative text-[18px] leading-none">
+        {/* Empty Stars */}
+        <div className="text-[#E5E7EB] tracking-[1px]">★★★★★</div>
+
+        {/* Filled Stars */}
+        <div
+          className="absolute inset-0 overflow-hidden text-[#F5B301] tracking-[1px]"
+          style={{ width: `${percentage}%` }}
+        >
+          ★★★★★
+        </div>
+      </div>
+
+      {/* Numeric Rating */}
+      <span className="text-sm font-medium text-[#2B333C]">
+        {rating}
+      </span>
+    </div>
+  );
+}
+
 export default function ClinicSection() {
   const leftIndex = useAutoSlider(LEFT_IMAGES, 3600);
   const rightIndex = useAutoSlider(RIGHT_IMAGES, 4200);
@@ -46,45 +79,58 @@ export default function ClinicSection() {
         </h2>
 
         <p className="text-[#828D9C] max-w-3xl leading-relaxed mb-10">
-         Our clinics in Gurugram and Delhi combine advanced medical technology with expert care, delivering safe, ethical, and world class skin and hair treatments in premium clinical settings.
+          Our clinics in Gurugram and Delhi combine advanced medical technology
+          with expert care, delivering safe, ethical, and world class skin and
+          hair treatments in premium clinical settings.
         </p>
 
         {/* ================= SLIDER GRID ================= */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          {/* ================= LEFT SLIDER ================= */}
-          <div className="relative rounded-xl overflow-hidden h-[280px] md:h-[330px] group shadow-lg">
-            {LEFT_IMAGES.map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt="Clinic environment"
-                className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out
-                  ${i === leftIndex ? "opacity-100 scale-105" : "opacity-0 scale-100"}
-                `}
-              />
-            ))}
+          {/* ================= GURUGRAM ================= */}
+          <div>
+            <div className="relative rounded-xl overflow-hidden h-[280px] md:h-[330px] shadow-lg">
+              {LEFT_IMAGES.map((img, i) => (
+                <img
+                  key={i}
+                  src={img}
+                  alt="Gurugram Clinic"
+                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out
+                    ${i === leftIndex ? "opacity-100 scale-105" : "opacity-0 scale-100"}
+                  `}
+                />
+              ))}
+            </div>
 
-            
+            <div className="mt-4 text-center">
+              <h3 className="text-lg font-semibold text-[#2B333C]">
+                Gurugram
+              </h3>
+              <StarRating rating={4.8} />
+            </div>
           </div>
 
-          {/* ================= RIGHT SLIDER ================= */}
-          <div className="relative rounded-xl overflow-hidden h-[280px] md:h-[330px] group shadow-lg">
+          {/* ================= DELHI ================= */}
+          <div>
+            <div className="relative rounded-xl overflow-hidden h-[280px] md:h-[330px] shadow-lg">
+              {RIGHT_IMAGES.map((img, i) => (
+                <img
+                  key={i}
+                  src={img}
+                  alt="Delhi Clinic"
+                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out
+                    ${i === rightIndex ? "opacity-100 scale-105" : "opacity-0 scale-100"}
+                  `}
+                />
+              ))}
+            </div>
 
-            {RIGHT_IMAGES.map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt="Doctor consultation"
-                className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out
-                  ${i === rightIndex ? "opacity-100 scale-105" : "opacity-0 scale-100"}
-                `}
-              />
-            ))}
-
-            
-
-          
+            <div className="mt-4 text-center">
+              <h3 className="text-lg font-semibold text-[#2B333C]">
+                Delhi
+              </h3>
+              <StarRating rating={4.6} />
+            </div>
           </div>
 
         </div>

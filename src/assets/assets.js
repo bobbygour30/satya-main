@@ -28,6 +28,8 @@ import drShailGupta from "./Dr Shail Gupta.jpg";
 import prakhar from "./prakhar.jpg";
 import skin from "./skin.jpg";
 import hair from "./hair.jpg";
+import insite from "./insite.jpg";
+import insite1 from "./insite1.jpg";
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1,
@@ -54,6 +56,8 @@ const assets = {
   prakhar,
   skin,
   hair,
+  insite,
+  insite1,
 };
 
 export default assets;

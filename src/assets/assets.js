@@ -25,7 +25,9 @@ import gurgao3 from "./gurgao (3).webp";
 /* ================= DOCTORS ================= */
 import drRuchiAgarwal from "./Dr Ruchi Agarwal.jpg";
 import drShailGupta from "./Dr Shail Gupta.jpg";
-
+import prakhar from "./prakhar.jpg";
+import skin from "./skin.jpg";
+import hair from "./hair.jpg";
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1,
@@ -49,6 +51,9 @@ const assets = {
 
   drRuchiAgarwal,
   drShailGupta,
+  prakhar,
+  skin,
+  hair,
 };
 
 export default assets;

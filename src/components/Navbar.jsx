@@ -58,6 +58,13 @@ const MENU = [
     ],
   },
   {
+    title: "Results",
+    items: [
+      "Skin Results",
+      "Hair Results",
+    ],
+  },
+  {
     title: "Knowledge",
     items: [
       "News",

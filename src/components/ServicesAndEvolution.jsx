@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import assets from "../assets/assets";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -44,17 +45,15 @@ const ServicesSection = () => {
           transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.03]"
         >
           <img
-            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f87"
+            src={assets.skin}
             alt="Patient story"
             className="w-full h-72 object-cover"
           />
           <div className="p-5">
             <h3 className="font-semibold text-[#2B333C]">
-              Corrective Hair Restoration
+              Natural Skin Rejuvenation
             </h3>
-            <p className="text-sm text-[#828D9C]">
-              Repair & Donor Preservation
-            </p>
+           
           </div>
         </motion.div>
 
@@ -68,17 +67,15 @@ const ServicesSection = () => {
           transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.03]"
         >
           <img
-            src="https://images.unsplash.com/photo-1580489944761-15a19d654956"
+            src={assets.hair}
             alt="Patient story"
             className="w-full h-72 object-cover"
           />
           <div className="p-5">
             <h3 className="font-semibold text-[#2B333C]">
-              Natural Skin Rejuvenation
+              Corrective Hair Restoration
             </h3>
-            <p className="text-sm text-[#828D9C]">
-              Dermatology-Led Aesthetic Care
-            </p>
+          
           </div>
         </motion.div>
       </div>

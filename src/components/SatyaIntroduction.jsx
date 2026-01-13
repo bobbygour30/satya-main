@@ -1,110 +1,107 @@
-import React from "react";
-import { motion } from "framer-motion";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 export default function SatyaIntroduction() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <section className="w-full bg-[#2B333C] relative overflow-hidden py-16 md:py-20 px-6 flex items-center justify-center">
-      
-      {/* ================= DECORATIVE CURVED SVG ================= */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <svg
-          viewBox="0 0 1440 800"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
+    <section className="w-full bg-[#2B333C] pt-20 px-6">
+      <div className="max-w-5xl mx-auto">
+        {/* Top Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-[#FFF8EF] font-serif text-3xl md:text-4xl mb-10"
         >
-          <path
-            d="M0 200 C400 350 900 50 1440 200"
-            stroke="#DFDFDD"
-            strokeWidth="1.2"
-          />
-          <path
-            d="M0 500 C450 650 900 350 1440 500"
-            stroke="#DFDFDD"
-            strokeWidth="1.1"
-          />
-          <path
-            d="M0 350 C450 500 950 150 1440 350"
-            stroke="#DFDFDD"
-            strokeWidth="0.8"
-          />
-        </svg>
-      </div>
-
-      {/* ================= CONTENT ================= */}
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="relative z-10 max-w-4xl text-center mx-auto"
-      >
-        {/* Tag */}
-        <p className="text-sm tracking-widest uppercase text-[#9E4A47] font-medium mb-4">
           Satya Introduction
-        </p>
+        </motion.h2>
 
-        {/* Heading */}
-        <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
-          A Clinic Built on <br />
-          <span className="italic font-serif text-[#FFF8EF]">
-            Truth, Care & Clinical Integrity
-          </span>
-        </h2>
+        {/* Accordion Header */}
+        <motion.button
+          onClick={() => setOpen(!open)}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.1 }}
+          className="w-full flex items-center justify-between text-left group"
+        >
+          <h3 className="font-serif text-4xl md:text-5xl text-white leading-tight max-w-4xl">
+            World’s Leading{" "}
+            <span className="italic text-[#FFF8EF]">
+              Skin & Hair Transplant Clinic
+            </span>
+          </h3>
 
-        {/* Main Description */}
-        <p className="text-[#DFDFDD] mt-6 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-          Choosing a skin or hair clinic is a deeply personal decision. At Satya,
-          this choice is honored through honest consultations, customized treatment
-          plans, and evidence-based protocols never aggressive sales or unrealistic
-          guarantees.
-        </p>
+          <motion.span
+            animate={{ rotate: open ? 180 : 0 }}
+            transition={{ duration: 0.4 }}
+            className="ml-6 text-[#9E4A47]"
+          >
+            <ChevronDown size={36} />
+          </motion.span>
+        </motion.button>
 
-        <p className="text-[#DFDFDD] mt-4 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-          Every treatment begins with understanding the individual medical history,
-          lifestyle, expectations, and long-term goals ensuring results that are
-          both aesthetically refined and medically responsible.
-        </p>
+        {/* Decorative Divider */}
+        <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-[#DFDFDD] to-transparent opacity-40" />
 
-        {/* Highlight Card */}
-        <div className="mt-10 bg-[#FFF8EF] text-[#2B333C] rounded-2xl p-8 md:p-10 shadow-lg max-w-3xl mx-auto">
-          <p className="font-medium leading-relaxed">
-            Satya is widely recognized for its expertise in corrective hair
-            transplants, helping patients recover from failed or poorly planned
-            procedures elsewhere.
-          </p>
+        {/* Expandable Content */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <motion.div
+                initial={{ y: 30 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="mt-10 space-y-6"
+              >
+                <p className="text-[#DFDFDD] text-lg leading-relaxed">
+                  The name <span className="text-white font-medium">Satya</span>{" "}
+                  is derived from a Sanskrit word that means{" "}
+                  <span className="italic text-[#FFF8EF]">Truth</span>.
+                </p>
 
-          <p className="mt-4 text-[#828D9C] leading-relaxed">
-            The focus is never on maximizing graft numbers, but on donor safety,
-            natural aesthetics, and long-term planning reflecting true clinical
-            responsibility.
-          </p>
+                <p className="text-[#DFDFDD] text-lg leading-relaxed">
+                  Truth is the foundation of everything we do. We stand for
+                  honesty, transparency, and ethical medical care, and over the
+                  years, we have helped millions discover real, science-backed
+                  solutions for their hair and skin concerns.
+                </p>
 
-          <div className="h-px bg-[#DFDFDD] my-6" />
+                <p className="text-[#DFDFDD] text-lg leading-relaxed">
+                  <span className="text-white font-medium">
+                    Satya Skin & Hair Solutions
+                  </span>
+                  , established in 2005, stands as a global leader in dermatology
+                  and hair restoration. Recognized as a premier institute, Satya
+                  is renowned for its international, state-of-the-art facilities
+                  and advanced treatment protocols.
+                </p>
 
-          <p className="text-[#828D9C] leading-relaxed">
-            Transparency remains central to Satya’s philosophy. Patients are clearly
-            informed about outcomes, recovery timelines, required sessions, and
-            maintenance reducing anxiety and building lasting trust.
-          </p>
-        </div>
+                <p className="text-[#DFDFDD] text-lg leading-relaxed">
+                  The clinic specializes in skin laser treatments, anti-aging
+                  solutions, and both surgical and non-surgical hair restoration
+                  procedures, with particular expertise in corrective and repair
+                  hair transplant surgeries.
+                </p>
 
-        {/* CTA Buttons (Hero-style) */}
-        <div className="mt-10 flex gap-4 justify-center flex-wrap">
-          <button className="px-6 py-3 bg-gradient-to-r from-[#9E4A47] to-[#84332F] hover:opacity-90 text-white font-medium rounded-lg transition shadow-lg">
-            Explore Our Philosophy
-          </button>
-
-          <button className="px-6 py-3 bg-[#FFF8EF] hover:bg-[#FCEBDE] text-[#2B333C] font-medium rounded-lg transition shadow-md">
-            Meet Our Doctors
-          </button>
-        </div>
-      </motion.div>
+                {/* Accent CTA */}
+                <div className="pt-6">
+                  <span className="inline-block h-[3px] w-24 rounded-full bg-gradient-to-r from-[#9E4A47] to-[#84332F]" />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </section>
   );
 }

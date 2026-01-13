@@ -9,18 +9,19 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BeforeAfterPage from "./pages/BeforeAfterPage";
 import CaseDetailPage from "./pages/CaseDetailPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <>
       <Navbar />
-
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/blogs/:slug" element={<BlogDetail />} />
         <Route path="/before-after" element={<BeforeAfterPage />} />
-        <Route path="/case/:id" element={<CaseDetailPage />} />
+        <Route path="/case/prakhar" element={<CaseDetailPage />} />
       </Routes>
 
       <Footer />

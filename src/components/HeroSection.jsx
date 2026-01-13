@@ -55,44 +55,43 @@ const HeroSection = () => {
             SATYA PHILOSOPHY
           </p>
           <h2 className="text-4xl md:text-5xl font-semibold text-[#2B333C] mt-1">
-            WHAT WE DO
+            WHAT WE DO?
           </h2>
           <p className="text-[#828D9C] mt-3 max-w-xl leading-relaxed">
-            We do with Science, Artistry, and Love. Medicine exists to serve the
-            patient never trends or shortcuts.
+            We Do with Science, Artistry and Trust.
           </p>
         </motion.div>
 
-        {/* PHILOSOPHY CARDS */}
+        {/* PHILOSOPHY CARDS – updated content only */}
         <div className="grid md:grid-cols-4 gap-5">
           {[
             {
               no: "/1",
-              title: "Science First",
+              title: "Hair Concerns",
               desc:
-                "Every protocol is evidence-based, medically validated, and refined through global research.",
+                "All protocols are evidence-based, medically validated, and continuously updated with global research. Whether it is dermatology, laser technology, injectables, or hair transplantation, decisions are guided by clinical data, anatomy, and long-term outcomes.",
               bg: "bg-white",
               text: "text-[#2B333C]",
             },
             {
               no: "/2",
-              title: "Artistry with Precision",
+              title: "Hair Treatment",
               desc:
-                "Each face and hairline is treated as a unique canvas, refined, natural, and age-appropriate.",
+                "Aesthetic medicine is not mechanical. Natural beauty requires balance, proportion, and restraint. Satya approaches every face and hairline as a unique canvas, ensuring results that look refined, age-appropriate, and natural, never artificial or overdone.",
               bg: "bg-[#2B333C] text-white",
               text: "text-white",
             },
             {
               no: "/3",
-              title: "Truth & Ethics",
+              title: "Skin Concerns",
               desc:
-                "Patients are educated, not persuaded. Unnecessary treatments are honestly declined.",
+                "Patients are educated, not persuaded. If a treatment is unnecessary, unsafe, or unlikely to deliver value, it is honestly declined. This ethical stance has helped Satya build a reputation where trust outweighs marketing.",
               bg: "bg-white",
               text: "text-[#2B333C]",
             },
-            {
+             {
               no: "/4",
-              title: "Long-Term Results",
+              title: "Skin Treatment",
               desc:
                 "Decisions guided by anatomy, health, and durability. Long-term results that age gracefully.",
               bg: "bg-gradient-to-br from-[#9E4A47] to-[#84332F] text-white",
@@ -118,7 +117,7 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* IMAGE PHILOSOPHY CARD */}
+        {/* IMAGE PHILOSOPHY CARD – kept as-is (you can replace src later if needed) */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -131,12 +130,12 @@ const HeroSection = () => {
             alt="Satya Philosophy"
             className="w-full h-72 object-cover"
           />
-          <button className="absolute bottom-4 left-4 bg-gradient-to-r from-[#9E4A47] to-[#84332F] text-white px-6 py-3 rounded-full text-sm font-medium shadow-lg">
-            VIEW OUR PHILOSOPHY
-          </button>
+         <button className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#9E4A47] to-[#84332F] text-white px-6 py-3 rounded-full text-sm font-medium shadow-lg">
+  VIEW OUR PHILOSOPHY
+</button>
+
         </motion.div>
 
-       
       </div>
     </section>
   );

@@ -42,13 +42,11 @@ export default function ClinicSection() {
         </p>
 
         <h2 className="text-4xl md:text-5xl font-semibold text-[#2B333C] mb-4">
-          Our Care Network
+          Our Advanced Care Centre
         </h2>
 
         <p className="text-[#828D9C] max-w-3xl leading-relaxed mb-10">
-          Maven partners with thousands of top-rated providers worldwide to deliver
-          virtual and in-person care that’s personalized, evidence-based, and built
-          around you.
+         Our clinics in Gurugram and Delhi combine advanced medical technology with expert care, delivering safe, ethical, and world class skin and hair treatments in premium clinical settings.
         </p>
 
         {/* ================= SLIDER GRID ================= */}

@@ -6,6 +6,8 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { Link } from 'react-router-dom';
+import assets from "../assets/assets";
+
 
 /* =====================================================
    DATA
@@ -282,12 +284,14 @@ function StorySection() {
   );
 }
 
-/* =====================================================
-   GALLERY SECTION
-===================================================== */
 function GallerySection({ filter, setFilter, cases, onSelectCase }) {
   return (
     <section className="py-28 px-6 bg-[#FFF8EF] text-[#1a1f26]">
+
+      {/*
+      =====================================================
+      FILTERS (COMMENTED OUT FOR NOW)
+      =====================================================
       <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-4 mb-20">
         {["All", "Jaw", "Nose", "Face"].map((f) => (
           <button
@@ -303,7 +307,12 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
           </button>
         ))}
       </div>
+      */}
 
+      {/*
+      =====================================================
+      DUMMY CASES GRID (COMMENTED OUT FOR NOW)
+      =====================================================
       <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 md:gap-12">
         {cases.map((item, i) => (
           <motion.div
@@ -321,9 +330,13 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
               />
             </div>
+
             <div className="mt-6 text-center">
               <h3 className="font-serif text-2xl">{item.name}</h3>
-              <p className="text-sm text-gray-600 mt-1">{item.procedure}</p>
+              <p className="text-sm text-gray-600 mt-1">
+                {item.procedure}
+              </p>
+
               <Link
                 to={`/case/${item.id}`}
                 className="mt-5 px-7 py-2.5 rounded-full bg-gradient-to-r from-[#9e4a47]/20 to-[#84332F]/20 border border-[#9e4a47]/30 text-white hover:bg-[#9e4a47]/40 transition inline-block"
@@ -334,9 +347,47 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
           </motion.div>
         ))}
       </div>
+      */}
+
+      {/* =====================================
+         SINGLE REAL CASE (PRAKHAR ONLY)
+      ===================================== */}
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="max-w-4xl mx-auto text-center"
+      >
+        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
+          Prakhar
+        </h3>
+
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src={assets.prakhar}
+            alt="Prakhar Transformation"
+            className="w-full h-[620px] object-contain bg-[#1a1f26]"
+          />
+        </div>
+
+        {/* VIEW TRANSFORMATION BUTTON */}
+        <div className="mt-10">
+          <Link
+            to="/case/prakhar"
+            className="inline-block px-10 py-3 rounded-full text-white font-medium
+                       bg-gradient-to-r from-[#9e4a47] to-[#84332F]
+                       shadow-lg shadow-[#9e4a47]/30
+                       hover:shadow-[#9e4a47]/50 transition"
+          >
+            View Transformation →
+          </Link>
+        </div>
+      </motion.div>
     </section>
   );
 }
+
 
 /* =====================================================
    CASE DETAIL MODAL

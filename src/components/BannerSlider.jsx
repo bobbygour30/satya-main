@@ -27,7 +27,7 @@ const slides = [
   },
   {
     image: assets.banner1,
-    headline: "Hair Bhi. Health Bhi. Results That Look Natural & Last Longer.™",
+    headline: "Hair Bhi, Health Bhi™ Results That Look Natural & Last Longer.",
     subtext:
       "We treat hair as part of your overall health combining dermatology, nutrition, and long-term planning for results that grow stronger with time.",
     cta: "Discover Skin Treatments",
@@ -74,7 +74,7 @@ export default function BannerSlider() {
             <div className="absolute inset-0 bg-[#2B333C]/60" />
 
             {/* Content */}
-            <div className="absolute inset-0 flex items-center justify-center px-6">
+            <div className="absolute inset-0 flex items-center justify-center px-6 mt-20">
               <div className="text-center text-[#FFF8EF]">
                 {index === 0 ? (
                   <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-4">

@@ -26,6 +26,10 @@ import gurgao3 from "./gurgao (3).webp";
 import drRuchiAgarwal from "./Dr Ruchi Agarwal.webp";
 import drShailGupta from "./Dr Shail Gupta.webp";
 import prakhar from "./prakhar.jpg";
+import prakhar1 from "./prakhar1.jpg";
+import prakhar2 from "./prakhar2.jpg";
+import prakhar3 from "./prakhar3.jpg";
+
 import skin from "./skin.jpg";
 import hair from "./hair.jpg";
 import insite from "./insite.jpg";
@@ -54,6 +58,9 @@ const assets = {
   drRuchiAgarwal,
   drShailGupta,
   prakhar,
+  prakhar1,
+  prakhar2,
+  prakhar3,
   skin,
   hair,
   insite,

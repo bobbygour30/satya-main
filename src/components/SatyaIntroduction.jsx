@@ -20,10 +20,7 @@ export default function SatyaIntroduction() {
           className="w-full flex items-center justify-between text-left group"
         >
           <h3 className="font-serif text-4xl md:text-5xl text-white leading-tight max-w-4xl">
-            World’s Leading{" "}
-            <span className="italic text-[#FFF8EF]">
-              Skin & Hair Transplant Clinic
-            </span>
+           Science<br /> Artistry <br /> Trust
           </h3>
 
           <motion.span

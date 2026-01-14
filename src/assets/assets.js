@@ -23,8 +23,8 @@ import gurgao2 from "./gurgao (2).webp";
 import gurgao3 from "./gurgao (3).webp";
 
 /* ================= DOCTORS ================= */
-import drRuchiAgarwal from "./Dr Ruchi Agarwal.jpg";
-import drShailGupta from "./Dr Shail Gupta.jpg";
+import drRuchiAgarwal from "./Dr Ruchi Agarwal.webp";
+import drShailGupta from "./Dr Shail Gupta.webp";
 import prakhar from "./prakhar.jpg";
 import skin from "./skin.jpg";
 import hair from "./hair.jpg";

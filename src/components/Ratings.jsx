@@ -22,6 +22,8 @@ export default function Ratings() {
             <Stat value="46+" label="Years of Combined Experience" />
             <Divider />
             <Stat value="44+" label="Countries Served Worldwide" />
+            <Divider />
+            <Stat value="295,000+" label="Happy Patients" />
           </div>
         </div>
       </div>

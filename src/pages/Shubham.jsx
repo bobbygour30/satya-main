@@ -199,7 +199,31 @@ export default function Shubham() {
           <li>FUT scars are minimal when done by experts</li>
           <li>Medicine supports growth; it shouldn’t be the foundation</li>
         </ul>
+           
 
+           {/* IMAGE GALLERY – Updated for Shubham */}
+      <section className="mt-12 sm:mt-20 px-6 pb-12 sm:pb-20">
+        <div className="max-w-7xl mx-auto rounded-3xl bg-white/40 p-6 sm:p-10 shadow-sm">
+          <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-8 text-center">
+            Shubham's Progress & Results
+          </h3>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {[assets.shubham2, assets.shubham1, assets.shubham6, assets.shubham5].map((img, i) => (
+              <div
+                key={i}
+                className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm hover:shadow-md transition"
+              >
+                <img
+                  src={img}
+                  alt={`Shubham corrective hair transplant result ${i + 1}`}
+                  className="w-full aspect-[4/5] object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
         {/* FAQs */}
         <div className="mt-12 pt-8 border-t border-[#FCEBDE]">
           <h3 className="text-2xl font-semibold text-[#0E3A43] mb-6">FAQs</h3>
@@ -239,44 +263,13 @@ export default function Shubham() {
         <div className="text-center border-t border-[#FCEBDE] pt-10 mt-8">
           <p className="font-semibold">📍 Satya Skin & Hair Solutions, DLF Phase 4, Gurgaon</p>
           <p className="font-semibold">📞 +91 9910094945</p>
-          <p className="font-semibold">
-            🌐{" "}
-            <a
-              href="https://satyaskinhairsolutions.com"
-              className="text-[#9E4A47] hover:underline"
-            >
-              satyaskinhairsolutions.com
-            </a>
-          </p>
           <p className="mt-2">
             📸 @drshailgupta | @satyaskinandhair
           </p>
         </div>
       </section>
 
-      {/* IMAGE GALLERY – Updated for Shubham */}
-      <section className="mt-12 sm:mt-20 px-6 pb-12 sm:pb-20">
-        <div className="max-w-7xl mx-auto rounded-3xl bg-white/40 p-6 sm:p-10 shadow-sm">
-          <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-8 text-center">
-            Shubham's Progress & Results
-          </h3>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {[assets.shubham2, assets.shubham1, assets.shubham6, assets.shubham5].map((img, i) => (
-              <div
-                key={i}
-                className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm hover:shadow-md transition"
-              >
-                <img
-                  src={img}
-                  alt={`Shubham corrective hair transplant result ${i + 1}`}
-                  className="w-full aspect-[4/5] object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 }

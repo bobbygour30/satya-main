@@ -174,6 +174,22 @@ export default function CaseDetailPage() {
           <li>Using the least possible medication</li>
         </ul>
 
+
+{/* YOUTUBE VIDEO */}
+      <section className="py-20 sm:py-28 px-6">
+        <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white">
+          <div className="aspect-video">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/Fsi5_On4q_8"
+              title="Prakhar Hair Transplant Result – Satya Skin & Hair"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
         <p>
           We proposed a DSFT (Direct Stimulated Follicular Transplant) Advance FUE hair transplant with a realistic graft count, balanced density, and a Min-Med protocol with around 1.5 mg/week.
         </p>
@@ -239,6 +255,30 @@ export default function CaseDetailPage() {
           <li>Honest discussion about medication</li>
         </ol>
 
+        {/* IMAGE GALLERY */}
+      <section className="mt-16 sm:mt-24 px-6">
+        <div className="max-w-6xl mx-auto rounded-3xl  p-6 sm:p-8">
+          <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-6 sm:mb-8 text-center">
+            Prakhar’s Progress & Results
+          </h3>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {[assets.prakhar6, assets.prakhar7, assets.prakhar8].map((img, i) => (
+              <div
+                key={i}
+                className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm"
+              >
+                <img
+                  src={img}
+                  alt={`Prakhar hair transplant result ${i + 1}`}
+                  className="w-full  object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
         <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
           Pay for Skill, Not for Pill
         </h3>
@@ -293,45 +333,9 @@ export default function CaseDetailPage() {
         </div>
       </section>
 
-      {/* YOUTUBE VIDEO */}
-      <section className="py-20 sm:py-28 px-6">
-        <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white">
-          <div className="aspect-video">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/Fsi5_On4q_8"
-              title="Prakhar Hair Transplant Result – Satya Skin & Hair"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      </section>
+      
 
-      {/* IMAGE GALLERY */}
-      <section className="mt-16 sm:mt-24 px-6">
-        <div className="max-w-6xl mx-auto rounded-3xl  p-6 sm:p-8">
-          <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-6 sm:mb-8 text-center">
-            Prakhar’s Progress & Results
-          </h3>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {[assets.prakhar6, assets.prakhar7, assets.prakhar8].map((img, i) => (
-              <div
-                key={i}
-                className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm"
-              >
-                <img
-                  src={img}
-                  alt={`Prakhar hair transplant result ${i + 1}`}
-                  className="w-full  object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 }

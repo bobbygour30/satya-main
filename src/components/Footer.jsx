@@ -19,7 +19,7 @@ export default function Footer() {
           
           {/* Brand & Description */}
           <div className="lg:col-span-2">
-            <img src={assets.logo} className="w-40 mb-5" alt="Satya Skin & Hair Solutions" />
+            <img src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/width:2000/height:2000/https://cdn.gamma.app/3pjpymp9a7vlfhg/c472d799fd6e4d3dacf235cf60fceb3f/original/Logo-2-1.png" className="w-40 mb-5" alt="Satya Skin & Hair Solutions" />
             <p className="text-[#DFDFDD] text-base leading-relaxed max-w-md">
               At Satya Skin & Hair Solutions, we are home to highly skilled
               dermatologists, hair transplant surgeons, and skin specialists.
@@ -151,15 +151,12 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="bg-[#2B333C] border-t border-[#828D9C]/30">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-[#DFDFDD]">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-center items-center text-sm text-[#DFDFDD]">
           <p>
             © {new Date().getFullYear()} Satya Skin & Hair Solutions. All rights
             reserved.
           </p>
-          <p className="mt-3 md:mt-0">
-            Crafted with <span className="text-[#9E4A47]">♥</span> for confidence
-            & care
-          </p>
+         
         </div>
       </div>
     </footer>

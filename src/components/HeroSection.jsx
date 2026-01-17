@@ -8,7 +8,7 @@ const fadeUp = {
 
 const HeroSection = () => {
   return (
-    <section className="w-full bg-[#2B333C] relative overflow-hidden py-16 md:py-20 px-6">
+    <section className="w-full bg-[#2B333C] relative overflow-hidden py-7 px-6">
       
       {/* ================= DECORATIVE SVG BACKGROUND ================= */}
       <div className="absolute inset-0 pointer-events-none opacity-20">

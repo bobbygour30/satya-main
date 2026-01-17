@@ -11,6 +11,7 @@ import BeforeAfterPage from "./pages/BeforeAfterPage";
 import CaseDetailPage from "./pages/CaseDetailPage";
 import ScrollToTop from "./components/ScrollToTop";
 import Shubham from "./pages/Shubham";
+import Arjun from "./pages/Arjun";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/before-after" element={<BeforeAfterPage />} />
         <Route path="/case/prakhar" element={<CaseDetailPage />} />
         <Route path="/case/shubham" element={<Shubham />} />
+        <Route path="/case/arjun" element={<Arjun />} />
       </Routes>
 
       <Footer />

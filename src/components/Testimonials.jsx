@@ -1,38 +1,36 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Quote, Play } from "lucide-react";
+import { MessageCircle, Quote } from "lucide-react";
 
 /* ===============================
-   TESTIMONIAL DATA (SHORT LINKS)
+   TESTIMONIAL DATA
 ================================ */
 const testimonials = [
   {
     id: 1,
     text: `Came from Sweden for an honest transplant by an artist surgeon. I did not get this level of clarity from clinics in Europe or even the US. Highly recommend Satya.`,
     author: "Adam Anderson (Sweden)",
-    videoUrl: "https://www.youtube.com/shorts/gNDIxX_tVMU",
+    videoId: "gNDIxX_tVMU",
   },
   {
     id: 2,
     text: `Even after 10 years, my hair transplant result is awesome and completely undetectable. I stopped medicines 5 years ago. This level of artistry happens only at Satya.`,
     author: "Sandeep (Canada)",
-    videoUrl: "https://www.youtube.com/shorts/0SC4xifYpzc",
+    videoId: "0SC4xifYpzc",
   },
-
   {
     id: 3,
     text: `My first transplant at Satya was done 3 years ago with a beautiful hairline and no medicines. I’m back only to lower my hairline as per the original plan.`,
     author: "Supreet (Australia)",
-    videoUrl: "https://www.youtube.com/shorts/esPVOi8d9tE",
+    videoId: "esPVOi8d9tE",
   },
-
   {
     id: 4,
     text: `Being a doctor and a victim of bad transplant earlier, I now understand repair work is best done at Satya. I wish I had come here the first time.`,
     author: "Dr. Manoharsha (India)",
-    videoUrl: "https://www.youtube.com/shorts/KbuQRbVKrFA",
+    videoId: "KbuQRbVKrFA",
   },
 ];
 
@@ -41,14 +39,14 @@ const testimonials = [
 ================================ */
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
-  const timerRef = useRef(null);
 
+  /* Auto rotate testimonials */
   useEffect(() => {
-    timerRef.current = setInterval(() => {
+    const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % testimonials.length);
     }, 8000);
 
-    return () => clearInterval(timerRef.current);
+    return () => clearInterval(interval);
   }, []);
 
   const current = testimonials[index];
@@ -62,6 +60,7 @@ export default function Testimonials() {
   return (
     <section className="w-full bg-[#FFF8EF] py-24 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        
         {/* LEFT – TEXT */}
         <div className="relative">
           <Quote className="absolute -top-16 -left-10 w-28 h-28 text-[#B87C72] opacity-30 rotate-180" />
@@ -109,29 +108,22 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* RIGHT – VIDEO PREVIEW (LINK BASED) */}
+        {/* RIGHT – AUTO PLAY VIDEO */}
         <div className="flex justify-center">
-          <a
-            href={current.videoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative w-[280px] h-[500px] md:w-[320px] md:h-[570px] rounded-3xl overflow-hidden shadow-2xl border border-[#DFDFDD] bg-black"
-          >
-            {/* Thumbnail */}
-            <img
-              src={`https://img.youtube.com/vi/${current.videoUrl.split("/").pop()}/hqdefault.jpg`}
-              alt={current.author}
-              className="w-full h-full object-cover opacity-90 group-hover:opacity-70 transition"
+          <div className="relative w-[280px] h-[500px] md:w-[320px] md:h-[570px] rounded-3xl overflow-hidden shadow-2xl border border-[#DFDFDD] bg-black">
+            
+            {/* Auto-playing iframe */}
+            <iframe
+              key={current.videoId} // forces reload on change
+              src={`https://www.youtube.com/embed/${current.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${current.videoId}&playsinline=1`}
+              title={current.author}
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              className="w-full h-full object-cover"
             />
-
-            {/* Play Button */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-[#9E4A47] flex items-center justify-center shadow-xl scale-100 group-hover:scale-110 transition">
-                <Play className="text-white ml-1" size={28} />
-              </div>
-            </div>
-          </a>
+          </div>
         </div>
+
       </div>
     </section>
   );

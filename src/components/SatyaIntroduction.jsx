@@ -8,7 +8,7 @@ export default function SatyaIntroduction() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="w-full bg-[#2B333C] py-32 px-6">
+    <section className="w-full bg-[#FFF8EF] py-10 px-6">
       <div className="max-w-6xl mx-auto text-center">
 
         {/* TOGGLE HEADER */}
@@ -26,16 +26,16 @@ export default function SatyaIntroduction() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="
-              font-serif text-white
-              text-[48px] sm:text-[64px] md:text-[88px] lg:text-[100px]
+              font-serif text-[#2B333C]
+              text-[42px] sm:text-[56px] md:text-[72px] lg:text-[88px]
               tracking-wide leading-tight
             "
           >
             <span className="opacity-100">Science</span>
             <span className="mx-4 opacity-40">|</span>
-            <span className="opacity-95">Artistry</span>
+            <span className="opacity-90">Artistry</span>
             <span className="mx-4 opacity-40">|</span>
-            <span className="opacity-90">Trust</span>
+            <span className="opacity-80">Trust</span>
           </motion.h2>
 
           {/* Chevron */}
@@ -49,7 +49,7 @@ export default function SatyaIntroduction() {
         </motion.button>
 
         {/* SUBTLE DIVIDER */}
-        <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-[#DFDFDD] to-transparent" />
 
         {/* EXPANDABLE CONTENT */}
         <AnimatePresence>
@@ -67,27 +67,27 @@ export default function SatyaIntroduction() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="mt-16 max-w-3xl mx-auto space-y-6 text-left"
               >
-                <p className="text-[#DFDFDD] text-lg leading-relaxed">
+                <p className="text-[#828D9C] text-lg leading-relaxed">
                   The name{" "}
-                  <span className="text-white font-medium">Satya</span> is derived
-                  from a Sanskrit word meaning{" "}
-                  <span className="italic text-[#FFF8EF]">Truth</span>.
+                  <span className="text-[#2B333C] font-medium">Satya</span> is
+                  derived from a Sanskrit word meaning{" "}
+                  <span className="italic text-[#2B333C]">Truth</span>.
                 </p>
 
-                <p className="text-[#DFDFDD] text-lg leading-relaxed">
+                <p className="text-[#828D9C] text-lg leading-relaxed">
                   Truth is the foundation of everything we do. We stand for
                   honesty, transparency, and ethical medical care.
                 </p>
 
-                <p className="text-[#DFDFDD] text-lg leading-relaxed">
-                  <span className="text-white font-medium">
+                <p className="text-[#828D9C] text-lg leading-relaxed">
+                  <span className="text-[#2B333C] font-medium">
                     Satya Skin & Hair Solutions
                   </span>
                   , established in 2005, is a global leader in dermatology and
                   hair restoration with world-class facilities.
                 </p>
 
-                <p className="text-[#DFDFDD] text-lg leading-relaxed">
+                <p className="text-[#828D9C] text-lg leading-relaxed">
                   We specialize in laser skin treatments, anti-aging solutions,
                   and advanced hair restoration procedures.
                 </p>

@@ -4,7 +4,7 @@ import assets from "../assets/assets"; // adjust path if needed
 
 export default function CaseDetailPage() {
   const [index, setIndex] = useState(0);
-  const images = [assets.prakhar1, assets.prakhar3]; // Before & After main toggle
+  const images = [assets.prakhar2, assets.prakhar3]; // Before & After main toggle
 
   useEffect(() => {
     document.title =
@@ -13,88 +13,93 @@ export default function CaseDetailPage() {
 
   return (
     <div className="bg-[#FFF8EF] text-[#2B333C] min-h-screen">
-      {/* HERO – Reduced & Responsive Height */}
-      <section className="">
-        <div className="grid lg:grid-cols-2 min-h-[520px] md:min-h-[580px] lg:min-h-[620px] xl:min-h-[680px]">
-          {/* IMAGE SIDE */}
-          <div className="relative bg-black">
-            <img
-              src={images[index]}
-              alt={`${index === 0 ? "Before" : "After"} Hair Transplant – Prakhar`}
-              className="w-full h-full object-cover"
-            />
+      {/* ================= HERO ================= */}
+      <section className="bg-[#FFF8EF] pt-6 sm:pt-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 h-[60vh] md:h-[65vh] lg:h-[70vh] rounded-3xl">
+            
+            {/* IMAGE SIDE */}
+            <div className="relative  h-full rounded-3xl lg:rounded-r-none overflow-hidden">
+              <img
+                src={images[index]}
+                alt={`${index === 0 ? "Before" : "After"} Hair Transplant – Prakhar`}
+                className="w-full h-full object-cover rounded-3xl"
+              />
 
-            {/* BEFORE / AFTER CONTROLS */}
-            <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10">
-              <div className="flex items-center gap-3 sm:gap-4 bg-white/25 backdrop-blur-md border border-white/40 rounded-full px-4 sm:px-5 py-2.5 sm:py-3">
-                <button
-                  onClick={() => setIndex(0)}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/20 transition"
-                >
-                  <ChevronLeft size={18} />
-                </button>
-
-                <div className="flex bg-white/30 rounded-full overflow-hidden">
+              {/* BEFORE / AFTER CONTROLS */}
+              <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20">
+                <div className="flex items-center gap-2 sm:gap-3 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-3 sm:px-4 py-2 sm:py-2.5">
+                  
                   <button
                     onClick={() => setIndex(0)}
-                    className={`px-5 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition ${
-                      index === 0
-                        ? "bg-[#9E4A47] text-white"
-                        : "text-white hover:bg-white/20"
-                    }`}
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
                   >
-                    Before
+                    <ChevronLeft size={16} />
                   </button>
+
+                  <div className="flex bg-white/35 rounded-full overflow-hidden">
+                    <button
+                      onClick={() => setIndex(0)}
+                      className={`px-4 sm:px-5 py-1.5 text-xs sm:text-sm font-medium transition ${
+                        index === 0
+                          ? "bg-[#9E4A47] text-white"
+                          : "text-white hover:bg-white/25"
+                      }`}
+                    >
+                      Before
+                    </button>
+                    <button
+                      onClick={() => setIndex(1)}
+                      className={`px-4 sm:px-5 py-1.5 text-xs sm:text-sm font-medium transition ${
+                        index === 1
+                          ? "bg-[#9E4A47] text-white"
+                          : "text-white hover:bg-white/25"
+                      }`}
+                    >
+                      After
+                    </button>
+                  </div>
+
                   <button
                     onClick={() => setIndex(1)}
-                    className={`px-5 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition ${
-                      index === 1
-                        ? "bg-[#9E4A47] text-white"
-                        : "text-white hover:bg-white/20"
-                    }`}
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
                   >
-                    After
+                    <ChevronRight size={16} />
                   </button>
                 </div>
-
-                <button
-                  onClick={() => setIndex(1)}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/20 transition"
-                >
-                  <ChevronRight size={18} />
-                </button>
               </div>
             </div>
-          </div>
 
-          {/* CONTENT PANEL */}
-          <div className="bg-[#FFF8EF] text-[#0E3A43] px-8 sm:px-10 md:px-16 py-16 md:py-20 flex items-center">
-            <div className="max-w-md w-full">
-              <h1 className="text-4xl sm:text-5xl font-serif mb-10 sm:mb-14 leading-tight">
-                Prakhar A
-              </h1>
+            {/* CONTENT SIDE */}
+            <div className="bg-[#FFF8EF] text-[#0E3A43] px-6 sm:px-10 lg:px-14 flex items-center rounded-3xl lg:rounded-l-none">
+              <div className="max-w-md space-y-6">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-tight">
+                  Prakhar
+                </h1>
 
-              <div className="mb-10 sm:mb-12">
-                <p className="text-xs sm:text-sm uppercase tracking-wide opacity-70 mb-3 sm:mb-4">
-                  Treatment
-                </p>
-                <p className="text-base sm:text-lg leading-relaxed">
-                  Hair Transplant
-                </p>
-              </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
+                    Treatment
+                  </p>
+                  <p className="text-base sm:text-lg">
+                    Hair Transplant
+                  </p>
+                </div>
 
-              <div>
-                <p className="text-xs sm:text-sm uppercase tracking-wide opacity-70 mb-3 sm:mb-4">
-                  Methods
-                </p>
-                <p className="text-lg sm:text-xl font-semibold">
-                  Advance FUE Hair Transplant (DSFT)
-                </p>
-                <p className="text-sm sm:text-base opacity-90">
-                  Direct Stimulated Follicular Transplant – Min-Med Protocol
-                </p>
+                <div>
+                  <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
+                    Methods
+                  </p>
+                  <p className="text-lg sm:text-xl font-semibold">
+                    Advance FUE Hair Transplant (DSFT)
+                  </p>
+                  <p className="text-sm opacity-90">
+                    Direct Stimulated Follicular Transplant – Min-Med Protocol
+                  </p>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -294,7 +299,7 @@ export default function CaseDetailPage() {
           </h3>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {[assets.prakhar1, assets.prakhar2, assets.prakhar3].map((img, i) => (
+            {[assets.prakhar6, assets.prakhar7, assets.prakhar8].map((img, i) => (
               <div
                 key={i}
                 className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm"
@@ -302,7 +307,7 @@ export default function CaseDetailPage() {
                 <img
                   src={img}
                   alt={`Prakhar hair transplant result ${i + 1}`}
-                  className="w-full aspect-[4/5] object-cover"
+                  className="w-full  object-cover"
                 />
               </div>
             ))}

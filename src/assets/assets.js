@@ -29,6 +29,10 @@ import prakhar from "./prakhar.jpg";
 import prakhar1 from "./prakhar1.jpg";
 import prakhar2 from "./prakhar2.jpg";
 import prakhar3 from "./prakhar3.jpg";
+import prakhar4 from "./prakhar4.png";
+import prakhar6 from "./prakhar6.png";
+import prakhar7 from "./prakhar7.png";
+import prakhar8 from "./prakhar8.png";
 
 import skin from "./skin.jpg";
 import hair from "./hair.jpg";
@@ -80,6 +84,10 @@ const assets = {
   prakhar1,
   prakhar2,
   prakhar3,
+  prakhar4,
+  prakhar6,
+  prakhar7,
+  prakhar8,
   skin,
   hair,
   insite,

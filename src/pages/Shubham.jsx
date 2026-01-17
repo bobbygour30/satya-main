@@ -13,88 +13,93 @@ export default function Shubham() {
 
   return (
     <div className="bg-[#FFF8EF] text-[#2B333C] min-h-screen">
-      {/* HERO – Smaller & better centered */}
-      <section className="">
-        <div className="grid lg:grid-cols-2 min-h-[480px] md:min-h-[540px] lg:min-h-[580px] xl:min-h-[640px]">
-          {/* IMAGE SIDE */}
-          <div className="relative bg-black">
-            <img
-              src={images[index]}
-              alt={`${index === 0 ? "Before" : "After"} Corrective Hair Transplant – Shubham`}
-              className="w-full h-full object-cover"
-            />
+      {/* ================= HERO SECTION ================= */}
+      <section className="bg-[#FFF8EF] pt-6 sm:pt-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 h-[60vh] md:h-[65vh] lg:h-[70vh] rounded-3xl">
+            
+            {/* IMAGE SIDE */}
+            <div className="relative h-full rounded-3xl lg:rounded-r-none overflow-hidden">
+              <img
+                src={images[index]}
+                alt={`${index === 0 ? "Before" : "After"} Corrective Hair Transplant – Shubham`}
+                className="w-full h-full object-cover rounded-3xl"
+              />
 
-            {/* BEFORE / AFTER CONTROLS – centered & slightly smaller */}
-            <div className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-10">
-              <div className="flex items-center gap-2 sm:gap-3 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-3 sm:px-4 py-2 sm:py-2.5">
-                <button
-                  onClick={() => setIndex(0)}
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
-                >
-                  <ChevronLeft size={16} />
-                </button>
-
-                <div className="flex bg-white/35 rounded-full overflow-hidden">
+              {/* BEFORE / AFTER CONTROLS */}
+              <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20">
+                <div className="flex items-center gap-2 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-3 py-2">
+                  
                   <button
                     onClick={() => setIndex(0)}
-                    className={`px-4 sm:px-5 py-1.5 text-xs sm:text-sm font-medium transition ${
-                      index === 0
-                        ? "bg-[#9E4A47] text-white"
-                        : "text-white hover:bg-white/25"
-                    }`}
+                    className="w-7 h-7 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
                   >
-                    Before
+                    <ChevronLeft size={14} />
                   </button>
+
+                  <div className="flex bg-white/35 rounded-full overflow-hidden">
+                    <button
+                      onClick={() => setIndex(0)}
+                      className={`px-4 py-1 text-xs font-medium transition ${
+                        index === 0
+                          ? "bg-[#9E4A47] text-white"
+                          : "text-white hover:bg-white/25"
+                      }`}
+                    >
+                      Before
+                    </button>
+                    <button
+                      onClick={() => setIndex(1)}
+                      className={`px-4 py-1 text-xs font-medium transition ${
+                        index === 1
+                          ? "bg-[#9E4A47] text-white"
+                          : "text-white hover:bg-white/25"
+                      }`}
+                    >
+                      After
+                    </button>
+                  </div>
+
                   <button
                     onClick={() => setIndex(1)}
-                    className={`px-4 sm:px-5 py-1.5 text-xs sm:text-sm font-medium transition ${
-                      index === 1
-                        ? "bg-[#9E4A47] text-white"
-                        : "text-white hover:bg-white/25"
-                    }`}
+                    className="w-7 h-7 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
                   >
-                    After
+                    <ChevronRight size={14} />
                   </button>
                 </div>
-
-                <button
-                  onClick={() => setIndex(1)}
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
-                >
-                  <ChevronRight size={16} />
-                </button>
               </div>
             </div>
-          </div>
 
-          {/* CONTENT PANEL – centered & better spacing */}
-          <div className="bg-[#FFF8EF] text-[#0E3A43] px-8 sm:px-12 md:px-16 lg:px-20 py-12 md:py-16 lg:py-20 flex items-center justify-center">
-            <div className="max-w-lg w-full space-y-8 md:space-y-10">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif leading-tight text-center lg:text-left">
-                Shubham
-              </h1>
+            {/* CONTENT SIDE */}
+            <div className="bg-[#FFF8EF] text-[#0E3A43] px-6 sm:px-10 lg:px-14 flex items-center rounded-3xl lg:rounded-l-none">
+              <div className="max-w-lg space-y-6">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-tight">
+                  Shubham
+                </h1>
 
-              <div className="text-center lg:text-left">
-                <p className="text-xs sm:text-sm uppercase tracking-wide opacity-70 mb-2">
-                  Treatment
-                </p>
-                <p className="text-base sm:text-lg font-medium">
-                  Corrective / Repair Hair Transplant
-                </p>
-              </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
+                    Treatment
+                  </p>
+                  <p className="text-base sm:text-lg font-medium">
+                    Corrective / Repair Hair Transplant
+                  </p>
+                </div>
 
-              <div className="text-center lg:text-left">
-                <p className="text-xs sm:text-sm uppercase tracking-wide opacity-70 mb-2">
-                  Methods
-                </p>
-                <p className="text-lg sm:text-xl font-semibold">
-                  MHT + DSFT Advance FUE
-                </p>
-                <p className="text-sm sm:text-base opacity-90">
-                  FUT + FUE + Beard | Min-Med Protocol
-                </p>
+                <div>
+                  <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
+                    Methods
+                  </p>
+                  <p className="text-lg sm:text-xl font-semibold">
+                    MHT + DSFT Advance FUE
+                  </p>
+                  <p className="text-sm opacity-90">
+                    FUT + FUE + Beard | Min-Med Protocol
+                  </p>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -229,7 +234,7 @@ export default function Shubham() {
           </h3>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {[assets.shubham1, assets.shubham2, assets.shubham5, assets.shubham6].map((img, i) => (
+            {[assets.shubham2, assets.shubham1, assets.shubham6, assets.shubham5].map((img, i) => (
               <div
                 key={i}
                 className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm hover:shadow-md transition"

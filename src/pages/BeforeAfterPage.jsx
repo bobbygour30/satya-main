@@ -286,7 +286,7 @@ function StorySection() {
 
 function GallerySection({ filter, setFilter, cases, onSelectCase }) {
   return (
-    <section className="py-28 px-6 bg-[#FFF8EF] text-[#1a1f26]">
+    <section className="py-28 px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-[#FFF8EF] text-[#1a1f26]">
 
      
       {/* =====================================
@@ -305,7 +305,7 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
 
         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
           <img
-            src={assets.prakhar}
+            src={assets.prakhar4}
             alt="Prakhar Transformation"
             className="w-full h-[620px] object-contain bg-[#1a1f26]"
           />

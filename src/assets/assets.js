@@ -34,6 +34,23 @@ import skin from "./skin.jpg";
 import hair from "./hair.jpg";
 import insite from "./insite.jpg";
 import insite1 from "./insite1.jpg";
+/* ================= PATIENT IMAGES ================= */
+/* Arjun */
+import arjun1 from "./arjun (1).jpg";
+import arjun2 from "./arjun (2).jpg";
+import arjun3 from "./arjun (3).jpg";
+import arjun4 from "./arjun (4).jpg";
+import arjun5 from "./arjun (5).jpg";
+import arjun6 from "./arjun (6).jpg";
+
+/* Shubham */
+import shubham1 from "./shubham (1).jpg";
+import shubham2 from "./shubham (2).jpg";
+import shubham3 from "./shubham (3).jpg";
+import shubham4 from "./shubham (4).jpg";
+import shubham5 from "./shubham (5).jpg";
+import shubham6 from "./shubham (6).jpg";
+
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1,
@@ -65,6 +82,20 @@ const assets = {
   hair,
   insite,
   insite1,
+
+  arjun1,
+  arjun2,
+  arjun3,
+  arjun4,
+  arjun5,
+  arjun6,
+
+  shubham1,
+  shubham2,
+  shubham3,
+  shubham4,
+  shubham5,
+  shubham6,
 };
 
 export default assets;

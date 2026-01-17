@@ -288,67 +288,7 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
   return (
     <section className="py-28 px-6 bg-[#FFF8EF] text-[#1a1f26]">
 
-      {/*
-      =====================================================
-      FILTERS (COMMENTED OUT FOR NOW)
-      =====================================================
-      <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-4 mb-20">
-        {["All", "Jaw", "Nose", "Face"].map((f) => (
-          <button
-            key={f}
-            onClick={() => setFilter(f)}
-            className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-              filter === f
-                ? "bg-gradient-to-r from-[#9e4a47] to-[#84332F] text-white shadow-lg shadow-[#9e4a47]/30"
-                : "bg-white/80 border border-[#FCEBDE] hover:bg-[#FCEBDE]/80"
-            }`}
-          >
-            {f}
-          </button>
-        ))}
-      </div>
-      */}
-
-      {/*
-      =====================================================
-      DUMMY CASES GRID (COMMENTED OUT FOR NOW)
-      =====================================================
-      <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 md:gap-12">
-        {cases.map((item, i) => (
-          <motion.div
-            key={item.id}
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 + 0.1, duration: 0.8 }}
-            className="group"
-          >
-            <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-              />
-            </div>
-
-            <div className="mt-6 text-center">
-              <h3 className="font-serif text-2xl">{item.name}</h3>
-              <p className="text-sm text-gray-600 mt-1">
-                {item.procedure}
-              </p>
-
-              <Link
-                to={`/case/${item.id}`}
-                className="mt-5 px-7 py-2.5 rounded-full bg-gradient-to-r from-[#9e4a47]/20 to-[#84332F]/20 border border-[#9e4a47]/30 text-white hover:bg-[#9e4a47]/40 transition inline-block"
-              >
-                View Transformation →
-              </Link>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-      */}
-
+     
       {/* =====================================
          SINGLE REAL CASE (PRAKHAR ONLY)
       ===================================== */}
@@ -375,6 +315,38 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
         <div className="mt-10">
           <Link
             to="/case/prakhar"
+            className="inline-block px-10 py-3 rounded-full text-white font-medium
+                       bg-gradient-to-r from-[#9e4a47] to-[#84332F]
+                       shadow-lg shadow-[#9e4a47]/30
+                       hover:shadow-[#9e4a47]/50 transition"
+          >
+            View Transformation →
+          </Link>
+        </div>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="max-w-4xl mx-auto text-center"
+      >
+        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
+          Shubham
+        </h3>
+
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src={assets.shubham3}
+            alt="Prakhar Transformation"
+            className="w-full h-[620px] object-contain bg-[#1a1f26]"
+          />
+        </div>
+
+        {/* VIEW TRANSFORMATION BUTTON */}
+        <div className="mt-10">
+          <Link
+            to="/case/shubham"
             className="inline-block px-10 py-3 rounded-full text-white font-medium
                        bg-gradient-to-r from-[#9e4a47] to-[#84332F]
                        shadow-lg shadow-[#9e4a47]/30

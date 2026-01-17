@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import BeforeAfterPage from "./pages/BeforeAfterPage";
 import CaseDetailPage from "./pages/CaseDetailPage";
 import ScrollToTop from "./components/ScrollToTop";
+import Shubham from "./pages/Shubham";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/blogs/:slug" element={<BlogDetail />} />
         <Route path="/before-after" element={<BeforeAfterPage />} />
         <Route path="/case/prakhar" element={<CaseDetailPage />} />
+        <Route path="/case/shubham" element={<Shubham />} />
       </Routes>
 
       <Footer />

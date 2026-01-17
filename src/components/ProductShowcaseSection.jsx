@@ -43,14 +43,14 @@ export default function ProductShowcaseSection() {
               className="uppercase text-white font-semibold text-lg tracking-wider"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              Need care for your team?
+              Need expert guidance for your skin or hair concern?
             </span>
 
             <button
               className="mt-6 bg-[#FFF8EF] hover:bg-[#FCEBDE] text-[#2B333C] font-medium py-3.5 px-8 rounded transition-colors flex items-center text-lg shadow-md"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              Contact Us
+              Book An Appointment 
             </button>
           </div>
         </div>

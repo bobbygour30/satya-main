@@ -47,14 +47,13 @@ export default function FaceLoveForm() {
               {step === 1 && (
                 <>
                   <h2 className="text-3xl md:text-4xl font-light text-[#2B333C] mb-6">
-                    What’s your CTA question?
+                    What brings you here today?
                   </h2>
 
                   <div className="space-y-3 text-sm text-[#2B333C]">
                     {[
-                      "Hair fall & hair thinning",
-  "Hair transplant consultation",
-  "Skin concerns (acne, pigmentation, aging)",
+                      "Skin Concerns",
+                      "Hair Concerns",
                     ].map((option) => (
                       <button
                         key={option}

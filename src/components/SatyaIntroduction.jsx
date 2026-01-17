@@ -8,67 +8,50 @@ export default function SatyaIntroduction() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="w-full bg-[#2B333C] pt-24 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section className="w-full bg-[#2B333C] py-32 px-6">
+      <div className="max-w-6xl mx-auto text-center">
 
-        {/* Accordion Header */}
+        {/* TOGGLE HEADER */}
         <motion.button
           onClick={() => setOpen(!open)}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9 }}
-          className="w-full flex items-start justify-between text-left group"
+          className="w-full flex flex-col items-center gap-10"
         >
-          {/* Text Block */}
-          <div className="relative h-[140px] sm:h-[160px] w-full max-w-xl font-serif text-white">
-
-            {/* Science */}
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="absolute left-0 top-0 text-3xl md:text-4xl"
-            >
-              Science
-            </motion.span>
-
-            {/* Artistry */}
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="absolute left-20 top-10 text-3xl md:text-4xl"
-            >
-              Artistry
-            </motion.span>
-
-            {/* Trust */}
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="absolute left-40 top-20 flex items-center gap-3 text-3xl md:text-4xl"
-            >
-            
-              Trust
-            </motion.span>
-          </div>
+          {/* MANIFESTO HEADING */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="
+              font-serif text-white
+              text-[48px] sm:text-[64px] md:text-[88px] lg:text-[100px]
+              tracking-wide leading-tight
+            "
+          >
+            <span className="opacity-100">Science</span>
+            <span className="mx-4 opacity-40">|</span>
+            <span className="opacity-95">Artistry</span>
+            <span className="mx-4 opacity-40">|</span>
+            <span className="opacity-90">Trust</span>
+          </motion.h2>
 
           {/* Chevron */}
           <motion.span
             animate={{ rotate: open ? 180 : 0 }}
             transition={{ duration: 0.4 }}
-            className="ml-6 text-[#9E4A47] pt-2"
+            className="text-[#9E4A47]"
           >
-            <ChevronDown size={36} />
+            <ChevronDown size={42} />
           </motion.span>
         </motion.button>
 
-        {/* Decorative Divider */}
-        <div className="mt-10 h-px w-full bg-gradient-to-r from-transparent via-[#DFDFDD] to-transparent opacity-40" />
+        {/* SUBTLE DIVIDER */}
+        <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        {/* Expandable Content */}
+        {/* EXPANDABLE CONTENT */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -82,18 +65,18 @@ export default function SatyaIntroduction() {
                 initial={{ y: 30 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="mt-12 space-y-6"
+                className="mt-16 max-w-3xl mx-auto space-y-6 text-left"
               >
                 <p className="text-[#DFDFDD] text-lg leading-relaxed">
-                  The name <span className="text-white font-medium">Satya</span>{" "}
-                  is derived from a Sanskrit word that means{" "}
+                  The name{" "}
+                  <span className="text-white font-medium">Satya</span> is derived
+                  from a Sanskrit word meaning{" "}
                   <span className="italic text-[#FFF8EF]">Truth</span>.
                 </p>
 
                 <p className="text-[#DFDFDD] text-lg leading-relaxed">
                   Truth is the foundation of everything we do. We stand for
-                  honesty, transparency, and ethical medical care, helping
-                  millions discover science-backed solutions for hair and skin.
+                  honesty, transparency, and ethical medical care.
                 </p>
 
                 <p className="text-[#DFDFDD] text-lg leading-relaxed">

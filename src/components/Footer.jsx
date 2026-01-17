@@ -121,16 +121,14 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#9E4A47] mt-1" />
                 <span>
-                  <strong>Gurugram:</strong> 4301, Galleria Boulevard, Opposite DLF
-                  Club, Sector 28, DLF Phase IV, Gurugram, Haryana – 122002
+                  <strong>Gurugram:</strong> 4301, DLF Phase 4, Near Galleria, Gurugram-122002
                 </span>
               </li>
 
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#9E4A47] mt-1" />
                 <span>
-                  <strong>Delhi:</strong> ED 38A, Madhuban Chowk, Block ED,
-                  Dakshini Pitampura, Pitampura, New Delhi – 110034
+                  <strong>Delhi:</strong> ED 38 /A Pitampura metro station, Madhuban Chowk, Delhi-110034
                 </span>
               </li>
             </ul>

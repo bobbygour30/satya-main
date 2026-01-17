@@ -17,19 +17,18 @@ export default function CaseDetailPage() {
       <section className="bg-[#FFF8EF] pt-6 sm:pt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 h-[60vh] md:h-[65vh] lg:h-[70vh] rounded-3xl">
-            
+
             {/* IMAGE SIDE */}
-            <div className="relative  h-full rounded-3xl lg:rounded-r-none overflow-hidden">
+            <div className="relative h-full rounded-3xl lg:rounded-r-none overflow-hidden">
               <img
                 src={images[index]}
                 alt={`${index === 0 ? "Before" : "After"} Hair Transplant – Prakhar`}
-                className="w-full h-full object-cover rounded-3xl"
+                className="w-full h-full object-cover"
               />
 
               {/* BEFORE / AFTER CONTROLS */}
               <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20">
                 <div className="flex items-center gap-2 sm:gap-3 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-3 sm:px-4 py-2 sm:py-2.5">
-                  
                   <button
                     onClick={() => setIndex(0)}
                     className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
@@ -70,9 +69,37 @@ export default function CaseDetailPage() {
               </div>
             </div>
 
-            {/* CONTENT SIDE */}
-            <div className="bg-[#FFF8EF] text-[#0E3A43] px-6 sm:px-10 lg:px-14 flex items-center rounded-3xl lg:rounded-l-none">
-              <div className="max-w-md space-y-6">
+            {/* ================= CONTENT SIDE (DARK + SVG) ================= */}
+            <div className="relative bg-[#2B333C] text-white px-6 sm:px-10 lg:px-14 flex items-center rounded-3xl lg:rounded-l-none overflow-hidden">
+
+              {/* DECORATIVE SVG BACKGROUND */}
+              <div className="absolute inset-0 pointer-events-none opacity-20">
+                <svg
+                  viewBox="0 0 1440 800"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-full h-full"
+                >
+                  <path
+                    d="M0 200 C400 350 900 50 1440 200"
+                    stroke="#DFDFDD"
+                    strokeWidth="1.2"
+                  />
+                  <path
+                    d="M0 500 C450 650 900 350 1440 500"
+                    stroke="#DFDFDD"
+                    strokeWidth="1.1"
+                  />
+                  <path
+                    d="M0 350 C450 500 950 150 1440 350"
+                    stroke="#DFDFDD"
+                    strokeWidth="0.8"
+                  />
+                </svg>
+              </div>
+
+              {/* CONTENT */}
+              <div className="relative z-10 max-w-md space-y-6">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-tight">
                   Prakhar
                 </h1>
@@ -263,15 +290,6 @@ export default function CaseDetailPage() {
         <div className="text-center border-t border-[#FCEBDE] pt-8 mt-8">
           <p className="font-semibold">📍 Satya Skin & Hair Solutions, DLF Phase 4, Gurgaon</p>
           <p className="font-semibold">📞 +91 9910094945</p>
-          <p className="font-semibold">
-            🌐{" "}
-            <a
-              href="https://satyaskinhairsolutions.com"
-              className="text-[#9E4A47] hover:underline"
-            >
-              satyaskinhairsolutions.com
-            </a>
-          </p>
         </div>
       </section>
 

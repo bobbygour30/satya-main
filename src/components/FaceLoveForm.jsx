@@ -1,6 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import assets from "../assets/assets";
 
 export default function FaceLoveForm() {
   const [step, setStep] = useState(1);
@@ -29,7 +30,7 @@ export default function FaceLoveForm() {
             {/* LEFT IMAGE */}
             <div className="relative h-[280px] md:h-auto">
               <img
-                src="https://img.freepik.com/premium-photo/horizontal-view-young-woman-with-bare-shoulder-brown-wavy-hair-model-charm-with-bracelet-earrings-brown-background-beauty-people-portrait-copy-space_246930-2232.jpg"
+                src={assets.form}
                 alt="Clinic"
                 className="absolute inset-0 w-full h-full object-cover"
               />

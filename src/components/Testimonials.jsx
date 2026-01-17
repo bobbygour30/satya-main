@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Quote } from "lucide-react";
+import { MessageCircle, Quote, Play } from "lucide-react";
 
 /* ===============================
    TESTIMONIAL DATA
@@ -39,11 +39,13 @@ const testimonials = [
 ================================ */
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
+  const [play, setPlay] = useState(false);
 
   /* Auto rotate testimonials */
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % testimonials.length);
+      setPlay(false); // reset video when slide changes
     }, 8000);
 
     return () => clearInterval(interval);
@@ -60,7 +62,7 @@ export default function Testimonials() {
   return (
     <section className="w-full bg-[#FFF8EF] py-24 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        
+
         {/* LEFT – TEXT */}
         <div className="relative">
           <Quote className="absolute -top-16 -left-10 w-28 h-28 text-[#B87C72] opacity-30 rotate-180" />
@@ -97,7 +99,10 @@ export default function Testimonials() {
             {testimonials.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setIndex(i)}
+                onClick={() => {
+                  setIndex(i);
+                  setPlay(false);
+                }}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   i === index
                     ? "bg-[#9E4A47] scale-125"
@@ -108,19 +113,40 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* RIGHT – AUTO PLAY VIDEO */}
+        {/* RIGHT – CLICK TO PLAY VIDEO */}
         <div className="flex justify-center">
           <div className="relative w-[280px] h-[500px] md:w-[320px] md:h-[570px] rounded-3xl overflow-hidden shadow-2xl border border-[#DFDFDD] bg-black">
-            
-            {/* Auto-playing iframe */}
-            <iframe
-              key={current.videoId} // forces reload on change
-              src={`https://www.youtube.com/embed/${current.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${current.videoId}&playsinline=1`}
-              title={current.author}
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              className="w-full h-full object-cover"
-            />
+
+            {!play ? (
+              /* THUMBNAIL */
+              <button
+                onClick={() => setPlay(true)}
+                className="group absolute inset-0"
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${current.videoId}/hqdefault.jpg`}
+                  alt={current.author}
+                  className="w-full h-full object-cover opacity-90 group-hover:opacity-70 transition"
+                />
+
+                {/* PLAY BUTTON */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-[#9E4A47] flex items-center justify-center shadow-xl group-hover:scale-110 transition">
+                    <Play className="text-white ml-1" size={28} />
+                  </div>
+                </div>
+              </button>
+            ) : (
+              /* YOUTUBE PLAYER */
+              <iframe
+                key={current.videoId}
+                src={`https://www.youtube.com/embed/${current.videoId}?autoplay=1&mute=0&playsinline=1`}
+                title={current.author}
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            )}
           </div>
         </div>
 

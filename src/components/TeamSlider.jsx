@@ -39,53 +39,40 @@ export default function Team() {
           and proven results.
         </p>
 
-        {/* 4-CARD GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Doctor 1 Image */}
-          <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#FCEBDE]">
-            <img
-              src={doctors[0].image}
-              alt={doctors[0].name}
-              className="w-full h-full object-cover"
-            />
-          </div>
+        {/* TWO BIG HORIZONTAL CARDS */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {doctors.map((doctor, index) => (
+            <div
+              key={index}
+              className="bg-white border border-[#FCEBDE] rounded-3xl shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-3"
+            >
+              {/* IMAGE */}
+              <div className="md:col-span-1 h-[300px] md:h-auto">
+                <img
+                  src={doctor.image}
+                  alt={doctor.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-          {/* Doctor 1 Content */}
-          <div className="bg-white rounded-2xl shadow-sm border border-[#FCEBDE] p-8 flex flex-col justify-center">
-            <h3 className="text-2xl font-semibold text-[#2B333C] mb-2">
-              {doctors[0].name}
-            </h3>
-            <p className="text-[#9E4A47] font-medium mb-4">
-              {doctors[0].role}
-            </p>
-            <div className="w-14 h-[2px] bg-[#9E4A47] mb-4" />
-            <p className="text-[#828D9C] leading-relaxed text-sm">
-              {doctors[0].description}
-            </p>
-          </div>
+              {/* CONTENT */}
+              <div className="md:col-span-2 p-8 md:p-10 flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-semibold text-[#2B333C] mb-2">
+                  {doctor.name}
+                </h3>
 
-          {/* Doctor 2 Image */}
-          <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#FCEBDE]">
-            <img
-              src={doctors[1].image}
-              alt={doctors[1].name}
-              className="w-full h-full object-cover"
-            />
-          </div>
+                <p className="text-[#9E4A47] font-medium mb-4">
+                  {doctor.role}
+                </p>
 
-          {/* Doctor 2 Content */}
-          <div className="bg-white rounded-2xl shadow-sm border border-[#FCEBDE] p-8 flex flex-col justify-center">
-            <h3 className="text-2xl font-semibold text-[#2B333C] mb-2">
-              {doctors[1].name}
-            </h3>
-            <p className="text-[#9E4A47] font-medium mb-4">
-              {doctors[1].role}
-            </p>
-            <div className="w-14 h-[2px] bg-[#9E4A47] mb-4" />
-            <p className="text-[#828D9C] leading-relaxed text-sm">
-              {doctors[1].description}
-            </p>
-          </div>
+                <div className="w-16 h-[2px] bg-[#9E4A47] mb-6" />
+
+                <p className="text-[#828D9C] leading-relaxed text-sm md:text-base">
+                  {doctor.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

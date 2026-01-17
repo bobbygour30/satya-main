@@ -140,7 +140,7 @@ export default function Shubham() {
           Min-Med Approach – Less Medicine, More Skill
         </h3>
         <p>
-          Unlike the previous clinic’s full-dose reliance, Dr. Shail prescribed only ~¼th the standard dose of Finasteride and Minoxidil. This protected hormonal balance while still supporting excellent growth. The results prove what Satya stands for: <strong>Skill > Pill</strong>.
+          Unlike the previous clinic’s full-dose reliance, Dr. Shail prescribed only ~¼th the standard dose of Finasteride and Minoxidil. This protected hormonal balance while still supporting excellent growth. The results prove what Satya stands for: <strong>Skill Over Pill</strong>.
         </p>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43] mt-10 mb-4">

@@ -51,6 +51,8 @@ import shubham4 from "./shubham (4).jpg";
 import shubham5 from "./shubham (5).jpg";
 import shubham6 from "./shubham (6).jpg";
 
+import insta from "./Insta.jpg";
+
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1,
@@ -96,6 +98,8 @@ const assets = {
   shubham4,
   shubham5,
   shubham6,
+
+  insta,
 };
 
 export default assets;

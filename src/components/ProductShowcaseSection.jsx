@@ -1,10 +1,11 @@
 import React from "react";
 import { Play } from "lucide-react";
+import assets from "../assets/assets";
 
 const videos = [
   {
     url: "https://www.instagram.com/reel/DTdHmrtEixs/?igsh=bmpzM3pydjR1ZDlw",
-    thumbnail: "/images/insta-reel-thumb.jpg",
+    thumbnail: assets.insta,
   },
   {
     url: "https://www.youtube.com/shorts/0_1JwEAQh10",

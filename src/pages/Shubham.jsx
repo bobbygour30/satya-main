@@ -4,53 +4,53 @@ import assets from "../assets/assets"; // adjust path if needed
 
 export default function Shubham() {
   const [index, setIndex] = useState(0);
-  const images = [assets.shubham4, assets.shubham3]; // Before & After main toggle
+  const images = [assets.shubham4, assets.shubham3]; // Before & After toggle (update these assets if needed)
 
   useEffect(() => {
     document.title =
-      "Two Brothers, Two Hair Transplants, Why One Result Lasted and the Other Failed | Satya Skin & Hair";
+      "Shubham’s Corrective Hair Transplant – The Science Behind Real, Sustainable Results | Satya Skin & Hair";
   }, []);
 
   return (
     <div className="bg-[#FFF8EF] text-[#2B333C] min-h-screen">
-      {/* HERO – Reduced & Responsive Height */}
+      {/* HERO – Smaller & better centered */}
       <section className="">
-        <div className="grid lg:grid-cols-2 min-h-[520px] md:min-h-[580px] lg:min-h-[620px] xl:min-h-[680px]">
+        <div className="grid lg:grid-cols-2 min-h-[480px] md:min-h-[540px] lg:min-h-[580px] xl:min-h-[640px]">
           {/* IMAGE SIDE */}
           <div className="relative bg-black">
             <img
               src={images[index]}
-              alt={`${index === 0 ? "Before" : "After"} Hair Transplant – Prakhar`}
+              alt={`${index === 0 ? "Before" : "After"} Corrective Hair Transplant – Shubham`}
               className="w-full h-full object-cover"
             />
 
-            {/* BEFORE / AFTER CONTROLS */}
-            <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10">
-              <div className="flex items-center gap-3 sm:gap-4 bg-white/25 backdrop-blur-md border border-white/40 rounded-full px-4 sm:px-5 py-2.5 sm:py-3">
+            {/* BEFORE / AFTER CONTROLS – centered & slightly smaller */}
+            <div className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-10">
+              <div className="flex items-center gap-2 sm:gap-3 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-3 sm:px-4 py-2 sm:py-2.5">
                 <button
                   onClick={() => setIndex(0)}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/20 transition"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
                 >
-                  <ChevronLeft size={18} />
+                  <ChevronLeft size={16} />
                 </button>
 
-                <div className="flex bg-white/30 rounded-full overflow-hidden">
+                <div className="flex bg-white/35 rounded-full overflow-hidden">
                   <button
                     onClick={() => setIndex(0)}
-                    className={`px-5 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition ${
+                    className={`px-4 sm:px-5 py-1.5 text-xs sm:text-sm font-medium transition ${
                       index === 0
                         ? "bg-[#9E4A47] text-white"
-                        : "text-white hover:bg-white/20"
+                        : "text-white hover:bg-white/25"
                     }`}
                   >
                     Before
                   </button>
                   <button
                     onClick={() => setIndex(1)}
-                    className={`px-5 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition ${
+                    className={`px-4 sm:px-5 py-1.5 text-xs sm:text-sm font-medium transition ${
                       index === 1
                         ? "bg-[#9E4A47] text-white"
-                        : "text-white hover:bg-white/20"
+                        : "text-white hover:bg-white/25"
                     }`}
                   >
                     After
@@ -59,39 +59,39 @@ export default function Shubham() {
 
                 <button
                   onClick={() => setIndex(1)}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/20 transition"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
                 >
-                  <ChevronRight size={18} />
+                  <ChevronRight size={16} />
                 </button>
               </div>
             </div>
           </div>
 
-          {/* CONTENT PANEL */}
-          <div className="bg-[#FFF8EF] text-[#0E3A43] px-8 sm:px-10 md:px-16 py-16 md:py-20 flex items-center">
-            <div className="max-w-md w-full">
-              <h1 className="text-4xl sm:text-5xl font-serif mb-10 sm:mb-14 leading-tight">
-                Prakhar A
+          {/* CONTENT PANEL – centered & better spacing */}
+          <div className="bg-[#FFF8EF] text-[#0E3A43] px-8 sm:px-12 md:px-16 lg:px-20 py-12 md:py-16 lg:py-20 flex items-center justify-center">
+            <div className="max-w-lg w-full space-y-8 md:space-y-10">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif leading-tight text-center lg:text-left">
+                Shubham
               </h1>
 
-              <div className="mb-10 sm:mb-12">
-                <p className="text-xs sm:text-sm uppercase tracking-wide opacity-70 mb-3 sm:mb-4">
+              <div className="text-center lg:text-left">
+                <p className="text-xs sm:text-sm uppercase tracking-wide opacity-70 mb-2">
                   Treatment
                 </p>
-                <p className="text-base sm:text-lg leading-relaxed">
-                  Hair Transplant
+                <p className="text-base sm:text-lg font-medium">
+                  Corrective / Repair Hair Transplant
                 </p>
               </div>
 
-              <div>
-                <p className="text-xs sm:text-sm uppercase tracking-wide opacity-70 mb-3 sm:mb-4">
+              <div className="text-center lg:text-left">
+                <p className="text-xs sm:text-sm uppercase tracking-wide opacity-70 mb-2">
                   Methods
                 </p>
                 <p className="text-lg sm:text-xl font-semibold">
-                  Advance FUE Hair Transplant (DSFT)
+                  MHT + DSFT Advance FUE
                 </p>
                 <p className="text-sm sm:text-base opacity-90">
-                  Direct Stimulated Follicular Transplant – Min-Med Protocol
+                  FUT + FUE + Beard | Min-Med Protocol
                 </p>
               </div>
             </div>
@@ -99,163 +99,111 @@ export default function Shubham() {
         </div>
       </section>
 
-      
-
-      {/* MAIN CONTENT – Full Story */}
-      <section className="max-w-7xl mx-auto px-6 py-10 sm:py-16 space-y-10 text-[#2B333C] text-base sm:text-lg leading-relaxed">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-[#0E3A43] mb-6">
-          Two Brothers, Two Hair Transplants – Why One Result Lasted and the Other Failed
+      {/* MAIN CONTENT */}
+      <section className="max-w-7xl mx-auto px-6 py-12 sm:py-16 lg:py-20 space-y-10 md:space-y-12 text-[#2B333C] text-base sm:text-lg leading-relaxed">
+        <h2 className="text-3xl sm:text-4xl font-semibold text-[#0E3A43] text-center md:text-left">
+          Shubham’s Corrective Hair Transplant – The Science Behind Real, Sustainable Results
         </h2>
 
-        <p className="text-xl sm:text-2xl font-medium text-[#0E3A43] italic border-l-4 border-[#9E4A47] pl-6 py-2">
-          At Satyaskinhair, founded by Dr Shail Gupta and Dr Ruchi Agarwal, we have seen thousands of hair transplant cases over the years. Some are first-time transplants. Many are corrective surgeries after failures elsewhere.
+        <p className="text-xl sm:text-2xl font-medium text-[#0E3A43] italic border-l-4 border-[#9E4A47] pl-6 py-3">
+          When Shubham first walked into Satya, he had lost not just hair, but trust.
         </p>
 
         <p>
-          Among them, Prakhar’s story stands out, because it doesn’t just involve one patient, but two brothers who chose very different paths.
+          His earlier hair transplant looked impressive for a few months, but it was held together by high doses of Finasteride and Minoxidil. Once he stopped them, the entire structure collapsed, leaving wide gaps, donor scars, and emotional fatigue.
         </p>
 
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Both were young.</li>
-          <li>Both had similar hair loss patterns.</li>
-          <li>Both decided to get a transplant around the same time.</li>
-        </ul>
-
-        <p>
-          But one made his decision based on planning and ethics, while the other was influenced by hair graft numbers, lower cost, and aggressive medication.
-        </p>
-
-        <p className="font-semibold">
-          The results they live with today are drastically different.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          Prakhar’s Consultation at Satya
+        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-10 mb-4">
+          The Hidden Reality of Many ‘Successful’ Transplants
         </h3>
         <p>
-          When Prakhar visited us, the focus was not just on “filling empty areas” but on:
+          What seems like success at first often hides poor technique behind medication. In Shubham’s repair case, his donor was overharvested, and multi-graft follicles were cherry-picked. The remaining single units were left unused, making density appear uneven and unnatural. Within a year, non-transplanted hair also began shedding.
+        </p>
+
+        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-10 mb-4">
+          Why MHT (FUT + FUE + Beard) Was the Answer
+        </h3>
+        <p>
+          We planned Shubham’s corrective procedure using <strong>MHT (Maximum Harvest Technique)</strong> — a strategic blend of FUT, FUE, and Beard extraction. This ensured:
         </p>
         <ul className="list-disc pl-6 space-y-2">
-          <li>Understanding his hair loss pattern</li>
-          <li>Preserving his donor for lifetime</li>
-          <li>Designing a natural, age-appropriate hairline</li>
-          <li>Using the least possible medication</li>
+          <li>Maximum grafts from safe donor zones</li>
+          <li>Uniform coverage across front, mid-scalp, and crown</li>
+          <li>Natural hairline using single-unit grafts</li>
+          <li>Preserved donor for any future touch-ups</li>
         </ul>
-
         <p>
-          We proposed a DSFT (Direct Stimulated Follicular Transplant) Advance FUE hair transplant with a realistic graft count, balanced density, and a Min-Med protocol with around 1.5 mg/week.
+          Where most clinics avoid FUT, Satya used it strategically — resulting in a nearly invisible scar thanks to modern trichophytic closure.
         </p>
 
-        <p>
-          We explained clearly what surgery can do, what medicine can do, and where the limits are. He understood that our goal was not to “max out” his donor or overload him with drugs, but to give him natural, sustainable results.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          His Brother’s Decision: Grafts, Discounts, and Full Medicines
+        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-10 mb-4">
+          Min-Med Approach – Less Medicine, More Skill
         </h3>
         <p>
-          Prakhar’s brother chose another clinic. They offered almost double the grafts at half the cost, with promises of “amazing, dense results” plus full-dose medications.
+          Unlike the previous clinic’s full-dose reliance, Dr. Shail prescribed only ~¼th the standard dose of Finasteride and Minoxidil. This protected hormonal balance while still supporting excellent growth. The results prove what Satya stands for: <strong>Skill > Pill</strong>.
         </p>
 
-        <p>
-          It sounded like a deal. Big numbers. Fast promises. In the short term, his result looked impressive. In photos, it seemed like he had “won” compared to Prakhar.
-        </p>
-
-        <p>
-          But the foundation of that result was not surgical skill — it was heavy medication and overuse of grafts.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          The Illusion of Medicine-Driven Results
+        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-10 mb-4">
+          DSFT – Direct Stimulated Follicular Transplant (Advance FUE)
         </h3>
         <p>
-          Medicines like Finasteride and Minoxidil can increase shaft thickness, hold on to weak hairs for some time, and create the appearance of density.
+          Under the DSFT protocol, grafts are stimulated at micro-levels before placement — delivering ~97% survival rate and healthier, stronger regrowth. Every follicle is treated as a living unit: scientifically preserved, artistically implanted.
         </p>
 
-        <p>
-          When used ethically, in the right dose and with monitoring, they can support a good transplant. However, when used in full doses to prop up a weak surgery, they create an illusion.
-        </p>
-
-        <p>
-          Once the body adapts or the patient tapers the medicine, the illusion fades. This is exactly what happened with Prakhar’s brother.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          One Year Later: The Reality Check
+        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-10 mb-4">
+          Results That Last
         </h3>
         <p>
-          Prakhar’s result looked natural, balanced, and stable. His donor was intact. His hairline suited his face and age. His medicine was minimal and safe.
+          Today Shubham has natural, even density from hairline to crown. His FUT scar is practically invisible, donor area remains healthy, and he is free from daily medicine dependence. The transformation restored not just his hair — but his belief in ethical, long-term medicine.
         </p>
 
-        <p>
-          His brother’s result started to collapse: density reduced, the illusion faded, donor had already been overused.
-        </p>
-
-        <p className="font-semibold">
-          In simple terms: Prakhar still had the result + health + donor. His brother had lost all three.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          Hair Transplant at a Young Age: The Hidden Risk
-        </h3>
-        <p>
-          When you undergo a hair transplant at a young age, three things matter more than anything:
-        </p>
-        <ol className="list-decimal pl-6 space-y-2 font-medium">
-          <li>Long-term planning</li>
-          <li>Donor preservation</li>
-          <li>Honest discussion about medication</li>
-        </ol>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          Pay for Skill, Not for Pill
-        </h3>
-        <p className="italic text-lg">
-          “Pay the bill for the skill, not for the pill.”
-        </p>
-
-        <p>
-          Because when a result is medicine-dependent, it is temporary by definition.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          Why Satya’s Approach Is Different
-        </h3>
-        <p>
-          At Satya, every case — especially in young patients — is handled with conservative, honest planning, realistic graft numbers, Min-Med Approach, donor mapping, long-term strategy, and transparent communication.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          Key Lessons From Prakhar’s Case
+        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-10 mb-4">
+          What You Can Learn from Shubham’s Case
         </h3>
         <ul className="list-disc pl-6 space-y-3 font-medium">
-          <li>Don’t choose a clinic only on graft numbers or cost.</li>
-          <li>Ask how much of the result comes from surgery vs medicine.</li>
-          <li>Make sure your donor is respected and preserved.</li>
-          <li>Especially at a young age, think in decades, not in months.</li>
-          <li>A stable, natural result with minimal medicine is always better than a flashy, short-lived one.</li>
+          <li>Don’t judge results by early growth — look for longevity</li>
+          <li>More grafts ≠ better outcome — smart planning matters</li>
+          <li>FUT scars are minimal when done by experts</li>
+          <li>Medicine supports growth; it shouldn’t be the foundation</li>
         </ul>
 
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          Conclusion
-        </h3>
-        <p>
-          Prakhar and his brother started from the same place. Their choices took them in completely different directions.
-        </p>
+        {/* FAQs */}
+        <div className="mt-12 pt-8 border-t border-[#FCEBDE]">
+          <h3 className="text-2xl font-semibold text-[#0E3A43] mb-6">FAQs</h3>
+          <div className="space-y-6">
+            <div>
+              <p className="font-semibold">Q1. What is MHT in hair transplant?</p>
+              <p>MHT combines FUT, FUE, and body/beard hair extraction for maximum grafts while keeping the donor safe and natural.</p>
+            </div>
+            <div>
+              <p className="font-semibold">Q2. Is FUT scar-free?</p>
+              <p>With modern trichophytic closure, FUT leaves only a thin, near-invisible line.</p>
+            </div>
+            <div>
+              <p className="font-semibold">Q3. How much medicine is necessary post-transplant?</p>
+              <p>At Satya, our Min-Med Approach uses the lowest effective dose — only if truly needed.</p>
+            </div>
+            <div>
+              <p className="font-semibold">Q4. What makes DSFT special?</p>
+              <p>DSFT (Advanced FUE) enhances graft survival by pre-implant stimulation, ensuring stronger and faster growth.</p>
+            </div>
+            <div>
+              <p className="font-semibold">Q5. Can failed transplants be repaired?</p>
+              <p>Yes. With correct planning, donor assessment, and balanced technique, most failed cases can be successfully restored.</p>
+            </div>
+          </div>
+        </div>
 
-        <p>
-          One chose balanced planning, DSFT, and minimal medicine, and kept his hair, health, and donor. The other chose numbers, discounts, and heavy pills, and paid for it with all three.
-        </p>
+        <div className="text-center py-10 md:py-12">
+          <p className="text-xl font-semibold text-[#0E3A43]">
+            Shubham’s case proves that truthful science and skilled hands can rebuild what shortcuts destroy.
+          </p>
+          <p className="mt-4 font-medium">
+            If your previous transplant failed or you’re worried about long-term medicine use, Satya offers a safer, smarter path.
+          </p>
+        </div>
 
-        <p className="font-semibold text-xl">
-          If you’re planning a hair transplant, especially at a young age, let their story guide you.
-        </p>
-
-        <p className="text-center py-8 text-[#0E3A43] font-medium text-lg">
-          Choose the truth. Choose long-term thinking. Choose a clinic that protects your hair, health, and donor — not just your “before-after” photo.
-        </p>
-
-        <div className="text-center border-t border-[#FCEBDE] pt-8 mt-8">
+        <div className="text-center border-t border-[#FCEBDE] pt-10 mt-8">
           <p className="font-semibold">📍 Satya Skin & Hair Solutions, DLF Phase 4, Gurgaon</p>
           <p className="font-semibold">📞 +91 9910094945</p>
           <p className="font-semibold">
@@ -267,29 +215,16 @@ export default function Shubham() {
               satyaskinhairsolutions.com
             </a>
           </p>
+          <p className="mt-2">
+            📸 @drshailgupta | @satyaskinandhair
+          </p>
         </div>
       </section>
 
-      {/* YOUTUBE VIDEO */}
-      <section className="py-20 sm:py-28 px-6">
-        <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white">
-          <div className="aspect-video">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/Fsi5_On4q_8"
-              title="Prakhar Hair Transplant Result – Satya Skin & Hair"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* IMAGE GALLERY */}
-      <section className="mt-16 sm:mt-24 px-6">
-        <div className="max-w-7xl mx-auto rounded-3xl  p-6 sm:p-8">
-          <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-6 sm:mb-8 text-center">
+      {/* IMAGE GALLERY – Updated for Shubham */}
+      <section className="mt-12 sm:mt-20 px-6 pb-12 sm:pb-20">
+        <div className="max-w-7xl mx-auto rounded-3xl bg-white/40 p-6 sm:p-10 shadow-sm">
+          <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-8 text-center">
             Shubham's Progress & Results
           </h3>
 
@@ -297,11 +232,11 @@ export default function Shubham() {
             {[assets.shubham1, assets.shubham2, assets.shubham5, assets.shubham6].map((img, i) => (
               <div
                 key={i}
-                className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm"
+                className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm hover:shadow-md transition"
               >
                 <img
                   src={img}
-                  alt={`Prakhar hair transplant result ${i + 1}`}
+                  alt={`Shubham corrective hair transplant result ${i + 1}`}
                   className="w-full aspect-[4/5] object-cover"
                 />
               </div>

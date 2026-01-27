@@ -67,7 +67,7 @@ export default function ClinicSection() {
 
   return (
     <section className="w-full bg-[#FFF8EF] py-14 px-6 md:px-20">
-      <div className="max-w-7xl mx-auto">
+      <div className="">
 
         {/* ================= TOP TEXT ================= */}
         <p className="text-[#B87C72] uppercase tracking-[3px] text-sm font-medium mb-2">
@@ -89,7 +89,7 @@ export default function ClinicSection() {
 
           {/* ================= GURUGRAM ================= */}
           <div>
-            <div className="relative rounded-xl overflow-hidden h-[280px] md:h-[330px] shadow-lg">
+            <div className="relative rounded-xl overflow-hidden h-[280px] md:h-[470px] shadow-lg">
               {LEFT_IMAGES.map((img, i) => (
                 <img
                   key={i}
@@ -112,7 +112,7 @@ export default function ClinicSection() {
 
           {/* ================= DELHI ================= */}
           <div>
-            <div className="relative rounded-xl overflow-hidden h-[280px] md:h-[330px] shadow-lg">
+            <div className="relative rounded-xl overflow-hidden h-[280px] md:h-[470px] shadow-lg">
               {RIGHT_IMAGES.map((img, i) => (
                 <img
                   key={i}

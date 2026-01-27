@@ -1,36 +1,29 @@
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import assets from "../assets/assets";
 
 /* ================= HERO SLIDES ================= */
 const slides = [
   {
     image: assets.banner3,
-    headline: "Clinically Proven Skin & Hair Treatments",
+    headline: "WE CARE ABOUT YOUR SKIN & HAIR",
     subtext:
-      "Every treatment at Satya is backed by clinical evidence, medical precision, and ethical practice delivering results that are safe, natural, and scientifically validated.",
-    cta: "Find My Treatment",
+      "Every treatment at Satya is clinically proven, ethically practiced, and designed to deliver natural, long-lasting results you can trust.",
+    cta: "BOOK APPOINTMENT",
   },
   {
     image: assets.banner4,
-    headline: "Award-Winning Excellence in Hair and Skin Restoration",
+    headline: "AWARD-WINNING MEDICAL EXCELLENCE",
     subtext:
-      "Recognized for consistently delivering natural outcomes through advanced techniques, meticulous planning, and patient-first medical standards.",
-    cta: "Explore Hair Restoration",
+      "Advanced techniques, medical precision, and patient-first care trusted by thousands across India.",
+    cta: "EXPLORE TREATMENTS",
   },
   {
     image: assets.banner2,
-    headline: "You're Beautiful we just make you Realize it.",
+    headline: "YOU’RE BEAUTIFUL. WE JUST ENHANCE IT.",
     subtext:
-      "Our approach enhances what’s already yours restoring balance, proportion, and confidence without overcorrection or artificial results.",
-    cta: "See Real Repair Cases",
-  },
-  {
-    image: assets.banner1,
-    headline: "Hair Bhi, Health Bhi™ Results That Look Natural & Last Longer.",
-    subtext:
-      "We treat hair as part of your overall health combining dermatology, nutrition, and long-term planning for results that grow stronger with time.",
-    cta: "Discover Skin Treatments",
+      "We enhance what’s already yours — restoring balance, confidence, and authenticity without overcorrection.",
+    cta: "VIEW REAL RESULTS",
   },
 ];
 
@@ -52,7 +45,7 @@ export default function BannerSlider() {
     setCurrent((prev) => (prev + 1) % slides.length);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#FFF8EF]">
+    <section className="relative w-full bg-[#FFF8EF] overflow-hidden">
       {/* ================= SLIDES ================= */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
@@ -61,38 +54,32 @@ export default function BannerSlider() {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="w-full flex-shrink-0 h-screen relative"
+            className="w-full flex-shrink-0 min-h-[90vh] flex items-center"
           >
-            {/* Background Image */}
-            <img
-              src={slide.image}
-              alt={slide.headline}
-              className="w-full h-full object-cover"
-            />
+            <div className=" px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* ===== LEFT CONTENT ===== */}
+              <div>
+                <h1 className="text-4xl md:text-6xl font-semibold text-[#2B333C] leading-tight mb-6">
+                  {slide.headline}
+                </h1>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-[#2B333C]/60" />
-
-            {/* Content */}
-            <div className="absolute inset-0 flex items-center justify-center px-6 mt-90">
-              <div className="text-center text-[#FFF8EF]">
-                {index === 0 ? (
-                  <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-4">
-                    {slide.headline}
-                  </h1>
-                ) : (
-                  <h2 className="text-3xl md:text-5xl font-semibold leading-tight mb-4">
-                    {slide.headline}
-                  </h2>
-                )}
-
-                <p className="text-sm md:text-lg text-[#DFDFDD] mb-8">
+                <p className="text-[#828D9C] text-base md:text-lg max-w-lg mb-10">
                   {slide.subtext}
                 </p>
 
-                <button className="bg-[#9E4A47] hover:bg-[#B87C72] transition px-8 py-3 rounded-full font-medium text-white">
+                <button className="inline-flex items-center gap-3 bg-[#2B333C] hover:bg-[#9E4A47] transition px-7 py-3 rounded-full text-white font-medium">
                   {slide.cta}
+                  <ArrowUpRight size={18} />
                 </button>
+              </div>
+
+              {/* ===== RIGHT IMAGE ===== */}
+              <div className="relative w-full h-[420px] md:h-[520px] rounded-2xl overflow-hidden">
+                <img
+                  src={slide.image}
+                  alt={slide.headline}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -102,14 +89,14 @@ export default function BannerSlider() {
       {/* ================= NAVIGATION ================= */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-2/3 sm:top-1/2 -translate-y-2/3 sm:-translate-y-1/2 bg-[#FFF8EF]/90 hover:bg-[#FFF8EF] p-2 rounded-full text-[#2B333C]"
+        className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow p-3 rounded-full text-[#2B333C]"
       >
         <ChevronLeft />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-2/3 sm:top-1/2 -translate-y-2/3 sm:-translate-y-1/2 bg-[#FFF8EF]/90 hover:bg-[#FFF8EF] p-2 rounded-full text-[#2B333C]"
+        className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow p-3 rounded-full text-[#2B333C]"
       >
         <ChevronRight />
       </button>
@@ -123,7 +110,7 @@ export default function BannerSlider() {
             className={`w-2.5 h-2.5 rounded-full transition ${
               current === index
                 ? "bg-[#9E4A47] scale-125"
-                : "bg-[#DFDFDD]/70"
+                : "bg-[#DFDFDD]"
             }`}
           />
         ))}

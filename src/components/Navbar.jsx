@@ -104,7 +104,7 @@ const MENU = [
     title: "Knowledge",
     items: [
       { label: "News", path: "/news" },
-      { label: "Blog", path: "/blog" },
+      { label: "Blog", path: "/blogs" },
       { label: "Guides", path: "/guides" },
       { label: "Know Your Skin", path: "/know-your-skin" },
       { label: "Health & Wellness", path: "/health-and-wellness" },

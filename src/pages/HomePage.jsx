@@ -13,7 +13,7 @@ import ProductShowcaseSection from "../components/ProductShowcaseSection";
 import BadgesSection from "../components/BadgesSection";
 import Ratings from "../components/Ratings";
 import Blogs from "../components/Blogs";
-import SatyaIntroduction from "../components/SatyaIntroduction";
+// import SatyaIntroduction from "../components/SatyaIntroduction";
 
 const HomePage = () => {
 
@@ -22,7 +22,7 @@ const HomePage = () => {
     <div>
       <BannerSlider />
       {/* <LogoSlider  /> */}
-      <SatyaIntroduction />
+      {/* <SatyaIntroduction /> */}
       <HeroSection />
       <Ratings />
       <ServicesAndEvolution />

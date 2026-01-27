@@ -39,10 +39,7 @@ export default function FaceLoveForm() {
             {/* RIGHT CONTENT */}
             <div className="relative p-8 md:p-14 flex flex-col justify-center">
 
-              {/* CTA TAG */}
-              <span className="absolute top-6 right-6 text-xs font-semibold text-[#9E4A47] border border-[#FCEBDE] px-3 py-1 rounded-full">
-                CTA
-              </span>
+            
 
               {/* STEP 1 */}
               {step === 1 && (

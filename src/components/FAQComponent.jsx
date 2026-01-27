@@ -37,7 +37,7 @@ export default function FAQComponent() {
 
   return (
     <div className="w-full bg-[#FFF8EF] flex flex-col items-center py-16 px-4">
-      <div className="w-full max-w-6xl">
+      <div className="w-full">
         {/* FAQ Heading */}
         <div className="mb-12 text-center md:text-left">
           <span className="block text-[#B87C72] tracking-widest text-sm font-medium mb-2">

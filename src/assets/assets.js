@@ -58,6 +58,19 @@ import shubham6 from "./shubham (6).jpg";
 import insta from "./Insta.jpg";
 import form from "./form.jpg";
 import banner from "./banner.jpg";
+
+import beardBanner from "./beard.jpg";
+import bodyHairBanner from "./bodyhair.jpg";
+import chemicalPeelBanner from "./chemicalpeel.jpg";
+import co2FractionalLaserBanner from "./co2fractionallaser.jpg";
+import eyebrowBanner from "./eyebrow.png";
+import femaleBanner from "./female.jpg";
+import fueBanner from "./fue.jpg";
+import futBanner from "./fut.png";
+import hairWeavingBanner from "./hairweaving.png";
+import laserHairBanner from "./laserhair.jpg";
+import laserToningBanner from "./lasertoning.jpg";
+import moleRemovalBanner from "./moleremoval.jpg";
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1,
@@ -111,6 +124,19 @@ const assets = {
   insta,
   form,
   banner,
+
+  beardBanner,
+  bodyHairBanner,
+  chemicalPeelBanner,
+  co2FractionalLaserBanner,
+  eyebrowBanner,
+  femaleBanner,
+  fueBanner,
+  futBanner,
+  hairWeavingBanner,
+  laserHairBanner,
+  laserToningBanner,
+  moleRemovalBanner,
 };
 
 export default assets;

@@ -21,63 +21,127 @@ const searchPlaceholders = [
   "Discover your path to healthy skin & hair.",
 ];
 
-/* ================= MENU DATA ================= */
 const MENU = [
+  /* ================= WHY SATYA ================= */
   {
     title: "Why Satya",
     items: [
-      "Philosophy",
-      "Our Doctors",
-      "Facility & Technology",
-      "Awards & Recognition",
-      "Media Coverage",
-      "Campaign",
-      "Contact Us",
-      "International Patients",
-      "FAQ",
+      { label: "Philosophy", path: "/why-satya/philosophy" },
+      { label: "Our Doctors", path: "/why-satya/our-doctors" },
+      { label: "Facility & Technology", path: "/why-satya/facility-technology" },
+      { label: "Awards & Recognition", path: "/why-satya/awards-recognition" },
+      { label: "Media Coverage", path: "/why-satya/media-coverage" },
+      { label: "Campaign", path: "/why-satya/campaign" },
+      { label: "Contact Us", path: "/contact-us" },
+      { label: "International Patients", path: "/international-patients" },
+      { label: "FAQ", path: "/faq" },
     ],
   },
+
+  /* ================= SKIN ================= */
   {
     title: "Skin",
     items: [
-      "Concerns",
-      "Treatments",
-      "Testimonials",
+      { label: "Concerns", path: "/skin/concerns" },
+      { label: "Treatments", path: "/skin/treatments" },
+      { label: "Laser Hair Reduction", path: "/skin/laser-hair-reduction" },
+      { label: "Chemical Peel", path: "/skin/chemical-peel" },
+      { label: "Mole Removal", path: "/skin/mole-removal" },
+      { label: "Laser Toning Treatment", path: "/skin/laser-toning" },
+      { label: "Fractional CO2 Laser", path: "/skin/fractional-co2-laser" },
+      { label: "HIFU Treatment", path: "/skin/hifu-treatment" },
+      { label: "MNRF Treatment", path: "/skin/mnrf-treatment" },
+      { label: "Botox", path: "/skin/botox" },
+      { label: "Carbon Laser Facial", path: "/skin/carbon-laser-facial" },
+      { label: "Dermapen 4", path: "/skin/dermapen-4" },
+      { label: "Anti Wrinkle Treatment", path: "/skin/anti-wrinkle-treatment" },
+      { label: "5D Facial", path: "/skin/5d-facial" },
+      { label: "Fungal Infection", path: "/skin/fungal-infection" },
+      { label: "Wart Removal", path: "/skin/wart-removal" },
+      { label: "Acne Scar", path: "/skin/acne-scar" },
+      { label: "Hydra Facial", path: "/skin/hydra-facial" },
+      { label: "Skin Whitening Treatment", path: "/skin/skin-whitening-treatment" },
       { label: "Case Studies", path: "/before-after" },
-      ,
-      "Testimonials",
     ],
   },
+
+  /* ================= HAIR ================= */
   {
     title: "Hair",
     items: [
-      "Concerns",
-      "Testimonials",
-      { label: "Case Studies", path: "/before-after" },
-      "Treatments",
+      { label: "Hair Transplant", path: "/hair-transplant" },
+      { label: "Male Hair Transplant", path: "/hair-transplant/male" },
+      { label: "Female Hair Transplant", path: "/hair-transplant/female" },
+      { label: "FUE Hair Transplant", path: "/hair-transplant/fue" },
+      { label: "FUT Hair Transplant", path: "/hair-transplant/fut" },
+      { label: "Beard Hair Transplant", path: "/beard-hair-transplant" },
+      { label: "Moustache Hair Transplant", path: "/moustache-hair-transplant" },
+      { label: "Eyebrow Reconstruction", path: "/eyebrow-transplant" },
+      { label: "Afro Hair Transplant", path: "/hair-transplant/afro" },
+      { label: "Body Hair Transplant", path: "/hair-transplant/body" },
+      { label: "Hair Transplant Repair", path: "/hair-transplant/repair" },
+      { label: "Unshaven Hair Transplant", path: "/hair-transplant/unshaven" },
+      { label: "Crown Hair Transplant", path: "/hair-transplant/crown" },
+      { label: "Temple Hair Transplant", path: "/hair-transplant/temple" },
+      { label: "Minimal Scar Hair Transplant", path: "/hair-transplant/minimal-scar" },
+      { label: "Long Hair Transplant", path: "/hair-transplant/long" },
+      { label: "Synthetic Hair Transplant", path: "/hair-transplant/synthetic" },
+      { label: "Case Studies", path: "/hair-transplant/case-studies" },
     ],
   },
+
+  /* ================= RESULTS ================= */
   {
     title: "Results",
     items: [
-      "Skin Results",
-      "Hair Results",
+      { label: "Hair Results", path: "/hair-result" },
+      { label: "Skin Results", path: "/skin-result" },
     ],
   },
+
+  /* ================= KNOWLEDGE ================= */
   {
     title: "Knowledge",
     items: [
-      "News",
-      { label: "Blogs", path: "/blogs" }, // ← Now supports links
-      "Guides",
-      "Know Your Skin",
+      { label: "News", path: "/news" },
+      { label: "Blog", path: "/blog" },
+      { label: "Guides", path: "/guides" },
+      { label: "Know Your Skin", path: "/know-your-skin" },
+      { label: "Health & Wellness", path: "/health-and-wellness" },
     ],
   },
+
+  /* ================= UTILITY ================= */
   {
     title: "Utility",
-    items: ["Graft Estimator", "Build Routine", "Membership"],
+    items: [
+      { label: "Graft Estimator", path: "/graft-estimator" },
+      { label: "Build Routine", path: "/build-routine" },
+      { label: "Membership", path: "/membership" },
+    ],
+  },
+
+  /* ================= OUR CLINIC ================= */
+  {
+    title: "Our Clinic",
+    items: [
+      { label: "Delhi", path: "/delhi" },
+      { label: "Gurgaon", path: "/gurgaon" },
+    ],
+  },
+
+  /* ================= COST PAGES ================= */
+  {
+    title: "Cost",
+    items: [
+      { label: "Hair Transplant Cost Delhi", path: "/hair-transplant/delhi/cost" },
+      { label: "Hair Transplant Cost Gurgaon", path: "/hair-transplant/gurgaon/cost" },
+      { label: "Hair Transplant Cost for Men", path: "/hair-transplant/cost/gurgaon/for-men" },
+      { label: "Hair Transplant Cost for Women", path: "/hair-transplant/cost/gurgaon/for-women" },
+    ],
   },
 ];
+
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);

@@ -332,10 +332,6 @@ export default function CaseDetailPage() {
           <p className="font-semibold">📞 +91 9910094945</p>
         </div>
       </section>
-
-      
-
-      
     </div>
   );
 }

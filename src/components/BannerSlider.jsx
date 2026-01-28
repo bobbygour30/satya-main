@@ -8,35 +8,27 @@ const slides = [
     desktopImage: assets.banner3Desktop,
     mobileImage: assets.banner3Mobile,
     headline: "WE CARE ABOUT YOUR SKIN & HAIR",
-    subtext:
-      "Every treatment at Satya is clinically proven, ethically practiced, and designed to deliver natural, long-lasting results you can trust.",
     cta: "BOOK APPOINTMENT",
   },
   {
     desktopImage: assets.banner4Desktop,
     mobileImage: assets.banner4Mobile,
     headline: "AWARD-WINNING MEDICAL EXCELLENCE",
-    subtext:
-      "Advanced techniques, medical precision, and patient-first care trusted by thousands across India.",
     cta: "EXPLORE TREATMENTS",
   },
   {
     desktopImage: assets.banner2Desktop,
     mobileImage: assets.banner2Mobile,
     headline: "YOU’RE BEAUTIFUL. WE JUST ENHANCE IT.",
-    subtext:
-      "We enhance what’s already yours — restoring balance, confidence, and authenticity without overcorrection.",
     cta: "VIEW REAL RESULTS",
   },
   {
-  desktopImage: assets.banner1Desktop,
-  mobileImage: assets.banner1Mobile,
-  headline: "HAIR BHI, HEALTH BHI™ RESULTS THAT LOOK NATURAL & LAST LONGER",
-  subtext:
-    "Our science-led hair treatments focus on long-term scalp health while delivering visible, natural-looking results you can feel confident about.",
-  cta: "VIEW REAL RESULTS",
-},
-
+    desktopImage: assets.banner1Desktop,
+    mobileImage: assets.banner1Mobile,
+    headline:
+      "HAIR BHI, HEALTH BHI™ RESULTS THAT LOOK NATURAL & LAST LONGER",
+    cta: "VIEW REAL RESULTS",
+  },
 ];
 
 /* ================= BANNER SLIDER ================= */
@@ -83,10 +75,6 @@ export default function BannerSlider() {
                     {slide.headline}
                   </h1>
 
-                  <p className="text-lg max-w-lg mb-10 text-white/90">
-                    {slide.subtext}
-                  </p>
-
                   <button className="inline-flex items-center gap-3 bg-[#9E4A47] hover:bg-[#84332F] transition px-7 py-3 rounded-full text-white font-medium">
                     {slide.cta}
                     <ArrowUpRight size={18} />
@@ -95,7 +83,7 @@ export default function BannerSlider() {
               </div>
             </div>
 
-            {/* ================= MOBILE IMAGE + CONTENT OVERLAY ================= */}
+            {/* ================= MOBILE IMAGE + CONTENT ================= */}
             <div className="md:hidden relative w-full aspect-[3/4]">
               {/* Image */}
               <img
@@ -104,20 +92,35 @@ export default function BannerSlider() {
                 className="absolute inset-0 w-full h-full object-cover object-bottom"
               />
 
-              {/* Gradient for text readability */}
+              {/* Gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
               {/* Mobile Content */}
-              <div className="absolute inset-0 z-10 flex flex-col  px-6 pb-10 mt-10">
+              <div className="absolute inset-0 z-10 px-6 pt-10 pb-24 flex flex-col">
                 <h1 className="text-3xl font-semibold leading-tight mb-4 text-white">
                   {slide.headline}
                 </h1>
 
-                <p className="text-sm mb-6 text-white/90">
-                  {slide.subtext}
-                </p>
-
-                <button className="inline-flex w-fit items-center gap-3 bg-[#9E4A47] hover:bg-[#84332F] transition px-6 py-3 rounded-full text-white font-medium">
+                {/* Bottom Center CTA */}
+                <button
+                  className="
+                    absolute
+                    bottom-16
+                    left-1/2
+                    -translate-x-1/2
+                    inline-flex
+                    items-center
+                    bg-[#9E4A47]
+                    hover:bg-[#84332F]
+                    transition
+                    px-2
+                    py-1
+                    rounded-full
+                    text-white
+                    font-medium
+                    shadow-lg
+                  "
+                >
                   {slide.cta}
                   <ArrowUpRight size={16} />
                 </button>
@@ -137,7 +140,7 @@ export default function BannerSlider() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow sm:p-3 p-1  rounded-full text-[#2B333C] z-20"
+        className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow sm:p-3 p-1 rounded-full text-[#2B333C] z-20"
       >
         <ChevronRight />
       </button>

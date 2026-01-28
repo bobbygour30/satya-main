@@ -34,8 +34,8 @@ import gurgao6 from "./gurgao (6).jpg";
 import gurgao7 from "./gurgao (7).jpg";
 
 /* ================= DOCTORS ================= */
-import drRuchiAgarwal from "./Dr Ruchi Agarwal.webp";
-import drShailGupta from "./Dr Shail Gupta.webp";
+import drRuchiAgarwal from "./Dr Ruchi Agarwal.jpeg";
+import drShailGupta from "./Dr Shail Gupta.jpeg";
 import prakhar from "./prakhar.jpg";
 import prakhar1 from "./prakhar1.jpg";
 import prakhar2 from "./prakhar2.jpg";
@@ -53,8 +53,9 @@ import hair from "./hair.jpg";
 import hair1 from "./hair1.jpg";
 import hair2 from "./hair2.jpg";
 import hair3 from "./hair3.jpg";
-import insite from "./insite.jpg";
-import insite1 from "./insite1.jpg";
+import insite from "./insite.jpeg";
+import insite1 from "./insite2.jpeg";
+import insite2 from "./insite3.jpeg";
 /* ================= PATIENT IMAGES ================= */
 /* Arjun */
 import arjun1 from "./arjun (1).jpg";
@@ -88,6 +89,13 @@ import hairWeavingBanner from "./hairweaving.png";
 import laserHairBanner from "./laserhair.jpg";
 import laserToningBanner from "./lasertoning.jpg";
 import moleRemovalBanner from "./moleremoval.jpg";
+
+
+
+import adam from "./adam.jpg";
+import sandeep from "./sandeep.jpg";
+import supreet from "./supreet.jpg";
+import manoharsha from "./manoharsha.jpg";
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1Desktop,
@@ -140,6 +148,7 @@ const assets = {
   hair,
   insite,
   insite1,
+  insite2,
 
   arjun1,
   arjun2,
@@ -171,6 +180,12 @@ const assets = {
   laserHairBanner,
   laserToningBanner,
   moleRemovalBanner,
+
+
+  adam,
+  sandeep,
+  supreet,
+  manoharsha
 };
 
 export default assets;

@@ -19,10 +19,10 @@ export default function HeroSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4 space-y-6"
+          className="md:col-span-4 space-y-6 flex flex-col justify-center items-center"
         >
           <div>
-            <p className="text-xs tracking-widest text-[#B87C72] mb-2 uppercase">
+            <p className="text-xl tracking-widest text-[#B87C72] mb-2 uppercase">
               What We Do Differently?
             </p>
 
@@ -38,7 +38,7 @@ export default function HeroSection() {
             </p>
 
             <p className="text-sm text-[#828D9C]">
-              Every treatment philosophy at Satya is rooted in three pillars:
+              Every treatment philosophy at Satya is rooted in three pillars: Science, Artistry, Trust
             </p>
           </div>
         </motion.div>
@@ -49,14 +49,14 @@ export default function HeroSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4 bg-white rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between"
+          className="md:col-span-4 bg-white rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between items-center"
         >
           <div>
-            <h3 className="text-xl font-semibold text-[#2B333C] mb-4">
+            <h3 className="text-3xl font-semibold text-[#2B333C] mb-4">
               Hair Concerns
             </h3>
 
-            <ul className="text-sm text-[#828D9C] space-y-1">
+            <ul className="text-2xl text-[#828D9C] space-y-1">
               <li>Male Hair Loss</li>
               <li>Female Hair Loss</li>
               <li>Alopecia Areata</li>
@@ -64,9 +64,29 @@ export default function HeroSection() {
             </ul>
           </div>
 
-          <button className="mt-6 text-sm font-medium text-[#9E4A47] hover:underline">
-            Read more…
-          </button>
+          <button
+  className="
+    mt-6
+    inline-flex items-center gap-2
+    text-sm md:text-base
+    font-medium
+    text-[#B87C72]
+    px-4 py-2
+    rounded-full
+    border border-transparent
+    transition-all duration-300 ease-out
+    hover:border-[#B87C72]
+    hover:bg-[#FFF8EF]
+    focus:outline-none
+    focus-visible:ring-2 focus-visible:ring-[#B87C72]/40
+  "
+>
+  Read more
+  <span className="transition-transform duration-300 group-hover:translate-x-1">
+    →
+  </span>
+</button>
+
         </motion.div>
 
         {/* ================= CARD 2 ================= */}
@@ -75,14 +95,14 @@ export default function HeroSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4 bg-[#2B333C] rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between"
+          className="md:col-span-4 bg-[#2B333C] rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between items-center"
         >
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">
+            <h3 className="text-3xl font-semibold text-white mb-4">
               Hair Treatment
             </h3>
 
-            <ul className="text-sm text-[#DFDFDD] space-y-1">
+            <ul className="text-2xl text-[#DFDFDD] space-y-1">
               <li>Natural Hairline</li>
               <li>Synthetic Hair</li>
               <li>Body Hair Transplant</li>
@@ -90,9 +110,29 @@ export default function HeroSection() {
             </ul>
           </div>
 
-          <button className="mt-6 text-sm font-medium text-[#B87C72] hover:underline">
-            Read more…
-          </button>
+          <button
+  className="
+    mt-6
+    inline-flex items-center gap-2
+    text-sm md:text-base
+    font-medium
+    text-[#B87C72]
+    px-4 py-2
+    rounded-full
+    border border-transparent
+    transition-all duration-300 ease-out
+    hover:border-[#B87C72]
+    hover:bg-[#FFF8EF]
+    focus:outline-none
+    focus-visible:ring-2 focus-visible:ring-[#B87C72]/40
+  "
+>
+  Read more
+  <span className="transition-transform duration-300 group-hover:translate-x-1">
+    →
+  </span>
+</button>
+
         </motion.div>
 
         {/* ================= CARD 3 ================= */}
@@ -101,14 +141,14 @@ export default function HeroSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4 bg-white rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between"
+          className="md:col-span-4 bg-white rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between items-center"
         >
           <div>
-            <h3 className="text-xl font-semibold text-[#2B333C] mb-4">
+            <h3 className="text-3xl font-semibold text-[#2B333C] mb-4">
               Skin Concerns
             </h3>
 
-            <ul className="text-sm text-[#828D9C] space-y-1">
+            <ul className="text-2xl text-[#828D9C] space-y-1">
               <li>Aging Treatments</li>
               <li>Laser Hair Reduction</li>
               <li>Chemical Peeling</li>
@@ -117,9 +157,29 @@ export default function HeroSection() {
             </ul>
           </div>
 
-          <button className="mt-6 text-sm font-medium text-[#9E4A47] hover:underline">
-            Read more…
-          </button>
+          <button
+  className="
+    mt-6
+    inline-flex items-center gap-2
+    text-sm md:text-base
+    font-medium
+    text-[#B87C72]
+    px-4 py-2
+    rounded-full
+    border border-transparent
+    transition-all duration-300 ease-out
+    hover:border-[#B87C72]
+    hover:bg-[#FFF8EF]
+    focus:outline-none
+    focus-visible:ring-2 focus-visible:ring-[#B87C72]/40
+  "
+>
+  Read more
+  <span className="transition-transform duration-300 group-hover:translate-x-1">
+    →
+  </span>
+</button>
+
         </motion.div>
 
         {/* ================= CARD 4 ================= */}
@@ -128,14 +188,14 @@ export default function HeroSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4 bg-[#2B333C] rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between"
+          className="md:col-span-4 bg-[#2B333C] rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between items-center"
         >
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">
+            <h3 className="text-3xl font-semibold text-white mb-4">
               Skin Treatment
             </h3>
 
-            <ul className="text-sm text-[#DFDFDD] space-y-1">
+            <ul className="text-2xl text-[#DFDFDD] space-y-1">
               <li>Pigmentation</li>
               <li>Wrinkles & Fine Lines</li>
               <li>Acne Scars</li>
@@ -145,9 +205,29 @@ export default function HeroSection() {
             </ul>
           </div>
 
-          <button className="mt-6 text-sm font-medium text-[#B87C72] hover:underline">
-            Read more…
-          </button>
+          <button
+  className="
+    mt-6
+    inline-flex items-center gap-2
+    text-sm md:text-base
+    font-medium
+    text-[#B87C72]
+    px-4 py-2
+    rounded-full
+    border border-transparent
+    transition-all duration-300 ease-out
+    hover:border-[#B87C72]
+    hover:bg-[#FFF8EF]
+    focus:outline-none
+    focus-visible:ring-2 focus-visible:ring-[#B87C72]/40
+  "
+>
+  Read more
+  <span className="transition-transform duration-300 group-hover:translate-x-1">
+    →
+  </span>
+</button>
+
         </motion.div>
 
         {/* ================= IMAGE (UNCHANGED) ================= */}

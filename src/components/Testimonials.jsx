@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Quote, Play } from "lucide-react";
+import assets from "../assets/assets";
 
 /* ===============================
    TESTIMONIAL DATA
@@ -13,39 +14,39 @@ const testimonials = [
     text: `Came from Sweden for an honest transplant by an artist surgeon. I did not get this level of clarity from clinics in Europe or even the US. Highly recommend Satya.`,
     author: "Adam Anderson (Sweden)",
     videoId: "gNDIxX_tVMU",
+    thumbnail: assets.adam,
   },
   {
     id: 2,
     text: `Even after 10 years, my hair transplant result is awesome and completely undetectable. I stopped medicines 5 years ago. This level of artistry happens only at Satya.`,
     author: "Sandeep (Canada)",
     videoId: "0SC4xifYpzc",
+    thumbnail: assets.sandeep,
   },
   {
     id: 3,
     text: `My first transplant at Satya was done 3 years ago with a beautiful hairline and no medicines. I’m back only to lower my hairline as per the original plan.`,
     author: "Supreet (Australia)",
     videoId: "esPVOi8d9tE",
+    thumbnail: assets.supreet,
   },
   {
     id: 4,
     text: `Being a doctor and a victim of bad transplant earlier, I now understand repair work is best done at Satya. I wish I had come here the first time.`,
     author: "Dr. Manoharsha (India)",
     videoId: "KbuQRbVKrFA",
+    thumbnail: assets.manoharsha,
   },
 ];
 
-/* ===============================
-   COMPONENT
-================================ */
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const [play, setPlay] = useState(false);
 
-  /* Auto rotate testimonials */
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % testimonials.length);
-      setPlay(false); // reset video when slide changes
+      setPlay(false);
     }, 8000);
 
     return () => clearInterval(interval);
@@ -54,18 +55,28 @@ export default function Testimonials() {
   const current = testimonials[index];
 
   const variants = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.5 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.4 } },
   };
 
   return (
-    <section className="w-full bg-[#FFF8EF] py-24 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <section className="relative w-full bg-[#FFF8EF] py-24 overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#FCEBDE] blur-3xl opacity-70" />
 
-        {/* LEFT – TEXT */}
+      <div className="relative mx-auto max-w-[1500px] px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        {/* LEFT */}
         <div className="relative">
-          <Quote className="absolute -top-16 -left-10 w-28 h-28 text-[#B87C72] opacity-30 rotate-180" />
+          <Quote className="absolute -top-14 -left-10 w-28 h-28 text-[#B87C72] opacity-25 rotate-180" />
+
+          <div className="mb-10 flex items-center gap-4">
+            <div className="p-4 rounded-full bg-[#9E4A47]/10 border border-[#9E4A47]">
+              <MessageCircle className="text-[#9E4A47]" size={22} />
+            </div>
+            <h2 className="text-[38px] md:text-[60px] lg:text-[68px] font-serif text-[#2B333C]">
+              Testimonials
+            </h2>
+          </div>
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -74,17 +85,9 @@ export default function Testimonials() {
               initial="initial"
               animate="animate"
               exit="exit"
+              className="bg-white/60 backdrop-blur-xl border border-[#DFDFDD] rounded-3xl p-8 md:p-10 shadow-xl"
             >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="p-3 rounded-full border-2 border-[#9E4A47] bg-[#9E4A47]/10">
-                  <MessageCircle size={20} className="text-[#9E4A47]" />
-                </div>
-                <h2 className="text-[52px] md:text-[64px] lg:text-[72px] font-serif text-[#2B333C]">
-                  Testimonials
-                </h2>
-              </div>
-
-              <p className="text-[26px] md:text-[32px] leading-snug font-serif text-[#2B333C]">
+              <p className="text-[22px] md:text-[26px] font-serif leading-snug text-[#2B333C]">
                 {current.text}
               </p>
 
@@ -111,36 +114,61 @@ export default function Testimonials() {
               />
             ))}
           </div>
+
+          {/* SHORTS – CUSTOM IMAGE THUMBNAILS */}
+          <div className="mt-12 flex gap-4 overflow-x-auto pb-2">
+            {testimonials.map((t, i) => (
+              <button
+                key={t.id}
+                onClick={() => {
+                  setIndex(i);
+                  setPlay(false);
+                }}
+                className={`relative min-w-[90px] h-[120px] rounded-2xl overflow-hidden transition ${
+                  i === index
+                    ? "ring-4 ring-[#9E4A47] scale-105"
+                    : "opacity-70 hover:opacity-100"
+                }`}
+              >
+                <img
+                  src={t.thumbnail}
+                  alt={t.author}
+                  className="w-full h-full object-contain"
+                />
+
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-black/60 flex items-center justify-center">
+                    <Play size={14} className="text-white ml-0.5" />
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* RIGHT – CLICK TO PLAY VIDEO */}
+        {/* RIGHT – MAIN VIDEO (CUSTOM THUMB) */}
         <div className="flex justify-center">
-          <div className="relative w-[280px] h-[500px] md:w-[320px] md:h-[570px] rounded-3xl overflow-hidden shadow-2xl border border-[#DFDFDD] bg-black">
-
+          <div className="relative w-[280px] h-[500px] md:w-[330px] md:h-[600px] rounded-[32px] overflow-hidden shadow-2xl border border-[#DFDFDD] bg-black">
             {!play ? (
-              /* THUMBNAIL */
               <button
                 onClick={() => setPlay(true)}
                 className="group absolute inset-0"
               >
                 <img
-                  src={`https://img.youtube.com/vi/${current.videoId}/hqdefault.jpg`}
+                  src={current.thumbnail}
                   alt={current.author}
                   className="w-full h-full object-cover opacity-90 group-hover:opacity-70 transition"
                 />
-
-                {/* PLAY BUTTON */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-[#9E4A47] flex items-center justify-center shadow-xl group-hover:scale-110 transition">
-                    <Play className="text-white ml-1" size={28} />
+                  <div className="w-20 h-20 rounded-full bg-[#9E4A47] flex items-center justify-center shadow-xl group-hover:scale-110 transition">
+                    <Play className="text-white ml-1" size={32} />
                   </div>
                 </div>
               </button>
             ) : (
-              /* YOUTUBE PLAYER */
               <iframe
                 key={current.videoId}
-                src={`https://www.youtube.com/embed/${current.videoId}?autoplay=1&mute=0&playsinline=1`}
+                src={`https://www.youtube.com/embed/${current.videoId}?autoplay=1&playsinline=1`}
                 title={current.author}
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
@@ -149,7 +177,6 @@ export default function Testimonials() {
             )}
           </div>
         </div>
-
       </div>
     </section>
   );

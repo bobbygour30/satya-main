@@ -9,9 +9,9 @@ import assets from "../assets/assets";
 ================================ */
 const videos = [
   {
-    type: "instagram",
-    id: "DTdHmrtEixs",
-    thumbnail: assets.insta,
+    type: "youtube",
+    id: "Embq01ugYYg", // ✅ YouTube Short link replaced
+    thumbnail: assets.insta, // ✅ same thumbnail
   },
   {
     type: "youtube",
@@ -99,7 +99,7 @@ export default function ProductShowcaseSection() {
                     />
                   )}
 
-                  {/* INSTAGRAM REEL – FIXED */}
+                  {/* INSTAGRAM REEL (UNCHANGED, JUST UNUSED NOW) */}
                   {video.type === "instagram" && (
                     <iframe
                       src={`https://www.instagram.com/reel/${video.id}/embed/?autoplay=1`}

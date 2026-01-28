@@ -1,4 +1,5 @@
 "use client";
+
 import { motion } from "framer-motion";
 import assets from "../assets/assets";
 
@@ -7,112 +8,149 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-export default function HeroSection () {
+export default function HeroSection() {
   return (
     <section className="w-full bg-[#FFF8EF] px-6 py-20">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
-        {/* ================= LEFT TEXT ================= */}
+        {/* ================= TOP + LEFT TEXT ================= */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4"
+          className="md:col-span-4 space-y-6"
         >
-          <p className="text-xs tracking-widest text-[#B87C72] mb-4">
-            OUR OFFERS
-          </p>
+          <div>
+            <p className="text-xs tracking-widest text-[#B87C72] mb-2 uppercase">
+              What We Do Differently?
+            </p>
 
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#2B333C] mb-6">
-            WHAT WE DO
-          </h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#2B333C] mb-3">
+              Comprehensive Care
+            </h2>
 
-          <p className="text-sm text-[#828D9C] leading-relaxed max-w-sm">
-            Our team provides personalized care — from diagnosis to advanced
-            aesthetic & medical treatments designed for long-term results.
-          </p>
+            <p className="text-sm text-[#828D9C] mb-2">
+              <span className="font-medium text-[#2B333C]">
+                Our Promise:
+              </span>{" "}
+              We will never over treat you.
+            </p>
+
+            <p className="text-sm text-[#828D9C]">
+              Every treatment philosophy at Satya is rooted in three pillars:
+            </p>
+          </div>
         </motion.div>
 
-        {/* ================= CARD / 1 ================= */}
+        {/* ================= CARD 1 ================= */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4 bg-white rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-end"
+          className="md:col-span-4 bg-white rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between"
         >
-          <span className="absolute top-6 left-6 text-[#DFDFDD]">/1</span>
+          <div>
+            <h3 className="text-xl font-semibold text-[#2B333C] mb-4">
+              Hair Concerns
+            </h3>
 
-          <h3 className="text-xl font-semibold text-[#2B333C] mb-3">
-            Hair Diagnosis
-          </h3>
+            <ul className="text-sm text-[#828D9C] space-y-1">
+              <li>Male Hair Loss</li>
+              <li>Female Hair Loss</li>
+              <li>Alopecia Areata</li>
+              <li>Telogen Effluvium</li>
+            </ul>
+          </div>
 
-          <p className="text-sm text-[#828D9C]">
-            Root-cause evaluation for hair fall, thinning, hormonal & genetic
-            hair loss.
-          </p>
+          <button className="mt-6 text-sm font-medium text-[#9E4A47] hover:underline">
+            Read more…
+          </button>
         </motion.div>
 
-        {/* ================= CARD / 2 ================= */}
+        {/* ================= CARD 2 ================= */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4 bg-[#2B333C] rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-end"
+          className="md:col-span-4 bg-[#2B333C] rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between"
         >
-          <span className="absolute top-6 left-6 text-[#828D9C]">/2</span>
+          <div>
+            <h3 className="text-xl font-semibold text-white mb-4">
+              Hair Treatment
+            </h3>
 
-          <h3 className="text-xl font-semibold text-white mb-3">
-            Hair Treatments
-          </h3>
+            <ul className="text-sm text-[#DFDFDD] space-y-1">
+              <li>Natural Hairline</li>
+              <li>Synthetic Hair</li>
+              <li>Body Hair Transplant</li>
+              <li>Regrow Hair Transplant</li>
+            </ul>
+          </div>
 
-          <p className="text-sm text-[#DFDFDD]">
-            FUE transplants, reconstruction, medical therapy & long-term hair
-            planning.
-          </p>
+          <button className="mt-6 text-sm font-medium text-[#B87C72] hover:underline">
+            Read more…
+          </button>
         </motion.div>
 
-        {/* ================= CARD / 3 ================= */}
+        {/* ================= CARD 3 ================= */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4 bg-white rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-end"
+          className="md:col-span-4 bg-white rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between"
         >
-          <span className="absolute top-6 left-6 text-[#DFDFDD]">/3</span>
+          <div>
+            <h3 className="text-xl font-semibold text-[#2B333C] mb-4">
+              Skin Concerns
+            </h3>
 
-          <h3 className="text-xl font-semibold text-[#2B333C] mb-3">
-            Skin Concerns
-          </h3>
+            <ul className="text-sm text-[#828D9C] space-y-1">
+              <li>Aging Treatments</li>
+              <li>Laser Hair Reduction</li>
+              <li>Chemical Peeling</li>
+              <li>MNRF</li>
+              <li>HIFU</li>
+            </ul>
+          </div>
 
-          <p className="text-sm text-[#828D9C]">
-            Acne, pigmentation, scars, aging, sensitivity & chronic skin issues.
-          </p>
+          <button className="mt-6 text-sm font-medium text-[#9E4A47] hover:underline">
+            Read more…
+          </button>
         </motion.div>
 
-        {/* ================= CARD / 4 ================= */}
+        {/* ================= CARD 4 ================= */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="md:col-span-4 bg-[#2B333C] rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-end"
+          className="md:col-span-4 bg-[#2B333C] rounded-2xl p-8 relative min-h-[260px] flex flex-col justify-between"
         >
-          <span className="absolute top-6 left-6 text-[#828D9C]">/4</span>
+          <div>
+            <h3 className="text-xl font-semibold text-white mb-4">
+              Skin Treatment
+            </h3>
 
-          <h3 className="text-xl font-semibold text-white mb-3">
-            Skin Treatments
-          </h3>
+            <ul className="text-sm text-[#DFDFDD] space-y-1">
+              <li>Pigmentation</li>
+              <li>Wrinkles & Fine Lines</li>
+              <li>Acne Scars</li>
+              <li>Dull Skin with Open Pores</li>
+              <li>Body Contouring</li>
+              <li>Non Surgical Face Lift</li>
+            </ul>
+          </div>
 
-          <p className="text-sm text-[#DFDFDD]">
-            Laser, injectables, resurfacing & regenerative dermatology solutions.
-          </p>
+          <button className="mt-6 text-sm font-medium text-[#B87C72] hover:underline">
+            Read more…
+          </button>
         </motion.div>
 
-        {/* ================= IMAGE (RIGHT SIDE – FIXED) ================= */}
+        {/* ================= IMAGE (UNCHANGED) ================= */}
         <motion.div
           variants={fadeUp}
           initial="hidden"

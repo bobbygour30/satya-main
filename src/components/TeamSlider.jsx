@@ -6,17 +6,17 @@ import assets from "../assets/assets";
 const doctors = [
   {
     name: "Dr. Shail Gupta",
-    role: "Founder & Hair Transplant Specialist",
+    role: "Founder",
     image: assets.drShailGupta,
     description:
-      "Dr. Shail Gupta is a board-certified dermatologist and founder of Satya Skin & Hair Solutions. Known for his holistic approach, he combines medical precision with emotional understanding to deliver natural, lasting results.",
+      "Dr. Shail Gupta is a board-certified dermatologist, renowned hair transplant expert, and founder of Satya Skin & Hair Solutions. Known for his holistic approach, he focuses on both physical results and emotional well-being. Beyond clinical practice, he educates and inspires a global audience through social platforms. A multifaceted personality, musician, artist, writer, and subconscious healer, he is widely respected as a global authority in dermatology and hair restoration.",
   },
   {
     name: "Dr. Ruchi Agarwal",
-    role: "Co-Founder & Consultant Dermatologist",
+    role: "Co-Founder",
     image: assets.drRuchiAgarwal,
     description:
-      "Dr. Ruchi Agarwal brings over 20 years of expertise in dermatology and aesthetics. She is widely respected for her patient-first approach, precision treatments, and ethical clinical practice.",
+      "Dr. Ruchi Agarwal is a board certified dermatologist and co-founder of Satya Skin & Hair Solutions, bringing over 24 years of experience in clinical and cosmetic dermatology. She specializes in dermato-surgical and advanced aesthetic procedures, supported by world class training. Known for her empathetic, patient-first approach, Dr. Ruchi emphasizes attentive listening and personalized treatment planning ensuring every patient feels heard, understood, and confidently guided.",
   },
 ];
 
@@ -30,16 +30,18 @@ export default function TeamSlider() {
       <div className="flex justify-between items-start mb-14">
         <div>
           <p className="text-[#B87C72] uppercase tracking-[3px] text-sm font-medium mb-2">
-            Who we are
+            Our Care Team
           </p>
 
           <h2 className="text-4xl md:text-5xl font-semibold text-[#2B333C] mb-4">
-            Our Team
+            Meet the Experts
           </h2>
 
           <p className="text-[#828D9C] max-w-2xl leading-relaxed">
-            Meet our team of experts, committed to delivering ethical,
-            science-backed care with precision, empathy, and excellence.
+            Meet the experts behind Satya Skin & Hair Solutions, a trusted team of
+            dermatologists and hair restoration specialists delivering
+            personalized, high-quality skin and hair care with honesty,
+            precision, and proven results.
           </p>
         </div>
 
@@ -71,15 +73,16 @@ export default function TeamSlider() {
         {/* ===== LEFT CARD ===== */}
         <div className="lg:col-span-3 bg-[#2B333C] rounded-3xl p-8 flex flex-col justify-between text-white">
           <div>
-            <p className="text-sm opacity-80 mb-2">Meet Us</p>
+            <p className="text-sm opacity-80 mb-2">Our Philosophy</p>
 
             <h3 className="text-2xl font-semibold mb-4">
-              We are a team of experts
+              Expertise rooted in trust
             </h3>
 
             <p className="text-sm text-[#DFDFDD] leading-relaxed">
-              Our clinic stands at the forefront of skin & hair innovation,
-              equipped with advanced technology and trusted medical expertise.
+              Our care team is built on honesty, ethical practice, and
+              science-backed treatments, ensuring every patient receives
+              personalized care with clarity and confidence.
             </p>
           </div>
 
@@ -100,9 +103,11 @@ export default function TeamSlider() {
         {/* ===== RIGHT INFO ===== */}
         <div className="lg:col-span-3 bg-white rounded-3xl p-8 flex flex-col justify-between">
           <div>
-            <h3 className="text-2xl font-semibold text-[#2B333C] mb-6">
+            <h3 className="text-2xl font-semibold text-[#2B333C] mb-2">
               {doctor.name}
             </h3>
+
+            <p className="text-sm text-[#828D9C] mb-2">{doctor.role}</p>
 
             <p className="text-[#828D9C] text-sm leading-relaxed">
               {doctor.description}

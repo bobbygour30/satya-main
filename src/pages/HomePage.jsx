@@ -10,10 +10,10 @@ import TeamSlider from "../components/TeamSlider";
 import InsightsSection from "../components/InsightsSection";
 import FAQComponent from "../components/FAQComponent";
 import ProductShowcaseSection from "../components/ProductShowcaseSection";
-import BadgesSection from "../components/BadgesSection";
+// import BadgesSection from "../components/BadgesSection";
 import Ratings from "../components/Ratings";
 import Blogs from "../components/Blogs";
-// import SatyaIntroduction from "../components/SatyaIntroduction";
+import SatyaIntroduction from "../components/SatyaIntroduction";
 
 const HomePage = () => {
 
@@ -22,7 +22,7 @@ const HomePage = () => {
     <div>
       <BannerSlider />
       {/* <LogoSlider  /> */}
-      {/* <SatyaIntroduction /> */}
+      <SatyaIntroduction />
       <HeroSection />
       <Ratings />
       <ServicesAndEvolution />
@@ -34,7 +34,7 @@ const HomePage = () => {
       <FAQComponent />
       <ProductShowcaseSection />
       <Blogs />
-      <BadgesSection />
+      {/* <BadgesSection /> */}
       
     </div>
   );

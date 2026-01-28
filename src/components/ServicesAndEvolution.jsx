@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import assets from "../assets/assets";
 
@@ -7,11 +7,34 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+// Slider images
+const skinImages = [assets.skin, assets.skin2, assets.skin3, assets.skin4];
+const hairImages = [assets.hair1, assets.hair2, assets.hair3];
+
 const ServicesSection = () => {
+  const [skinIndex, setSkinIndex] = useState(0);
+  const [hairIndex, setHairIndex] = useState(0);
+
+  // Auto slide
+  useEffect(() => {
+    const skinTimer = setInterval(() => {
+      setSkinIndex((prev) => (prev + 1) % skinImages.length);
+    }, 3500);
+
+    const hairTimer = setInterval(() => {
+      setHairIndex((prev) => (prev + 1) % hairImages.length);
+    }, 4000);
+
+    return () => {
+      clearInterval(skinTimer);
+      clearInterval(hairTimer);
+    };
+  }, []);
+
   return (
-    <div className="w-full bg-[#FFF8EF] pt-10 pb-20 px-4 md:px-8 lg:px-12 ">
+    <div className="w-full bg-[#FFF8EF] pt-10 pb-20 px-4 md:px-8 lg:px-12">
       {/* REAL RESULTS SECTION */}
-      <div className="grid md:grid-cols-3 gap-10 mt-20 items-start">
+      <div className="grid md:grid-cols-3 gap-10 mt-20 items-center">
 
         {/* LEFT CONTENT */}
         <motion.div
@@ -35,7 +58,7 @@ const ServicesSection = () => {
           </button>
         </motion.div>
 
-        {/* RESULT 1 */}
+        {/* ================= SKIN RESULTS SLIDER ================= */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -45,19 +68,22 @@ const ServicesSection = () => {
           transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.03]"
         >
           <img
-            src={assets.skin}
-            alt="Patient story"
-            className="w-full h-72 object-cover"
+            src={skinImages[skinIndex]}
+            alt="Skin Result"
+            className="w-full h-[320px] sm:h-[360px] md:h-[420px] object-cover transition-opacity duration-700"
+
           />
+
           <div className="p-5">
-            <h3 className="font-semibold text-[#2B333C]">
-              Natural Skin Rejuvenation
-            </h3>
            
+
+            <button className="w-full border border-[#9E4A47] text-[#9E4A47] py-2.5 rounded-full text-sm font-medium hover:bg-[#9E4A47] hover:text-white transition">
+              Explore Skin Results
+            </button>
           </div>
         </motion.div>
 
-        {/* RESULT 2 */}
+        {/* ================= HAIR RESULTS SLIDER ================= */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -67,17 +93,21 @@ const ServicesSection = () => {
           transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.03]"
         >
           <img
-            src={assets.hair}
-            alt="Patient story"
-            className="w-full h-72 object-cover"
+            src={hairImages[hairIndex]}
+            alt="Hair Result"
+           className="w-full h-[320px] sm:h-[360px] md:h-[420px] object-cover transition-opacity duration-700"
+
           />
+
           <div className="p-5">
-            <h3 className="font-semibold text-[#2B333C]">
-              Corrective Hair Restoration
-            </h3>
           
+
+            <button className="w-full border border-[#9E4A47] text-[#9E4A47] py-2.5 rounded-full text-sm font-medium hover:bg-[#9E4A47] hover:text-white transition">
+              Explore Hair Results
+            </button>
           </div>
         </motion.div>
+
       </div>
     </div>
   );

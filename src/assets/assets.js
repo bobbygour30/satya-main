@@ -1,8 +1,12 @@
 /* ================= BANNERS ================= */
-import banner1 from "./banner1.webp";
-import banner2 from "./banner2.webp";
-import banner3 from "./banner3.webp";
-import banner4 from "./banner4.webp";
+import banner1Desktop from "./banner1.webp";
+import banner1Mobile from "./banner1mobile.jpeg";
+import banner2Desktop from "./banner2.jpeg";
+import banner2Mobile from "./banner2mobile.jpeg";
+import banner3Desktop from "./banner3.jpeg";
+import banner3Mobile from "./banner3mobile.jpeg";
+import banner4Desktop from "./banner4.jpeg";
+import banner4Mobile from "./banner4mobile.jpeg";
 
 /* ================= LOGOS ================= */
 import logo1 from "./logo1.webp";
@@ -13,14 +17,21 @@ import logo5 from "./logo5.png";
 
 /* ================= CLINIC IMAGES ================= */
 /* Delhi */
-import delhi1 from "./delhi (1).webp";
-import delhi2 from "./delhi (2).webp";
-import delhi3 from "./delhi (3).webp";
+import delhi1 from "./delhi (1).jpg";
+import delhi2 from "./delhi (2).jpg";
+import delhi3 from "./delhi (3).jpg";
+import delhi4 from "./delhi (4).jpg";
+import delhi5 from "./delhi (5).jpg";
+import delhi6 from "./delhi (6).jpg";
 
 /* Gurgaon */
-import gurgao1 from "./gurgao (1).webp";
-import gurgao2 from "./gurgao (2).webp";
-import gurgao3 from "./gurgao (3).webp";
+import gurgao1 from "./gurgao (1).jpg";
+import gurgao2 from "./gurgao (2).jpg";
+import gurgao3 from "./gurgao (3).jpg";
+import gurgao4 from "./gurgao (4).jpg";
+import gurgao5 from "./gurgao (5).jpg";
+import gurgao6 from "./gurgao (6).jpg";
+import gurgao7 from "./gurgao (7).jpg";
 
 /* ================= DOCTORS ================= */
 import drRuchiAgarwal from "./Dr Ruchi Agarwal.webp";
@@ -35,7 +46,13 @@ import prakhar7 from "./prakhar7.png";
 import prakhar8 from "./prakhar8.png";
 
 import skin from "./skin.jpg";
+import skin2 from "./skin2.jpg";
+import skin3 from "./skin3.jpg";
+import skin4 from "./skin4.jpg";
 import hair from "./hair.jpg";
+import hair1 from "./hair1.jpg";
+import hair2 from "./hair2.jpg";
+import hair3 from "./hair3.jpg";
 import insite from "./insite.jpg";
 import insite1 from "./insite1.jpg";
 /* ================= PATIENT IMAGES ================= */
@@ -73,10 +90,14 @@ import laserToningBanner from "./lasertoning.jpg";
 import moleRemovalBanner from "./moleremoval.jpg";
 /* ================= EXPORT OBJECT ================= */
 const assets = {
-  banner1,
-  banner2,
-  banner3,
-  banner4,
+  banner1Desktop,
+  banner1Mobile,
+  banner2Desktop,
+  banner2Mobile,
+  banner3Desktop,
+  banner3Mobile,
+  banner4Desktop,
+  banner4Mobile,
 
   logo1,
   logo2,
@@ -87,10 +108,17 @@ const assets = {
   delhi1,
   delhi2,
   delhi3,
+  delhi4,
+  delhi5,
+  delhi6,
 
   gurgao1,
   gurgao2,
   gurgao3,
+  gurgao4,
+  gurgao5,
+  gurgao6,
+  gurgao7,
 
   drRuchiAgarwal,
   drShailGupta,
@@ -103,6 +131,12 @@ const assets = {
   prakhar7,
   prakhar8,
   skin,
+  skin2,
+  skin3,
+  skin4,
+  hair1,
+  hair2,
+  hair3,
   hair,
   insite,
   insite1,

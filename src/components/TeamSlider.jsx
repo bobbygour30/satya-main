@@ -25,7 +25,7 @@ export default function TeamSlider() {
   const doctor = doctors[index];
 
   return (
-    <section className="w-full bg-[#FFF8EF] px-6 md:px-16 py-20">
+    <section className="w-full bg-[#FFF8EF] px-6 md:px-16 sm:py-20 py-4">
       {/* ================= HEADER ================= */}
       <div className="flex justify-between items-start mb-14">
         <div>

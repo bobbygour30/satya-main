@@ -61,7 +61,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="relative w-full bg-[#FFF8EF] py-24 overflow-hidden">
+    <section className="relative w-full bg-[#FFF8EF] sm:py-24 py-5 overflow-hidden">
       <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#FCEBDE] blur-3xl opacity-70" />
 
       <div className="relative mx-auto max-w-[1500px] px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

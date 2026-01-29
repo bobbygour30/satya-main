@@ -32,9 +32,9 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <div className="w-full bg-[#FFF8EF] pt-10 pb-20 px-4 md:px-8 lg:px-12">
+    <div className="w-full bg-[#FFF8EF] sm:pt-10 pt-4 sm:pb-20 px-4 md:px-8 lg:px-12">
       {/* REAL RESULTS SECTION */}
-      <div className="grid md:grid-cols-3 gap-10 mt-20 items-center">
+      <div className="grid md:grid-cols-3 gap-10 sm:mt-20 items-center">
 
         {/* LEFT CONTENT */}
         <motion.div

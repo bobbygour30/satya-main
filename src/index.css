@@ -116,3 +116,48 @@
   .logo-img { height: 56px; } /* desktop */
   .logo-item { margin-left: 24px; margin-right: 24px; }
 }
+
+/* ===============================
+   WORDPRESS CONTENT FIX
+================================ */
+
+.wp-content :where(p) {
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+}
+
+.wp-content :where(h1, h2, h3, h4) {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.wp-content :where(ul, ol) {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.wp-content :where(li) {
+  margin-bottom: 0.75rem;
+}
+
+.wp-content :where(strong) {
+  font-weight: 600;
+}
+
+.wp-content :where(a) {
+  color: #9E4A47;
+  text-decoration: underline;
+}
+
+.wp-content :where(img) {
+  margin: 2rem 0;
+  border-radius: 1rem;
+}
+
+.wp-content :where(blockquote) {
+  margin: 2rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid #DFDFDD;
+  color: #828D9C;
+}

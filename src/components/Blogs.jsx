@@ -29,7 +29,7 @@ export default function Blogs() {
   }, []);
 
   return (
-    <section className="w-full bg-[#FFF8EF] py-16 md:py-20 px-4 md:px-8">
+    <section className="w-full bg-[#FFF8EF] sm:py-16 py-4  px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* ================= HEADER ================= */}
         <motion.div
@@ -43,11 +43,10 @@ export default function Blogs() {
             Knowledge & Care
           </p>
           <h1 className="text-4xl md:text-5xl font-semibold text-[#2B333C]">
-            Satya Insights
+            Blogs
           </h1>
           <p className="mt-4 text-[#828D9C] max-w-2xl mx-auto">
-            Honest medical perspectives, patient education, and science-led
-            insights from Satya Skin & Hair Clinic.
+            Explore expert insights and practical tips through our health and wellness blogs.
           </p>
         </motion.div>
 

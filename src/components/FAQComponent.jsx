@@ -36,7 +36,7 @@ export default function FAQComponent() {
   const [active, setActive] = useState(null);
 
   return (
-    <div className="w-full bg-[#FFF8EF] flex flex-col items-center py-16 px-4">
+    <div className="w-full bg-[#FFF8EF] flex flex-col items-center sm:py-16 py-4 px-4">
       <div className="w-full">
         {/* FAQ Heading */}
         <div className="mb-12 text-center md:text-left">
@@ -62,7 +62,7 @@ export default function FAQComponent() {
                 onClick={() => setActive(active === idx ? null : idx)}
                 aria-expanded={active === idx}
               >
-                <span className="text-lg md:text-xl text-[#2B333C] font-medium group-hover:text-[#9E4A47] transition">
+                <span className="text-base md:text-xl text-[#2B333C] font-medium group-hover:text-[#9E4A47] transition">
                   {item.question}
                 </span>
 

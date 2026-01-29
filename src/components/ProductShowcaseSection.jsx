@@ -24,7 +24,7 @@ export default function ProductShowcaseSection() {
   const [playingIndex, setPlayingIndex] = useState(null);
 
   return (
-    <div className="bg-[#FFF8EF] py-16 px-3 w-full flex justify-center">
+    <div className="bg-[#FFF8EF] sm:py-16 py-4 px-3 w-full flex justify-center">
       <div className="w-full max-w-7xl flex flex-col md:flex-row gap-8 items-stretch">
 
         {/* LEFT CARD */}

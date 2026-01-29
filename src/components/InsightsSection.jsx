@@ -6,7 +6,7 @@ import ReactCountryFlag from "react-country-flag";
 
 export default function InsightsSection() {
   return (
-    <section className="w-full bg-[#FFF8EF] px-6 md:px-16 py-20">
+    <section className="w-full bg-[#FFF8EF] px-6 md:px-16 sm:py-20 py-4">
       {/* ================= HEADER ================= */}
       <div className="flex items-end justify-between mb-14">
         <div>

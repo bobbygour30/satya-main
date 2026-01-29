@@ -14,7 +14,7 @@ export default function FaceLoveForm() {
   const next = () => setStep((s) => s + 1);
 
   return (
-    <section className="w-full bg-[#FFF8EF] py-14 px-4">
+    <section className="w-full bg-[#FFF8EF] sm:py-14 py-4 px-4">
       <div className="max-w-6xl mx-auto">
 
         <AnimatePresence mode="wait">

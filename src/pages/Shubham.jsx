@@ -1,136 +1,153 @@
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import assets from "../assets/assets"; // adjust path if needed
 
 export default function Shubham() {
   const [index, setIndex] = useState(0);
   const images = [assets.shubham4, assets.shubham3]; // Before & After toggle (update these assets if needed)
 
+  // ── Lightbox / Modal state ──
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const progressImages = [assets.shubham2, assets.shubham1, assets.shubham6, assets.shubham5];
+
   useEffect(() => {
     document.title =
       "Shubham’s Corrective Hair Transplant – The Science Behind Real, Sustainable Results | Satya Skin & Hair";
   }, []);
 
+  // Optional: close modal with Escape key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        setSelectedImage(null);
+      }
+    };
+    if (selectedImage) {
+      window.addEventListener("keydown", handleEsc);
+    }
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [selectedImage]);
+
   return (
     <div className="bg-[#FFF8EF] text-[#2B333C] min-h-screen">
       {/* ================= HERO SECTION ================= */}
-<section className="bg-[#FFF8EF] pt-6 sm:pt-8">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid lg:grid-cols-2 h-[60vh] md:h-[65vh] lg:h-[70vh] rounded-3xl">
-      
-      {/* IMAGE SIDE */}
-      <div className="relative h-full rounded-3xl lg:rounded-r-none overflow-hidden">
-        <img
-          src={images[index]}
-          alt={`${index === 0 ? "Before" : "After"} Corrective Hair Transplant – Shubham`}
-          className="w-full h-full object-cover"
-        />
+      <section className="bg-[#FFF8EF] pt-6 sm:pt-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 h-[60vh] md:h-[65vh] lg:h-[70vh] rounded-3xl">
+            
+            {/* IMAGE SIDE */}
+            <div className="relative h-full rounded-3xl lg:rounded-r-none overflow-hidden">
+              <img
+                src={images[index]}
+                alt={`${index === 0 ? "Before" : "After"} Corrective Hair Transplant – Shubham`}
+                className="w-full h-full object-cover"
+              />
 
-        {/* BEFORE / AFTER CONTROLS */}
-        <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20">
-          <div className="flex items-center gap-2 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-3 py-2">
-            <button
-              onClick={() => setIndex(0)}
-              className="w-7 h-7 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
-            >
-              <ChevronLeft size={14} />
-            </button>
+              {/* BEFORE / AFTER CONTROLS */}
+              <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20">
+                <div className="flex items-center gap-2 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-3 py-2">
+                  <button
+                    onClick={() => setIndex(0)}
+                    className="w-7 h-7 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
+                  >
+                    <ChevronLeft size={14} />
+                  </button>
 
-            <div className="flex bg-white/35 rounded-full overflow-hidden">
-              <button
-                onClick={() => setIndex(0)}
-                className={`px-4 py-1 text-xs font-medium transition ${
-                  index === 0
-                    ? "bg-[#9E4A47] text-white"
-                    : "text-white hover:bg-white/25"
-                }`}
-              >
-                Before
-              </button>
-              <button
-                onClick={() => setIndex(1)}
-                className={`px-4 py-1 text-xs font-medium transition ${
-                  index === 1
-                    ? "bg-[#9E4A47] text-white"
-                    : "text-white hover:bg-white/25"
-                }`}
-              >
-                After
-              </button>
+                  <div className="flex bg-white/35 rounded-full overflow-hidden">
+                    <button
+                      onClick={() => setIndex(0)}
+                      className={`px-4 py-1 text-xs font-medium transition ${
+                        index === 0
+                          ? "bg-[#9E4A47] text-white"
+                          : "text-white hover:bg-white/25"
+                      }`}
+                    >
+                      Before
+                    </button>
+                    <button
+                      onClick={() => setIndex(1)}
+                      className={`px-4 py-1 text-xs font-medium transition ${
+                        index === 1
+                          ? "bg-[#9E4A47] text-white"
+                          : "text-white hover:bg-white/25"
+                      }`}
+                    >
+                      After
+                    </button>
+                  </div>
+
+                  <button
+                    onClick={() => setIndex(1)}
+                    className="w-7 h-7 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
+                  >
+                    <ChevronRight size={14} />
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <button
-              onClick={() => setIndex(1)}
-              className="w-7 h-7 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
-            >
-              <ChevronRight size={14} />
-            </button>
+            {/* ================= CONTENT SIDE (DARK + SVG) ================= */}
+            <div className="relative bg-[#2B333C] text-white px-6 sm:px-10 lg:px-14 flex items-center rounded-3xl lg:rounded-l-none overflow-hidden">
+
+              {/* DECORATIVE SVG BACKGROUND */}
+              <div className="absolute inset-0 pointer-events-none opacity-20">
+                <svg
+                  viewBox="0 0 1440 800"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-full h-full"
+                >
+                  <path
+                    d="M0 200 C400 350 900 50 1440 200"
+                    stroke="#DFDFDD"
+                    strokeWidth="1.2"
+                  />
+                  <path
+                    d="M0 500 C450 650 900 350 1440 500"
+                    stroke="#DFDFDD"
+                    strokeWidth="1.1"
+                  />
+                  <path
+                    d="M0 350 C450 500 950 150 1440 350"
+                    stroke="#DFDFDD"
+                    strokeWidth="0.8"
+                  />
+                </svg>
+              </div>
+
+              {/* CONTENT */}
+              <div className="relative z-10 max-w-lg space-y-6">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-tight">
+                  Shubham
+                </h1>
+
+                <div>
+                  <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
+                    Treatment
+                  </p>
+                  <p className="text-base sm:text-lg font-medium">
+                    Corrective / Repair Hair Transplant
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
+                    Methods
+                  </p>
+                  <p className="text-lg sm:text-xl font-semibold">
+                    MHT + DSFT Advance FUE
+                  </p>
+                  <p className="text-sm opacity-90">
+                    FUT + FUE + Beard | Min-Med Protocol
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-      </div>
-
-      {/* ================= CONTENT SIDE (DARK + SVG) ================= */}
-      <div className="relative bg-[#2B333C] text-white px-6 sm:px-10 lg:px-14 flex items-center rounded-3xl lg:rounded-l-none overflow-hidden">
-
-        {/* DECORATIVE SVG BACKGROUND */}
-        <div className="absolute inset-0 pointer-events-none opacity-20">
-          <svg
-            viewBox="0 0 1440 800"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full"
-          >
-            <path
-              d="M0 200 C400 350 900 50 1440 200"
-              stroke="#DFDFDD"
-              strokeWidth="1.2"
-            />
-            <path
-              d="M0 500 C450 650 900 350 1440 500"
-              stroke="#DFDFDD"
-              strokeWidth="1.1"
-            />
-            <path
-              d="M0 350 C450 500 950 150 1440 350"
-              stroke="#DFDFDD"
-              strokeWidth="0.8"
-            />
-          </svg>
-        </div>
-
-        {/* CONTENT */}
-        <div className="relative z-10 max-w-lg space-y-6">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-tight">
-            Shubham
-          </h1>
-
-          <div>
-            <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
-              Treatment
-            </p>
-            <p className="text-base sm:text-lg font-medium">
-              Corrective / Repair Hair Transplant
-            </p>
-          </div>
-
-          <div>
-            <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
-              Methods
-            </p>
-            <p className="text-lg sm:text-xl font-semibold">
-              MHT + DSFT Advance FUE
-            </p>
-            <p className="text-sm opacity-90">
-              FUT + FUE + Beard | Min-Med Protocol
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* MAIN CONTENT */}
       <section className="max-w-7xl mx-auto px-6 py-12 sm:py-16 lg:py-20 space-y-10 md:space-y-12 text-[#2B333C] text-base sm:text-lg leading-relaxed">
@@ -199,31 +216,32 @@ export default function Shubham() {
           <li>FUT scars are minimal when done by experts</li>
           <li>Medicine supports growth; it shouldn’t be the foundation</li>
         </ul>
-           
 
-           {/* IMAGE GALLERY – Updated for Shubham */}
-      <section className="mt-12 sm:mt-20 px-6 pb-12 sm:pb-20">
-        <div className="max-w-7xl mx-auto rounded-3xl bg-white/40 p-6 sm:p-10 shadow-sm">
-          <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-8 text-center">
-            Shubham's Progress & Results
-          </h3>
+        {/* IMAGE GALLERY – Updated for Shubham with lightbox */}
+        <section className="mt-12 sm:mt-20 px-6 pb-12 sm:pb-20">
+          <div className="max-w-7xl mx-auto rounded-3xl bg-white/40 p-6 sm:p-10 shadow-sm">
+            <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-8 text-center">
+              Shubham's Progress & Results
+            </h3>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {[assets.shubham2, assets.shubham1, assets.shubham6, assets.shubham5].map((img, i) => (
-              <div
-                key={i}
-                className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm hover:shadow-md transition"
-              >
-                <img
-                  src={img}
-                  alt={`Shubham corrective hair transplant result ${i + 1}`}
-                  className="w-full aspect-[4/5] object-cover"
-                />
-              </div>
-            ))}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+              {progressImages.map((img, i) => (
+                <div
+                  key={i}
+                  className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm hover:shadow-md transition cursor-pointer"
+                  onClick={() => setSelectedImage(img)}
+                >
+                  <img
+                    src={img}
+                    alt={`Shubham corrective hair transplant result ${i + 1}`}
+                    className="w-full aspect-[4/5] object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
         {/* FAQs */}
         <div className="mt-12 pt-8 border-t border-[#FCEBDE]">
           <h3 className="text-2xl font-semibold text-[#0E3A43] mb-6">FAQs</h3>
@@ -269,6 +287,32 @@ export default function Shubham() {
         </div>
       </section>
 
+      {/* ── LIGHTBOX / FULL IMAGE MODAL ── */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)} // close on backdrop click
+        >
+          <div
+            className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage}
+              alt="Shubham full progress image"
+              className="max-w-full max-h-[90vh] object-contain"
+            />
+
+            <button
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition"
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close full image"
+            >
+              <X size={28} strokeWidth={2.5} />
+            </button>
+          </div>
+        </div>
+      )}
       
     </div>
   );

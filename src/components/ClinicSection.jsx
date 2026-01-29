@@ -73,7 +73,7 @@ export default function ClinicSection() {
   const rightIndex = useAutoSlider(RIGHT_IMAGES, 4200);
 
   return (
-    <section className="w-full bg-[#FFF8EF] py-14 px-6 md:px-20">
+    <section className="w-full bg-[#FFF8EF] sm:py-14 py-4 px-6 md:px-20">
       <div className="">
 
         {/* ================= TOP TEXT ================= */}

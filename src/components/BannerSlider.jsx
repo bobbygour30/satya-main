@@ -7,26 +7,34 @@ const slides = [
   {
     desktopImage: assets.banner3Desktop,
     mobileImage: assets.banner3Mobile,
-    headline: "WE CARE ABOUT YOUR SKIN & HAIR",
+    headline: "Clinically Proven Skin & Hair Treatments",
+        subtext:
+      "",
     cta: "BOOK APPOINTMENT",
   },
   {
     desktopImage: assets.banner4Desktop,
     mobileImage: assets.banner4Mobile,
-    headline: "AWARD-WINNING MEDICAL EXCELLENCE",
+    headline: "Award-Winning Excellence in Hair and Skin Restoration",
+        subtext:
+      "",
     cta: "EXPLORE TREATMENTS",
   },
   {
     desktopImage: assets.banner2Desktop,
     mobileImage: assets.banner2Mobile,
-    headline: "YOU’RE BEAUTIFUL. WE JUST ENHANCE IT.",
+    headline: "You're Beautiful",
+      subtext:
+    "We just make you Realize it.",
     cta: "VIEW REAL RESULTS",
   },
   {
     desktopImage: assets.banner1Desktop,
     mobileImage: assets.banner1Mobile,
     headline:
-      "HAIR BHI, HEALTH BHI™ RESULTS THAT LOOK NATURAL & LAST LONGER",
+      "Hair Bhi, Health Bhi™ ",
+        subtext:
+    "Results That Look Natural & Last Longer.",
     cta: "VIEW REAL RESULTS",
   },
 ];
@@ -68,12 +76,15 @@ export default function BannerSlider() {
             <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
 
             {/* ================= DESKTOP CONTENT ================= */}
-            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 hidden md:block">
+            <div className="relative z-10  px-6 md:px-12 hidden md:block ml-11">
               <div className="grid grid-cols-2 items-center min-h-[90vh]">
                 <div>
-                  <h1 className="text-4xl font-semibold leading-tight mb-6 text-white">
+                  <h1 className="text-6xl font-semibold leading-tight mb-6 text-white">
                     {slide.headline}
                   </h1>
+                  <p className="text-lg max-w-lg mb-10 text-white/90">
+                    {slide.subtext}
+                  </p>
 
                   <button className="inline-flex items-center gap-3 bg-[#9E4A47] hover:bg-[#84332F] transition px-7 py-3 rounded-full text-white font-medium">
                     {slide.cta}
@@ -97,9 +108,12 @@ export default function BannerSlider() {
 
               {/* Mobile Content */}
               <div className="absolute inset-0 z-10 px-6 pt-10 pb-24 flex flex-col">
-                <h1 className="text-3xl font-semibold leading-tight mb-4 text-white">
+                <h1 className="text-4xl font-semibold leading-tight mb-4 text-white text-center ">
                   {slide.headline}
                 </h1>
+                <p className="text-lg max-w-lg mb-10 text-white/90 text-center">
+                  {slide.subtext}
+                </p>
 
                 {/* Bottom Center CTA */}
                 <button

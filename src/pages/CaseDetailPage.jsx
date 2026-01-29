@@ -1,15 +1,33 @@
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import assets from "../assets/assets"; // adjust path if needed
 
 export default function CaseDetailPage() {
   const [index, setIndex] = useState(0);
   const images = [assets.prakhar2, assets.prakhar3]; // Before & After main toggle
 
+  // ── Lightbox / Modal state ──
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const progressImages = [assets.prakhar6, assets.prakhar7, assets.prakhar8];
+
   useEffect(() => {
     document.title =
       "Two Brothers, Two Hair Transplants, Why One Result Lasted and the Other Failed | Satya Skin & Hair";
   }, []);
+
+  // Optional: close modal with Escape key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        setSelectedImage(null);
+      }
+    };
+    if (selectedImage) {
+      window.addEventListener("keydown", handleEsc);
+    }
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [selectedImage]);
 
   return (
     <div className="bg-[#FFF8EF] text-[#2B333C] min-h-screen">
@@ -131,8 +149,6 @@ export default function CaseDetailPage() {
         </div>
       </section>
 
-      
-
       {/* MAIN CONTENT – Full Story */}
       <section className="max-w-7xl mx-auto px-6 py-10 sm:py-16 space-y-10 text-[#2B333C] text-base sm:text-lg leading-relaxed">
         <h2 className="text-3xl sm:text-4xl font-semibold text-[#0E3A43] mb-6">
@@ -174,22 +190,22 @@ export default function CaseDetailPage() {
           <li>Using the least possible medication</li>
         </ul>
 
-
-{/* YOUTUBE VIDEO */}
-      <section className="py-20 sm:py-28 px-6">
-        <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white">
-          <div className="aspect-video">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/Fsi5_On4q_8"
-              title="Prakhar Hair Transplant Result – Satya Skin & Hair"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+        {/* YOUTUBE VIDEO */}
+        <section className="py-20 sm:py-28 px-6">
+          <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white">
+            <div className="aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/Fsi5_On4q_8"
+                title="Prakhar Hair Transplant Result – Satya Skin & Hair"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
         <p>
           We proposed a DSFT (Direct Stimulated Follicular Transplant) Advance FUE hair transplant with a realistic graft count, balanced density, and a Min-Med protocol with around 1.5 mg/week.
         </p>
@@ -256,28 +272,29 @@ export default function CaseDetailPage() {
         </ol>
 
         {/* IMAGE GALLERY */}
-      <section className="mt-16 sm:mt-24 px-6">
-        <div className="max-w-6xl mx-auto rounded-3xl  p-6 sm:p-8">
-          <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-6 sm:mb-8 text-center">
-            Prakhar’s Progress & Results
-          </h3>
+        <section className="mt-16 sm:mt-24 px-6">
+          <div className="max-w-6xl mx-auto rounded-3xl  p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-6 sm:mb-8 text-center">
+              Prakhar’s Progress & Results
+            </h3>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {[assets.prakhar6, assets.prakhar7, assets.prakhar8].map((img, i) => (
-              <div
-                key={i}
-                className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm"
-              >
-                <img
-                  src={img}
-                  alt={`Prakhar hair transplant result ${i + 1}`}
-                  className="w-full  object-cover"
-                />
-              </div>
-            ))}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {progressImages.map((img, i) => (
+                <div
+                  key={i}
+                  className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm cursor-pointer hover:shadow-md transition-shadow duration-200"
+                  onClick={() => setSelectedImage(img)}
+                >
+                  <img
+                    src={img}
+                    alt={`Prakhar hair transplant result ${i + 1}`}
+                    className="w-full aspect-[4/5] md:aspect-[3/4] object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
           Pay for Skill, Not for Pill
@@ -332,6 +349,35 @@ export default function CaseDetailPage() {
           <p className="font-semibold">📞 +91 9910094945</p>
         </div>
       </section>
+
+      {/* ── LIGHTBOX / FULL IMAGE MODAL ── */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)} // close when clicking backdrop
+        >
+          {/* Image container – stop propagation so clicking image doesn't close */}
+          <div
+            className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage}
+              alt="Prakhar full progress image"
+              className="max-w-full max-h-[90vh] object-contain"
+            />
+
+            {/* Close button */}
+            <button
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition"
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close full image"
+            >
+              <X size={28} strokeWidth={2.5} />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

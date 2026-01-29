@@ -10,7 +10,7 @@ const fadeUp = {
 
 export default function HeroSection() {
   return (
-    <section className="w-full bg-[#FFF8EF] px-6 py-20">
+    <section className="w-full bg-[#FFF8EF] px-6 sm:py-20 py-5">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
         {/* ================= TOP + LEFT TEXT ================= */}
@@ -56,7 +56,7 @@ export default function HeroSection() {
               Hair Concerns
             </h3>
 
-            <ul className="text-2xl text-[#828D9C] space-y-1">
+            <ul className="text-xl text-[#828D9C] space-y-1">
               <li>Male Hair Loss</li>
               <li>Female Hair Loss</li>
               <li>Alopecia Areata</li>
@@ -102,7 +102,7 @@ export default function HeroSection() {
               Hair Treatment
             </h3>
 
-            <ul className="text-2xl text-[#DFDFDD] space-y-1">
+            <ul className="text-xl text-[#DFDFDD] space-y-1 ">
               <li>Natural Hairline</li>
               <li>Synthetic Hair</li>
               <li>Body Hair Transplant</li>
@@ -148,7 +148,7 @@ export default function HeroSection() {
               Skin Concerns
             </h3>
 
-            <ul className="text-2xl text-[#828D9C] space-y-1">
+            <ul className="text-xl text-[#828D9C] space-y-1 ">
               <li>Aging Treatments</li>
               <li>Laser Hair Reduction</li>
               <li>Chemical Peeling</li>
@@ -195,7 +195,7 @@ export default function HeroSection() {
               Skin Treatment
             </h3>
 
-            <ul className="text-2xl text-[#DFDFDD] space-y-1">
+            <ul className="text-xl text-[#DFDFDD] space-y-1">
               <li>Pigmentation</li>
               <li>Wrinkles & Fine Lines</li>
               <li>Acne Scars</li>

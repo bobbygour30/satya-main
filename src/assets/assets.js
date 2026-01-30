@@ -89,13 +89,78 @@ import hairWeavingBanner from "./hairweaving.png";
 import laserHairBanner from "./laserhair.jpg";
 import laserToningBanner from "./lasertoning.jpg";
 import moleRemovalBanner from "./moleremoval.jpg";
-
-
-
+import lokesh from "./lokesh.png";
+import lokesh1 from "./lokesh1.png";
 import adam from "./adam.jpg";
 import sandeep from "./sandeep.jpg";
 import supreet from "./supreet.jpg";
 import manoharsha from "./manoharsha.jpg";
+
+/* ================= RIGHT VIEW ================= */
+import rightViewDay1 from "./Right View 1 Day.png";
+import rightViewMonth2_2ndSurgery from "./Right View 2nd Month 2nd Surgery.png";
+import rightViewMonth3_2ndSurgery from "./Right View 3 Month 2nd Surgery.png";
+import rightViewMonth6 from "./Right View 6 Month.png";
+import rightViewMonth7_2ndSurgery from "./Right View 7 Month 2nd Surgery.png";
+import rightViewBeforeSurgery from "./Right View Before Suregery.png";
+import rightViewImmediate from "./Right View Immediate.png";
+import rightViewImmediate2ndSurgery from "./Right View Immediate 2nd Surgery.JPG.jpg";
+import rightViewProfileTitle from "./Right View Profile Title.png";
+
+/* ================= LEFT VIEW ================= */
+import leftViewMonth1_2ndSurgery from "./Left View 1 Month 2nd Surgery.png";
+import leftViewMonth2_2ndSurgery from "./Left View 2nd Month 2nd Surgery.png";
+import leftViewMonth3_2ndSurgery from "./Left View 3 Month 2nd Surgery.png";
+import leftViewMonth6 from "./Left View 6 Month.png";
+import leftViewMonth7_2ndSurgery from "./Left View 7 Month 2nd Surgery.png";
+import leftView15Days from "./Left View 15 Days.png";
+import leftViewBefore2ndSurgery from "./Left View Before 2nd Surgery.png";
+import leftViewBeforeSurgery from "./Left View Before Surgery.png";
+import leftViewImmediateDay1 from "./Left View Immediate 1 Day.png";
+import leftViewImmediate from "./Left View Immediate.png";
+import leftViewImmediate2ndSurgery from "./Left View Immediate 2nd Surgery (2).jpg";
+
+/* ================= IMMEDIATE / OTHER VIEWS ================= */
+import immediate from "./Immediate.png";
+import immediate2ndSurgery from "./Immediate 2nd Surgery.jpg";
+import immediateFrontView from "./Immediate Front View.png";
+import immediateBackView from "./Immediate Back View.png";
+
+
+/* ================= FRONT VIEW ================= */
+import frontViewBeforeSurgery from "./Front View Before Surgery.png";
+import frontViewImmediate2ndSurgery from "./Front View Immmediate 2nd Surgery.jpg";
+
+/* ================= DONOR AREA ================= */
+import donorBeforeSurgery from "./Donor Before Surgery.png";
+import donorImmediate from "./Donor Immediate.png";
+import donorImmediate15Days from "./Donor Immediate 15 Days.png";
+import donorImmediate1Month from "./Donor Immediate 1 Month.png";
+
+/* ================= BEFORE 2ND SURGERY ================= */
+import before2ndSurgery from "./Before 2nd Surgery.png";
+
+/* ================= BACK VIEW ================= */
+import backViewDay1 from "./Back View 1 Day.png";
+import backView15Days from "./Back View 15 Day.png";
+import backViewAfter3Month2ndSurgery from "./Back View After 3 Month 2nd Surgery.png";
+import backViewAfter7Month2ndSurgery from "./Back View After 7 Month 2nd Surgery.png";
+import backViewBeforeSurgery from "./Back View Before Surgery.png";
+
+/* ================= TIMELINE / GENERAL ================= */
+import day1 from "./1 Day.png";
+import day1FrontView from "./1 Day Front View.png";
+// import month1 from "./1 Month.png";
+import month1FrontView from "./1 Month Front View.png";
+import month1_2ndSurgery from "./1 Month 2nd Surgery.png";
+import month1_2ndSurgeryFrontView from "./1 Month 2nd Surgery Front View.png";
+import month2_2ndSurgery from "./2nd Month 2nd Surgery.png";
+import month2_2ndSurgeryFrontView from "./2 Month 2nd Surgery Front View.png";
+import month3_2ndSurgery from "./3 Month 2nd Surgery.png";
+import month6FrontView from "./6 Month Front View.png";
+import month7_2ndSurgery from "./7 Month 2nd Surgery.png";
+import month7_2ndSurgeryFrontView from "./7 Months 2nd Surgery Front View.png";
+import days15FrontView from "./15 Days Front View.png";
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1Desktop,
@@ -185,7 +250,75 @@ const assets = {
   adam,
   sandeep,
   supreet,
-  manoharsha
+  manoharsha,
+
+  lokesh,
+  lokesh1,
+
+ /* Front View */
+  frontViewBeforeSurgery,
+  frontViewImmediate2ndSurgery,
+
+  /* Donor Area */
+  donorBeforeSurgery,
+  donorImmediate,
+  donorImmediate15Days,
+  donorImmediate1Month,
+
+  /* Before 2nd Surgery */
+  before2ndSurgery,
+
+  /* Back View */
+  backViewDay1,
+  backView15Days,
+  backViewAfter3Month2ndSurgery,
+  backViewAfter7Month2ndSurgery,
+  backViewBeforeSurgery,
+
+  /* Timeline / General */
+  day1,
+  day1FrontView,
+
+  month1FrontView,
+  month1_2ndSurgery,
+  month1_2ndSurgeryFrontView,
+  month2_2ndSurgery,
+  month2_2ndSurgeryFrontView,
+  month3_2ndSurgery,
+  month6FrontView,
+  month7_2ndSurgery,
+  month7_2ndSurgeryFrontView,
+  days15FrontView,
+
+  rightViewDay1,
+  rightViewMonth2_2ndSurgery,
+  rightViewMonth3_2ndSurgery,
+  rightViewMonth6,
+  rightViewMonth7_2ndSurgery,
+  rightViewBeforeSurgery,
+  rightViewImmediate,
+  rightViewImmediate2ndSurgery,
+  rightViewProfileTitle,
+
+  /* Left View */
+  leftViewMonth1_2ndSurgery,
+  leftViewMonth2_2ndSurgery,
+  leftViewMonth3_2ndSurgery,
+  leftViewMonth6,
+  leftViewMonth7_2ndSurgery,
+  leftView15Days,
+  leftViewBefore2ndSurgery,
+  leftViewBeforeSurgery,
+  leftViewImmediateDay1,
+  leftViewImmediate,
+  leftViewImmediate2ndSurgery,
+
+  /* Immediate / Other */
+  immediate,
+  immediate2ndSurgery,
+  immediateFrontView,
+  immediateBackView,
+
 };
 
 export default assets;

@@ -24,42 +24,31 @@ export default function TeamSlider() {
   const [index, setIndex] = useState(0);
   const doctor = doctors[index];
 
+  const prev = () =>
+    setIndex((prev) => (prev === 0 ? doctors.length - 1 : prev - 1));
+  const next = () => setIndex((prev) => (prev + 1) % doctors.length);
+
   return (
-    <section className="w-full bg-[#FFF8EF] px-6 md:px-16 sm:py-20 py-4">
+    <section className="w-full bg-[#FFF8EF] px-6 md:px-16 sm:py-20 py-6">
       {/* ================= HEADER ================= */}
-      <div className="flex justify-between items-start mb-14">
+      <div className="flex justify-between items-start mb-6">
         <div>
-          <p className="text-[#B87C72] uppercase tracking-[3px] text-sm font-medium mb-2">
+          <p className="text-[#B87C72] uppercase tracking-[3px] text-sm font-medium">
             Our Care Team
-          </p>
-
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#2B333C] mb-4">
-            Meet the Experts
-          </h2>
-
-          <p className="text-[#828D9C] max-w-2xl leading-relaxed">
-            Meet the experts behind Satya Skin & Hair Solutions, a trusted team of
-            dermatologists and hair restoration specialists delivering
-            personalized, high-quality skin and hair care with honesty,
-            precision, and proven results.
           </p>
         </div>
 
-        {/* NAVIGATION */}
-        <div className="flex gap-3">
+        {/* DESKTOP NAVIGATION */}
+        <div className="hidden md:flex gap-3">
           <button
-            onClick={() =>
-              setIndex((prev) => (prev === 0 ? doctors.length - 1 : prev - 1))
-            }
+            onClick={prev}
             className="w-11 h-11 rounded-full bg-[#2B333C] text-white flex items-center justify-center hover:bg-[#9E4A47] transition"
           >
             <ArrowLeft size={18} />
           </button>
 
           <button
-            onClick={() =>
-              setIndex((prev) => (prev + 1) % doctors.length)
-            }
+            onClick={next}
             className="w-11 h-11 rounded-full bg-[#2B333C] text-white flex items-center justify-center hover:bg-[#9E4A47] transition"
           >
             <ArrowRight size={18} />
@@ -70,19 +59,18 @@ export default function TeamSlider() {
       {/* ================= MAIN GRID ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
-        {/* ===== LEFT CARD ===== */}
+        {/* LEFT CARD */}
         <div className="lg:col-span-3 bg-[#2B333C] rounded-3xl p-8 flex flex-col justify-between text-white">
           <div>
-            <p className="text-sm opacity-80 mb-2">Our Philosophy</p>
-
             <h3 className="text-2xl font-semibold mb-4">
-              Expertise rooted in trust
+              Meet the Experts
             </h3>
 
             <p className="text-sm text-[#DFDFDD] leading-relaxed">
-              Our care team is built on honesty, ethical practice, and
-              science-backed treatments, ensuring every patient receives
-              personalized care with clarity and confidence.
+              Meet the experts behind Satya Skin & Hair Solutions, a trusted team
+              of dermatologists and hair restoration specialists delivering
+              personalized, high-quality skin and hair care with honesty,
+              precision, and proven results.
             </p>
           </div>
 
@@ -91,7 +79,7 @@ export default function TeamSlider() {
           </button>
         </div>
 
-        {/* ===== CENTER IMAGE ===== */}
+        {/* CENTER IMAGE */}
         <div className="lg:col-span-6 rounded-3xl overflow-hidden">
           <img
             src={doctor.image}
@@ -100,7 +88,24 @@ export default function TeamSlider() {
           />
         </div>
 
-        {/* ===== RIGHT INFO ===== */}
+        {/* MOBILE NAVIGATION (MOVED BELOW IMAGE) */}
+        <div className="flex md:hidden justify-center gap-6">
+          <button
+            onClick={prev}
+            className="w-11 h-11 rounded-full bg-[#2B333C] text-white flex items-center justify-center active:scale-95 transition"
+          >
+            <ArrowLeft size={18} />
+          </button>
+
+          <button
+            onClick={next}
+            className="w-11 h-11 rounded-full bg-[#2B333C] text-white flex items-center justify-center active:scale-95 transition"
+          >
+            <ArrowRight size={18} />
+          </button>
+        </div>
+
+        {/* RIGHT INFO */}
         <div className="lg:col-span-3 bg-white rounded-3xl p-8 flex flex-col justify-between">
           <div>
             <h3 className="text-2xl font-semibold text-[#2B333C] mb-2">

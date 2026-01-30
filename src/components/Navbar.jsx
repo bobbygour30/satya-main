@@ -86,7 +86,7 @@ const MENU = [
       { label: "Minimal Scar Hair Transplant", path: "/hair-transplant/minimal-scar" },
       { label: "Long Hair Transplant", path: "/hair-transplant/long" },
       { label: "Synthetic Hair Transplant", path: "/hair-transplant/synthetic" },
-      { label: "Case Studies", path: "/hair-transplant/case-studies" },
+      { label: "Case Studies", path: "/before-after" },
     ],
   },
 

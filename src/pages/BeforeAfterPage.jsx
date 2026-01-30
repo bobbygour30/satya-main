@@ -300,6 +300,38 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
         className="max-w-4xl mx-auto text-center"
       >
         <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
+          Lokesh Lohiya
+        </h3>
+
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src={assets.lokesh}
+            alt="Lokesh Transformation"
+            className="w-full h-[620px] object-contain bg-[#1a1f26]"
+          />
+        </div>
+
+        {/* VIEW TRANSFORMATION BUTTON */}
+        <div className="mt-10">
+          <Link
+            to="/case/lokesh"
+            className="inline-block px-10 py-3 rounded-full text-white font-medium
+                       bg-gradient-to-r from-[#9e4a47] to-[#84332F]
+                       shadow-lg shadow-[#9e4a47]/30
+                       hover:shadow-[#9e4a47]/50 transition"
+          >
+            View Transformation →
+          </Link>
+        </div>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="max-w-4xl mx-auto text-center"
+      >
+        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
           Prakhar
         </h3>
 
@@ -361,7 +393,7 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="max-w-4xl mx-auto text-center"
+        className="max-w-4xl mx-auto text-center mt-10"
       >
         <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
           Arjun

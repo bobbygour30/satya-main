@@ -12,7 +12,6 @@ export default function HeroSection() {
   return (
     <section className="w-full bg-[#FFF8EF] px-6 sm:py-20 py-5">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-
         {/* ================= TOP + LEFT TEXT ================= */}
         <motion.div
           variants={fadeUp}
@@ -31,14 +30,13 @@ export default function HeroSection() {
             </h2>
 
             <p className="text-sm text-[#828D9C] mb-2">
-              <span className="font-medium text-[#2B333C]">
-                Our Promise:
-              </span>{" "}
+              <span className="font-medium text-[#2B333C]">Our Promise:</span>{" "}
               We will never over treat you.
             </p>
 
             <p className="text-sm text-[#828D9C]">
-              Every treatment philosophy at Satya is rooted in three pillars: Science, Artistry, Trust
+              Every treatment philosophy at Satya is rooted in three pillars:
+              Science, Artistry, Trust
             </p>
           </div>
         </motion.div>
@@ -65,7 +63,7 @@ export default function HeroSection() {
           </div>
 
           <button
-  className="
+            className="
     mt-6
     inline-flex items-center gap-2
     text-sm md:text-base
@@ -80,13 +78,12 @@ export default function HeroSection() {
     focus:outline-none
     focus-visible:ring-2 focus-visible:ring-[#B87C72]/40
   "
->
-  Read more
-  <span className="transition-transform duration-300 group-hover:translate-x-1">
-    →
-  </span>
-</button>
-
+          >
+            Read more
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </button>
         </motion.div>
 
         {/* ================= CARD 2 ================= */}
@@ -103,15 +100,15 @@ export default function HeroSection() {
             </h3>
 
             <ul className="text-xl text-[#DFDFDD] space-y-1 ">
-              <li>Natural Hairline</li>
-              <li>Synthetic Hair</li>
-              <li>Body Hair Transplant</li>
-              <li>Regrow Hair Transplant</li>
+              <li>Hair Transplant</li>
+              <li>Hairloss Treatment</li>
+              <li>Corrective Transplants</li>
+              <li>Regenerative Hair Therapies</li>
             </ul>
           </div>
 
           <button
-  className="
+            className="
     mt-6
     inline-flex items-center gap-2
     text-sm md:text-base
@@ -126,13 +123,12 @@ export default function HeroSection() {
     focus:outline-none
     focus-visible:ring-2 focus-visible:ring-[#B87C72]/40
   "
->
-  Read more
-  <span className="transition-transform duration-300 group-hover:translate-x-1">
-    →
-  </span>
-</button>
-
+          >
+            Read more
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </button>
         </motion.div>
 
         {/* ================= CARD 3 ================= */}
@@ -149,16 +145,15 @@ export default function HeroSection() {
             </h3>
 
             <ul className="text-xl text-[#828D9C] space-y-1 ">
-              <li>Aging Treatments</li>
-              <li>Laser Hair Reduction</li>
-              <li>Chemical Peeling</li>
-              <li>MNRF</li>
-              <li>HIFU</li>
+              <li>Pigmentation</li>
+              <li>Wrinkles & Fine Lines</li>
+              <li>Acne/Acne Scars</li>
+              <li>Dull Skin & Open Pores</li>
             </ul>
           </div>
 
           <button
-  className="
+            className="
     mt-6
     inline-flex items-center gap-2
     text-sm md:text-base
@@ -173,13 +168,12 @@ export default function HeroSection() {
     focus:outline-none
     focus-visible:ring-2 focus-visible:ring-[#B87C72]/40
   "
->
-  Read more
-  <span className="transition-transform duration-300 group-hover:translate-x-1">
-    →
-  </span>
-</button>
-
+          >
+            Read more
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </button>
         </motion.div>
 
         {/* ================= CARD 4 ================= */}
@@ -196,17 +190,15 @@ export default function HeroSection() {
             </h3>
 
             <ul className="text-xl text-[#DFDFDD] space-y-1">
-              <li>Pigmentation</li>
-              <li>Wrinkles & Fine Lines</li>
-              <li>Acne Scars</li>
-              <li>Dull Skin with Open Pores</li>
-              <li>Body Contouring</li>
-              <li>Non Surgical Face Lift</li>
+              <li>Anti Aging</li>
+              <li>Medi-Facials</li>
+              <li>Laser Treatments</li>
+              <li>Acne & Scar</li>
             </ul>
           </div>
 
           <button
-  className="
+            className="
     mt-6
     inline-flex items-center gap-2
     text-sm md:text-base
@@ -221,13 +213,12 @@ export default function HeroSection() {
     focus:outline-none
     focus-visible:ring-2 focus-visible:ring-[#B87C72]/40
   "
->
-  Read more
-  <span className="transition-transform duration-300 group-hover:translate-x-1">
-    →
-  </span>
-</button>
-
+          >
+            Read more
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </button>
         </motion.div>
 
         {/* ================= IMAGE (UNCHANGED) ================= */}
@@ -248,7 +239,6 @@ export default function HeroSection() {
             VIEW SERVICES
           </button>
         </motion.div>
-
       </div>
     </section>
   );

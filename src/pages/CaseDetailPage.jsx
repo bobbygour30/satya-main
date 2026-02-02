@@ -6,28 +6,59 @@ export default function CaseDetailPage() {
   const [index, setIndex] = useState(0);
   const images = [assets.prakhar2, assets.prakhar3]; // Before & After main toggle
 
-  // ── Lightbox / Modal state ──
-  const [selectedImage, setSelectedImage] = useState(null);
+  // ── Progress slider + Lightbox state ──
+  const progressImages = [
+    assets.prakhar6,
+    assets.prakhar7,
+    assets.prakhar8,
+    // Add more images here if you have them later (e.g. assets.prakhar9, etc.)
+  ];
 
-  const progressImages = [assets.prakhar6, assets.prakhar7, assets.prakhar8];
+  const [lightboxImages, setLightboxImages] = useState([]);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
+  const openLightbox = (imgs, startIndex) => {
+    const valid = imgs.filter(Boolean); // remove any falsy values
+    if (valid.length > 0) {
+      setLightboxImages(valid);
+      setLightboxIndex(startIndex);
+    }
+  };
+
+  const closeLightbox = () => {
+    setLightboxImages([]);
+    setLightboxIndex(null);
+  };
+
+  const prevImage = () => {
+    setLightboxIndex((prev) =>
+      prev === 0 ? lightboxImages.length - 1 : prev - 1
+    );
+  };
+
+  const nextImage = () => {
+    setLightboxIndex((prev) =>
+      prev === lightboxImages.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handler = (e) => {
+      if (lightboxIndex === null) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightboxIndex, lightboxImages]);
+
+  // Page title
   useEffect(() => {
     document.title =
       "Two Brothers, Two Hair Transplants, Why One Result Lasted and the Other Failed | Satya Skin & Hair";
   }, []);
-
-  // Optional: close modal with Escape key
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") {
-        setSelectedImage(null);
-      }
-    };
-    if (selectedImage) {
-      window.addEventListener("keydown", handleEsc);
-    }
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, [selectedImage]);
 
   return (
     <div className="bg-[#FFF8EF] text-[#2B333C] min-h-screen">
@@ -35,7 +66,6 @@ export default function CaseDetailPage() {
       <section className="bg-[#FFF8EF] pt-6 sm:pt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 h-[60vh] md:h-[65vh] lg:h-[70vh] rounded-3xl">
-
             {/* IMAGE SIDE */}
             <div className="relative h-full rounded-3xl lg:rounded-r-none overflow-hidden">
               <img
@@ -43,7 +73,6 @@ export default function CaseDetailPage() {
                 alt={`${index === 0 ? "Before" : "After"} Hair Transplant – Prakhar`}
                 className="w-full h-full object-cover"
               />
-
               {/* BEFORE / AFTER CONTROLS */}
               <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20">
                 <div className="flex items-center gap-2 sm:gap-3 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-3 sm:px-4 py-2 sm:py-2.5">
@@ -53,7 +82,6 @@ export default function CaseDetailPage() {
                   >
                     <ChevronLeft size={16} />
                   </button>
-
                   <div className="flex bg-white/35 rounded-full overflow-hidden">
                     <button
                       onClick={() => setIndex(0)}
@@ -76,7 +104,6 @@ export default function CaseDetailPage() {
                       After
                     </button>
                   </div>
-
                   <button
                     onClick={() => setIndex(1)}
                     className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/25 transition"
@@ -89,7 +116,6 @@ export default function CaseDetailPage() {
 
             {/* ================= CONTENT SIDE (DARK + SVG) ================= */}
             <div className="relative bg-[#2B333C] text-white px-6 sm:px-10 lg:px-14 flex items-center rounded-3xl lg:rounded-l-none overflow-hidden">
-
               {/* DECORATIVE SVG BACKGROUND */}
               <div className="absolute inset-0 pointer-events-none opacity-20">
                 <svg
@@ -115,13 +141,11 @@ export default function CaseDetailPage() {
                   />
                 </svg>
               </div>
-
               {/* CONTENT */}
               <div className="relative z-10 max-w-md space-y-6">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-tight">
                   Prakhar
                 </h1>
-
                 <div>
                   <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
                     Treatment
@@ -130,7 +154,6 @@ export default function CaseDetailPage() {
                     Hair Transplant
                   </p>
                 </div>
-
                 <div>
                   <p className="text-xs uppercase tracking-wide opacity-70 mb-1">
                     Methods
@@ -144,7 +167,6 @@ export default function CaseDetailPage() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -154,25 +176,20 @@ export default function CaseDetailPage() {
         <h2 className="text-3xl sm:text-4xl font-semibold text-[#0E3A43] mb-6">
           Two Brothers, Two Hair Transplants – Why One Result Lasted and the Other Failed
         </h2>
-
         <p className="text-xl sm:text-2xl font-medium text-[#0E3A43] italic border-l-4 border-[#9E4A47] pl-6 py-2">
           At Satyaskinhair, founded by Dr Shail Gupta and Dr Ruchi Agarwal, we have seen thousands of hair transplant cases over the years. Some are first-time transplants. Many are corrective surgeries after failures elsewhere.
         </p>
-
         <p>
           Among them, Prakhar’s story stands out, because it doesn’t just involve one patient, but two brothers who chose very different paths.
         </p>
-
         <ul className="list-disc pl-6 space-y-2">
           <li>Both were young.</li>
           <li>Both had similar hair loss patterns.</li>
           <li>Both decided to get a transplant around the same time.</li>
         </ul>
-
         <p>
           But one made his decision based on planning and ethics, while the other was influenced by hair graft numbers, lower cost, and aggressive medication.
         </p>
-
         <p className="font-semibold">
           The results they live with today are drastically different.
         </p>
@@ -209,7 +226,6 @@ export default function CaseDetailPage() {
         <p>
           We proposed a DSFT (Direct Stimulated Follicular Transplant) Advance FUE hair transplant with a realistic graft count, balanced density, and a Min-Med protocol with around 1.5 mg/week.
         </p>
-
         <p>
           We explained clearly what surgery can do, what medicine can do, and where the limits are. He understood that our goal was not to “max out” his donor or overload him with drugs, but to give him natural, sustainable results.
         </p>
@@ -220,11 +236,9 @@ export default function CaseDetailPage() {
         <p>
           Prakhar’s brother chose another clinic. They offered almost double the grafts at half the cost, with promises of “amazing, dense results” plus full-dose medications.
         </p>
-
         <p>
           It sounded like a deal. Big numbers. Fast promises. In the short term, his result looked impressive. In photos, it seemed like he had “won” compared to Prakhar.
         </p>
-
         <p>
           But the foundation of that result was not surgical skill — it was heavy medication and overuse of grafts.
         </p>
@@ -235,11 +249,9 @@ export default function CaseDetailPage() {
         <p>
           Medicines like Finasteride and Minoxidil can increase shaft thickness, hold on to weak hairs for some time, and create the appearance of density.
         </p>
-
         <p>
           When used ethically, in the right dose and with monitoring, they can support a good transplant. However, when used in full doses to prop up a weak surgery, they create an illusion.
         </p>
-
         <p>
           Once the body adapts or the patient tapers the medicine, the illusion fades. This is exactly what happened with Prakhar’s brother.
         </p>
@@ -250,49 +262,42 @@ export default function CaseDetailPage() {
         <p>
           Prakhar’s result looked natural, balanced, and stable. His donor was intact. His hairline suited his face and age. His medicine was minimal and safe.
         </p>
-
         <p>
           His brother’s result started to collapse: density reduced, the illusion faded, donor had already been overused.
         </p>
-
         <p className="font-semibold">
           In simple terms: Prakhar still had the result + health + donor. His brother had lost all three.
         </p>
 
-        <h3 className="text-2xl font-semibold text-[#0E3A43] mt-12 mb-4">
-          Hair Transplant at a Young Age: The Hidden Risk
-        </h3>
-        <p>
-          When you undergo a hair transplant at a young age, three things matter more than anything:
-        </p>
-        <ol className="list-decimal pl-6 space-y-2 font-medium">
-          <li>Long-term planning</li>
-          <li>Donor preservation</li>
-          <li>Honest discussion about medication</li>
-        </ol>
-
-        {/* IMAGE GALLERY */}
-        <section className="mt-16 sm:mt-24 px-6">
-          <div className="max-w-6xl mx-auto rounded-3xl  p-6 sm:p-8">
+        {/* ================= PROGRESS SLIDER ================= */}
+        <section className="mt-16 sm:mt-24 px-2 sm:px-6">
+          <div className="max-w-7xl mx-auto">
             <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-6 sm:mb-8 text-center">
               Prakhar’s Progress & Results
             </h3>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-              {progressImages.map((img, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm cursor-pointer hover:shadow-md transition-shadow duration-200"
-                  onClick={() => setSelectedImage(img)}
-                >
-                  <img
-                    src={img}
-                    alt={`Prakhar hair transplant result ${i + 1}`}
-                    className="w-full aspect-[4/5] md:aspect-[3/4] object-cover"
-                  />
-                </div>
-              ))}
+            <div className="overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-[#9E4A47]/40 scrollbar-track-[#FCEBDE]/60">
+              <div className="flex gap-4 sm:gap-6 min-w-max px-2">
+                {progressImages.map((img, i) => (
+                  <div
+                    key={i}
+                    className="w-64 sm:w-80 flex-shrink-0 rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200"
+                    onClick={() => openLightbox(progressImages, i)}
+                  >
+                    <img
+                      src={img}
+                      alt={`Prakhar hair transplant progress ${i + 1}`}
+                      className="w-full aspect-[4/5] sm:aspect-[3/4] object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
+
+            <p className="text-center mt-4 text-sm opacity-80">
+              Click any image to view full size • Scroll horizontally →
+            </p>
           </div>
         </section>
 
@@ -302,7 +307,6 @@ export default function CaseDetailPage() {
         <p className="italic text-lg">
           “Pay the bill for the skill, not for the pill.”
         </p>
-
         <p>
           Because when a result is medicine-dependent, it is temporary by definition.
         </p>
@@ -331,49 +335,59 @@ export default function CaseDetailPage() {
         <p>
           Prakhar and his brother started from the same place. Their choices took them in completely different directions.
         </p>
-
         <p>
           One chose balanced planning, DSFT, and minimal medicine, and kept his hair, health, and donor. The other chose numbers, discounts, and heavy pills, and paid for it with all three.
         </p>
-
         <p className="font-semibold text-xl">
           If you’re planning a hair transplant, especially at a young age, let their story guide you.
         </p>
-
         <p className="text-center py-8 text-[#0E3A43] font-medium text-lg">
           Choose the truth. Choose long-term thinking. Choose a clinic that protects your hair, health, and donor — not just your “before-after” photo.
         </p>
-
         <div className="text-center border-t border-[#FCEBDE] pt-8 mt-8">
           <p className="font-semibold">📍 Satya Skin & Hair Solutions, DLF Phase 4, Gurgaon</p>
           <p className="font-semibold">📞 +91 9910094945</p>
         </div>
       </section>
 
-      {/* ── LIGHTBOX / FULL IMAGE MODAL ── */}
-      {selectedImage && (
+      {/* ── LIGHTBOX ── */}
+      {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)} // close when clicking backdrop
+          className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4"
+          onClick={closeLightbox}
         >
-          {/* Image container – stop propagation so clicking image doesn't close */}
           <div
-            className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            className="relative w-full h-full flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={selectedImage}
-              alt="Prakhar full progress image"
-              className="max-w-full max-h-[90vh] object-contain"
+              src={lightboxImages[lightboxIndex]}
+              alt="Full progress image"
+              className="max-w-[95%] max-h-[90vh] object-contain"
             />
 
-            {/* Close button */}
             <button
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition"
-              onClick={() => setSelectedImage(null)}
-              aria-label="Close full image"
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+              aria-label="Close"
             >
-              <X size={28} strokeWidth={2.5} />
+              <X size={24} />
+            </button>
+
+            <button
+              onClick={prevImage}
+              className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={28} />
+            </button>
+
+            <button
+              onClick={nextImage}
+              className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+              aria-label="Next image"
+            >
+              <ChevronRight size={28} />
             </button>
           </div>
         </div>

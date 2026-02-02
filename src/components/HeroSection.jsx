@@ -96,7 +96,7 @@ export default function HeroSection() {
         >
           <div>
             <h3 className="text-3xl font-semibold text-white mb-4">
-              Hair Treatment
+              Hair Treatments
             </h3>
 
             <ul className="text-xl text-[#DFDFDD] space-y-1 ">
@@ -186,7 +186,7 @@ export default function HeroSection() {
         >
           <div>
             <h3 className="text-3xl font-semibold text-white mb-4">
-              Skin Treatment
+              Skin Treatments
             </h3>
 
             <ul className="text-xl text-[#DFDFDD] space-y-1">

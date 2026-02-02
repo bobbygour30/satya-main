@@ -4,30 +4,62 @@ import assets from "../assets/assets"; // adjust path if needed
 
 export default function Arjun() {
   const [index, setIndex] = useState(0);
-  const images = [assets.arjun1, assets.arjun6]; // Before & After toggle (update these assets if needed)
+  const images = [assets.arjun1, assets.arjun6]; // Before & After toggle
 
-  // ── Lightbox / Modal state ──
-  const [selectedImage, setSelectedImage] = useState(null);
+  // ── Progress slider + Lightbox state ──
+  const progressImages = [
+    assets.arjun5,
+    assets.arjun4,
+    assets.arjun3,
+    assets.arjun2,
+    // Add more here later if you have additional progress photos
+  ];
 
-  const progressImages = [assets.arjun5, assets.arjun4, assets.arjun3, assets.arjun2];
+  const [lightboxImages, setLightboxImages] = useState([]);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
+  const openLightbox = (imgs, startIndex) => {
+    const valid = imgs.filter(Boolean);
+    if (valid.length > 0) {
+      setLightboxImages(valid);
+      setLightboxIndex(startIndex);
+    }
+  };
+
+  const closeLightbox = () => {
+    setLightboxImages([]);
+    setLightboxIndex(null);
+  };
+
+  const prevImage = () => {
+    setLightboxIndex((prev) =>
+      prev === 0 ? lightboxImages.length - 1 : prev - 1
+    );
+  };
+
+  const nextImage = () => {
+    setLightboxIndex((prev) =>
+      prev === lightboxImages.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handler = (e) => {
+      if (lightboxIndex === null) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightboxIndex, lightboxImages]);
+
+  // Page title
   useEffect(() => {
     document.title =
       "Arjun’s Repair Hair Transplant – 5000 Grafts Corrective Case | Satya Skin & Hair";
   }, []);
-
-  // Optional: close modal with Escape key
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") {
-        setSelectedImage(null);
-      }
-    };
-    if (selectedImage) {
-      window.addEventListener("keydown", handleEsc);
-    }
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, [selectedImage]);
 
   return (
     <div className="bg-[#FFF8EF] text-[#2B333C] min-h-screen">
@@ -224,28 +256,35 @@ export default function Arjun() {
           <li>Choose a clinic that shows truth, not temptation</li>
         </ul>
 
-        {/* IMAGE GALLERY – Updated for Arjun with lightbox */}
-        <section className="mt-12 sm:mt-20 px-6 pb-12 sm:pb-20">
+        {/* ================= PROGRESS SLIDER ================= */}
+        <section className="mt-12 sm:mt-20 px-2 sm:px-6 pb-12 sm:pb-20">
           <div className="max-w-7xl mx-auto rounded-3xl bg-white/40 p-6 sm:p-10 shadow-sm">
             <h3 className="text-xl sm:text-2xl font-semibold text-[#2B333C] mb-8 text-center">
               Arjun's Progress & Results
             </h3>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-              {progressImages.map((img, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm hover:shadow-md transition cursor-pointer"
-                  onClick={() => setSelectedImage(img)}
-                >
-                  <img
-                    src={img}
-                    alt={`Arjun repair hair transplant result ${i + 1}`}
-                    className="w-full aspect-[4/5] object-cover"
-                  />
-                </div>
-              ))}
+            <div className="overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-[#9E4A47]/40 scrollbar-track-[#FCEBDE]/60">
+              <div className="flex gap-4 sm:gap-6 min-w-max px-2">
+                {progressImages.map((img, i) => (
+                  <div
+                    key={i}
+                    className="w-64 sm:w-80 flex-shrink-0 rounded-xl overflow-hidden border border-[#FCEBDE] shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200"
+                    onClick={() => openLightbox(progressImages, i)}
+                  >
+                    <img
+                      src={img}
+                      alt={`Arjun repair hair transplant progress ${i + 1}`}
+                      className="w-full aspect-[4/5] sm:aspect-[3/4] object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
+
+            <p className="text-center mt-6 text-sm opacity-80">
+              Click any image to view full size • Scroll horizontally →
+            </p>
           </div>
         </section>
 
@@ -294,28 +333,44 @@ export default function Arjun() {
         </div>
       </section>
 
-      {/* ── LIGHTBOX / FULL IMAGE MODAL ── */}
-      {selectedImage && (
+      {/* ── LIGHTBOX ── */}
+      {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)} // close on backdrop click
+          className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4"
+          onClick={closeLightbox}
         >
           <div
-            className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            className="relative w-full h-full flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={selectedImage}
+              src={lightboxImages[lightboxIndex]}
               alt="Arjun full progress image"
-              className="max-w-full max-h-[90vh] object-contain"
+              className="max-w-[95%] max-h-[90vh] object-contain"
             />
 
             <button
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition"
-              onClick={() => setSelectedImage(null)}
-              aria-label="Close full image"
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+              aria-label="Close"
             >
-              <X size={28} strokeWidth={2.5} />
+              <X size={24} />
+            </button>
+
+            <button
+              onClick={prevImage}
+              className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={28} />
+            </button>
+
+            <button
+              onClick={nextImage}
+              className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+              aria-label="Next image"
+            >
+              <ChevronRight size={28} />
             </button>
           </div>
         </div>

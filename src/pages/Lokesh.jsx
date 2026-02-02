@@ -164,15 +164,15 @@ const renderProgressTable = () => (
             Front Left
           </td>
           {rows.map((row, stageIndex) => (
-            <td key={stageIndex} className="border ">
+            <td key={stageIndex} className="border p-0 ">
               <div
-                className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
+                className="cursor-pointer transition overflow-hidden"
                 onClick={() => openLightbox(row.images, 0)}
               >
                 <img
                   src={row.images[0]}
                   alt=""
-                  className="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-contain"
+                  className="w-full h-28 sm:h-40 md:h-48 lg:h-56 object-contain"
                   loading="lazy"
                 />
               </div>
@@ -186,7 +186,7 @@ const renderProgressTable = () => (
             Front
           </td>
           {rows.map((row, stageIndex) => (
-            <td key={stageIndex} className="border p-2">
+            <td key={stageIndex} className="border">
               <div
                 className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
                 onClick={() => openLightbox(row.images, 1)}
@@ -208,7 +208,7 @@ const renderProgressTable = () => (
             Front Right
           </td>
           {rows.map((row, stageIndex) => (
-            <td key={stageIndex} className="border p-2">
+            <td key={stageIndex} className="border">
               <div
                 className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
                 onClick={() => openLightbox(row.images, 2)}
@@ -230,7 +230,7 @@ const renderProgressTable = () => (
             Top / Back
           </td>
           {rows.map((row, stageIndex) => (
-            <td key={stageIndex} className="border p-2">
+            <td key={stageIndex} className="border">
               <div
                 className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
                 onClick={() => openLightbox(row.images, 3)}
@@ -326,7 +326,7 @@ const renderProgressTable = () => (
       </section>
 
       {/* ================= STORY ================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-10 leading-relaxed">
+      <section className="max-w-7xl mx-auto px-2 sm:px-6 py-12 sm:py-16 space-y-10 leading-relaxed">
         {/* H1 */}
         <h1 className="text-3xl sm:text-4xl font-semibold text-[#0E3A43]">
           Repair Hair Transplant Case Study | Hair Transplant in Gurgaon

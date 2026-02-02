@@ -61,7 +61,6 @@ const MENU = [
       { label: "Acne Scar", path: "/skin/acne-scar" },
       { label: "Hydra Facial", path: "/skin/hydra-facial" },
       { label: "Skin Whitening Treatment", path: "/skin/skin-whitening-treatment" },
-      { label: "Case Studies", path: "/before-after" },
     ],
   },
 
@@ -86,7 +85,6 @@ const MENU = [
       { label: "Minimal Scar Hair Transplant", path: "/hair-transplant/minimal-scar" },
       { label: "Long Hair Transplant", path: "/hair-transplant/long" },
       { label: "Synthetic Hair Transplant", path: "/hair-transplant/synthetic" },
-      { label: "Case Studies", path: "/before-after" },
     ],
   },
 
@@ -96,6 +94,7 @@ const MENU = [
     items: [
       { label: "Hair Results", path: "/hair-result" },
       { label: "Skin Results", path: "/skin-result" },
+      { label: "Case Studies", path: "/before-after" },
     ],
   },
 

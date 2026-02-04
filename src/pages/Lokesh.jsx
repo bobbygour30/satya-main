@@ -8,7 +8,6 @@ export default function Lokesh() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const beforeImages = [
-
     assets.frontViewBeforeSurgery,
     assets.leftViewBeforeSurgery,
     assets.rightViewBeforeSurgery,
@@ -38,16 +37,25 @@ export default function Lokesh() {
       return prev === imgs.length - 1 ? 0 : prev + 1;
     });
   };
+const switchToBefore = () => {
+  setMode(0);
+  // REMOVE: setCurrentIndex(0);
+  // Now it will keep whatever currentIndex was
+};
 
-  const switchToBefore = () => {
-    setMode(0);
-    setCurrentIndex(0);
-  };
+const switchToAfter = () => {
+  setMode(1);
+  // REMOVE: setCurrentIndex(0);
+  // Now it will keep whatever currentIndex was
+};
 
-  const switchToAfter = () => {
-    setMode(1);
-    setCurrentIndex(0);
-  };
+useEffect(() => {
+  setCurrentIndex((prevIndex) => {
+    const images = mode === 0 ? beforeImages : afterImages;
+    // Clamp the index to valid range
+    return Math.min(prevIndex, images.length - 1);
+  });
+}, [mode, beforeImages, afterImages]);
 
   /* ================= LIGHTBOX ================= */
   const [lightboxImages, setLightboxImages] = useState([]);
@@ -95,8 +103,8 @@ export default function Lokesh() {
     {
       label: "Before 1st Surgery",
       images: [
-        assets.leftViewBeforeSurgery,
         assets.frontViewBeforeSurgery,
+        assets.leftViewBeforeSurgery,
         assets.rightViewBeforeSurgery,
         assets.backViewBeforeSurgery,
       ],
@@ -104,17 +112,17 @@ export default function Lokesh() {
     {
       label: "Immediate 1st Surgery",
       images: [
-        assets.leftViewImmediate,
         assets.immediateFrontView,
+        assets.leftViewImmediate,
         assets.rightViewImmediate,
         assets.immediateBackView,
       ],
     },
     {
-      label: "1st Surgery 6 Month",
+      label: "6 Months Post 1st Surgery",
       images: [
-        assets.leftViewMonth6,
         assets.month6FrontView,
+        assets.leftViewMonth6,
         assets.rightViewMonth6,
         assets.backView15Days,
       ],
@@ -122,17 +130,17 @@ export default function Lokesh() {
     {
       label: "Immediate 2nd Surgery",
       images: [
-        assets.leftViewImmediate2ndSurgery,
         assets.frontViewImmediate2ndSurgery,
+        assets.leftViewImmediate2ndSurgery,
         assets.rightViewImmediate2ndSurgery,
         assets.immediate2ndSurgery,
       ],
     },
     {
-      label: "2nd Surgery 7 Month",
+      label: "7 Month Post 2nd Surgery",
       images: [
-        assets.leftViewMonth7_2ndSurgery,
         assets.month7_2ndSurgeryFrontView,
+        assets.leftViewMonth7_2ndSurgery,
         assets.rightViewMonth7_2ndSurgery,
         assets.backViewAfter7Month2ndSurgery,
       ],
@@ -140,147 +148,153 @@ export default function Lokesh() {
   ];
 
   /* ================= TABLE RENDER ================= */
-  /* ================= TABLE RENDER ================= */
-const renderProgressTable = () => (
-  <div className="w-full overflow-x-auto sm:text-xs text-[8px]">
-    <table className=" w-full border border-[#FCEBDE] bg-white rounded-xl shadow-sm">
-      <thead>
-        <tr className="bg-[#FFF8EF]/60">
-          <th className="border p-3 text-left font-medium">View</th>
-          {rows.map((row) => (
-            <th
-              key={row.label}
-              className="border p-3 text-center font-medium bg-[#FFF8EF]/40"
-            >
-              {row.label}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {/* Row 0: Front Left */}
-        <tr>
-          <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
-            Front Left
-          </td>
-          {rows.map((row, stageIndex) => (
-            <td key={stageIndex} className="border p-0 ">
-              <div
-                className="cursor-pointer transition overflow-hidden"
-                onClick={() => openLightbox(row.images, 0)}
+  const renderProgressTable = () => (
+    <div className="w-full overflow-x-auto sm:text-xs text-[8px]">
+      <table className=" w-full border border-[#FCEBDE] bg-white rounded-xl shadow-sm">
+        <thead>
+          <tr className="bg-[#FFF8EF]/60">
+            <th className="border p-3 text-left font-medium">View</th>
+            {rows.map((row) => (
+              <th
+                key={row.label}
+                className="border p-3 text-center font-medium bg-[#FFF8EF]/40"
               >
-                <img
-                  src={row.images[0]}
-                  alt=""
-                  className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
-                  loading="lazy"
-                />
-              </div>
+                {row.label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {/* Row 0: Front */}
+          <tr>
+            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+              Front
             </td>
-          ))}
-        </tr>
+            {rows.map((row, stageIndex) => (
+              <td key={stageIndex} className="border p-0 ">
+                <div
+                  className="cursor-pointer transition overflow-hidden"
+                  onClick={() => openLightbox(row.images, 0)}
+                >
+                  <img
+                    src={row.images[0]}
+                    alt=""
+                    className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              </td>
+            ))}
+          </tr>
 
-        {/* Row 1: Front */}
-        <tr>
-          <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
-            Front
-          </td>
-          {rows.map((row, stageIndex) => (
-            <td key={stageIndex} className="border">
-              <div
-                className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
-                onClick={() => openLightbox(row.images, 1)}
-              >
-                <img
-                  src={row.images[1]}
-                  alt=""
-                  className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
-                  loading="lazy"
-                />
-              </div>
+          {/* Row 1: Right */}
+          <tr>
+            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+              Right
             </td>
-          ))}
-        </tr>
+            {rows.map((row, stageIndex) => (
+              <td key={stageIndex} className="border">
+                <div
+                  className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
+                  onClick={() => openLightbox(row.images, 1)}
+                >
+                  <img
+                    src={row.images[1]}
+                    alt=""
+                    className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              </td>
+            ))}
+          </tr>
 
-        {/* Row 2: Front Right */}
-        <tr>
-          <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
-            Front Right
-          </td>
-          {rows.map((row, stageIndex) => (
-            <td key={stageIndex} className="border">
-              <div
-                className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
-                onClick={() => openLightbox(row.images, 2)}
-              >
-                <img
-                  src={row.images[2]}
-                  alt=""
-                  className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
-                  loading="lazy"
-                />
-              </div>
+          {/* Row 2: Left */}
+          <tr>
+            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+              Left
             </td>
-          ))}
-        </tr>
+            {rows.map((row, stageIndex) => (
+              <td key={stageIndex} className="border">
+                <div
+                  className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
+                  onClick={() => openLightbox(row.images, 2)}
+                >
+                  <img
+                    src={row.images[2]}
+                    alt=""
+                    className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              </td>
+            ))}
+          </tr>
 
-        {/* Row 3: Top / Back */}
-        <tr>
-          <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
-            Top / Back
-          </td>
-          {rows.map((row, stageIndex) => (
-            <td key={stageIndex} className="border">
-              <div
-                className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
-                onClick={() => openLightbox(row.images, 3)}
-              >
-                <img
-                  src={row.images[3]}
-                  alt=""
-                  className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
-                  loading="lazy"
-                />
-              </div>
+          {/* Row 3: Top / Back */}
+          <tr>
+            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+              Top / Back
             </td>
-          ))}
-        </tr>
-      </tbody>
-    </table>
+            {rows.map((row, stageIndex) => (
+              <td key={stageIndex} className="border">
+                <div
+                  className="cursor-pointer hover:shadow-md transition rounded overflow-hidden"
+                  onClick={() => openLightbox(row.images, 3)}
+                >
+                  <img
+                    src={row.images[3]}
+                    alt=""
+                    className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
 
-    <div className="mt-6 text-center">
-      <p className="text-lg font-semibold text-[#2B333C]">Lokesh Lohia</p>
-      <p className="text-sm opacity-80">SATYA SKIN & HAIR SOLUTIONS</p>
+      <div className="mt-6 text-center">
+        <p className="text-lg font-semibold text-[#2B333C]">Lokesh Lohia</p>
+        <p className="text-sm opacity-80">SATYA SKIN & HAIR SOLUTIONS</p>
+      </div>
     </div>
-  </div>
-);
+  );
 
   /* ================= JSX ================= */
   return (
-    <div className="bg-[#FFF8EF] min-h-screen text-[#2B333C]">
+    <div className="bg-[#FFF8EF] min-h-screen text-[#2B333C] ">
       {/* ================= HERO ================= */}
-      <section className="pt-6 sm:pt-8">
-        <div className="max-w-[1380px] mx-auto  sm:px-6">
-          <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden min-h-[75vh] lg:min-h-[90vh]">
+      <section className="">
+        <div className="max-w-[1380px] mx-auto sm:px-6">
+          <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden min-h-[45vh] lg:min-h-[55vh]">
             {/* IMAGE SIDE */}
-            <div className="relative h-[60vh] sm:h-[70vh] lg:h-auto">
-              <img
-                src={displayedImage}
-                alt=""
-                className="w-full h-full object-cover"
-              />
+            <div className="relative w-full overflow-hidden rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl">
+              {/* Lock the aspect ratio - adjust 0.75 = 3:4, 0.8 = 4:5, 0.5625 = 9:16 etc. */}
+              <div className="relative w-full pb-[120%] lg:pb-[115%]">
+                {" "}
+                {/* ← this creates fixed ratio */}
+                <img
+                  src={displayedImage}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
 
-              {/* BEFORE AFTER */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-                <div className="flex items-center gap-2 bg-white/30 backdrop-blur border rounded-full px-3 py-2">
-                  <button onClick={prevSlide}>
+              {/* BEFORE / AFTER CONTROLS */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
+                <div className="flex items-center gap-2 bg-white/30 backdrop-blur border border-white/40 rounded-full px-3 py-2 shadow-sm">
+                  <button onClick={prevSlide} className="text-white">
                     <ChevronLeft size={16} />
                   </button>
 
                   <button
                     onClick={switchToBefore}
-                    className={`px-3 py-1 text-xs rounded-full ${
-                      mode === 0 ? "bg-[#9E4A47] text-white" : "text-white"
+                    className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                      mode === 0
+                        ? "bg-[#9E4A47] text-white"
+                        : "text-white hover:bg-white/20"
                     }`}
                   >
                     Before
@@ -288,14 +302,16 @@ const renderProgressTable = () => (
 
                   <button
                     onClick={switchToAfter}
-                    className={`px-3 py-1 text-xs rounded-full ${
-                      mode === 1 ? "bg-[#9E4A47] text-white" : "text-white"
+                    className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                      mode === 1
+                        ? "bg-[#9E4A47] text-white"
+                        : "text-white hover:bg-white/20"
                     }`}
                   >
                     After
                   </button>
 
-                  <button onClick={nextSlide}>
+                  <button onClick={nextSlide} className="text-white">
                     <ChevronRight size={16} />
                   </button>
                 </div>
@@ -304,21 +320,17 @@ const renderProgressTable = () => (
 
             {/* CONTENT SIDE */}
             <div className="bg-[#2B333C] text-white flex items-center px-6 sm:px-10 lg:px-14 py-10">
-              <div className="max-w-lg space-y-6">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif">
-                  Lokesh Lohia
-                </h1>
-
-                <div>
-                  <p className="text-xs opacity-70">Treatment</p>
-                  <p className="text-lg">Repair Hair Transplant</p>
-                </div>
-
-                <div>
-                  <p className="text-xs opacity-70">Methods</p>
-                  <p className="text-xl font-semibold">MHT + DSFT</p>
-                  <p className="text-sm">FUT + FUE | Min-Med Protocol</p>
-                </div>
+              <div className="pt-4 ">
+                <p className="sm:text-2xl font-semibold">
+                  Patient Name: Lokesh Lohia
+                </p>
+                <p className="sm:text-xl text-xs mt-2">
+                  Number of Grafts :
+                  1st Surgery: 2700 MHT | 2nd Surgery: 3400 MHT
+                </p>
+                <p className="sm:text-xl text-xs mt-2">
+                  Technique Used : MHT (Combined with DSFT)
+                </p>
               </div>
             </div>
           </div>
@@ -334,28 +346,24 @@ const renderProgressTable = () => (
 
         {/* Introduction */}
         <p className="text-xl italic border-l-4 border-[#9E4A47] pl-6">
-          Repair hair transplant cases are more complex than first-time
-          procedures. The process requires teams to fix existing surgical errors
-          while dealing with restrictions on available donor sites. The case
-          study documents Lokesh Lohia's hair restoration journey while
-          demonstrating how sustained outcomes depend on comprehensive planning
-          and ethical procedures and surgical expertise.
+          Repair hair transplant cases are more complex than first-time procedures. The process requires teams to fix existing surgical errors while dealing with restrictions on available donor sites. 
         </p>
 
         <p>
-          Lokesh’s experience also demonstrates how excessive medication can
-          temporarily hide poor transplant outcomes, only for problems to
-          surface later.
+          The case study documents Lokesh Lohia's hair restoration journey while demonstrating how sustained outcomes depend on comprehensive planning and ethical procedures and surgical expertise.
         </p>
 
-        {/* Background: Failed Hair Transplant */}
+        <p>
+          Lokesh’s experience also demonstrates how excessive medication can temporarily hide poor transplant outcomes, only for problems to surface later.
+        </p>
+
+        {/* Lokesh First Hair Transplant By Other Clinic */}
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Background: Failed Hair Transplant
+          Lokesh First Hair Transplant By Other Clinic
         </h3>
 
         <p>
-          Before getting in touch with Satya Skin & Hair Solutions, Lokesh Lohia
-          already had undergone a hair transplant.
+          Before getting in touch with Satyaskinhair, Lokesh Lohia already had undergone a hair transplant.
         </p>
 
         <p>Initially:</p>
@@ -371,18 +379,12 @@ const renderProgressTable = () => (
         <ul className="list-disc pl-6 space-y-2">
           <li>Medication was cut back on and eventually stopped.</li>
           <li>The actual result of the procedure became apparent.</li>
-          <li>
-            There were obvious indications that the transplant was failing.
-          </li>
-          <li>
-            Lokesh needed a repair hair transplant at this point rather than a
-            standard improvement.
-          </li>
+          <li>There were obvious indications that the transplant was failing.</li>
+          <li>Lokesh needed a repair hair transplant at this point rather than a standard improvement.</li>
         </ul>
 
         <p>
-          On that occasion, what Lokesh needed was a reconstructive hair
-          transplantation, not a run-of-the-mill enhancement.
+          On that occasion, what Lokesh needed was a reconstructive  hair transplantation, not a run-of-the-mill enhancement.
         </p>
 
         {/* Problems Identified During Evaluation */}
@@ -401,8 +403,7 @@ const renderProgressTable = () => (
         </ul>
 
         <p>
-          These problems made the original transplant unsustainable without
-          continuous medication.
+          These problems made the original transplant unsustainable without continuous medication.
         </p>
 
         {/* Role of Medication in Masking the Results */}
@@ -434,18 +435,18 @@ const renderProgressTable = () => (
         </ul>
 
         <p>
-          This case highlights that medication should support a transplant, not
-          mask surgical errors.
+          This case highlights that medication should support a transplant, not mask surgical errors.
         </p>
 
-        {/* Repair Hair Transplant Planning */}
+        {/* View - already handled by table */}
+
+        {/* Repair Hair Transplant Planning At Satyaskinhair */}
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Repair Hair Transplant Planning
+          Repair Hair Transplant Planning At Satyaskinhair
         </h3>
 
         <p>
-          The repair strategy focused on long-term stability rather than
-          short-term cosmetic improvement.
+          The repair strategy focused on long-term stability rather than short-term cosmetic improvement.
         </p>
 
         <p>Key planning principles:</p>
@@ -458,13 +459,12 @@ const renderProgressTable = () => (
         </ul>
 
         <p>
-          Medication was reduced to a minimal weekly dose to allow realistic
-          assessment and sustainable results.
+          Medication was reduced to a minimal weekly dose to allow realistic assessment and sustainable results.
         </p>
 
-        {/* Hairline Redesign Strategy */}
+        {/* Hairline Redesign Strategy at Satya */}
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Hairline Redesign Strategy
+          Hairline Redesign Strategy at Satya
         </h3>
 
         <p>The new hairline was planned considering:</p>
@@ -490,8 +490,7 @@ const renderProgressTable = () => (
         </h3>
 
         <p>
-          Lokesh underwent two repair hair transplant surgeries using the MHT
-          (Maximum Harvest Technique).
+          Lokesh underwent two repair hair transplant surgeries using the MHT (Maximum Harvest Technique).
         </p>
 
         <p>Surgical details:</p>
@@ -512,7 +511,7 @@ const renderProgressTable = () => (
 
         {/* Why FUT Was Necessary in This Repair Case */}
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Why FUT Was Necessary in This Repair Case
+          Why FUT Was Necessary in This Repair Case?
         </h3>
 
         <p>
@@ -537,8 +536,7 @@ const renderProgressTable = () => (
         </ul>
 
         <p>
-          FUE alone would have increased the risk of donor depletion in this
-          case.
+          FUE alone would have increased the risk of donor depletion in this case.
         </p>
 
         {/* ================= TABLE ================= */}
@@ -547,7 +545,9 @@ const renderProgressTable = () => (
             <h3 className="text-2xl font-semibold text-center lg:mb-4">
               Lokesh’s Progress & Results
             </h3>
-            <p className="mb-8 text-center sm:hidden block text-xs">Click on the images to view full size</p>
+            <p className="mb-8 text-center sm:hidden block text-xs">
+              Click on the images to view full size
+            </p>
             {renderProgressTable()}
           </div>
         </section>
@@ -615,8 +615,7 @@ const renderProgressTable = () => (
         </ul>
 
         <p>
-          The repair transplant provided a stable result without heavy reliance
-          on medication.
+          The repair transplant provided a stable result without heavy reliance on medication.
         </p>
 
         {/* Key Learnings from This Case */}
@@ -638,17 +637,11 @@ const renderProgressTable = () => (
         <h3 className="text-2xl font-semibold text-[#0E3A43]">Conclusion</h3>
 
         <p>
-          Lokesh Lohia's experience with a hair transplant repair highlights how
-          poor planning and overuse of medications can result in long-term
-          disappointment. A hair transplant repair is not simply about adding
-          more grafts, but rather about fixing errors and preserving future
-          treatment possibilities.
+          Lokesh Lohia's experience with a hair transplant repair highlights how poor planning and overuse of medications can result in long-term disappointment. A hair transplant repair is not simply about adding more grafts, but rather about fixing errors and preserving future treatment possibilities.
         </p>
 
         <p>
-          Through thoughtful planning, the right choice of techniques, and a
-          cautious approach, a previously failed hair transplant can be
-          corrected to deliver a stable and natural-looking outcome.
+          Through thoughtful planning, the right choice of techniques, and a cautious approach, a previously failed hair transplant can be corrected to deliver a stable and natural-looking outcome.
         </p>
 
         {/* ================= VIDEO ================= */}
@@ -674,10 +667,7 @@ const renderProgressTable = () => (
               <strong>What is a Repair Hair Transplant?</strong>
             </p>
             <p>
-              A Repair Hair Transplant is a procedure performed on patients who
-              are unhappy with their previous hair transplants. It addresses
-              issues such as poor design, incorrect angles, or improper use of
-              the donor area.
+              A Repair Hair Transplant is a procedure performed on patients who are unhappy with their previous hair transplants. It addresses issues such as poor design, incorrect angles, or improper use of the donor area.
             </p>
           </div>
 
@@ -686,9 +676,7 @@ const renderProgressTable = () => (
               <strong>What is MHT (Maximum Harvest Technique)?</strong>
             </p>
             <p>
-              MHT is a method that combines FUE and FUT hair transplant
-              techniques to safely extract a larger number of grafts from the
-              donor area while keeping scarring to a minimum.
+              MHT is a method that combines FUE and FUT hair transplant techniques to safely extract a larger number of grafts from the donor area while keeping scarring to a minimum.
             </p>
           </div>
 
@@ -697,9 +685,7 @@ const renderProgressTable = () => (
               <strong>Why use DSFT?</strong>
             </p>
             <p>
-              DSFT, or Direct Stimulation Follicular Transplant, helps stimulate
-              the grafts during the implantation process, leading to a 97% graft
-              survival rate and quicker hair growth.
+              DSFT, or Direct Stimulation Follicular Transplant, helps stimulate the grafts during the implantation process, leading to a 97% graft survival rate and quicker hair growth.
             </p>
           </div>
 
@@ -708,9 +694,7 @@ const renderProgressTable = () => (
               <strong>What is the Min-Med Approach?</strong>
             </p>
             <p>
-              The Min-Med Approach is a proprietary method developed by Dr.
-              Satya that uses a low or no dose of Finasteride, helping to
-              protect the patient's long-term health.
+              The Min-Med Approach is a proprietary method developed by Dr. Satya that uses a low or no dose of Finasteride, helping to protect the patient's long-term health.
             </p>
           </div>
 
@@ -719,9 +703,7 @@ const renderProgressTable = () => (
               <strong>Can repair transplants look natural?</strong>
             </p>
             <p>
-              Yes, a natural appearance can be achieved through proper
-              angulation, careful planning of density, and conservation of the
-              donor area, as demonstrated in Lokesh’s case.
+              Yes, a natural appearance can be achieved through proper angulation, careful planning of density, and conservation of the donor area, as demonstrated in Lokesh’s case.
             </p>
           </div>
         </div>

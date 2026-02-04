@@ -5,9 +5,8 @@ import {
   useTransform,
   AnimatePresence,
 } from "framer-motion";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import assets from "../assets/assets";
-
 
 /* =====================================================
    DATA
@@ -286,9 +285,7 @@ function StorySection() {
 
 function GallerySection({ filter, setFilter, cases, onSelectCase }) {
   return (
-    <section className="py-28 px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-[#FFF8EF] text-[#1a1f26]">
-
-     
+    <section className="py-12 px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-[#FFF8EF] text-[#1a1f26] ">
       {/* =====================================
          SINGLE REAL CASE (PRAKHAR ONLY)
       ===================================== */}
@@ -297,9 +294,9 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="max-w-4xl mx-auto text-center"
+        className="max-w-4xl mx-auto text-center mt-5 "
       >
-        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
+        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26] ">
           Lokesh Lohiya
         </h3>
 
@@ -307,7 +304,7 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
           <img
             src={assets.lokesh}
             alt="Lokesh Transformation"
-            className="w-full h-[620px] object-contain bg-[#1a1f26]"
+            className="w-full h-[420px] object-contain bg-[#1a1f26]"
           />
         </div>
 
@@ -329,17 +326,15 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="max-w-4xl mx-auto text-center"
+        className="max-w-4xl mx-auto text-center mt-5"
       >
-        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
-          Prakhar
-        </h3>
+        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">Prakhar</h3>
 
         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
           <img
             src={assets.prakhar4}
             alt="Prakhar Transformation"
-            className="w-full h-[620px] object-contain bg-[#1a1f26]"
+            className="w-full h-[420px] object-contain bg-[#1a1f26]"
           />
         </div>
 
@@ -361,17 +356,15 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="max-w-4xl mx-auto text-center"
+        className="max-w-4xl mx-auto text-center mt-5"
       >
-        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
-          Shubham
-        </h3>
+        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">Shubham</h3>
 
         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
           <img
             src={assets.shubham3}
             alt="Prakhar Transformation"
-            className="w-full h-[620px] object-contain bg-[#1a1f26]"
+            className="w-full h-[420px] object-contain bg-[#1a1f26]"
           />
         </div>
 
@@ -395,15 +388,13 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
         transition={{ duration: 1 }}
         className="max-w-4xl mx-auto text-center mt-10"
       >
-        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
-          Arjun
-        </h3>
+        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">Arjun</h3>
 
         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
           <img
             src={assets.arjun6}
             alt="Prakhar Transformation"
-            className="w-full h-[620px] object-contain bg-[#1a1f26]"
+            className="w-full h-[420px] object-contain bg-[#1a1f26]"
           />
         </div>
 
@@ -423,7 +414,6 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
     </section>
   );
 }
-
 
 /* =====================================================
    CASE DETAIL MODAL

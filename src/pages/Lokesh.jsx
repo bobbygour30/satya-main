@@ -172,7 +172,7 @@ const renderProgressTable = () => (
                 <img
                   src={row.images[0]}
                   alt=""
-                  className="w-full h-28 sm:h-40 md:h-48 lg:h-56 object-contain"
+                  className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
                   loading="lazy"
                 />
               </div>
@@ -194,7 +194,7 @@ const renderProgressTable = () => (
                 <img
                   src={row.images[1]}
                   alt=""
-                  className="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-contain"
+                  className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
                   loading="lazy"
                 />
               </div>
@@ -216,7 +216,7 @@ const renderProgressTable = () => (
                 <img
                   src={row.images[2]}
                   alt=""
-                  className="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-contain"
+                  className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
                   loading="lazy"
                 />
               </div>
@@ -238,7 +238,7 @@ const renderProgressTable = () => (
                 <img
                   src={row.images[3]}
                   alt=""
-                  className="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-contain"
+                  className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
                   loading="lazy"
                 />
               </div>
@@ -260,7 +260,7 @@ const renderProgressTable = () => (
     <div className="bg-[#FFF8EF] min-h-screen text-[#2B333C]">
       {/* ================= HERO ================= */}
       <section className="pt-6 sm:pt-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-[1380px] mx-auto  sm:px-6">
           <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden min-h-[75vh] lg:min-h-[90vh]">
             {/* IMAGE SIDE */}
             <div className="relative h-[60vh] sm:h-[70vh] lg:h-auto">
@@ -311,7 +311,7 @@ const renderProgressTable = () => (
 
                 <div>
                   <p className="text-xs opacity-70">Treatment</p>
-                  <p className="text-lg">Redo / Repair Hair Transplant</p>
+                  <p className="text-lg">Repair Hair Transplant</p>
                 </div>
 
                 <div>

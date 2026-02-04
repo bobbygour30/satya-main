@@ -12,6 +12,8 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+import ConsultationPopup from "./ConsultationPopup";
+
 /* ================= SEARCH PLACEHOLDERS ================= */
 const searchPlaceholders = [
   "Your journey to confidence starts here…",
@@ -145,6 +147,7 @@ const MENU = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
+    const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -154,6 +157,7 @@ export default function Navbar() {
   }, []);
 
   return (
+    <>
     <header className="sticky top-0 z-50 bg-[#FFF8EF] shadow-sm">
       {/* ================= TOP BAR ================= */}
       <div className="hidden md:flex justify-between items-center px-6 py-2 text-sm border-b border-[#DFDFDD] bg-[#FCEBDE]">
@@ -173,7 +177,7 @@ export default function Navbar() {
           <button className="flex items-center gap-1 text-[#2B333C]">
             <Globe size={15} /> EN | HI
           </button>
-          <button className="flex items-center gap-1 bg-[#9E4A47] text-white px-4 py-1.5 rounded-full">
+          <button onClick={() => setShowPopup(true)} className="flex cursor-pointer items-center gap-1 bg-[#9E4A47] text-white px-4 py-1.5 rounded-full">
             <CalendarDays size={15} /> Book Consultation
           </button>
         </div>
@@ -208,7 +212,7 @@ export default function Navbar() {
             <HoverDropdown key={menu.title} {...menu} />
           ))}
 
-          <button className="bg-[#9E4A47] text-white px-6 py-2 rounded-full">
+          <button onClick={() => setShowPopup(true)} className="bg-[#9E4A47] cursor-pointer text-white px-6 py-2 rounded-full">
             Book Appointment
           </button>
         </nav>
@@ -243,13 +247,16 @@ export default function Navbar() {
               <MobileAccordion key={menu.title} {...menu} />
             ))}
 
-            <button className="mt-6 w-full bg-[#9E4A47] text-white py-3 rounded-xl">
+            <button onClick={() => setShowPopup(true)} className="mt-6 w-full bg-[#9E4A47] text-white py-3 rounded-xl cursor-pointer">
               Book Appointment
             </button>
           </div>
         </div>
       )}
     </header>
+    {/* Popup */}
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+      </>
   );
 }
 
@@ -333,5 +340,6 @@ function MobileAccordion({ title, items }) {
         </div>
       )}
     </div>
+    
   );
 }

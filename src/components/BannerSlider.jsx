@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import assets from "../assets/assets";
+import ConsultationPopup from "./ConsultationPopup";
 
 /* ================= HERO SLIDES ================= */
 const slides = [
@@ -42,6 +43,7 @@ const slides = [
 /* ================= BANNER SLIDER ================= */
 export default function BannerSlider() {
   const [current, setCurrent] = useState(0);
+    const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -57,6 +59,7 @@ export default function BannerSlider() {
     setCurrent((prev) => (prev + 1) % slides.length);
 
   return (
+    <>
     <section className="relative w-full overflow-hidden">
       {/* ================= SLIDES ================= */}
       <div
@@ -86,7 +89,7 @@ export default function BannerSlider() {
                     {slide.subtext}
                   </p>
 
-                  <button className="inline-flex items-center gap-3 bg-[#9E4A47] hover:bg-[#84332F] transition px-7 py-3 rounded-full text-white font-medium">
+                  <button onClick={() => setShowPopup(true)} className="inline-flex cursor-pointer items-center gap-3 bg-[#9E4A47] hover:bg-[#84332F] transition px-7 py-3 rounded-full text-white font-medium">
                     {slide.cta}
                     <ArrowUpRight size={18} />
                   </button>
@@ -174,5 +177,9 @@ export default function BannerSlider() {
         ))}
       </div>
     </section>
+
+    {/* Popup */}
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+      </>
   );
 }

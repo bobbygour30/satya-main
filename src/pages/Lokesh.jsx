@@ -37,25 +37,25 @@ export default function Lokesh() {
       return prev === imgs.length - 1 ? 0 : prev + 1;
     });
   };
-const switchToBefore = () => {
-  setMode(0);
-  // REMOVE: setCurrentIndex(0);
-  // Now it will keep whatever currentIndex was
-};
+  const switchToBefore = () => {
+    setMode(0);
+    // REMOVE: setCurrentIndex(0);
+    // Now it will keep whatever currentIndex was
+  };
 
-const switchToAfter = () => {
-  setMode(1);
-  // REMOVE: setCurrentIndex(0);
-  // Now it will keep whatever currentIndex was
-};
+  const switchToAfter = () => {
+    setMode(1);
+    // REMOVE: setCurrentIndex(0);
+    // Now it will keep whatever currentIndex was
+  };
 
-useEffect(() => {
-  setCurrentIndex((prevIndex) => {
-    const images = mode === 0 ? beforeImages : afterImages;
-    // Clamp the index to valid range
-    return Math.min(prevIndex, images.length - 1);
-  });
-}, [mode, beforeImages, afterImages]);
+  useEffect(() => {
+    setCurrentIndex((prevIndex) => {
+      const images = mode === 0 ? beforeImages : afterImages;
+      // Clamp the index to valid range
+      return Math.min(prevIndex, images.length - 1);
+    });
+  }, [mode, beforeImages, afterImages]);
 
   /* ================= LIGHTBOX ================= */
   const [lightboxImages, setLightboxImages] = useState([]);
@@ -272,7 +272,7 @@ useEffect(() => {
             {/* IMAGE SIDE */}
             <div className="relative w-full overflow-hidden rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl">
               {/* Lock the aspect ratio - adjust 0.75 = 3:4, 0.8 = 4:5, 0.5625 = 9:16 etc. */}
-              <div className="relative w-full pb-[120%] lg:pb-[115%]">
+              <div className="relative w-full pb-[120%] lg:pb-[119%]">
                 {" "}
                 {/* ← this creates fixed ratio */}
                 <img
@@ -319,18 +319,57 @@ useEffect(() => {
             </div>
 
             {/* CONTENT SIDE */}
-            <div className="bg-[#2B333C] text-white flex items-center px-6 sm:px-10 lg:px-14 py-10">
-              <div className="pt-4 ">
-                <p className="sm:text-2xl font-semibold">
-                  Patient Name: Lokesh Lohia
-                </p>
-                <p className="sm:text-xl text-xs mt-2">
-                  Number of Grafts :
-                  1st Surgery: 2700 MHT | 2nd Surgery: 3400 MHT
-                </p>
-                <p className="sm:text-xl text-xs mt-2">
-                  Technique Used : MHT (Combined with DSFT)
-                </p>
+            <div className="bg-[#2B333C] text-white px-6 sm:px-10 lg:px-14 py-12 flex items-center">
+              <div className="max-w-5xl space-y-6">
+                {/* Heading */}
+                <div className="space-y-1">
+                  <p className="uppercase tracking-widest text-xs text-white/60">
+                    Patient Transformation Details
+                  </p>
+                  <h2 className="text-2xl sm:text-3xl font-semibold">
+                    Lokesh Lohia’s Hair Restoration Journey
+                  </h2>
+                </div>
+
+                {/* Divider */}
+                <div className="w-24 h-[2px] bg-[#9E4A47]" />
+
+                {/* Details */}
+                <div className="grid gap-4 sm:gap-6 text-sm sm:text-base">
+                  <p className="leading-relaxed">
+                    <span className="text-white/70">Patient Name</span>
+                    <span className="block text-lg sm:text-xl font-medium mt-1">
+                      Lokesh Lohia
+                    </span>
+                  </p>
+
+                  <p className="leading-relaxed">
+                    <span className="text-white/70">
+                      Total Grafts Implanted
+                    </span>
+                    <span className="block mt-1">
+                      <span className="font-medium text-white">
+                        1st Surgery:
+                      </span>{" "}
+                      2700 MHT
+                      <span className="mx-2 text-white/40">|</span>
+                      <span className="font-medium text-white">
+                        2nd Surgery:
+                      </span>{" "}
+                      3400 MHT
+                    </span>
+                  </p>
+
+                  <p className="leading-relaxed">
+                    <span className="text-white/70">Technique Used</span>
+                    <span className="block mt-1 text-white">
+                      MHT{" "}
+                      <span className="text-white/50">
+                        (Combined with DSFT)
+                      </span>
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -346,15 +385,21 @@ useEffect(() => {
 
         {/* Introduction */}
         <p className="text-xl italic border-l-4 border-[#9E4A47] pl-6">
-          Repair hair transplant cases are more complex than first-time procedures. The process requires teams to fix existing surgical errors while dealing with restrictions on available donor sites. 
+          Repair hair transplant cases are more complex than first-time
+          procedures. The process requires teams to fix existing surgical errors
+          while dealing with restrictions on available donor sites. 
         </p>
 
         <p>
-          The case study documents Lokesh Lohia's hair restoration journey while demonstrating how sustained outcomes depend on comprehensive planning and ethical procedures and surgical expertise.
+          The case study documents Lokesh Lohia's hair restoration journey while
+          demonstrating how sustained outcomes depend on comprehensive planning
+          and ethical procedures and surgical expertise.
         </p>
 
         <p>
-          Lokesh’s experience also demonstrates how excessive medication can temporarily hide poor transplant outcomes, only for problems to surface later.
+          Lokesh’s experience also demonstrates how excessive medication can
+          temporarily hide poor transplant outcomes, only for problems to
+          surface later.
         </p>
 
         {/* Lokesh First Hair Transplant By Other Clinic */}
@@ -363,7 +408,8 @@ useEffect(() => {
         </h3>
 
         <p>
-          Before getting in touch with Satyaskinhair, Lokesh Lohia already had undergone a hair transplant.
+          Before getting in touch with Satyaskinhair, Lokesh Lohia already had
+          undergone a hair transplant.
         </p>
 
         <p>Initially:</p>
@@ -379,12 +425,18 @@ useEffect(() => {
         <ul className="list-disc pl-6 space-y-2">
           <li>Medication was cut back on and eventually stopped.</li>
           <li>The actual result of the procedure became apparent.</li>
-          <li>There were obvious indications that the transplant was failing.</li>
-          <li>Lokesh needed a repair hair transplant at this point rather than a standard improvement.</li>
+          <li>
+            There were obvious indications that the transplant was failing.
+          </li>
+          <li>
+            Lokesh needed a repair hair transplant at this point rather than a
+            standard improvement.
+          </li>
         </ul>
 
         <p>
-          On that occasion, what Lokesh needed was a reconstructive  hair transplantation, not a run-of-the-mill enhancement.
+          On that occasion, what Lokesh needed was a reconstructive  hair
+          transplantation, not a run-of-the-mill enhancement.
         </p>
 
         {/* Problems Identified During Evaluation */}
@@ -403,7 +455,8 @@ useEffect(() => {
         </ul>
 
         <p>
-          These problems made the original transplant unsustainable without continuous medication.
+          These problems made the original transplant unsustainable without
+          continuous medication.
         </p>
 
         {/* Role of Medication in Masking the Results */}
@@ -435,7 +488,8 @@ useEffect(() => {
         </ul>
 
         <p>
-          This case highlights that medication should support a transplant, not mask surgical errors.
+          This case highlights that medication should support a transplant, not
+          mask surgical errors.
         </p>
 
         {/* View - already handled by table */}
@@ -446,7 +500,8 @@ useEffect(() => {
         </h3>
 
         <p>
-          The repair strategy focused on long-term stability rather than short-term cosmetic improvement.
+          The repair strategy focused on long-term stability rather than
+          short-term cosmetic improvement.
         </p>
 
         <p>Key planning principles:</p>
@@ -459,7 +514,8 @@ useEffect(() => {
         </ul>
 
         <p>
-          Medication was reduced to a minimal weekly dose to allow realistic assessment and sustainable results.
+          Medication was reduced to a minimal weekly dose to allow realistic
+          assessment and sustainable results.
         </p>
 
         {/* Hairline Redesign Strategy at Satya */}
@@ -490,7 +546,8 @@ useEffect(() => {
         </h3>
 
         <p>
-          Lokesh underwent two repair hair transplant surgeries using the MHT (Maximum Harvest Technique).
+          Lokesh underwent two repair hair transplant surgeries using the MHT
+          (Maximum Harvest Technique).
         </p>
 
         <p>Surgical details:</p>
@@ -536,7 +593,8 @@ useEffect(() => {
         </ul>
 
         <p>
-          FUE alone would have increased the risk of donor depletion in this case.
+          FUE alone would have increased the risk of donor depletion in this
+          case.
         </p>
 
         {/* ================= TABLE ================= */}
@@ -615,7 +673,8 @@ useEffect(() => {
         </ul>
 
         <p>
-          The repair transplant provided a stable result without heavy reliance on medication.
+          The repair transplant provided a stable result without heavy reliance
+          on medication.
         </p>
 
         {/* Key Learnings from This Case */}
@@ -637,11 +696,17 @@ useEffect(() => {
         <h3 className="text-2xl font-semibold text-[#0E3A43]">Conclusion</h3>
 
         <p>
-          Lokesh Lohia's experience with a hair transplant repair highlights how poor planning and overuse of medications can result in long-term disappointment. A hair transplant repair is not simply about adding more grafts, but rather about fixing errors and preserving future treatment possibilities.
+          Lokesh Lohia's experience with a hair transplant repair highlights how
+          poor planning and overuse of medications can result in long-term
+          disappointment. A hair transplant repair is not simply about adding
+          more grafts, but rather about fixing errors and preserving future
+          treatment possibilities.
         </p>
 
         <p>
-          Through thoughtful planning, the right choice of techniques, and a cautious approach, a previously failed hair transplant can be corrected to deliver a stable and natural-looking outcome.
+          Through thoughtful planning, the right choice of techniques, and a
+          cautious approach, a previously failed hair transplant can be
+          corrected to deliver a stable and natural-looking outcome.
         </p>
 
         {/* ================= VIDEO ================= */}
@@ -667,7 +732,10 @@ useEffect(() => {
               <strong>What is a Repair Hair Transplant?</strong>
             </p>
             <p>
-              A Repair Hair Transplant is a procedure performed on patients who are unhappy with their previous hair transplants. It addresses issues such as poor design, incorrect angles, or improper use of the donor area.
+              A Repair Hair Transplant is a procedure performed on patients who
+              are unhappy with their previous hair transplants. It addresses
+              issues such as poor design, incorrect angles, or improper use of
+              the donor area.
             </p>
           </div>
 
@@ -676,7 +744,9 @@ useEffect(() => {
               <strong>What is MHT (Maximum Harvest Technique)?</strong>
             </p>
             <p>
-              MHT is a method that combines FUE and FUT hair transplant techniques to safely extract a larger number of grafts from the donor area while keeping scarring to a minimum.
+              MHT is a method that combines FUE and FUT hair transplant
+              techniques to safely extract a larger number of grafts from the
+              donor area while keeping scarring to a minimum.
             </p>
           </div>
 
@@ -685,7 +755,9 @@ useEffect(() => {
               <strong>Why use DSFT?</strong>
             </p>
             <p>
-              DSFT, or Direct Stimulation Follicular Transplant, helps stimulate the grafts during the implantation process, leading to a 97% graft survival rate and quicker hair growth.
+              DSFT, or Direct Stimulation Follicular Transplant, helps stimulate
+              the grafts during the implantation process, leading to a 97% graft
+              survival rate and quicker hair growth.
             </p>
           </div>
 
@@ -694,7 +766,9 @@ useEffect(() => {
               <strong>What is the Min-Med Approach?</strong>
             </p>
             <p>
-              The Min-Med Approach is a proprietary method developed by Dr. Satya that uses a low or no dose of Finasteride, helping to protect the patient's long-term health.
+              The Min-Med Approach is a proprietary method developed by Dr.
+              Satya that uses a low or no dose of Finasteride, helping to
+              protect the patient's long-term health.
             </p>
           </div>
 
@@ -703,7 +777,9 @@ useEffect(() => {
               <strong>Can repair transplants look natural?</strong>
             </p>
             <p>
-              Yes, a natural appearance can be achieved through proper angulation, careful planning of density, and conservation of the donor area, as demonstrated in Lokesh’s case.
+              Yes, a natural appearance can be achieved through proper
+              angulation, careful planning of density, and conservation of the
+              donor area, as demonstrated in Lokesh’s case.
             </p>
           </div>
         </div>

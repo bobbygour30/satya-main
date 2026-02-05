@@ -7,7 +7,6 @@ const LEFT_IMAGES = [
   assets.gurgao1,
   assets.gurgao2,
   assets.gurgao3,
-  assets.gurgao4,
   assets.gurgao5,
   assets.gurgao6,
   assets.gurgao7,
@@ -19,7 +18,6 @@ const RIGHT_IMAGES = [
   assets.delhi3,
   assets.delhi4,
   assets.delhi5,
-  assets.delhi6,
 ];
 
 /* ================= SLIDER HOOK ================= */

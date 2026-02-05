@@ -14,19 +14,26 @@ import ProductShowcaseSection from "../components/ProductShowcaseSection";
 import Ratings from "../components/Ratings";
 import Blogs from "../components/Blogs";
 import SatyaIntroduction from "../components/SatyaIntroduction";
+import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 
 const HomePage = () => {
-
-
   return (
     <div>
+      <SEO
+        title="World’s Leading Skin & Hair Clinic | Advanced Hair Transplant & Skin Treatments"
+        description="World’s leading skin & hair clinic offering advanced hair transplant, dermatology, and aesthetic skin treatments. Doctor-led care. Natural results. Trusted worldwide."
+        canonical="https://satyaskinhair.com/"
+        showSchema={true}
+      />
+
       <BannerSlider />
       {/* <LogoSlider  /> */}
       <SatyaIntroduction />
       <HeroSection />
       <Ratings />
       <ServicesAndEvolution />
-      <Testimonials />  
+      <Testimonials />
       <FaceLoveForm />
       <ClinicSection />
       <TeamSlider />
@@ -35,7 +42,6 @@ const HomePage = () => {
       <ProductShowcaseSection />
       <Blogs />
       {/* <BadgesSection /> */}
-      
     </div>
   );
 };

@@ -22,13 +22,11 @@ import delhi2 from "./delhi (2).jpg";
 import delhi3 from "./delhi (3).jpg";
 import delhi4 from "./delhi (4).jpg";
 import delhi5 from "./delhi (5).jpg";
-import delhi6 from "./delhi (6).jpg";
 
 /* Gurgaon */
-import gurgao1 from "./gurgao (1).jpg";
+import gurgao1 from "./gurgao (1).png";
 import gurgao2 from "./gurgao (2).jpg";
 import gurgao3 from "./gurgao (3).jpg";
-import gurgao4 from "./gurgao (4).jpg";
 import gurgao5 from "./gurgao (5).jpg";
 import gurgao6 from "./gurgao (6).jpg";
 import gurgao7 from "./gurgao (7).jpg";
@@ -183,12 +181,10 @@ const assets = {
   delhi3,
   delhi4,
   delhi5,
-  delhi6,
 
   gurgao1,
   gurgao2,
   gurgao3,
-  gurgao4,
   gurgao5,
   gurgao6,
   gurgao7,

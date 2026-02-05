@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // ← Added for routing
+import { Link } from "react-router-dom";
 import {
   Phone,
   MapPin,
@@ -10,6 +10,7 @@ import {
   CalendarDays,
   MessageCircle,
   ChevronDown,
+  ChevronRight,
 } from "lucide-react";
 
 import ConsultationPopup from "./ConsultationPopup";
@@ -44,7 +45,8 @@ const MENU = [
   {
     title: "Skin",
     items: [
-      { label: "Concerns", path: "/skin/concerns" },
+      // Moved to top
+      { label: "Concerns", isConcerns: true },
       { label: "Treatments", path: "/skin/treatments" },
       { label: "Laser Hair Reduction", path: "/skin/laser-hair-reduction" },
       { label: "Chemical Peel", path: "/skin/chemical-peel" },
@@ -63,6 +65,12 @@ const MENU = [
       { label: "Acne Scar", path: "/skin/acne-scar" },
       { label: "Hydra Facial", path: "/skin/hydra-facial" },
       { label: "Skin Whitening Treatment", path: "/skin/skin-whitening-treatment" },
+    ],
+    concerns: [
+      { label: "Pigmentation", path: "/skin/concerns/pigmentation" },
+      { label: "Wrinkles & Fine Lines", path: "/skin/concerns/wrinkles-fine-lines" },
+      { label: "Acne / Acne Scars", path: "/skin/concerns/acne-acne-scars" },
+      { label: "Dull Skin & Open Pores", path: "/skin/concerns/dull-skin-open-pores" },
     ],
   },
 
@@ -143,11 +151,12 @@ const MENU = [
   },
 ];
 
+const MAX_VISIBLE_ITEMS = 4;
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
-    const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -158,137 +167,231 @@ export default function Navbar() {
 
   return (
     <>
-    <header className="sticky top-0 z-50 bg-[#FFF8EF] shadow-sm">
-      {/* ================= TOP BAR ================= */}
-      <div className="hidden md:flex justify-between items-center px-6 py-2 text-sm border-b border-[#DFDFDD] bg-[#FCEBDE]">
-        <div className="flex gap-6 text-[#828D9C]">
-          <span className="flex items-center gap-1">
-            <MapPin size={14} /> DLF Phase 4, Gurgaon | Delhi NCR
-          </span>
-          <span className="flex items-center gap-1">
-            <Phone size={14} /> +91 9910 094945
-          </span>
-        </div>
+      <header className="sticky top-0 z-50 bg-[#FFF8EF] shadow-sm">
+        {/* ================= TOP BAR ================= */}
+        <div className="hidden md:flex justify-between items-center px-6 py-2 text-sm border-b border-[#DFDFDD] bg-[#FCEBDE]">
+          <div className="flex gap-6 text-[#828D9C]">
+            <span className="flex items-center gap-1">
+              <MapPin size={14} /> DLF Phase 4, Gurgaon | Delhi NCR
+            </span>
+            <span className="flex items-center gap-1">
+              <Phone size={14} /> +91 9910 094945
+            </span>
+          </div>
 
-        <div className="flex gap-6 items-center">
-          <button className="flex items-center gap-1 text-[#9E4A47] font-medium">
-            <MessageCircle size={15} /> WhatsApp Expert
-          </button>
-          <button className="flex items-center gap-1 text-[#2B333C]">
-            <Globe size={15} /> EN | HI
-          </button>
-          <button onClick={() => setShowPopup(true)} className="flex cursor-pointer items-center gap-1 bg-[#9E4A47] text-white px-4 py-1.5 rounded-full">
-            <CalendarDays size={15} /> Book Consultation
-          </button>
-        </div>
-      </div>
-
-      {/* ================= MAIN NAV ================= */}
-      <div className="flex items-center justify-between px-6 py-4">
-        {/* LOGO */}
-        <Link to="/" className="block">
-          <img
-            className="w-30"
-            src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/width:2000/height:2000/https://cdn.gamma.app/3pjpymp9a7vlfhg/c472d799fd6e4d3dacf235cf60fceb3f/original/Logo-2-1.png"
-            alt="Satya Logo"
-          />
-        </Link>
-
-        {/* SEARCH */}
-        <div className="hidden lg:block relative w-[420px]">
-          <Search
-            size={18}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-[#828D9C]"
-          />
-          <input
-            placeholder={searchPlaceholders[placeholderIndex]}
-            className="w-full pl-10 pr-4 py-2 border border-[#DFDFDD] rounded-full text-sm focus:ring-2 focus:ring-[#9E4A47] outline-none bg-white"
-          />
-        </div>
-
-        {/* DESKTOP MENU */}
-        <nav className="hidden lg:flex gap-8 items-center">
-          {MENU.map((menu) => (
-            <HoverDropdown key={menu.title} {...menu} />
-          ))}
-
-          <button onClick={() => setShowPopup(true)} className="bg-[#9E4A47] cursor-pointer text-white px-6 py-2 rounded-full">
-            Book Appointment
-          </button>
-        </nav>
-
-        {/* MOBILE BUTTON */}
-        <button
-          className="lg:hidden text-[#2B333C]"
-          onClick={() => setMobileOpen(true)}
-        >
-          <Menu size={28} />
-        </button>
-      </div>
-
-      {/* ================= MOBILE MENU ================= */}
-      {mobileOpen && (
-        <div className="fixed inset-0 bg-black/40 z-50">
-          <div className="bg-[#FFF8EF] w-[85%] h-full p-6 overflow-y-auto">
-            <div className="flex justify-between mb-6">
-              <Link
-                to="/"
-                className="font-bold text-lg text-[#2B333C]"
-                onClick={() => setMobileOpen(false)}
-              >
-                SATYA
-              </Link>
-              <button onClick={() => setMobileOpen(false)}>
-                <X size={24} className="text-[#2B333C]" />
-              </button>
-            </div>
-
-            {MENU.map((menu) => (
-              <MobileAccordion key={menu.title} {...menu} />
-            ))}
-
-            <button onClick={() => setShowPopup(true)} className="mt-6 w-full bg-[#9E4A47] text-white py-3 rounded-xl cursor-pointer">
-              Book Appointment
+          <div className="flex gap-6 items-center">
+            <button className="flex items-center gap-1 text-[#9E4A47] font-medium">
+              <MessageCircle size={15} /> WhatsApp Expert
+            </button>
+            <button className="flex items-center gap-1 text-[#2B333C]">
+              <Globe size={15} /> EN | HI
+            </button>
+            <button
+              onClick={() => setShowPopup(true)}
+              className="flex cursor-pointer items-center gap-1 bg-[#9E4A47] text-white px-4 py-1.5 rounded-full"
+            >
+              <CalendarDays size={15} /> Book Consultation
             </button>
           </div>
         </div>
-      )}
-    </header>
-    {/* Popup */}
+
+        {/* ================= MAIN NAV ================= */}
+        <div className="flex items-center justify-between px-6 py-4">
+          <Link to="/" className="block">
+            <img
+              className="w-30"
+              src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/width:2000/height:2000/https://cdn.gamma.app/3pjpymp9a7vlfhg/c472d799fd6e4d3dacf235cf60fceb3f/original/Logo-2-1.png"
+              alt="Satya Logo"
+            />
+          </Link>
+
+          <div className="hidden lg:block relative w-[420px]">
+            <Search
+              size={18}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-[#828D9C]"
+            />
+            <input
+              placeholder={searchPlaceholders[placeholderIndex]}
+              className="w-full pl-10 pr-4 py-2 border border-[#DFDFDD] rounded-full text-sm focus:ring-2 focus:ring-[#9E4A47] outline-none bg-white"
+            />
+          </div>
+
+          <nav className="hidden lg:flex gap-8 items-center">
+            {MENU.map((menu) => (
+              <HoverDropdown key={menu.title} {...menu} />
+            ))}
+
+            <button
+              onClick={() => setShowPopup(true)}
+              className="bg-[#9E4A47] cursor-pointer text-white px-6 py-2 rounded-full"
+            >
+              Book Appointment
+            </button>
+          </nav>
+
+          <button
+            className="lg:hidden text-[#2B333C]"
+            onClick={() => setMobileOpen(true)}
+          >
+            <Menu size={28} />
+          </button>
+        </div>
+
+        {/* ================= MOBILE MENU ================= */}
+        {mobileOpen && (
+          <div className="fixed inset-0 bg-black/40 z-50">
+            <div className="bg-[#FFF8EF] w-[85%] h-full p-6 overflow-y-auto">
+              <div className="flex justify-between items-center mb-6">
+                <Link
+                  to="/"
+                  className="font-bold text-lg text-[#2B333C]"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  SATYA
+                </Link>
+                <button
+                  onClick={() => setMobileOpen(false)}
+                  className="p-2 rounded-full hover:bg-gray-200 transition"
+                >
+                  <X size={28} className="text-[#2B333C]" />
+                </button>
+              </div>
+
+              {MENU.map((menu) => (
+                <MobileAccordion key={menu.title} {...menu} />
+              ))}
+
+              <button
+                onClick={() => setShowPopup(true)}
+                className="mt-8 w-full bg-[#9E4A47] text-white py-3 rounded-xl cursor-pointer font-medium"
+              >
+                Book Appointment
+              </button>
+            </div>
+          </div>
+        )}
+      </header>
+
       <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
-      </>
+    </>
   );
 }
 
 /* ================= DESKTOP HOVER DROPDOWN ================= */
-function HoverDropdown({ title, items }) {
+function HoverDropdown({ title, items, concerns }) {
+  const [showMore, setShowMore] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState(null); // 'concerns' or null
+
+  const visibleItems = showMore ? items : items.slice(0, MAX_VISIBLE_ITEMS);
+  const hasMore = items.length > MAX_VISIBLE_ITEMS;
+  const hasConcerns = !!concerns && concerns.length > 0;
+
+  const handleConcernsClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveSubmenu(activeSubmenu === "concerns" ? null : "concerns");
+  };
+
   return (
-    <div className="relative group">
+    <div
+      className="relative group"
+      onMouseLeave={() => {
+        // Optional: close submenu when leaving the whole dropdown
+        // setActiveSubmenu(null);
+      }}
+    >
       <div className="flex items-center gap-1 cursor-pointer px-1 py-2">
         <span className="font-medium text-[#2B333C] group-hover:text-[#9E4A47]">
           {title}
         </span>
-        <ChevronDown size={16} className="text-[#828D9C]" />
+        <ChevronDown size={16} className="text-[#828D9C] group-hover:text-[#9E4A47]" />
       </div>
 
       <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
-        <div className="bg-[#FFF8EF] border border-[#DFDFDD] shadow-xl rounded-xl p-4 w-64">
-          <ul className="space-y-2 text-sm text-[#2B333C]">
-            {items.map((item, index) => {
-              const isLinkItem = typeof item === "object" && item.path;
-              const label = isLinkItem ? item.label : item;
-              const path = isLinkItem ? item.path : null;
+        <div
+          className={`bg-[#FFF8EF] border border-[#DFDFDD] shadow-2xl rounded-xl overflow-hidden flex ${
+            activeSubmenu === "concerns" && hasConcerns ? "min-w-[680px]" : "min-w-[320px]"
+          }`}
+        >
+          {/* LEFT COLUMN */}
+          <div className="flex-1 p-5">
+            <ul className="space-y-2.5 text-sm text-[#2B333C]">
+              {visibleItems.map((item, index) => {
+                if (item.isConcerns) {
+                  return (
+                    <li
+                      key={index}
+                      className={`cursor-pointer transition-colors py-0.5 flex items-center justify-between ${
+                        activeSubmenu === "concerns"
+                          ? "text-[#9E4A47] font-medium"
+                          : "hover:text-[#9E4A47]"
+                      }`}
+                      onClick={handleConcernsClick}
+                    >
+                      <span>Concerns</span>
+                      <ChevronRight
+                        size={16}
+                        className={`transition-transform ${
+                          activeSubmenu === "concerns" ? "rotate-90" : ""
+                        }`}
+                      />
+                    </li>
+                  );
+                }
 
-              return (
-                <li
-                  key={index}
-                  className="cursor-pointer hover:text-[#9E4A47] transition-colors"
-                >
-                  {path ? <Link to={path}>{label}</Link> : label}
-                </li>
-              );
-            })}
-          </ul>
+                return (
+                  <li
+                    key={index}
+                    className="cursor-pointer hover:text-[#9E4A47] transition-colors py-0.5"
+                  >
+                    <Link to={item.path}>{item.label}</Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {hasMore && (
+              <div className="mt-4 pt-3 border-t border-gray-200">
+                {showMore ? (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowMore(false);
+                    }}
+                    className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                  >
+                    <X size={14} /> Close
+                  </button>
+                ) : (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowMore(true);
+                    }}
+                    className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                  >
+                    View More <ChevronDown size={14} />
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* RIGHT COLUMN - only shown when Concerns is active */}
+          {activeSubmenu === "concerns" && hasConcerns && (
+            <div className="w-80 bg-[#FFF8F2] p-5 border-l border-[#DFDFDD]">
+              <h4 className="font-semibold text-[#2B333C] mb-4 text-base">Skin Concerns</h4>
+              <ul className="space-y-2.5 text-sm text-[#2B333C]">
+                {concerns.map((concern, idx) => (
+                  <li key={idx} className="hover:text-[#9E4A47] transition-colors">
+                    <Link to={concern.path} onClick={() => setActiveSubmenu(null)}>
+                      {concern.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -296,8 +399,14 @@ function HoverDropdown({ title, items }) {
 }
 
 /* ================= MOBILE ACCORDION ================= */
-function MobileAccordion({ title, items }) {
+function MobileAccordion({ title, items, concerns }) {
   const [open, setOpen] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const [concernsOpen, setConcernsOpen] = useState(false);
+
+  const visibleItems = showMore ? items : items.slice(0, MAX_VISIBLE_ITEMS);
+  const hasMore = items.length > MAX_VISIBLE_ITEMS;
+  const hasConcerns = !!concerns && concerns.length > 0;
 
   return (
     <div className="border-b border-[#DFDFDD]">
@@ -313,33 +422,76 @@ function MobileAccordion({ title, items }) {
       </button>
 
       {open && (
-        <div className="pb-4 pl-3 space-y-2 text-sm text-[#828D9C]">
-          {items.map((item, index) => {
-            const isLinkItem = typeof item === "object" && item.path;
-            const label = isLinkItem ? item.label : item;
-            const path = isLinkItem ? item.path : null;
+        <div className="pb-6 pl-3 pr-2 space-y-5 text-sm">
+          {/* Main items + Concerns at top */}
+          {visibleItems.map((item, index) => {
+            if (item.isConcerns) {
+              return (
+                <div key={index}>
+                  <button
+                    onClick={() => setConcernsOpen(!concernsOpen)}
+                    className="w-full flex justify-between items-center py-2 font-medium text-[#2B333C] hover:text-[#9E4A47]"
+                  >
+                    Concerns
+                    <ChevronDown
+                      size={16}
+                      className={`transition ${concernsOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+
+                  {concernsOpen && (
+                    <div className="pl-4 mt-1 space-y-2">
+                      {concerns.map((concern, cIdx) => (
+                        <div key={cIdx}>
+                          <Link
+                            to={concern.path}
+                            className="hover:text-[#9E4A47] transition-colors block py-1"
+                            onClick={() => setOpen(false)}
+                          >
+                            {concern.label}
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
 
             return (
               <div key={index}>
-                {path ? (
-                  <Link
-                    to={path}
-                    className="hover:text-[#9E4A47] transition-colors"
-                    onClick={() => {
-                      /* Optional: close mobile menu on click */
-                    }}
-                  >
-                    {label}
-                  </Link>
-                ) : (
-                  label
-                )}
+                <Link
+                  to={item.path}
+                  className="hover:text-[#9E4A47] transition-colors block py-1"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
               </div>
             );
           })}
+
+          {hasMore && (
+            <div className="pt-3">
+              {showMore ? (
+                <button
+                  onClick={() => setShowMore(false)}
+                  className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                >
+                  <X size={14} /> Close
+                </button>
+              ) : (
+                <button
+                  onClick={() => setShowMore(true)}
+                  className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                >
+                  View More <ChevronDown size={14} />
+                </button>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
-    
   );
 }

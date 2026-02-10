@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import assets from "../assets/assets";
 
-export default function Shubham() {
+export default function Gopal() {
   /* ================= BEFORE / AFTER ================= */
   const [mode, setMode] = useState(0); // 0: before, 1: after
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const beforeImages = [
-    assets.shubhamFrontViewBeforeSurgery,
-    assets.shubhamLeftViewBeforeSurgery,
-    assets.shubhamRightViewBeforeSurgery,
-    assets.shubhamBackViewBeforeSurgery,
+    assets.gopalFrontViewBeforeSurgery,
+    assets.gopalLeftViewBeforeSurgery,
+        assets.gopalRightViewBeforeSurgery,
+        assets.gopalBackViewBeforeSurgery,
   ];
 
   const afterImages = [
-    assets.shubhamFrontView15Year,
-    assets.shubhamLeftView15Year,
-    assets.shubhamRightView7Months2,
-    assets.shubhamBackView15Year,
+    assets.gopal,
+    assets.gopalLeftView15Year,
+        assets.gopalRightView15Year,  
+        assets.gopalBackView15Year,
   ];
 
   const currentImages = mode === 0 ? beforeImages : afterImages;
@@ -91,7 +91,7 @@ export default function Shubham() {
 
   useEffect(() => {
     document.title =
-      "Shubham’s Corrective Hair Transplant – The Science Behind Real, Sustainable Results | Satya Skin & Hair";
+      "Gopal’s Hair Transplant Journey – Conservative Approach for Lasting Results | Satya Skin & Hair";
   }, []);
 
   /* ================= TABLE DATA ================= */
@@ -99,37 +99,28 @@ export default function Shubham() {
     {
       label: "Before Surgery",
       images: [
-        assets.shubhamFrontViewBeforeSurgery,
-        assets.shubhamLeftViewBeforeSurgery,
-        assets.shubhamRightViewBeforeSurgery,
-        assets.shubhamBackViewBeforeSurgery,
+        assets.gopalFrontViewBeforeSurgery,
+        assets.gopalLeftViewBeforeSurgery,
+        assets.gopalRightViewBeforeSurgery,
+        assets.gopalBackViewBeforeSurgery,
       ],
     },
     {
-      label: "Immediate Surgery",
+      label: "8 Months Post Surgery",
       images: [
-        assets.shubhamFrontViewImmediate,
-        assets.shubhamLeftViewImmediate,
-        assets.shubhamRightView2Weeks,
-        assets.shubhamBackViewImmediate,
-      ],
-    },
-    {
-      label: "5 Months Post Surgery",
-      images: [
-        assets.shubhamFrontView5Month,
-        assets.shubhamLeftView5Month,
-        assets.shubhamRightView5Month,
-        assets.shubhamBackView5Month,
+        assets.gopalFrontView8Month,
+        assets.gopalLeftView8Month,
+        assets.gopalRightView8Month,
+        assets.gopalBackView8Month,
       ],
     },
     {
       label: "1.5 Year Post Surgery",
       images: [
-        assets.shubhamFrontView7Months2,
-        assets.shubhamLeftView15Year,
-        assets.shubhamRightView7Months2,
-        assets.shubhamBackView15Year,
+        assets.gopal,
+        assets.gopalLeftView15Year,
+        assets.gopalRightView15Year,  
+        assets.gopalBackView15Year,
       ],
     },
   ];
@@ -243,7 +234,7 @@ export default function Shubham() {
       </table>
 
       <div className="mt-6 text-center">
-        <p className="text-lg font-semibold text-[#2B333C]">Shubham</p>
+        <p className="text-lg font-semibold text-[#2B333C]">Gopal</p>
         <p className="text-sm opacity-80">SATYA SKIN & HAIR SOLUTIONS</p>
       </div>
     </div>
@@ -318,24 +309,35 @@ export default function Shubham() {
                   <p className="leading-relaxed">
                     <span className="text-white/70">Patient Name</span>
                     <span className="block text-lg sm:text-xl font-medium mt-1">
-                      Shubham Kumar
+                      Gopal Krishna
+                    </span>
+                  </p>
+
+                  <p className="leading-relaxed">
+                    <span className="text-white/70">Location</span>
+                    <span className="block text-lg sm:text-xl font-medium mt-1">
+                      Canada
+                    </span>
+                  </p>
+
+                  <p className="leading-relaxed">
+                    <span className="text-white/70">Hair Loss Grade</span>
+                    <span className="block text-lg sm:text-xl font-medium mt-1">
+                      Grade 3 (Frontal Hairline)
                     </span>
                   </p>
 
                   <p className="leading-relaxed">
                     <span className="text-white/70">Total Grafts Implanted</span>
                     <span className="block mt-1">
-                      <span className="font-medium text-white">5000 grafts</span>
+                      <span className="font-medium text-white">2000 grafts</span>
                     </span>
                   </p>
 
                   <p className="leading-relaxed">
                     <span className="text-white/70">Technique Used</span>
                     <span className="block mt-1 text-white">
-                      MHT{" "}
-                      <span className="text-white/50">
-                        (FUT + FUE + Beard)
-                      </span>
+                      FUE using DSFT
                     </span>
                   </p>
 
@@ -347,9 +349,9 @@ export default function Shubham() {
                   </p>
 
                   <p className="leading-relaxed">
-                    <span className="text-white/70">Changed Medication (18 Feb 2025)</span>
+                    <span className="text-white/70">Area Treated</span>
                     <span className="block mt-1 text-white">
-                      Finasteride 2mg/week + Dutasteride 0.5mg/week + HA + Tricosphire serum
+                      Frontal hairline zone
                     </span>
                   </p>
                 </div>
@@ -363,169 +365,113 @@ export default function Shubham() {
       <section className="max-w-7xl mx-auto px-2 sm:px-6 py-12 sm:py-16 space-y-10 leading-relaxed">
         {/* H1 */}
         <h1 className="text-3xl sm:text-4xl font-semibold text-[#0E3A43]">
-          “Shubham’s Repair Hair Transplant , The Science Behind Real, Sustainable Results”
+          Case Study of Hair Transplant | Hair Transplant journey of Gopal Krishna
         </h1>
 
         <p>
-          Repair hair transplant cases are some of the most complicated procedures in hair transplantation. They entail correcting surgical errors from previous hair transplants while dealing with a depleted donor site and hair loss. 
-        </p>
-
-        <p>
-          This case study illustrates Shubham’s repair hair transplant experience following a totally failed first procedure and how proper technique choice and reduced medication resulted in stable and natural outcomes.
+          The hair transplant journey of the individual, Gopal Krishna, is discussed under the case study as the individual is a 27-year-old whose hairline recession is of Grade 3, which was addressed effectively through the conservative use of grafts and limited consumption of medication. 
+          The main concern for this case was not just the restoration of hairline density but also maintaining future options while ensuring hair and scalp health.
         </p>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Background: Totally Failed Hair Transplant
+          Background: Early Hairline Recession at a Young Age
         </h3>
 
         <p>
-          Shubham had already undergone a hair transplant procedure at another center.
+          Gopal was experiencing:
         </p>
 
-        <p><strong>Initially:</strong></p>
         <ul className="list-disc pl-6 space-y-1">
-          <li>The hair transplant procedure seemed satisfactory</li>
-          <li>The results were backed by full doses of medicines</li>
-        </ul>
-
-        <p><strong>Later:</strong></p>
-        <ul className="list-disc pl-6 space-y-1">
-          <li>There was massive hair loss in the non-transplanted areas</li>
-          <li>There were visible gaps in the transplanted area</li>
-          <li>The density was irregular and unnatural</li>
+          <li>Grade 3 frontal hairline recession</li>
+          <li>Loss primarily limited to the frontal zone</li>
+          <li>Early-stage hair loss progression</li>
         </ul>
 
         <p>
-          What initially seemed like a success story turned out to be a totally failed hair transplant procedure.
+          At this age, hair loss can continue over time, making it essential to avoid overcorrection in the initial surgery.
         </p>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Problems Identified During Evaluation
+          Conflicting Opinions from Other Clinics
         </h3>
 
         <p>
-          The following critical problems were identified during the evaluation:
+          Before choosing Satya, Gopal consulted multiple clinics.
+          What was commonly suggested:
         </p>
 
         <ul className="list-disc pl-6 space-y-1">
-          <li>Poor graft survival in the transplanted area</li>
-          <li>Gaps between the transplanted grafts</li>
-          <li>Hair loss in the non-transplanted areas</li>
-          <li>The donor area was already compromised</li>
-          <li>Multigrafts were selectively harvested (cherry-picked)</li>
-          <li>Single hair grafts were left behind, leaving no options for the future</li>
+          <li>A much lower hairline design</li>
+          <li>Use of 3000+ grafts</li>
+          <li>Aggressive frontal packing</li>
         </ul>
 
         <p>
-          This makes Shubham a high-risk patient for undergoing repeat surgery if not planned properly.
+          These approaches focused on immediate visual density but did not adequately address long-term hair loss progression.
         </p>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Why Repeat FUE Alone Would Have Failed
+          Clinical Evaluation and Planning at Satya
         </h3>
 
         <p>
-          Many clinics recommended that Shubham undergo another FUE procedure.
-          However, this would have been a bad idea because:
+          At Satya Skin & Hair Solutions, the evaluation focused on the hair loss journey, not just the current appearance.
+          Key planning principles:
         </p>
 
         <ul className="list-disc pl-6 space-y-1">
-          <li>The donor area is already depleted</li>
-          <li>Another FUE procedure would accentuate the donor thinning</li>
-          <li>The number of grafts is limited and cannot be used to cover the front, mid-scalp, and top of the head simultaneously</li>
-          <li>The long-term donor area safety would be jeopardized</li>
+          <li>Preserve donor area for future needs</li>
+          <li>Avoid an artificially low hairline</li>
+          <li>Match hairline design to age and facial proportions</li>
+          <li>Use only the grafts that were truly required</li>
         </ul>
 
         <p>
-          In this particular situation, another FUE alone would have further exacerbated the problem rather than solving it.
+          Based on this assessment, a conservative plan was advised.
         </p>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Corrective Hair Transplant Planning
+          Surgical Technique Used: DSFT-Based FUE
         </h3>
 
-        <p>The corrective plan involved:</p>
+        <p>
+          Gopal underwent a hair transplant using DSFT, the advanced version of FUE.
+          Surgical details:
+        </p>
+
         <ul className="list-disc pl-6 space-y-1">
-          <li>Maximizing graft harvest</li>
-          <li>Preserving existing donor hair</li>
-          <li>Closing density deficiencies on the scalp</li>
-          <li>Decreasing reliance on medical treatments</li>
+          <li>2000 grafts transplanted</li>
+          <li>Grafts placed only in the frontal hairline zone</li>
+          <li>Natural angles and direction maintained</li>
+          <li>Density planned to age naturally with time</li>
         </ul>
 
         <p>
-          The goal was not immediate aesthetic correction but rather long-term stability.
+          This ensured a balanced and realistic hairline restoration.
         </p>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Surgical Methodology Used: MHT (FUT + FUE + Beard)
+          Medication Strategy: Minimal and Supportive
         </h3>
 
         <p>
-          Shubham underwent a corrective hair transplant procedure utilizing the MHT method, which incorporates:
+          Instead of full-dose medication, Gopal was advised:
         </p>
 
         <ul className="list-disc pl-6 space-y-1">
-          <li>FUT for large graft procurement from the secure donor area</li>
-          <li>FUE for strategic harvesting, if needed</li>
-          <li>Body hair transplant (beard grafts) to complement the scalp donor area</li>
+          <li>Finasteride at 2 mg per week only</li>
         </ul>
 
-        <p>
-          This enabled the team to cover:
-        </p>
+        <p>Benefits of this approach:</p>
 
         <ul className="list-disc pl-6 space-y-1">
-          <li>Front area</li>
-          <li>Mid-scalp area</li>
-          <li>Crown area</li>
+          <li>Reduced medication dependency</li>
+          <li>Better long-term systemic tolerance</li>
+          <li>Results driven mainly by surgical planning</li>
         </ul>
 
         <p>
-          All three areas were treated as part of a single, carefully planned corrective strategy.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          FUT Scar Reality in This Case
-        </h3>
-
-        <p>
-          One of the major apprehensions of patients is the possibility of the FUT scar being noticeable.
-          In Shubham’s situation:
-        </p>
-
-        <ul className="list-disc pl-6 space-y-1">
-          <li>The FUT scar was minimal</li>
-          <li>There were no visible incision lines</li>
-          <li>The scar was hidden even when the hair was short</li>
-        </ul>
-
-        <p>
-          This shows that when done properly, the FUT scar is not a restrictive factor in corrective hair transplant procedures.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Medication Protocol: Minimal and Scientific
-        </h3>
-
-        <p>
-          Another characteristic feature of this case is the medication protocol.
-          Medications prescribed to Shubham are:
-        </p>
-
-        <ul className="list-disc pl-6 space-y-1">
-          <li>Almost one-fourth of the usual prescribed doses</li>
-          <li>Only USFDA-approved doses of finasteride and minoxidil</li>
-        </ul>
-
-        <p><strong>Advantages of this protocol:</strong></p>
-        <ul className="list-disc pl-6 space-y-1">
-          <li>Less systemic dependency</li>
-          <li>Surgical results are easily visible</li>
-          <li>Long-term hair and scalp health is better</li>
-        </ul>
-
-        <p>
-          This again emphasized that medications should complement surgery, not mask poor surgical skills.
+          Medication was used as support, not as a substitute for technique.
         </p>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
@@ -533,47 +479,62 @@ export default function Shubham() {
         </h3>
 
         <p>
-          After the repair, the following results were obtained:
+          Post-transplant assessment showed:
         </p>
 
         <ul className="list-disc pl-6 space-y-1">
-          <li>Increased density in the front, mid-scalp, and crown regions</li>
-          <li>Enhanced grafting distribution and flow</li>
-          <li>Stabilized hair loss with minimal medication</li>
-          <li>Maintained donor area appearance</li>
+          <li>Natural-looking frontal hairline</li>
+          <li>Improved facial balance and confidence</li>
+          <li>No signs of overcorrection</li>
+          <li>Healthy donor area without visible depletion</li>
         </ul>
 
         <p>
-          The corrective hair transplant achieved balance rather than pursuing artificial density.
+          The result appeared age-appropriate and sustainable rather than exaggerated.
         </p>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43]">
-          Key Learnings from This Repair Hair Transplant Case
+          Why This Approach Worked
         </h3>
 
         <ul className="list-disc pl-6 space-y-1">
-          <li>Failed hair transplants may initially appear satisfactory because of medication</li>
-          <li>Donor area mismanagement leads to long-term constraints</li>
-          <li>Repeat FUE is not indicated in all repair situations</li>
-          <li>FUT, FUE, and body hair transplant may salvage difficult cases</li>
-          <li>Minimal finasteride may be adequate if surgical planning is optimal</li>
+          <li>Conservative graft usage prevented donor overuse</li>
+          <li>DSFT ensured high-quality graft placement</li>
+          <li>Minimal medication reduced health risks</li>
+          <li>Long-term planning protected future hair restoration options</li>
+        </ul>
+
+        <p>
+          This approach helped Gopal achieve both aesthetic improvement and peace of mind.
+        </p>
+
+        <h3 className="text-2xl font-semibold text-[#0E3A43]">
+          Key Learnings from This Hair Transplant Case
+        </h3>
+
+        <ul className="list-disc pl-6 space-y-1">
+          <li>When we enhance the density of hair transplants among young individuals, we must focus on planning rather than density</li>
+          <li>Not all low hairs are beneficial in the future</li>
+          <li>Less grafts, used correctly, do better than more grafts,</li>
+          <li>The drug should facilitate surgery; it should not compensate for overdesign</li>
+          <li>Donor preservation is an important aspect for the management of hair for a lifetime</li>
         </ul>
 
         <h3 className="text-2xl font-semibold text-[#0E3A43]">Conclusion</h3>
 
         <p>
-          Shubham’s case illustrates that the success of repair hair transplant surgery relies on proper diagnosis, surgical technique, and honest planning. A failed transplant procedure cannot be corrected by doing the same thing again and again, which is just a mistake.
+          In the case of Gopal Krishna, it is evident that a hair transplant result is not necessarily defined by the number of grafts used. The hair loss journey, using DSFT-based FUE and medication at a minimum, produced a natural and stable result.
         </p>
 
         <p>
-          This case reiterates that repair hair transplant surgery is a surgical specialty based on science, art, and honest intentions, and not on aggressive grafting or excessive medication.
+          This case illustrates the importance of planning and execution, particularly with younger individuals and those experiencing early stages of hair loss.
         </p>
 
         {/* ================= TABLE ================= */}
         <section className="px-4 sm:px-6 pb-16">
           <div className=" bg-white/40 rounded-3xl ">
             <h3 className="text-2xl font-semibold text-center lg:mb-4">
-              Shubham’s Progress & Results
+              Gopal’s Progress & Results
             </h3>
             <p className="mb-8 text-center sm:hidden block text-xs">
               Click on the images to view full size
@@ -681,7 +642,7 @@ export default function Shubham() {
 
         <div className="text-center py-10 md:py-12">
           <p className="text-xl font-semibold text-[#0E3A43]">
-            Shubham’s case proves that truthful science and skilled hands can
+            Gopal’s case proves that truthful science and skilled hands can
             rebuild what shortcuts destroy.
           </p>
           <p className="mt-4 font-medium">

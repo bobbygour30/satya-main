@@ -49,9 +49,7 @@ export default function ProductShowcaseSection() {
             </h2>
 
             <p className="text-[#828D9C] text-base leading-relaxed">
-              Satya Skin & Hair Solutions, established in 2005, stands as a global
-              leader in dermatology and hair restoration with international,
-              state-of-the-art facilities and advanced treatment protocols.
+              With over 23 years of clinical experience, Satya Skin & Hair Solutions follows a transparent, doctor-led approach to skin and hair care. Every recommendation is based on careful medical evaluation and honest discussion of options and outcomes. We prioritise safety, long-term results, and natural appearance, earning the trust of patients from India and across the world.
             </p>
           </div>
 

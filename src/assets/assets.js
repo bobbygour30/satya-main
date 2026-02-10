@@ -124,7 +124,6 @@ import immediate2ndSurgery from "./Immediate 2nd Surgery.jpg";
 import immediateFrontView from "./Immediate Front View.png";
 import immediateBackView from "./Immediate Back View.png";
 
-
 /* ================= FRONT VIEW ================= */
 import frontViewBeforeSurgery from "./Front View Before Surgery.png";
 import frontViewImmediate2ndSurgery from "./Front View Immmediate 2nd Surgery.jpg";
@@ -160,69 +159,79 @@ import month7_2ndSurgery from "./7 Month 2nd Surgery.png";
 import month7_2ndSurgeryFrontView from "./7 Months 2nd Surgery Front View.png";
 import days15FrontView from "./15 Days Front View.png";
 
-
 /* ================= SHUBHAM KUMAR ================= */
 
 /* Back View */
-import shubhamBackView5Month        from "./ShubhamKumarBackView5Month.jpg";
-import shubhamBackView1Year         from "./ShubhamKumarBackView1Year.jpg";
-import shubhamBackView15Year        from "./ShubhamKumarBackView1.5Year.jpg";
-import shubhamBackView2Week         from "./ShubhamKumarBackView2Week.jpg";
-import shubhamBackView3Month        from "./ShubhamKumarBackView3Month.jpg";
+import shubhamBackView5Month from "./ShubhamKumarBackView5Month.jpg";
+import shubhamBackView1Year from "./ShubhamKumarBackView1Year.jpg";
+import shubhamBackView15Year from "./ShubhamKumarBackView1.5Year.jpg";
+import shubhamBackView2Week from "./ShubhamKumarBackView2Week.jpg";
+import shubhamBackView3Month from "./ShubhamKumarBackView3Month.jpg";
 import shubhamBackViewBeforeSurgery from "./ShubhamKumarBackViewBeforeSurgery.jpg";
-import shubhamBackViewImmediate     from "./ShubhamKumarBackViewImmediateSurgery.jpg";
+import shubhamBackViewImmediate from "./ShubhamKumarBackViewImmediateSurgery.jpg";
 
 /* Front View */
-import shubhamFrontView1Year        from "./ShubhamKumarFrontView1Year.jpg";
-import shubhamFrontView15Year       from "./ShubhamKumarFrontView1.5Year.jpg";
-import shubhamFrontView3Month       from "./ShubhamKumarFrontView3Month.jpg";
-import shubhamFrontView5Month       from "./ShubhamKumarFrontView5Month.jpg";
-import shubhamFrontView7Months1     from "./ShubhamKumarFrontView7Months1.jpg";
-import shubhamFrontView7Months2     from "./ShubhamKumarFrontView7Months2.jpg";
+import shubhamFrontView1Year from "./ShubhamKumarFrontView1Year.jpg";
+import shubhamFrontView15Year from "./ShubhamKumarFrontView1.5Year.jpg";
+import shubhamFrontView3Month from "./ShubhamKumarFrontView3Month.jpg";
+import shubhamFrontView5Month from "./ShubhamKumarFrontView5Month.jpg";
+import shubhamFrontView7Months1 from "./ShubhamKumarFrontView7Months1.jpg";
+import shubhamFrontView7Months2 from "./ShubhamKumarFrontView7Months2.jpg";
 import shubhamFrontViewBeforeSurgery from "./ShubhamKumarFrontViewBeforeSurgery.jpeg";
-import shubhamFrontViewImmediate    from "./ShubhamKumarFrontViewImmediate.jpg";
+import shubhamFrontViewImmediate from "./ShubhamKumarFrontViewImmediate.jpg";
 
 /* Left View */
-import shubhamLeftView1Year         from "./ShubhamKumarLeftView1Year.jpg";
-import shubhamLeftView15Year        from "./ShubhamKumarLeftView1.5Year.jpg";
-import shubhamLeftView2Week         from "./ShubhamKumarLeftView2Week.jpg";
-import shubhamLeftView3Month        from "./ShubhamKumarLeftView3Months.jpg";
-import shubhamLeftView5Month        from "./ShubhamKumarLeftView5Months.jpg";
+import shubhamLeftView1Year from "./ShubhamKumarLeftView1Year.jpg";
+import shubhamLeftView15Year from "./ShubhamKumarLeftView1.5Year.jpg";
+import shubhamLeftView2Week from "./ShubhamKumarLeftView2Week.jpg";
+import shubhamLeftView3Month from "./ShubhamKumarLeftView3Months.jpg";
+import shubhamLeftView5Month from "./ShubhamKumarLeftView5Months.jpg";
 import shubhamLeftViewBeforeSurgery from "./ShubhamKumarLeftViewBeforeSurgery.jpeg";
-import shubhamLeftViewImmediate     from "./ShubhamKumarLeftViewImmediate.jpg";
+import shubhamLeftViewImmediate from "./ShubhamKumarLeftViewImmediate.jpg";
 
 /* Right View */
-import shubhamRightView1Year        from "./ShubhamKumarRightView1Year.jpg";
-import shubhamRightView15Year       from "./ShubhamKumarRightView1.5Year.jpg";
-import shubhamRightView2Weeks       from "./ShubhamKumarRightView2Weeks.jpg";
-import shubhamRightView3Month       from "./ShubhamKumarRightView3Month.jpg";
-import shubhamRightView5Month       from "./ShubhamKumarRightView5Month.jpg";
-import shubhamRightView7Months1     from "./ShubhamKumarRightView7Months1.jpg";
-import shubhamRightView7Months2     from "./ShubhamKumarRightView7Months2.jpg";
+import shubhamRightView1Year from "./ShubhamKumarRightView1Year.jpg";
+import shubhamRightView15Year from "./ShubhamKumarRightView1.5Year.jpg";
+import shubhamRightView2Weeks from "./ShubhamKumarRightView2Weeks.jpg";
+import shubhamRightView3Month from "./ShubhamKumarRightView3Month.jpg";
+import shubhamRightView5Month from "./ShubhamKumarRightView5Month.jpg";
+import shubhamRightView7Months1 from "./ShubhamKumarRightView7Months1.jpg";
+import shubhamRightView7Months2 from "./ShubhamKumarRightView7Months2.jpg";
 import shubhamRightViewBeforeSurgery from "./ShubhamKumarRightViewBeforeSurgery.jpeg";
 
 /* Donor */
-import shubhamDonor15Year           from "./ShubhamKumarDonor1.5Year.jpg";
-import shubhamDonor2Weeks           from "./ShubhamKumarDonor2Weeks.jpg";
-import shubhamDonor5Month           from "./ShubhamKumarDonor5Month.jpg";
+import shubhamDonor15Year from "./ShubhamKumarDonor1.5Year.jpg";
+import shubhamDonor2Weeks from "./ShubhamKumarDonor2Weeks.jpg";
+import shubhamDonor5Month from "./ShubhamKumarDonor5Month.jpg";
 
 /* Hairline */
-import shubhamHairline2Week         from "./ShubhamKumarHairline2Week.jpg";
-import shubhamHairline3Month        from "./ShubhamKumarHairline3Month.jpg";
-import shubhamHairline5Month        from "./ShubhamKumarHairline5Month.jpg";
-import shubhamHairline7Months       from "./ShubhamKumar7MonthsHairline.jpg";
-import shubhamHairline7Months2      from "./ShubhamKumar7MonthsHairline2.jpg";
-import shubhamHairline1Year         from "./ShubhamKumar1YearHairline.jpg";
-import shubhamHairline15Year        from "./ShubhamKumar1.5YearHairlineImage.jpg";
+import shubhamHairline2Week from "./ShubhamKumarHairline2Week.jpg";
+import shubhamHairline3Month from "./ShubhamKumarHairline3Month.jpg";
+import shubhamHairline5Month from "./ShubhamKumarHairline5Month.jpg";
+import shubhamHairline7Months from "./ShubhamKumar7MonthsHairline.jpg";
+import shubhamHairline7Months2 from "./ShubhamKumar7MonthsHairline2.jpg";
+import shubhamHairline1Year from "./ShubhamKumar1YearHairline.jpg";
+import shubhamHairline15Year from "./ShubhamKumar1.5YearHairlineImage.jpg";
 
 /* Immediate / Surgery */
-import shubhamImmediateSurgery      from "./ShubhamKumarImmediateSurgery.jpg";
+import shubhamImmediateSurgery from "./ShubhamKumarImmediateSurgery.jpg";
 import shubhamDonorImmediateSurgery from "./ShubhamKumarDonorImmediateSurgery.jpg";
 
 /* Before */
-import shubhamBeforeHairlineDonor   from "./SubhamKumarBeforeHairlineDonorImage.jpg";
+import shubhamBeforeHairlineDonor from "./SubhamKumarBeforeHairlineDonorImage.jpg";
 
-
+import gopal from "./gopal.png";
+import gopalFrontView8Month from "./GopalFrontview8months.png";
+import gopalFrontViewBeforeSurgery from "./GopalFrontviewBeforeSurgery.png";
+import gopalRightView15Year from "./GopalRightview1.5Years.png";
+import gopalRightView8Month from "./GopalRightview8months.png";
+import gopalRightViewBeforeSurgery from "./GopalRightviewBeforeSurgery.png";
+import gopalLeftView8Month from "./GopalLeftview8months.png";
+import gopalLeftViewBeforeSurgery from "./GopalLeftviewBeforeSurgery.png";
+import gopalLeftView15Year from "./GopalLeftview1.5Years.png";
+import gopalBackViewBeforeSurgery from "./GopalBackviewBeforeSurgery.png";
+import gopalBackView8Month from "./GopalBackview8months.png";
+import gopalBackView15Year from "./GopalBackview1.5Years.png";
 
 /* ================= EXPORT OBJECT ================= */
 const assets = {
@@ -307,7 +316,6 @@ const assets = {
   laserToningBanner,
   moleRemovalBanner,
 
-
   adam,
   sandeep,
   supreet,
@@ -316,7 +324,7 @@ const assets = {
   lokesh,
   lokesh1,
 
- /* Front View */
+  /* Front View */
   frontViewBeforeSurgery,
   frontViewImmediate2ndSurgery,
 
@@ -381,7 +389,7 @@ const assets = {
   immediateFrontView,
   immediateBackView,
 
- /* Back View */
+  /* Back View */
   shubhamBackView5Month,
   shubhamBackView15Year,
   shubhamBackView1Year,
@@ -439,6 +447,19 @@ const assets = {
 
   /* Before */
   shubhamBeforeHairlineDonor,
+
+  gopal,
+  gopalFrontView8Month,
+  gopalFrontViewBeforeSurgery,
+  gopalRightView15Year,
+  gopalRightView8Month,
+  gopalRightViewBeforeSurgery,
+  gopalLeftView8Month,
+  gopalLeftViewBeforeSurgery,
+  gopalLeftView15Year,
+  gopalBackViewBeforeSurgery,
+  gopalBackView8Month,
+  gopalBackView15Year
 };
 
 export default assets;

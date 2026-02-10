@@ -40,6 +40,7 @@ import RepairHairTransplant from "./pages/RepairHairTransplant";
 import LongHairTransplant from "./pages/LongHairTransplant";
 import HairWeaving from "./pages/HairWeaving";
 import Lokesh from "./pages/Lokesh";
+import Gopal from "./pages/Gopal";
 
 export default function App() {
   return (
@@ -63,6 +64,7 @@ export default function App() {
         <Route path="/case/shubham" element={<Shubham />} />
         <Route path="/case/arjun" element={<Arjun />} />
         <Route path="/case/lokesh" element={<Lokesh />} />
+        <Route path="/case/gopal" element={<Gopal />} />
 
         {/* ================= CLINIC ================= */}
         <Route path="/delhi" element={<AboutSatyaDelhi />} />

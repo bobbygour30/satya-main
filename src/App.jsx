@@ -41,6 +41,7 @@ import LongHairTransplant from "./pages/LongHairTransplant";
 import HairWeaving from "./pages/HairWeaving";
 import Lokesh from "./pages/Lokesh";
 import Gopal from "./pages/Gopal";
+import HairTreatment from "./pages/HairTreatment";
 
 export default function App() {
   return (
@@ -83,6 +84,8 @@ export default function App() {
         <Route path="/skin/botox" element={<BotoxTreatment />} />
 
         {/* ================= HAIR ================= */}
+
+        <Route path="/hair-treatment" element={<HairTreatment />} />
         <Route path="/beard-hair-transplant" element={<BeardHairTransplant />} />
         <Route path="/eyebrow-transplant" element={<EyebrowTransplant />} />
         <Route

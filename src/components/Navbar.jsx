@@ -26,45 +26,54 @@ const searchPlaceholders = [
 
 const MENU = [
   /* ================= WHY SATYA ================= */
+
+/* ================= HAIR ================= */
   {
-    title: "Why Satya",
+    title: "Hair",
     items: [
-      { label: "Philosophy", path: "/why-satya/philosophy" },
-      { label: "Our Doctors", path: "/why-satya/our-doctors" },
-      { label: "Facility & Technology", path: "/why-satya/facility-technology" },
-      { label: "Awards & Recognition", path: "/why-satya/awards-recognition" },
-      { label: "Media Coverage", path: "/why-satya/media-coverage" },
-      { label: "Campaign", path: "/why-satya/campaign" },
-      { label: "Contact Us", path: "/contact-us" },
-      { label: "International Patients", path: "/international-patients" },
-      { label: "FAQ", path: "/faq" },
+      { label: "FUE Hair Transplant", path: "/hair-transplant/fue" },
+      { label: "FUT Hair Transplant", path: "/hair-transplant/fut" },
+      { label: "Beard Hair Transplant", path: "/beard-hair-transplant" },
+      { label: "Eyebrow Reconstruction", path: "/eyebrow-transplant" },
+      { label: "Body Hair Transplant", path: "/hair-transplant/body" },
+      // { label: "Hair Transplant", path: "/hair-transplant" },
+      // { label: "Male Hair Transplant", path: "/hair-transplant/male" },
+      // { label: "Female Hair Transplant", path: "/hair-transplant/female" },
+      // { label: "Moustache Hair Transplant", path: "/moustache-hair-transplant" },
+      // { label: "Afro Hair Transplant", path: "/hair-transplant/afro" },
+      // { label: "Hair Transplant Repair", path: "/hair-transplant/repair" },
+      // { label: "Unshaven Hair Transplant", path: "/hair-transplant/unshaven" },
+      // { label: "Crown Hair Transplant", path: "/hair-transplant/crown" },
+      // { label: "Temple Hair Transplant", path: "/hair-transplant/temple" },
+      // { label: "Minimal Scar Hair Transplant", path: "/hair-transplant/minimal-scar" },
+      // { label: "Long Hair Transplant", path: "/hair-transplant/long" },
+      // { label: "Synthetic Hair Transplant", path: "/hair-transplant/synthetic" },
     ],
   },
-
   /* ================= SKIN ================= */
   {
     title: "Skin",
     items: [
       // Moved to top
       { label: "Concerns", isConcerns: true },
-      { label: "Treatments", path: "/skin/treatments" },
+      { label: "Mole Removal", path: "/skin/mole-removal" },
       { label: "Laser Hair Reduction", path: "/skin/laser-hair-reduction" },
       { label: "Chemical Peel", path: "/skin/chemical-peel" },
-      { label: "Mole Removal", path: "/skin/mole-removal" },
       { label: "Laser Toning Treatment", path: "/skin/laser-toning" },
-      { label: "Fractional CO2 Laser", path: "/skin/fractional-co2-laser" },
-      { label: "HIFU Treatment", path: "/skin/hifu-treatment" },
-      { label: "MNRF Treatment", path: "/skin/mnrf-treatment" },
-      { label: "Botox", path: "/skin/botox" },
-      { label: "Carbon Laser Facial", path: "/skin/carbon-laser-facial" },
-      { label: "Dermapen 4", path: "/skin/dermapen-4" },
-      { label: "Anti Wrinkle Treatment", path: "/skin/anti-wrinkle-treatment" },
-      { label: "5D Facial", path: "/skin/5d-facial" },
-      { label: "Fungal Infection", path: "/skin/fungal-infection" },
-      { label: "Wart Removal", path: "/skin/wart-removal" },
-      { label: "Acne Scar", path: "/skin/acne-scar" },
-      { label: "Hydra Facial", path: "/skin/hydra-facial" },
-      { label: "Skin Whitening Treatment", path: "/skin/skin-whitening-treatment" },
+      // { label: "Treatments", path: "/skin/treatments" },
+      // { label: "Fractional CO2 Laser", path: "/skin/fractional-co2-laser" },
+      // { label: "HIFU Treatment", path: "/skin/hifu-treatment" },
+      // { label: "MNRF Treatment", path: "/skin/mnrf-treatment" },
+      // { label: "Botox", path: "/skin/botox" },
+      // { label: "Carbon Laser Facial", path: "/skin/carbon-laser-facial" },
+      // { label: "Dermapen 4", path: "/skin/dermapen-4" },
+      // { label: "Anti Wrinkle Treatment", path: "/skin/anti-wrinkle-treatment" },
+      // { label: "5D Facial", path: "/skin/5d-facial" },
+      // { label: "Fungal Infection", path: "/skin/fungal-infection" },
+      // { label: "Wart Removal", path: "/skin/wart-removal" },
+      // { label: "Acne Scar", path: "/skin/acne-scar" },
+      // { label: "Hydra Facial", path: "/skin/hydra-facial" },
+      // { label: "Skin Whitening Treatment", path: "/skin/skin-whitening-treatment" },
     ],
     concerns: [
       { label: "Pigmentation", path: "/skin/concerns/pigmentation" },
@@ -74,29 +83,7 @@ const MENU = [
     ],
   },
 
-  /* ================= HAIR ================= */
-  {
-    title: "Hair",
-    items: [
-      { label: "Hair Transplant", path: "/hair-transplant" },
-      { label: "Male Hair Transplant", path: "/hair-transplant/male" },
-      { label: "Female Hair Transplant", path: "/hair-transplant/female" },
-      { label: "FUE Hair Transplant", path: "/hair-transplant/fue" },
-      { label: "FUT Hair Transplant", path: "/hair-transplant/fut" },
-      { label: "Beard Hair Transplant", path: "/beard-hair-transplant" },
-      { label: "Moustache Hair Transplant", path: "/moustache-hair-transplant" },
-      { label: "Eyebrow Reconstruction", path: "/eyebrow-transplant" },
-      { label: "Afro Hair Transplant", path: "/hair-transplant/afro" },
-      { label: "Body Hair Transplant", path: "/hair-transplant/body" },
-      { label: "Hair Transplant Repair", path: "/hair-transplant/repair" },
-      { label: "Unshaven Hair Transplant", path: "/hair-transplant/unshaven" },
-      { label: "Crown Hair Transplant", path: "/hair-transplant/crown" },
-      { label: "Temple Hair Transplant", path: "/hair-transplant/temple" },
-      { label: "Minimal Scar Hair Transplant", path: "/hair-transplant/minimal-scar" },
-      { label: "Long Hair Transplant", path: "/hair-transplant/long" },
-      { label: "Synthetic Hair Transplant", path: "/hair-transplant/synthetic" },
-    ],
-  },
+  
 
   /* ================= RESULTS ================= */
   {
@@ -139,16 +126,6 @@ const MENU = [
     ],
   },
 
-  /* ================= COST PAGES ================= */
-  {
-    title: "Cost",
-    items: [
-      { label: "Hair Transplant Cost Delhi", path: "/hair-transplant/delhi/cost" },
-      { label: "Hair Transplant Cost Gurgaon", path: "/hair-transplant/gurgaon/cost" },
-      { label: "Hair Transplant Cost for Men", path: "/hair-transplant/cost/gurgaon/for-men" },
-      { label: "Hair Transplant Cost for Women", path: "/hair-transplant/cost/gurgaon/for-women" },
-    ],
-  },
 ];
 
 const MAX_VISIBLE_ITEMS = 4;

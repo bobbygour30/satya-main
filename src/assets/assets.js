@@ -233,6 +233,8 @@ import gopalBackViewBeforeSurgery from "./GopalBackviewBeforeSurgery.png";
 import gopalBackView8Month from "./GopalBackview8months.png";
 import gopalBackView15Year from "./GopalBackview1.5Years.png";
 
+import mht from "./MHT.jpg";
+import balanced from "./Balanced Hair Transplant .jpg";
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1Desktop,
@@ -311,6 +313,8 @@ const assets = {
   femaleBanner,
   fueBanner,
   futBanner,
+  mht,
+  balanced,
   hairWeavingBanner,
   laserHairBanner,
   laserToningBanner,

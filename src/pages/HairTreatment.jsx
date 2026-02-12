@@ -1,112 +1,109 @@
 import React from "react";
 import assets from "../assets/assets";
 
-
-
-
 const treatments = [
   {
     title: "FUT",
     image: assets.futBanner,
     content:
-      "FUT is a hair transplant procedure in which we take out hair from the back of a patient’s scalp & put it in the bald areas. The surgeon cuts a strip of skin from the back of your scalp; the gap is stitched using the trichophytic closure technique",
+      "In a hair transplant procedure called FUT, we remove hair from the back of a patient's scalp and transplant it into the bald spots. A strip of skin is cut from the back of your scalp by the surgeon, and the trichophytic closure technique is used to close the wound.",
   },
   {
     title: "FUE",
     image: assets.fueBanner,
     content:
-      "FUE is a hair transplant procedure in which we take out hair from the back of a patient’s scalp & put it in the bald areas. The surgeon cuts a strip of skin from the back of your scalp; the gap is stitched using the trichophytic closure technique",
+      "FUE is a modern, minimally invasive hair transplant method that takes individual hair follicles, which can hold one to four hairs, directly from the donor area of the scalp, usually the back or sides. Then, these follicles are carefully placed in areas where hair is thinning or missing, which leads to natural-looking hair growth, less scarring, and a faster recovery than traditional strip-based methods.",
   },
   {
     title: "MHT",
     image: assets.mht,
     content:
-      "Among these pioneering techniques stands the Maximum Harvesting Technique (MHT), a brilliant fusion of the traditional Follicular Unit Transplantation (FUT) and the modern Follicular Unit Extraction (FUE) methods.",
+      "One of these new methods is the Maximum Harvesting Technique (MHT). It combines the old Follicular Unit Transplantation (FUT) method with the new Follicular Unit Extraction (FUE) method very well.",
   },
   {
     title: "Balanced Hair Transplant",
     image: assets.balanced,
     content:
-      "Satya, as a leader and pioneer in providing honest hair restoration solutions, which has formulated an authentic and strategic plan called Balanced Hair TransplantTM. This approach comprehends minimal use of medications, thereby reducing the risk of side effects and providing a safe buffer to increase dosages in case of tolerance development.",
+      "Satya is a leader and pioneer in providing honest ways to restore hair. They made a real and well-thought-out plan called Balanced Hair Transplant. This method uses as few drugs as possible, which lowers the risk of side effects and gives you a safe buffer to raise your doses if you get used to them.",
   },
   {
     title: "Eyebrow Restoration",
     image: assets.eyebrowBanner,
     content:
-      "Eyebrow Hair Transplant in Delhi is essential to facial aesthetics since they frame our eyes and make us seem better overall. With people aiming for bigger, more defined brows, the demand for eyebrow restoration has increased recently. While some people are endowed with naturally full and thick brows, others may have thin or sparse brows for a variety of reasons.",
+      "Eyebrow hair transplants are important for the beauty of the face because they frame our eyes and make us look better overall. People have been wanting bigger, more defined brows lately, which has led to an increase in the need for eyebrow restoration. Some people have naturally full and thick brows, while others have thin or sparse brows for a number of reasons, such as genetics, illness, accidents, burns, drugs, or compulsive hair-pulling disorders like trichotillomania.",
   },
-    //   {
-    //     title: "Beard Restoration",
-    //     image: beardImg,
-    //     content:
-    //       "At Satya Hair Solutions, we understand that a full, well-groomed beard can speak volumes. Whether you aim to enhance your existing beard, fill in patchy areas, or create a brand-new beard, our beard hair transplant services are tailored to your unique needs. Led by Dr. Shail Gupta, India’s best hair transplant surgeon, our team specializes in transforming",
-    //   },
-    //   {
-    //     title: "Synthetic Hair Transplant",
-    //     image: syntheticImg,
-    //     content:
-    //       "A lot of advancement has been made in the medical and surgical restoration of natural hair, but there are some special cases where these techniques fail to provide an adequate solution. Synthetic hair transplants help to bridge this gap by providing quick, effective, and natural-looking results in patients with advanced grades of baldness or poor donor",
-    //   },
-    //   {
-    //     title: "Long Hair Transplant",
-    //     image: longHairImg,
-    //     content:
-    //       "The unique technique employed is Follicular Unit Transplantation (FUT). Unlike traditional hair transplants where the donor area is shaved, in long hair transplants, neither the donor area nor the area where the grafts are to be implanted is shaved. This preservation of your existing hair allows you to maintain your original hairstyle.",
-    //   },
-    //   {
-    //     title: "Body Hair Transplant",
-    //     image: bodyHairImg,
-    //     content:
-    //       "Hair loss and baldness can be deeply distressing, impacting one’s self-esteem and overall confidence. In the field of hair restoration surgeries, one solution that’s gaining traction is Body Hair Transplant in Delhi, India. This revolutionary procedure extends beyond the traditional boundaries of hair transplantation, offering new hope to individuals struggling",
-    //   },
-    //   {
-    //     title: "Women’s hair Loss",
-    //     image: womenImg,
-    //     content:
-    //       "Women’s hair Loss may result from an array of things like hormone disorder, anxiety, old age, hereditary or health problems. By understanding the root causes behind hair loss, one can devise a more relevant course suited for their type.",
-    //   },
-    //   {
-    //     title: "Repair hair transplant",
-    //     image: repairImg,
-    //     content:
-    //       "Repair hair transplant or correction of a wrong hair transplant result, has become the need of the hour. Know why Satya Hair Solutions, under the guidance of Dr. Shail Gupta is known as number one Repair Hair Transplant Clinic in the world.",
-    //   },
-    //   {
-    //     title: "PRP",
-    //     image: prpImg,
-    //     content:
-    //       "Platelet Rich Plasma, or PRP, has emerged as a revolutionary non-surgical technique in the realm of hair restoration. This cutting-edge treatment involves the injection of platelet-rich plasma, a substance teeming with a supra-physiological concentration of platelets and an abundance of growth factors and bioactive proteins. These components work in tandem",
-    //   },
-    //   {
-    //     title: "Mesotherapy",
-    //     image: mesoImg,
-    //     content:
-    //       "Hair problems can affect anyone and often lead to frustration and embarrassment. At Satya Hair Solutions, we are dedicated to offering a wide array of hair treatment services to help those struggling with hair-related issues. One such effective treatment that has gained attention in the medical field in general and hair loss treatment, in particular, is",
-    //   },
-    //   {
-    //     title: "Stem Cell Hair Transplant",
-    //     image: stemCellImg,
-    //     content:
-    //       "Hair loss is a common concern that affects people of all ages and genders. The quest for effective solutions often leads individuals to try various products and treatments that promise hair regrowth. However, not all of these options deliver the desired results and some can even cause further damage. This is why seeking expert advice before",
-    //   },
-    //   {
-    //     title: "Hair Weaving",
-    //     image: weavingImg,
-    //     content:
-    //       "Hair loss can be a profound blow to one’s self-esteem and confidence. At Satya Hair Solutions, we acknowledge that not everyone is inclined toward surgical interventions, be it due to personal choice or skin-related concerns. For individuals seeking non-surgical alternatives, Hair Weaving Treatment emerges as a safe and effective option.",
-    //   },
-    //   {
-    //     title: "Laser comb therapy",
-    //     image: laserImg,
-    //     content:
-    //       "Laser comb therapy is rooted in the utilization of laser light to gently warm tissues, sparking a process known as photobiostimulation. This technique harnesses the power of low-dose laser energy to enhance cellular metabolism and bolster blood circulation. By targeting the hair follicles, this therapy aims to promote their growth in the treated area.",
-    //   },
-    //   {
-    //     title: "Scalp Micropigmentation (SMP)",
-    //     image: smpImg,
-    //     content:
-    //       "In an age dominated by the visual allure of social media, appearance holds a paramount role. With a multitude of cosmetic treatments promising to accentuate natural beauty, Scalp Micropigmentation, or SMP, has emerged as a remarkable contender. SMP, a technique that deposits micro pigments onto the scalp through an electric tattooing",
-    //   },
+  {
+    title: "Beard Restoration",
+    image: assets.beardBanner,
+    content:
+      "We at Satya know that a full, well-groomed beard can say a lot. Our beard hair transplant services are made to fit your needs, whether you want to make your current beard look better, fill in bald spots, or start a whole new beard. Our team, led by Dr. Shaiil Gupta, India's best hair transplant surgeon, can make your beard dreams come true.",
+  },
+  {
+    title: "Synthetic Hair Transplant",
+    image: assets.syntheticImg,
+    content:
+      "A lot of progress has been made in the medical and surgical restoration of natural hair, but there are some cases where these methods don't work well enough. Synthetic hair transplants help fill this gap by giving people with advanced baldness, a bad donor reserve, or those who don't want to go through with natural hair transplants quick, effective, and natural-looking results.",
+  },
+  {
+    title: "Long Hair Transplant",
+    image: assets.longHairImg,
+    content:
+      "Follicular Unit Transplantation (FUT) is the one-of-a-kind method used. In long hair transplants, the donor area and the area where the grafts will be put in are not shaved, unlike in traditional hair transplants. This keeps your hair from falling out, so you can keep your original hairstyle.",
+  },
+  {
+    title: "Body Hair Transplant",
+    image: assets.bodyHairImg,
+    content:
+      "Hair loss and baldness can be very upsetting and hurt your self-esteem and confidence. Body Hair Transplant  is becoming more popular as a way to restore hair. This groundbreaking procedure goes beyond the usual limits of hair transplantation and gives people who are losing their hair new hope. In this article, we'll learn about the details of body hair transplants, why they're a great option, and why Satya Hair Solutions with Dr. Shaiil Gupta is the best place to go for this cutting-edge procedure.",
+  },
+  {
+    title: "Women’s hair Loss",
+    image: assets.femaleBanner,
+    content:
+      "Hormone problems, anxiety, old age, family history, or health problems can all cause women's hair to fall out. By knowing what causes hair loss, you can come up with a better treatment that works for you.",
+  },
+  {
+    title: "Repair hair transplant",
+    image: assets.repairImg,
+    content:
+      "Repairing a hair transplant or fixing a bad hair transplant result is something that needs to be done right now. Find out why Satya Hair Solutions, led by Dr. Shail Gupta, is the best place in the world to get hair transplants repaired.",
+  },
+  {
+    title: "PRP Treatment",
+    image: assets.prp,
+    content:
+      "Platelet Rich Plasma, or PRP, is a new and revolutionary way to restore hair without surgery. This cutting-edge treatment involves injecting platelet-rich plasma, which is full of platelets, growth factors, and bioactive proteins at levels that are much higher than normal. These parts work together to start the inflammatory cascade, speed up the healing process, and speed up the remodeling of tissue. PRP therapy is known for being natural and safe, and it also works really well.",
+  },
+  {
+    title: "Mesotherapy",
+    image: assets.meso,
+    content:
+      "Anyone can have hair problems, and they can be very frustrating and embarrassing. At Satya Hair Solutions, we are committed to providing a wide range of hair treatment services to help people who are having problems with their hair. Mesotherapy is one of these treatments that has gotten a lot of attention in the medical field, especially for hair loss.",
+  },
+  {
+    title: "Stem Cell Hair Transplant",
+    image: assets.stem,
+    content:
+      "People of all ages and genders are worried about losing their hair. People often try different products and treatments that promise to help hair grow back because they are looking for effective solutions. However, not all of these options work as planned, and some can even make things worse. This is why it's important to get professional advice before starting any hair loss treatment. The stem cell hair transplant is a new method in the field of hair restoration that is showing promise in ongoing trials.",
+  },
+  {
+    title: "Hair Weaving",
+    image: assets.weavingImg,
+    content:
+      "Losing hair can really hurt your self-esteem and confidence. At Satya, we understand that not everyone wants to have surgery, whether it's because of personal choice or skin issues. Hair Weaving Treatment is a safe and effective option for people who want to avoid surgery.",
+  },
+  {
+    title: "Laser comb therapy",
+    image: assets.laserComb,
+    content:
+      "Laser comb therapy uses laser light to gently warm tissues, which starts a process called photobiostimulation. This method uses low-dose laser energy to speed up cellular metabolism and improve blood flow. This treatment aims to make the hair follicles grow in the area that was treated by targeting them.",
+  },
+  {
+    title: "Scalp Micropigmentation (SMP)",
+    image: assets.scalpImg,
+    content:
+      "In a time when social media is all about how things look, looks are very important. There are many cosmetic treatments that claim to enhance natural beauty, but Scalp Micropigmentation (SMP) has stood out as a strong contender. SMP is a method that uses an electric tattooing device to put tiny pigments on the scalp. This makes hair look fuller. Let's find out more about its complexities and possibilities.",
+  },
 ];
 
 const HairTreatment = () => {
@@ -115,7 +112,7 @@ const HairTreatment = () => {
       {/* Heading */}
       <div className="text-center mb-20">
         <h1 className="text-4xl md:text-5xl font-semibold text-[#0E3A43]">
-          Hair Treatments
+         Types of Hair Treatment: Which is best for you?
         </h1>
         <div className="w-24 h-[3px] bg-[#9E4A47] mx-auto mt-4"></div>
       </div>

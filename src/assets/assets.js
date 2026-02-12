@@ -235,6 +235,31 @@ import gopalBackView15Year from "./GopalBackview1.5Years.png";
 
 import mht from "./MHT.jpg";
 import balanced from "./Balanced Hair Transplant .jpg";
+import syntheticImg from "./Synthetic Hair Transplant .jpg";
+import longHairImg from "./Long Hair Transplant.png";
+import bodyHairImg from "./Body Hair Transplant.jpg";
+import repairImg from "./Repair Hair Transplant.jpg";
+import weavingImg from "./Hair Weaving.jpg";
+import prp from "./PRP.jpg";
+import meso from "./Mesotherapy.jpg";
+import stem from "./Stem Cell Hair Treatment.jpg";
+import laserComb from "./Laser Comb.jpg";
+import scalpImg from "./Scalp Micropigmentation.jpg";
+import carbonFacialBanner from './Carbon Facial.jpg'
+import mnrfBanner from './MNRF.jpg'
+import hifuBanner from './HIFU.jpg'
+import prpBanner from './PRP Therapy.jpg'
+import fiveDFacialBanner from './5 D Facial.jpg'
+import mesotherapyBanner from './Mesotherapy .jpg'
+import lipEnhancementBanner from './Lip enhancement.jpg'
+import dermalFillersBanner from './Dermal fillers.jpg'
+import aftSsrBanner from './AFT-SSR.jpg'
+import formaFacialBanner from './Forma facial.jpg'
+import clearliftBanner from './CLEARLIFT Laser.jpg'
+import clearSkinProBanner from './Clearskin.jpg'
+import botulinumToxinBanner from './Botulinum Toxin.jpg'
+import skinPolishingBanner from './microdermabrasion treatment.jpeg'
+import iplPhotofacialBanner from './IPL Photofacial.jpg'
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1Desktop,
@@ -319,7 +344,33 @@ const assets = {
   laserHairBanner,
   laserToningBanner,
   moleRemovalBanner,
+  syntheticImg,
+  longHairImg,
+  bodyHairImg,
+  repairImg,
+  weavingImg,
+  prp,
+  meso,
+  stem,
+  laserComb,
+  scalpImg,
+  carbonFacialBanner,
+  mnrfBanner,
+  hifuBanner,
+  prpBanner,
+  fiveDFacialBanner,
+  mesotherapyBanner,
+  lipEnhancementBanner,
+  dermalFillersBanner,
+  aftSsrBanner,
+  formaFacialBanner,
+  clearliftBanner,
+  clearSkinProBanner,
+  botulinumToxinBanner,
+  skinPolishingBanner,
+  iplPhotofacialBanner,
 
+  /* Doctors */
   adam,
   sandeep,
   supreet,

@@ -1,5 +1,6 @@
 import React from "react";
 import assets from "../assets/assets";
+import SkinTreatmentGradientBanner from "../components/SkinTreatmentGradientBanner";
 
 const treatments = [
   {
@@ -131,59 +132,78 @@ const treatments = [
 ];
 
 const SkinTreatment = () => {
-  return (
-    <section className="bg-white py-16 px-6 md:px-16">
-      {/* Heading */}
-      <div className="text-center mb-20">
-        <h1 className="text-4xl md:text-5xl font-semibold text-[#0E3A43]">
-         Types of Skin Treatment: Which is best for you?
-        </h1>
-        <div className="w-24 h-[3px] bg-[#9E4A47] mx-auto mt-4"></div>
-      </div>
+ return (
+    <section className="bg-white">
+      <SkinTreatmentGradientBanner />
 
-      <div className="space-y-24">
+      <div className="divide-y divide-gray-100">
         {treatments.map((item, index) => {
-          const reverse = index % 2 !== 0;
+          const isEven = index % 2 === 0;
 
           return (
-            <div
-              key={index}
-              className="grid md:grid-cols-2 gap-12 items-center"
-            >
-              {/* Image */}
+            <div key={index} className="flex flex-col md:grid md:grid-cols-2">
+              {/* Image container - responsive with object-contain, no cropping */}
               <div
-                className={`relative overflow-hidden  ${
-                  reverse ? "md:order-2" : ""
-                }`}
+                className={`bg-gray-50/50 flex ${
+  isEven ? "order-1 md:order-1" : "order-1 md:order-2"
+}`}
+
               >
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-[480px] object-contain rounded"
+                  className="w-full h-full object-contain md:object-fill"
+                  loading={index < 3 ? "eager" : "lazy"}
                 />
               </div>
 
-              {/* Content */}
+              {/* Content - tight on mobile, full visibility */}
               <div
-                className={`border-l-4 border-[#9E4A47] pl-6 ${
-                  reverse ? "md:order-1" : ""
-                }`}
+                className={`flex flex-col justify-center
+  ${isEven ? "order-2 md:order-2" : "order-2 md:order-1"}
+  p-5 sm:p-6 lg:p-10 xl:p-12
+  ${
+    isEven
+      ? "bg-gradient-to-br from-[#fdfaf5] via-[#fffefb] to-white text-[#0E3A43]"
+      : "bg-gradient-to-br from-[#0f1a24] via-[#14212b] to-[#1a252c] text-gray-100"
+  }`}
+
               >
-                <p className="text-sm tracking-widest text-gray-500 mb-2">
-                  SATYA
-                </p>
+                <div className="">
+                  <p className="text-xs sm:text-sm tracking-[0.2em] uppercase font-medium text-gray-500">
+                    SATYA
+                  </p>
 
-                <h3 className="text-2xl md:text-3xl font-semibold text-[#0E3A43] mb-4">
-                  {item.title}
-                </h3>
+                  <h3 className="text-xl sm:text-2xl  lg:text-4xl font-bold leading-tight">
+                    {item.title}
+                  </h3>
 
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  {item.content}
-                </p>
+                  <p
+                    className={`text-sm sm:text-base md:text-sm lg:text-base  leading-relaxed ${
+                      isEven ? "text-gray-700" : "text-gray-300"
+                    }`}
+                  >
+                    {item.content}
+                  </p>
 
-                <button className="bg-[#9E4A47] text-white px-6 py-3 text-sm tracking-widest uppercase transition duration-300 hover:bg-[#0E3A43]">
-                  Learn More
-                </button>
+                  <button
+  className={`mt-4 
+  px-4 py-2 
+  text-xs 
+  sm:px-4 sm:py-2 sm:text-sm 
+  lg:px-6 lg:py-3 lg:text-base
+  font-medium uppercase tracking-wider rounded-full 
+  transition-all duration-300 shadow-sm hover:shadow-md 
+  transform hover:-translate-y-0.5 ${
+    isEven
+      ? "bg-[#9E4A47] text-white hover:bg-[#843532]"
+      : "bg-gray-700 text-white hover:bg-gray-600"
+  }`}
+>
+  Learn More
+</button>
+
+                </div>
               </div>
             </div>
           );

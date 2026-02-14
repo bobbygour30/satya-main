@@ -35,7 +35,6 @@ const ServicesSection = () => {
     <div className="w-full bg-[#FFF8EF] sm:pt-10 pt-4 sm:pb-20 px-4 md:px-8 lg:px-12">
       {/* REAL RESULTS SECTION */}
       <div className="grid md:grid-cols-3 gap-10 sm:mt-20 items-center">
-
         {/* LEFT CONTENT */}
         <motion.div
           variants={fadeUp}
@@ -45,7 +44,9 @@ const ServicesSection = () => {
           className="space-y-5"
         >
           <h2 className="text-4xl md:text-5xl font-semibold text-[#2B333C] leading-tight">
-            Real Care.<br />Real Results.
+            Real Care.
+            <br />
+            Real Results.
           </h2>
 
           <p className="text-[#828D9C] max-w-sm leading-relaxed">
@@ -70,13 +71,10 @@ const ServicesSection = () => {
           <img
             src={skinImages[skinIndex]}
             alt="Skin Result"
-            className="w-full h-[320px] sm:h-[360px] md:h-[420px] object-cover transition-opacity duration-700"
-
+            className="w-full h-auto object-cover transition-opacity duration-700"
           />
 
           <div className="p-5">
-           
-
             <button className="w-full border border-[#9E4A47] text-[#9E4A47] py-2.5 rounded-full text-sm font-medium hover:bg-[#9E4A47] hover:text-white transition">
               Explore Skin Results
             </button>
@@ -95,19 +93,15 @@ const ServicesSection = () => {
           <img
             src={hairImages[hairIndex]}
             alt="Hair Result"
-           className="w-full h-[320px] sm:h-[360px] md:h-[420px] object-cover transition-opacity duration-700"
-
+            className="w-full h-auto object-cover transition-opacity duration-700"
           />
 
           <div className="p-5">
-          
-
             <button className="w-full border border-[#9E4A47] text-[#9E4A47] py-2.5 rounded-full text-sm font-medium hover:bg-[#9E4A47] hover:text-white transition">
               Explore Hair Results
             </button>
           </div>
         </motion.div>
-
       </div>
     </div>
   );

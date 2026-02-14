@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useEffect, useRef } from "react";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import assets from "../assets/assets";
 
@@ -26,12 +27,33 @@ export default function ProductShowcaseSection() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
-    setPlayingIndex(null); // stop any playing video when changing slide
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
-    setPlayingIndex(null);
+    setCurrentSlide((prev) =>
+      prev === videos.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const handlePrevSlide = () => {
+    setPlayingIndex(null); // Stop current video
+    setTimeout(() => {
+      prevSlide();
+    }, 10);
+  };
+
+  const handleNextSlide = () => {
+    setPlayingIndex(null); // Stop current video
+    setTimeout(() => {
+      nextSlide();
+    }, 10);
+  };
+
+  const handleDotClick = (index) => {
+    setPlayingIndex(null); // Stop current video
+    setTimeout(() => {
+      setCurrentSlide(index);
+    }, 10);
   };
 
   return (
@@ -49,7 +71,13 @@ export default function ProductShowcaseSection() {
             </h2>
 
             <p className="text-[#828D9C] text-base leading-relaxed">
-              With over 23 years of clinical experience, Satya Skin & Hair Solutions follows a transparent, doctor-led approach to skin and hair care. Every recommendation is based on careful medical evaluation and honest discussion of options and outcomes. We prioritise safety, long-term results, and natural appearance, earning the trust of patients from India and across the world.
+              With over 23 years of clinical experience, Satya Skin & Hair
+              Solutions follows a transparent, doctor-led approach to skin
+              and hair care. Every recommendation is based on careful
+              medical evaluation and honest discussion of options and
+              outcomes. We prioritise safety, long-term results, and natural
+              appearance, earning the trust of patients from India and
+              across the world.
             </p>
           </div>
 
@@ -73,11 +101,11 @@ export default function ProductShowcaseSection() {
         {/* RIGHT – VIDEO SECTION */}
         <div className="md:w-2/3 w-full relative">
 
-          {/* Desktop: side by side */}
+          {/* ================= DESKTOP ================= */}
           <div className="hidden md:grid md:grid-cols-2 gap-8">
             {videos.map((video, idx) => (
               <VideoCard
-                key={idx}
+                key={`desktop-${idx}`}
                 video={video}
                 idx={idx}
                 playingIndex={playingIndex}
@@ -86,29 +114,22 @@ export default function ProductShowcaseSection() {
             ))}
           </div>
 
-          {/* Mobile: one video at a time + nav buttons */}
+          {/* ================= MOBILE ================= */}
           <div className="md:hidden relative">
-            <div className="overflow-hidden rounded-2xl">
-              <div
-                className="flex transition-transform duration-500 ease-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {videos.map((video, idx) => (
-                  <div key={idx} className="flex-none w-full">
-                    <VideoCard
-                      video={video}
-                      idx={idx}
-                      playingIndex={playingIndex}
-                      setPlayingIndex={setPlayingIndex}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* ONLY ONE VIDEO RENDERED with key that forces re-mount on slide change */}
+            {videos[currentSlide] && (
+              <VideoCard
+                key={`mobile-slide-${currentSlide}`}
+                video={videos[currentSlide]}
+                idx={currentSlide}
+                playingIndex={playingIndex}
+                setPlayingIndex={setPlayingIndex}
+              />
+            )}
 
             {/* Navigation buttons */}
             <button
-              onClick={prevSlide}
+              onClick={handlePrevSlide}
               className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition"
               aria-label="Previous video"
             >
@@ -116,76 +137,116 @@ export default function ProductShowcaseSection() {
             </button>
 
             <button
-              onClick={nextSlide}
+              onClick={handleNextSlide}
               className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition"
               aria-label="Next video"
             >
               <ChevronRight size={24} />
             </button>
 
-            {/* Dots indicator */}
+            {/* Dots indicator - clickable buttons */}
             <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
               {videos.map((_, idx) => (
-                <div
+                <button
                   key={idx}
+                  onClick={() => handleDotClick(idx)}
                   className={`w-2.5 h-2.5 rounded-full transition-all ${
-                    currentSlide === idx ? "bg-white scale-125" : "bg-white/50"
+                    currentSlide === idx
+                      ? "bg-white scale-125"
+                      : "bg-white/50 hover:bg-white/80"
                   }`}
+                  aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   );
 }
 
-// Reusable Video Card
 function VideoCard({ video, idx, playingIndex, setPlayingIndex }) {
+  const iframeRef = useRef(null);
+  const isPlaying = playingIndex === idx;
+
+  // Stop YouTube video when not playing or when component unmounts
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    
+    // Function to stop video
+    const stopVideo = () => {
+      if (iframe && iframe.contentWindow) {
+        try {
+          iframe.contentWindow.postMessage(
+            JSON.stringify({
+              event: "command",
+              func: "stopVideo",
+              args: [],
+            }),
+            "*"
+          );
+        } catch (error) {
+          console.log("Error stopping video:", error);
+        }
+      }
+    };
+
+    // Stop video if it's no longer playing
+    if (!isPlaying) {
+      stopVideo();
+    }
+
+    // Cleanup function - runs when component unmounts or before next effect
+    return () => {
+      if (iframe && iframe.contentWindow) {
+        try {
+          // Stop the video
+          stopVideo();
+        } catch (error) {
+          console.log("Error during cleanup:", error);
+        }
+      }
+    };
+  }, [isPlaying]);
+
+  // Don't render if video is undefined
+  if (!video) {
+    return null;
+  }
+
   return (
     <div className="relative aspect-[9/16] bg-black rounded-2xl overflow-hidden border border-[#FCEBDE] shadow-sm">
-      {playingIndex !== idx ? (
-        /* THUMBNAIL */
+      {!isPlaying && (
         <button
           onClick={() => setPlayingIndex(idx)}
-          className="group absolute inset-0"
+          className="group absolute inset-0 w-full h-full cursor-pointer"
+          aria-label="Play video"
         >
           <img
             src={video.thumbnail}
             alt="Video testimonial"
             className="w-full h-full object-cover opacity-90 group-hover:opacity-70 transition"
           />
-
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 rounded-full bg-[#9E4A47] flex items-center justify-center shadow-xl group-hover:scale-110 transition">
               <Play size={30} className="text-white ml-1" />
             </div>
           </div>
         </button>
-      ) : (
-        <>
-          {video.type === "youtube" && (
-            <iframe
-              src={`https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&playsinline=1`}
-              title="YouTube Short"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full"
-            />
-          )}
+      )}
 
-          {video.type === "instagram" && (
-            <iframe
-              src={`https://www.instagram.com/reel/${video.id}/embed/?autoplay=1`}
-              title="Instagram Reel"
-              allow="encrypted-media; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full bg-black"
-            />
-          )}
-        </>
+      {isPlaying && (
+        <iframe
+          ref={iframeRef}
+          src={`https://www.youtube.com/embed/${video.id}?autoplay=1&playsinline=1&rel=0&enablejsapi=1`}
+          title={`YouTube Short - ${video.id}`}
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+          loading="lazy"
+        />
       )}
     </div>
   );

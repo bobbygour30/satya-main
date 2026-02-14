@@ -25,9 +25,7 @@ const searchPlaceholders = [
 ];
 
 const MENU = [
-  /* ================= WHY SATYA ================= */
-
-/* ================= HAIR ================= */
+  /* ================= HAIR ================= */
   {
     title: "Hair",
     items: [
@@ -36,18 +34,6 @@ const MENU = [
       { label: "Beard Hair Transplant", path: "/beard-hair-transplant" },
       { label: "Eyebrow Reconstruction", path: "/eyebrow-transplant" },
       { label: "Body Hair Transplant", path: "/hair-transplant/body" },
-      // { label: "Hair Transplant", path: "/hair-transplant" },
-      // { label: "Male Hair Transplant", path: "/hair-transplant/male" },
-      // { label: "Female Hair Transplant", path: "/hair-transplant/female" },
-      // { label: "Moustache Hair Transplant", path: "/moustache-hair-transplant" },
-      // { label: "Afro Hair Transplant", path: "/hair-transplant/afro" },
-      // { label: "Hair Transplant Repair", path: "/hair-transplant/repair" },
-      // { label: "Unshaven Hair Transplant", path: "/hair-transplant/unshaven" },
-      // { label: "Crown Hair Transplant", path: "/hair-transplant/crown" },
-      // { label: "Temple Hair Transplant", path: "/hair-transplant/temple" },
-      // { label: "Minimal Scar Hair Transplant", path: "/hair-transplant/minimal-scar" },
-      // { label: "Long Hair Transplant", path: "/hair-transplant/long" },
-      // { label: "Synthetic Hair Transplant", path: "/hair-transplant/synthetic" },
     ],
   },
   /* ================= SKIN ================= */
@@ -60,20 +46,6 @@ const MENU = [
       { label: "Laser Hair Reduction", path: "/skin/laser-hair-reduction" },
       { label: "Chemical Peel", path: "/skin/chemical-peel" },
       { label: "Laser Toning Treatment", path: "/skin/laser-toning" },
-      // { label: "Treatments", path: "/skin/treatments" },
-      // { label: "Fractional CO2 Laser", path: "/skin/fractional-co2-laser" },
-      // { label: "HIFU Treatment", path: "/skin/hifu-treatment" },
-      // { label: "MNRF Treatment", path: "/skin/mnrf-treatment" },
-      // { label: "Botox", path: "/skin/botox" },
-      // { label: "Carbon Laser Facial", path: "/skin/carbon-laser-facial" },
-      // { label: "Dermapen 4", path: "/skin/dermapen-4" },
-      // { label: "Anti Wrinkle Treatment", path: "/skin/anti-wrinkle-treatment" },
-      // { label: "5D Facial", path: "/skin/5d-facial" },
-      // { label: "Fungal Infection", path: "/skin/fungal-infection" },
-      // { label: "Wart Removal", path: "/skin/wart-removal" },
-      // { label: "Acne Scar", path: "/skin/acne-scar" },
-      // { label: "Hydra Facial", path: "/skin/hydra-facial" },
-      // { label: "Skin Whitening Treatment", path: "/skin/skin-whitening-treatment" },
     ],
     concerns: [
       { label: "Pigmentation", path: "/skin/concerns/pigmentation" },
@@ -82,8 +54,6 @@ const MENU = [
       { label: "Dull Skin & Open Pores", path: "/skin/concerns/dull-skin-open-pores" },
     ],
   },
-
-  
 
   /* ================= RESULTS ================= */
   {
@@ -125,10 +95,9 @@ const MENU = [
       { label: "Gurgaon", path: "/gurgaon" },
     ],
   },
-
 ];
 
-const MAX_VISIBLE_ITEMS = 4;
+const MAX_VISIBLE_ITEMS = 5;
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -273,8 +242,7 @@ function HoverDropdown({ title, items, concerns }) {
     <div
       className="relative group"
       onMouseLeave={() => {
-        // Optional: close submenu when leaving the whole dropdown
-        // setActiveSubmenu(null);
+        // setActiveSubmenu(null); // optional
       }}
     >
       <div className="flex items-center gap-1 cursor-pointer px-1 py-2">
@@ -327,31 +295,56 @@ function HoverDropdown({ title, items, concerns }) {
               })}
             </ul>
 
-            {hasMore && (
-              <div className="mt-4 pt-3 border-t border-gray-200">
-                {showMore ? (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowMore(false);
-                    }}
-                    className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
-                  >
-                    <X size={14} /> Close
-                  </button>
-                ) : (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowMore(true);
-                    }}
-                    className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
-                  >
-                    View More <ChevronDown size={14} />
-                  </button>
-                )}
-              </div>
-            )}
+            {/* ────────────────────────────────────────────── */}
+            {/*            VIEW MORE / View All Treatments       */}
+            {/* ────────────────────────────────────────────── */}
+            <div className="mt-4 pt-3 border-t border-gray-200">
+              {showMore ? (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowMore(false);
+                  }}
+                  className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                >
+                  <X size={14} /> Close
+                </button>
+              ) : (
+                <>
+                  {title === "Hair" && (
+                    <Link
+                      to="/hair-treatment"
+                      className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      View More 
+                    </Link>
+                  )}
+
+                  {title === "Skin" && (
+                    <Link
+                      to="/skin-treatment"
+                      className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      View More 
+                    </Link>
+                  )}
+
+                  {title !== "Hair" && title !== "Skin" && hasMore && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setShowMore(true);
+                      }}
+                      className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                    >
+                      View More 
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
           </div>
 
           {/* RIGHT COLUMN - only shown when Concerns is active */}
@@ -448,7 +441,10 @@ function MobileAccordion({ title, items, concerns }) {
             );
           })}
 
-          {hasMore && (
+          {/* ────────────────────────────────────────────── */}
+          {/*            VIEW MORE in mobile too               */}
+          {/* ────────────────────────────────────────────── */}
+          {(title === "Hair" || title === "Skin" || hasMore) && (
             <div className="pt-3">
               {showMore ? (
                 <button
@@ -458,12 +454,36 @@ function MobileAccordion({ title, items, concerns }) {
                   <X size={14} /> Close
                 </button>
               ) : (
-                <button
-                  onClick={() => setShowMore(true)}
-                  className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
-                >
-                  View More <ChevronDown size={14} />
-                </button>
+                <>
+                  {title === "Hair" && (
+                    <Link
+                      to="/hair-treatment"
+                      className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                      onClick={() => setOpen(false)}
+                    >
+                      View More
+                    </Link>
+                  )}
+
+                  {title === "Skin" && (
+                    <Link
+                      to="/skin-treatment"
+                      className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                      onClick={() => setOpen(false)}
+                    >
+                      View More
+                    </Link>
+                  )}
+
+                  {title !== "Hair" && title !== "Skin" && hasMore && (
+                    <button
+                      onClick={() => setShowMore(true)}
+                      className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
+                    >
+                      View More
+                    </button>
+                  )}
+                </>
               )}
             </div>
           )}

@@ -44,15 +44,22 @@ export default function Testimonials() {
   const [play, setPlay] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % testimonials.length);
-      setPlay(false);
-    }, 8000);
+  if (play) return; // ⛔ Stop auto slide when video is playing
 
-    return () => clearInterval(interval);
-  }, []);
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % testimonials.length);
+  }, 8000);
+
+  return () => clearInterval(interval);
+}, [play]);
+
 
   const current = testimonials[index];
+
+  // Reset play state whenever index changes (manual click or auto)
+  useEffect(() => {
+    setPlay(false);
+  }, [index]);
 
   const variants = {
     initial: { opacity: 0, y: 30 },
@@ -65,7 +72,7 @@ export default function Testimonials() {
       <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#FCEBDE] blur-3xl opacity-70" />
 
       <div className="relative mx-auto max-w-[1500px] px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* LEFT */}
+        {/* LEFT – unchanged */}
         <div className="relative">
           <Quote className="absolute -top-14 -left-10 w-28 h-28 text-[#B87C72] opacity-25 rotate-180" />
 
@@ -146,35 +153,41 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* RIGHT – MAIN VIDEO (CUSTOM THUMB) */}
+        {/* RIGHT – MAIN VIDEO – FIXED VERSION */}
         <div className="flex justify-center">
           <div className="relative w-[280px] h-[500px] md:w-[330px] md:h-[600px] rounded-[32px] overflow-hidden shadow-2xl border border-[#DFDFDD] bg-black">
-            {!play ? (
-              <button
-                onClick={() => setPlay(true)}
-                className="group absolute inset-0"
-              >
-                <img
-                  src={current.thumbnail}
-                  alt={current.author}
-                  className="w-full h-full object-cover opacity-90 group-hover:opacity-70 transition"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-[#9E4A47] flex items-center justify-center shadow-xl group-hover:scale-110 transition">
-                    <Play className="text-white ml-1" size={32} />
-                  </div>
-                </div>
-              </button>
-            ) : (
-              <iframe
-                key={current.videoId}
-                src={`https://www.youtube.com/embed/${current.videoId}?autoplay=1&playsinline=1`}
-                title={current.author}
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
+            {/* Always render iframe – control visibility with CSS */}
+            <iframe
+              key={current.videoId} // ← important: remount when video changes
+              src={`https://www.youtube.com/embed/${current.videoId}?autoplay=${
+                play ? "1" : "0"
+              }&playsinline=1&rel=0&modestbranding=1`}
+              title={current.author}
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              allowFullScreen
+              className={`w-full h-full transition-opacity duration-300 ${
+                play ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+            />
+
+            {/* Thumbnail overlay – shown only when !play */}
+            <button
+              onClick={() => setPlay(true)}
+              className={`absolute inset-0 transition-opacity duration-300 ${
+                play ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}
+            >
+              <img
+                src={current.thumbnail}
+                alt={current.author}
+                className="w-full h-full object-cover opacity-90 hover:opacity-70 transition"
               />
-            )}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-[#9E4A47] flex items-center justify-center shadow-xl hover:scale-110 transition">
+                  <Play className="text-white ml-1" size={32} />
+                </div>
+              </div>
+            </button>
           </div>
         </div>
       </div>

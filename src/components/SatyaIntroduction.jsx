@@ -14,7 +14,7 @@ export default function SatyaIntroduction() {
           transition={{ duration: 0.8 }}
           className="
             font-serif text-[#2B333C]
-            text-[26px] sm:text-[36px] md:text-[48px] lg:text-[60px]
+            text-[20px] sm:text-[36px] md:text-[48px] lg:text-[60px]
             tracking-wide leading-tight
           "
         >
@@ -33,7 +33,7 @@ export default function SatyaIntroduction() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="
             mt-4 font-medium text-[#2B333C]
-            text-lg sm:text-xl md:text-2xl lg:text-3xl
+            text-sm sm:text-xl md:text-2xl lg:text-3xl
           "
         >
           World’s Leading Skin & Hair Transplant Clinic

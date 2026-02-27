@@ -89,10 +89,12 @@ import laserToningBanner from "./lasertoning.jpg";
 import moleRemovalBanner from "./moleremoval.jpg";
 import lokesh from "./lokesh.png";
 import lokesh1 from "./lokesh1.png";
-import adam from "./adam.jpg";
-import sandeep from "./sandeep.jpg";
-import supreet from "./supreet.jpg";
-import manoharsha from "./manoharsha.jpg";
+import adam from "./adam.jpeg";
+import sandeep from "./sandeep.jpeg";
+import supreet from "./supreet.jpeg";
+import manoharsha from "./manoharsha.jpeg";
+import neneh from "./neneh.jpeg";
+import maggie from "./maggie.jpeg";
 
 /* ================= RIGHT VIEW ================= */
 import rightViewDay1 from "./Right View 1 Day.png";
@@ -260,6 +262,40 @@ import clearSkinProBanner from './Clearskin.jpg'
 import botulinumToxinBanner from './Botulinum Toxin.jpg'
 import skinPolishingBanner from './microdermabrasion treatment.jpeg'
 import iplPhotofacialBanner from './IPL Photofacial.jpg'
+
+
+
+import fuebanners from "./fuebanner.png";
+import futbanners from "./Fut Hair Transplant.png";
+import eyebrowbanners from "./Eyebrow Transplant.png";
+import bodyhairbanners from "./Body Hair Transplant New.png"
+import mhtbanners from "./MHT.jpg.png";
+import beardbanners from "./Beard.png";
+import talogenbanners from "./Telogen.png";
+import malehairlossbanners from "./male hair loss.png";
+import femalehairlossbanners from "./Female Hair.png";
+import alopeciabanners from "./alopecia.png";
+import longhairbanners from "./Long Hair Transplant procedure.png";
+import repairhairbanners from "./Repair Hair Transplant.png";
+import hairweavingbanners from "./Hair Weaving new.png";
+import balancedhairbanners from "./Balance hair transplant india (2).png";
+import syntheticbanners from "./Synthetic hair transplant.png";
+import mesobanners from "./Mesotherapy for hair.png";
+import stemcellbanners from "./Stem Cell Hair Transplant.png";
+import prpbanners from "./PRP for hair.png";
+import lasorbanners from "./Laser Hair Reduction.png";
+import scalpbanners from "./scalp micropigmentation.png";
+import lasercombbanners from "./Laser comb therapy.png";
+
+
+//skin 
+
+import carbonlaserbanners from "./Carbon Laser Facial (2).png"
+import mnrfbanners from "./MNRF Treatment.png"
+import hifubanners from "./HIFU Treatment.png"
+import vampirebanners from "./Vampire Facelift.png"
+import fiveDbanners from "./5d facial treatment.png"
+import mesofacebanners from "./Mesotherapy for face.png"
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1Desktop,
@@ -375,6 +411,8 @@ const assets = {
   sandeep,
   supreet,
   manoharsha,
+  neneh,
+  maggie,
 
   lokesh,
   lokesh1,
@@ -514,7 +552,37 @@ const assets = {
   gopalLeftView15Year,
   gopalBackViewBeforeSurgery,
   gopalBackView8Month,
-  gopalBackView15Year
+  gopalBackView15Year,
+
+
+  fuebanners,
+  futbanners,
+  eyebrowbanners,
+  bodyhairbanners,
+  mhtbanners,
+  beardbanners,
+  talogenbanners,
+  malehairlossbanners,
+  femalehairlossbanners,
+  alopeciabanners,
+  longhairbanners,
+  repairhairbanners,
+  hairweavingbanners,
+  balancedhairbanners,
+  syntheticbanners,
+  mesobanners,
+stemcellbanners,
+prpbanners,
+lasorbanners,
+scalpbanners,
+lasercombbanners,
+//skin
+carbonlaserbanners,
+mnrfbanners,
+hifubanners,
+vampirebanners,
+fiveDbanners,
+mesofacebanners
 };
 
 export default assets;

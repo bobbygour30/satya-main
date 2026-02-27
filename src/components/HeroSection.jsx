@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import assets from "../assets/assets";
+import { Link } from "react-router-dom";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -21,11 +22,11 @@ export default function HeroSection() {
           className="md:col-span-4 space-y-6 flex flex-col justify-center items-center"
         >
           <div>
-            <p className="text-xl tracking-widest text-[#B87C72] mb-2 uppercase">
+            <p className="text-3xl md:text-4xl font-semibold text-[#2B333C] mb-3">
               What We Do Differently?
             </p>
 
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#2B333C] mb-3">
+            <h2 className="text-xl tracking-widest text-[#B87C72] mb-2 uppercase">
               Comprehensive Care
             </h2>
 
@@ -55,14 +56,43 @@ export default function HeroSection() {
             </h3>
 
             <ul className="text-xl text-[#828D9C] space-y-1">
-              <li>Male Hair Loss</li>
-              <li>Female Hair Loss</li>
-              <li>Alopecia Areata</li>
-              <li>Telogen Effluvium</li>
+              <li>
+                <Link 
+                  to="/hair-transplant/male-hair-loss"
+                  className="hover:text-[#B87C72] transition-colors duration-200"
+                >
+                  Male Hair Loss
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/hair-transplant/female-hair-loss"
+                  className="hover:text-[#B87C72] transition-colors duration-200"
+                >
+                  Female Hair Loss
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/hair-transplant/alopecia"
+                  className="hover:text-[#B87C72] transition-colors duration-200"
+                >
+                  Alopecia Areata
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/hair-transplant/telogen"
+                  className="hover:text-[#B87C72] transition-colors duration-200"
+                >
+                  Telogen Effluvium
+                </Link>
+              </li>
             </ul>
           </div>
 
-          <button
+          <Link
+            to="/hair-treatment"
             className="
     mt-6
     inline-flex items-center gap-2
@@ -83,7 +113,7 @@ export default function HeroSection() {
             <span className="transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
-          </button>
+          </Link>
         </motion.div>
 
         {/* ================= CARD 2 ================= */}
@@ -99,15 +129,44 @@ export default function HeroSection() {
               Hair Treatments
             </h3>
 
-            <ul className="text-xl text-[#DFDFDD] space-y-1 ">
-              <li>Hair Transplant</li>
-              <li>Hairloss Treatment</li>
-              <li>Corrective Transplants</li>
-              <li>Regenerative Hair Therapies</li>
+            <ul className="text-xl text-[#DFDFDD] space-y-1">
+              <li>
+                <Link 
+                  to="/hair-treatment"
+                  className="hover:text-[#B87C72] transition-colors duration-200 block"
+                >
+                  Hair Transplant
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/hair-treatment"
+                  className="hover:text-[#B87C72] transition-colors duration-200 block"
+                >
+                  Hairloss Treatment
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/hair-transplant/repair"
+                  className="hover:text-[#B87C72] transition-colors duration-200 block"
+                >
+                  Corrective Transplants
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/hair-treatment"
+                  className="hover:text-[#B87C72] transition-colors duration-200 block"
+                >
+                  Regenerative Hair Therapies
+                </Link>
+              </li>
             </ul>
           </div>
 
-          <button
+          <Link
+            to="/hair-treatment"
             className="
     mt-6
     inline-flex items-center gap-2
@@ -128,7 +187,7 @@ export default function HeroSection() {
             <span className="transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
-          </button>
+          </Link>
         </motion.div>
 
         {/* ================= CARD 3 ================= */}
@@ -152,7 +211,8 @@ export default function HeroSection() {
             </ul>
           </div>
 
-          <button
+          <Link
+            to="/skin-treatment"
             className="
     mt-6
     inline-flex items-center gap-2
@@ -173,7 +233,7 @@ export default function HeroSection() {
             <span className="transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
-          </button>
+          </Link>
         </motion.div>
 
         {/* ================= CARD 4 ================= */}
@@ -197,7 +257,8 @@ export default function HeroSection() {
             </ul>
           </div>
 
-          <button
+          <Link
+            to="/skin-treatment"
             className="
     mt-6
     inline-flex items-center gap-2
@@ -218,7 +279,7 @@ export default function HeroSection() {
             <span className="transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
-          </button>
+          </Link>
         </motion.div>
 
         {/* ================= IMAGE (UNCHANGED) ================= */}
@@ -235,11 +296,37 @@ export default function HeroSection() {
             className="w-full h-full object-cover object-[50%_40%]"
           />
 
-          <button className="absolute bottom-5 left-5 bg-[#2B333C] hover:bg-[#9E4A47] transition text-white px-5 py-2.5 rounded-full text-sm font-medium">
+          <Link
+            to="/hair-treatment"
+            className="absolute bottom-5 left-5 bg-[#2B333C] hover:bg-[#9E4A47] transition text-white px-5 py-2.5 rounded-full text-sm font-medium"
+          >
             VIEW SERVICES
-          </button>
+          </Link>
         </motion.div>
       </div>
+     {/* ================= CTA BUTTON ================= */}
+<div className="mt-8 flex justify-center">
+  <button
+    className="
+      bg-[#9E4A47]
+      hover:bg-[#84332F]
+      active:scale-[0.98]
+      text-white
+      font-semibold
+      text-sm sm:text-base md:text-lg
+      px-6 sm:px-8 md:px-10
+      py-3 sm:py-3.5 md:py-4
+      rounded-xl
+      shadow-lg
+      hover:shadow-xl
+      transition-all duration-300 ease-in-out
+      w-full sm:w-auto
+    "
+    style={{ fontFamily: "'Oswald', sans-serif" }}
+  >
+    Book Your First Free Assessment 
+  </button>
+</div>
     </section>
   );
 }

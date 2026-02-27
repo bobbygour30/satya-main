@@ -41,19 +41,16 @@ const SkinTreatmentGradientBanner = () => {
     <section
       className="
       w-full 
-      bg-gradient-to-br 
-      from-[#3b1614] 
-      via-[#5c2623] 
-      to-[#9E4A47] 
+      bg-[#FCEBDE]
       py-12 md:py-20 
       px-4 sm:px-6 lg:px-12"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
         {/* ================= LEFT CONTENT ================= */}
-        <div className="space-y-5 text-[#F5EDEB]">
+        <div className="space-y-5 text-gray-700">
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white leading-snug">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#0E3A43] leading-snug">
             Advanced Skin Treatments at Satya Skin & Hair Solutions
           </h2>
 
@@ -69,22 +66,20 @@ const SkinTreatmentGradientBanner = () => {
             Our board-certified dermatologists focus on treating the cause, not just the symptoms. Whether it’s acne scars, uneven tone, dullness, open pores, or premature aging, we combine science-driven protocols with advanced technology for safe, natural-looking outcomes.
           </p>
 
-          <p className="text-white text-sm sm:text-base font-medium">
+          <p className="text-[#9E4A47] text-sm sm:text-base font-medium">
             Book your personalized skin consultation today and take the first step towards healthy and confident skin.
           </p>
 
         </div>
 
         {/* ================= RIGHT FORM ================= */}
-        <div className="
-            bg-gradient-to-br 
-            from-[#fdfaf5] 
-            via-[#fffefb] 
-            to-white 
+        <div
+          className="
+            bg-white
             rounded-2xl 
             shadow-2xl 
             p-6 sm:p-8 
-            border border-white/20"
+            border border-[#f3d6c8]"
         >
 
           <h3 className="text-lg sm:text-xl font-semibold text-[#0E3A43] mb-5 text-center">

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Quote, Play } from "lucide-react";
+import { MessageCircle, Quote, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import assets from "../assets/assets";
 
 /* ===============================
@@ -37,6 +37,20 @@ const testimonials = [
     videoId: "KbuQRbVKrFA",
     thumbnail: assets.manoharsha,
   },
+  {
+    id: 4,
+    text: `I am highly impressed with the knowledge of doctors, infrastructure, and the technology at Satya. They are better than USA and much affordable. I plan my India tour around my visit to Satya.`,
+    author: "Neneh (USA)",
+    videoId: "7x7GhR8S_v0",
+    thumbnail: assets.neneh,
+  },
+  {
+    id: 4,
+    text: `My daughter had some skin issue for which I took treatment at Satya, during my visit to India. Would highly recommend Dr Ruchi for honest skin treatments.`,
+    author: "Maggie (Italy)",
+    videoId: "bo7RgLyn820",
+    thumbnail: assets.maggie,
+  },
 ];
 
 export default function Testimonials() {
@@ -44,15 +58,14 @@ export default function Testimonials() {
   const [play, setPlay] = useState(false);
 
   useEffect(() => {
-  if (play) return; // ⛔ Stop auto slide when video is playing
+    if (play) return; // ⛔ Stop auto slide when video is playing
 
-  const interval = setInterval(() => {
-    setIndex((prev) => (prev + 1) % testimonials.length);
-  }, 8000);
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
 
-  return () => clearInterval(interval);
-}, [play]);
-
+    return () => clearInterval(interval);
+  }, [play]);
 
   const current = testimonials[index];
 
@@ -65,6 +78,16 @@ export default function Testimonials() {
     initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.8 } },
     exit: { opacity: 0, y: -20, transition: { duration: 0.4 } },
+  };
+
+  const goToPrev = () => {
+    setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setPlay(false);
+  };
+
+  const goToNext = () => {
+    setIndex((prev) => (prev + 1) % testimonials.length);
+    setPlay(false);
   };
 
   return (
@@ -153,41 +176,63 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* RIGHT – MAIN VIDEO – FIXED VERSION */}
-        <div className="flex justify-center">
-          <div className="relative w-[280px] h-[500px] md:w-[330px] md:h-[600px] rounded-[32px] overflow-hidden shadow-2xl border border-[#DFDFDD] bg-black">
-            {/* Always render iframe – control visibility with CSS */}
-            <iframe
-              key={current.videoId} // ← important: remount when video changes
-              src={`https://www.youtube.com/embed/${current.videoId}?autoplay=${
-                play ? "1" : "0"
-              }&playsinline=1&rel=0&modestbranding=1`}
-              title={current.author}
-              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-              allowFullScreen
-              className={`w-full h-full transition-opacity duration-300 ${
-                play ? "opacity-100" : "opacity-0 pointer-events-none"
-              }`}
-            />
-
-            {/* Thumbnail overlay – shown only when !play */}
-            <button
-              onClick={() => setPlay(true)}
-              className={`absolute inset-0 transition-opacity duration-300 ${
-                play ? "opacity-0 pointer-events-none" : "opacity-100"
-              }`}
-            >
-              <img
-                src={current.thumbnail}
-                alt={current.author}
-                className="w-full h-full object-cover opacity-90 hover:opacity-70 transition"
+        {/* RIGHT – MAIN VIDEO + EXTERNAL MOBILE ARROWS */}
+        <div className="relative flex justify-center">
+          {/* Slightly wider wrapper to allow space for external arrows */}
+          <div className="relative w-[320px] md:w-[380px] flex items-center justify-center">
+            <div className="relative w-[280px] h-[500px] md:w-[330px] md:h-[600px] rounded-[32px] overflow-hidden shadow-2xl border border-[#DFDFDD] bg-black">
+              {/* Always render iframe – control visibility with CSS */}
+              <iframe
+                key={current.videoId}
+                src={`https://www.youtube.com/embed/${current.videoId}?autoplay=${
+                  play ? "1" : "0"
+                }&playsinline=1&rel=0&modestbranding=1`}
+                title={current.author}
+                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                allowFullScreen
+                className={`w-full h-full transition-opacity duration-300 ${
+                  play ? "opacity-100" : "opacity-0 pointer-events-none"
+                }`}
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-full bg-[#9E4A47] flex items-center justify-center shadow-xl hover:scale-110 transition">
-                  <Play className="text-white ml-1" size={32} />
+
+              {/* Thumbnail overlay – shown only when !play */}
+              <button
+                onClick={() => setPlay(true)}
+                className={`absolute inset-0 transition-opacity duration-300 ${
+                  play ? "opacity-0 pointer-events-none" : "opacity-100"
+                }`}
+              >
+                <img
+                  src={current.thumbnail}
+                  alt={current.author}
+                  className="w-full h-full object-cover opacity-90 hover:opacity-70 transition"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-[#9E4A47] flex items-center justify-center shadow-xl hover:scale-110 transition">
+                    <Play className="text-white ml-1" size={32} />
+                  </div>
                 </div>
-              </div>
-            </button>
+              </button>
+            </div>
+
+            {/* Mobile-only navigation arrows – positioned OUTSIDE the video */}
+            <div className="lg:hidden absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
+              <button
+                onClick={goToPrev}
+                className="pointer-events-auto -ml-12 p-2.5 rounded-full bg-white/90 shadow-md hover:bg-white hover:scale-105 transition active:scale-95"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft size={24} className="text-[#9E4A47]" />
+              </button>
+
+              <button
+                onClick={goToNext}
+                className="pointer-events-auto -mr-12 p-2.5 rounded-full bg-white/90 shadow-md hover:bg-white hover:scale-105 transition active:scale-95"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight size={24} className="text-[#9E4A47]" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

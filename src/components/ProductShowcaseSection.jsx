@@ -58,51 +58,67 @@ export default function ProductShowcaseSection() {
 
   return (
     <div className="bg-[#FFF8EF] sm:py-16 py-4 px-3 w-full flex justify-center">
-      <div className="w-full max-w-7xl flex flex-col md:flex-row gap-8 items-stretch">
+      <div className="w-full max-w-7xl flex flex-col md:flex-row gap-8 md:items-stretch items-start">
 
-        {/* LEFT CARD – unchanged */}
-        <div className="md:w-1/3 bg-white border border-[#FCEBDE] rounded-2xl flex flex-col justify-between py-10 px-8 shadow-sm">
-          <div>
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-5 text-[#2B333C]"
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              Why Choose Satya?
-            </h2>
+        {/* LEFT CARD – Compact Version */}
+<div className="md:w-1/3 bg-white border border-[#FCEBDE] rounded-2xl flex flex-col justify-between py-8 px-6 shadow-sm h-full">
 
-            <p className="text-[#828D9C] text-base leading-relaxed">
-              With over 23 years of clinical experience, Satya Skin & Hair
-              Solutions follows a transparent, doctor-led approach to skin
-              and hair care. Every recommendation is based on careful
-              medical evaluation and honest discussion of options and
-              outcomes. We prioritise safety, long-term results, and natural
-              appearance, earning the trust of patients from India and
-              across the world.
-            </p>
-          </div>
+  <div>
+    <h2
+      className="text-2xl md:text-3xl font-bold mb-6 text-[#2B333C]"
+      style={{ fontFamily: "'Oswald', sans-serif" }}
+    >
+      Why Choose Satya?
+    </h2>
 
-          <div className="bg-[#2B333C] rounded-xl shadow-lg py-9 px-8 mt-10">
-            <span
-              className="uppercase text-white font-semibold text-lg tracking-wider"
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              Need expert guidance for your skin or hair concern?
-            </span>
+    {/* 🔥 2 COLUMN BULLET GRID (Reduces Height Dramatically) */}
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 text-[#828D9C] text-sm leading-relaxed">
+      {[
+        "46+ Years Combined Experience",
+        "Global Patient Trust",
+        "Minimum Medicine Approach",
+        "Innovative Technique (DSFT™) (MHT™)",
+        "Mastery in Corrective Procedures",
+        "Donor Preservation  Philosophy",
+        "Balanced Hair Transplant Approach",
+        "Minimum Grafts. Minimum Medication.",
+        "Repair & Corrective Expertise",
+        "Dermatology-Led Skin Treatments",
+        "Science Over Trends",
+        "Long-Term Relationship, Not One-Time Procedure",
+      ].map((point, index) => (
+        <li key={index} className="flex items-start gap-2">
+          <span className="mt-1.5 w-2 h-2 bg-[#9E4A47] rounded-full shrink-0"></span>
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
 
-            <button
-              className="mt-6 bg-[#FFF8EF] hover:bg-[#FCEBDE] text-[#2B333C] font-medium py-3.5 px-8 rounded transition-colors flex items-center text-lg shadow-md"
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              Book An Appointment
-            </button>
-          </div>
-        </div>
+  {/* CTA BOX - Reduced Padding */}
+  <div className="bg-[#2B333C] rounded-xl shadow-md py-6 px-6 mt-8">
+    <span
+      className="uppercase text-white font-semibold text-base tracking-wide"
+      style={{ fontFamily: "'Oswald', sans-serif" }}
+    >
+      Need expert guidance?
+    </span>
+
+    <button
+      className="mt-4 bg-[#FFF8EF] hover:bg-[#FCEBDE] text-[#2B333C] font-medium py-3 px-6 rounded transition-colors text-base shadow-sm"
+      style={{ fontFamily: "'Oswald', sans-serif" }}
+    >
+      Book An Appointment
+    </button>
+  </div>
+
+</div>
 
         {/* RIGHT – VIDEO SECTION */}
-        <div className="md:w-2/3 w-full relative">
+        <div className="md:w-2/3 w-full relative flex flex-col">
 
           {/* ================= DESKTOP ================= */}
-          <div className="hidden md:grid md:grid-cols-2 gap-8">
+          <div className="hidden md:grid md:grid-cols-2 gap-8 h-full">
             {videos.map((video, idx) => (
               <VideoCard
                 key={`desktop-${idx}`}

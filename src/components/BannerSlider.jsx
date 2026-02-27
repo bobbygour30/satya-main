@@ -85,7 +85,7 @@ export default function BannerSlider() {
                   <h1 className="text-6xl font-semibold leading-tight mb-6 text-white">
                     {slide.headline}
                   </h1>
-                  <p className="text-lg max-w-lg mb-10 text-white/90">
+                  <p className="sm:text-2xl max-w-lg mb-10 text-white/90">
                     {slide.subtext}
                   </p>
 

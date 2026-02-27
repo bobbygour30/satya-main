@@ -130,12 +130,12 @@ export default function Gopal() {
     <div className="w-full overflow-x-auto sm:text-xs text-[8px]">
       <table className=" w-full border border-[#FCEBDE] bg-white rounded-xl shadow-sm">
         <thead>
-          <tr className="bg-[#FFF8EF]/60">
+          <tr className="bg-[#9E4A47] text-white">
             <th className="border p-3 text-left font-medium">View</th>
             {rows.map((row) => (
               <th
                 key={row.label}
-                className="border p-3 text-center font-medium bg-[#FFF8EF]/40"
+                className="border p-3 text-center font-medium bg-[#9E4A47] text-white"
               >
                 {row.label}
               </th>
@@ -145,7 +145,7 @@ export default function Gopal() {
         <tbody>
           {/* Row 0: Front */}
           <tr>
-            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+            <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
               Front
             </td>
             {rows.map((row, stageIndex) => (
@@ -157,7 +157,7 @@ export default function Gopal() {
                   <img
                     src={row.images[0]}
                     alt=""
-                    className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
+                    className="w-full h-30 sm:h-40 md:h-48 lg:h-56 object-cover sm:object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -167,7 +167,7 @@ export default function Gopal() {
 
           {/* Row 1: Right */}
           <tr>
-            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+            <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
               Right
             </td>
             {rows.map((row, stageIndex) => (
@@ -179,7 +179,7 @@ export default function Gopal() {
                   <img
                     src={row.images[1]}
                     alt=""
-                    className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
+                    className="w-full h-30 sm:h-40 md:h-48 lg:h-56 object-cover sm:object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -189,7 +189,7 @@ export default function Gopal() {
 
           {/* Row 2: Left */}
           <tr>
-            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+            <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
               Left
             </td>
             {rows.map((row, stageIndex) => (
@@ -201,7 +201,7 @@ export default function Gopal() {
                   <img
                     src={row.images[2]}
                     alt=""
-                    className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
+                    className="w-full h-30 sm:h-40 md:h-48 lg:h-56 object-cover sm:object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -211,7 +211,7 @@ export default function Gopal() {
 
           {/* Row 3: Top / Back */}
           <tr>
-            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+            <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
               Top / Back
             </td>
             {rows.map((row, stageIndex) => (
@@ -223,7 +223,7 @@ export default function Gopal() {
                   <img
                     src={row.images[3]}
                     alt=""
-                    className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
+                    className="w-full h-30 sm:h-40 md:h-48 lg:h-56 object-cover sm:object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -531,7 +531,7 @@ export default function Gopal() {
         </p>
 
         {/* ================= TABLE ================= */}
-        <section className="px-4 sm:px-6 pb-16">
+        <section className="sm:px-6 pb-16">
           <div className=" bg-white/40 rounded-3xl ">
             <h3 className="text-2xl font-semibold text-center lg:mb-4">
               Gopal’s Progress & Results

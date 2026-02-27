@@ -152,12 +152,12 @@ export default function Lokesh() {
     <div className="w-full overflow-x-auto sm:text-xs text-[8px]">
       <table className=" w-full border border-[#FCEBDE] bg-white rounded-xl shadow-sm">
         <thead>
-          <tr className="bg-[#FFF8EF]/60">
+          <tr className="bg-[#9E4A47] text-white">
             <th className="border p-3 text-left font-medium">View</th>
             {rows.map((row) => (
               <th
                 key={row.label}
-                className="border p-3 text-center font-medium bg-[#FFF8EF]/40"
+                className="border p-3 text-center font-medium bg-[#9E4A47] text-white"
               >
                 {row.label}
               </th>
@@ -167,7 +167,7 @@ export default function Lokesh() {
         <tbody>
           {/* Row 0: Front */}
           <tr>
-            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+            <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
               Front
             </td>
             {rows.map((row, stageIndex) => (
@@ -189,7 +189,7 @@ export default function Lokesh() {
 
           {/* Row 1: Right */}
           <tr>
-            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+            <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
               Right
             </td>
             {rows.map((row, stageIndex) => (
@@ -211,7 +211,7 @@ export default function Lokesh() {
 
           {/* Row 2: Left */}
           <tr>
-            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+            <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
               Left
             </td>
             {rows.map((row, stageIndex) => (
@@ -233,7 +233,7 @@ export default function Lokesh() {
 
           {/* Row 3: Top / Back */}
           <tr>
-            <td className="border p-3 font-medium bg-[#FFF8EF]/30 text-left">
+            <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
               Top / Back
             </td>
             {rows.map((row, stageIndex) => (
@@ -598,7 +598,7 @@ export default function Lokesh() {
         </p>
 
         {/* ================= TABLE ================= */}
-        <section className="px-4 sm:px-6 pb-16">
+        <section className=" sm:px-6 pb-16">
           <div className=" bg-white/40 rounded-3xl ">
             <h3 className="text-2xl font-semibold text-center lg:mb-4">
               Lokesh’s Progress & Results

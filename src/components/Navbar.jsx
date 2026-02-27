@@ -29,11 +29,18 @@ const MENU = [
   {
     title: "Hair",
     items: [
+      { label: "Concerns", isConcerns: true },
       { label: "FUE Hair Transplant", path: "/hair-transplant/fue" },
       { label: "FUT Hair Transplant", path: "/hair-transplant/fut" },
-      { label: "Beard Hair Transplant", path: "/beard-hair-transplant" },
-      { label: "Eyebrow Reconstruction", path: "/eyebrow-transplant" },
-      { label: "Body Hair Transplant", path: "/hair-transplant/body" },
+      { label: "Beard Hair Transplant", path: "/hair-transplant/beard-hair-transplant" },
+      { label: "Eyebrow Reconstruction", path: "/hair-transplant/eyebrow-transplant" },
+      { label: "Body Hair Transplant", path: "/hair-transplant/body" }, 
+    ],
+    concerns: [
+       { label: "Telogen Effluvium", path: "/hair-transplant/telogen" },
+      { label: "Alopecia Areata", path: "/hair-transplant/alopecia" },
+      { label: "Male Hair Loss", path: "/hair-transplant/male-hair-loss" },
+      { label: "Female Hair Loss", path: "/hair-transplant/female-hair-loss" },
     ],
   },
   /* ================= SKIN ================= */
@@ -348,9 +355,12 @@ function HoverDropdown({ title, items, concerns }) {
           </div>
 
           {/* RIGHT COLUMN - only shown when Concerns is active */}
+           {/* RIGHT COLUMN - only shown when Concerns is active */}
           {activeSubmenu === "concerns" && hasConcerns && (
             <div className="w-80 bg-[#FFF8F2] p-5 border-l border-[#DFDFDD]">
-              <h4 className="font-semibold text-[#2B333C] mb-4 text-base">Skin Concerns</h4>
+              <h4 className="font-semibold text-[#2B333C] mb-4 text-base">
+                {title === "Hair" ? "Hair Concerns" : "Skin Concerns"}
+              </h4>
               <ul className="space-y-2.5 text-sm text-[#2B333C]">
                 {concerns.map((concern, idx) => (
                   <li key={idx} className="hover:text-[#9E4A47] transition-colors">

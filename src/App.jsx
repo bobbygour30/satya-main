@@ -61,11 +61,16 @@ import HIFUTreatment from "./pages/HIFUTreatment";
 import FiveDFacialTreatment from "./pages/FiveDFacialTreatment";
 import VampireFacelift from "./pages/VampireFacelift";
 import MesotherapyTreatment from "./pages/MesotherapyTreatment";
-import Admin from "./pages/Admin";
+
+/* ================= ADMIN ================= */
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
+import AdminLogin from "./components/admin/AdminLogin";
+import AdminDashboard from "./components/admin/AdminDashboard";
 
 export default function App() {
   return (
-    <>
+    <AuthProvider>
       <Navbar />
       <ScrollToTop />
 
@@ -111,7 +116,6 @@ export default function App() {
         <Route path="/skin/mesotherapy" element={<MesotherapyTreatment />} />
 
         {/* ================= HAIR ================= */}
-
         <Route path="/hair-treatment" element={<HairTreatment />} />
         <Route path="/skin-treatment" element={<SkinTreatment />} />
         <Route
@@ -180,13 +184,43 @@ export default function App() {
           path="/hair-transplant/scalp-micropigmentation"
           element={<ScalpMicropigmentation />}
         />
+
+        {/* ================= ADMIN ROUTES ================= */}
+        {/* Public Admin Login */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        
+        {/* Protected Admin Routes */}
         <Route
-          path="/admin"
-          element={<Admin />}
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        
+        {/* Dynamic Case Study Editor Route */}
+        <Route
+          path="/admin/case/:id"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        
+        {/* New Case Study Route */}
+        <Route
+          path="/admin/case/new"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
         />
       </Routes>
 
       <Footer />
-    </>
+    </AuthProvider>
   );
 }

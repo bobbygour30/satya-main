@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Phone,
   MapPin,
@@ -110,6 +110,12 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
+  const location = useLocation();
+
+  // Close mobile sidebar when route changes
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -150,7 +156,7 @@ export default function Navbar() {
 
         {/* ================= MAIN NAV ================= */}
         <div className="flex items-center justify-between px-6 py-4">
-          <Link to="/" className="block">
+          <Link to="/" className="block" onClick={() => setMobileOpen(false)}>
             <img
               className="w-30"
               src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/width:2000/height:2000/https://cdn.gamma.app/3pjpymp9a7vlfhg/c472d799fd6e4d3dacf235cf60fceb3f/original/Logo-2-1.png"
@@ -211,11 +217,18 @@ export default function Navbar() {
               </div>
 
               {MENU.map((menu) => (
-                <MobileAccordion key={menu.title} {...menu} />
+                <MobileAccordion 
+                  key={menu.title} 
+                  {...menu} 
+                  onLinkClick={() => setMobileOpen(false)}
+                />
               ))}
 
               <button
-                onClick={() => setShowPopup(true)}
+                onClick={() => {
+                  setShowPopup(true);
+                  setMobileOpen(false);
+                }}
                 className="mt-8 w-full bg-[#9E4A47] text-white py-3 rounded-xl cursor-pointer font-medium"
               >
                 Book Appointment
@@ -355,7 +368,6 @@ function HoverDropdown({ title, items, concerns }) {
           </div>
 
           {/* RIGHT COLUMN - only shown when Concerns is active */}
-           {/* RIGHT COLUMN - only shown when Concerns is active */}
           {activeSubmenu === "concerns" && hasConcerns && (
             <div className="w-80 bg-[#FFF8F2] p-5 border-l border-[#DFDFDD]">
               <h4 className="font-semibold text-[#2B333C] mb-4 text-base">
@@ -379,7 +391,7 @@ function HoverDropdown({ title, items, concerns }) {
 }
 
 /* ================= MOBILE ACCORDION ================= */
-function MobileAccordion({ title, items, concerns }) {
+function MobileAccordion({ title, items, concerns, onLinkClick }) {
   const [open, setOpen] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [concernsOpen, setConcernsOpen] = useState(false);
@@ -387,6 +399,12 @@ function MobileAccordion({ title, items, concerns }) {
   const visibleItems = showMore ? items : items.slice(0, MAX_VISIBLE_ITEMS);
   const hasMore = items.length > MAX_VISIBLE_ITEMS;
   const hasConcerns = !!concerns && concerns.length > 0;
+
+  const handleLinkClick = () => {
+    onLinkClick();
+    setOpen(false);
+    setConcernsOpen(false);
+  };
 
   return (
     <div className="border-b border-[#DFDFDD]">
@@ -426,7 +444,7 @@ function MobileAccordion({ title, items, concerns }) {
                           <Link
                             to={concern.path}
                             className="hover:text-[#9E4A47] transition-colors block py-1"
-                            onClick={() => setOpen(false)}
+                            onClick={handleLinkClick}
                           >
                             {concern.label}
                           </Link>
@@ -443,7 +461,7 @@ function MobileAccordion({ title, items, concerns }) {
                 <Link
                   to={item.path}
                   className="hover:text-[#9E4A47] transition-colors block py-1"
-                  onClick={() => setOpen(false)}
+                  onClick={handleLinkClick}
                 >
                   {item.label}
                 </Link>
@@ -469,7 +487,7 @@ function MobileAccordion({ title, items, concerns }) {
                     <Link
                       to="/hair-treatment"
                       className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
-                      onClick={() => setOpen(false)}
+                      onClick={handleLinkClick}
                     >
                       View More
                     </Link>
@@ -479,7 +497,7 @@ function MobileAccordion({ title, items, concerns }) {
                     <Link
                       to="/skin-treatment"
                       className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
-                      onClick={() => setOpen(false)}
+                      onClick={handleLinkClick}
                     >
                       View More
                     </Link>

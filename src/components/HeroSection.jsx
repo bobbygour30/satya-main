@@ -1,8 +1,9 @@
 "use client";
-
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import assets from "../assets/assets";
 import { Link } from "react-router-dom";
+import ConsultationPopup from "./ConsultationPopup";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -10,6 +11,7 @@ const fadeUp = {
 };
 
 export default function HeroSection() {
+  const [showPopup, setShowPopup] = useState(false);
   return (
     <section className="w-full bg-[#FFF8EF] px-6 sm:py-20 py-5">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -57,7 +59,7 @@ export default function HeroSection() {
 
             <ul className="text-xl text-[#828D9C] space-y-1">
               <li>
-                <Link 
+                <Link
                   to="/hair-transplant/male-hair-loss"
                   className="hover:text-[#B87C72] transition-colors duration-200"
                 >
@@ -65,7 +67,7 @@ export default function HeroSection() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/hair-transplant/female-hair-loss"
                   className="hover:text-[#B87C72] transition-colors duration-200"
                 >
@@ -73,7 +75,7 @@ export default function HeroSection() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/hair-transplant/alopecia"
                   className="hover:text-[#B87C72] transition-colors duration-200"
                 >
@@ -81,7 +83,7 @@ export default function HeroSection() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/hair-transplant/telogen"
                   className="hover:text-[#B87C72] transition-colors duration-200"
                 >
@@ -131,7 +133,7 @@ export default function HeroSection() {
 
             <ul className="text-xl text-[#DFDFDD] space-y-1">
               <li>
-                <Link 
+                <Link
                   to="/hair-treatment"
                   className="hover:text-[#B87C72] transition-colors duration-200 block"
                 >
@@ -139,7 +141,7 @@ export default function HeroSection() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/hair-treatment"
                   className="hover:text-[#B87C72] transition-colors duration-200 block"
                 >
@@ -147,7 +149,7 @@ export default function HeroSection() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/hair-transplant/repair"
                   className="hover:text-[#B87C72] transition-colors duration-200 block"
                 >
@@ -155,7 +157,7 @@ export default function HeroSection() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/hair-treatment"
                   className="hover:text-[#B87C72] transition-colors duration-200 block"
                 >
@@ -304,10 +306,11 @@ export default function HeroSection() {
           </Link>
         </motion.div>
       </div>
-     {/* ================= CTA BUTTON ================= */}
-<div className="mt-8 flex justify-center">
-  <button
-    className="
+      {/* ================= CTA BUTTON ================= */}
+      <div className="mt-8 flex justify-center">
+        <button
+        onClick={() => setShowPopup(true)}
+          className="
       bg-[#9E4A47]
       hover:bg-[#84332F]
       active:scale-[0.98]
@@ -322,11 +325,12 @@ export default function HeroSection() {
       transition-all duration-300 ease-in-out
       w-full sm:w-auto
     "
-    style={{ fontFamily: "'Oswald', sans-serif" }}
-  >
-    Book Your First Free Assessment 
-  </button>
-</div>
+          style={{ fontFamily: "'Oswald', sans-serif" }}
+        >
+          Book Your First Free Assessment
+        </button>
+      </div>
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </section>
   );
 }

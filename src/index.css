@@ -163,3 +163,99 @@
   color: #828D9C;
 }
 
+/* ---------- SVG Icon Sizing ---------- */
+
+/* Target SVG icons in WordPress content */
+.wp-content svg {
+  width: 1.25rem;  /* 20px - adjust as needed */
+  height: 1.25rem; /* 20px - adjust as needed */
+  vertical-align: middle; /* Aligns nicely with text */
+  display: inline-block;
+}
+
+/* If SVGs are being used as standalone icons */
+.wp-content .wp-block-image svg,
+.wp-content figure svg,
+.wp-content .icon svg {
+  width: 1.5rem;  /* 24px */
+  height: 1.5rem; /* 24px */
+}
+
+/* For SVG icons within links or buttons */
+.wp-content a svg,
+.wp-content button svg {
+  width: 1.125rem;  /* 18px */
+  height: 1.125rem; /* 18px */
+  margin-right: 0.25rem; /* Adds spacing if text follows */
+}
+
+/* If SVGs are inside specific WordPress blocks */
+.wp-content .wp-block-social-links svg {
+  width: 1.5rem;  /* 24px */
+  height: 1.5rem; /* 24px */
+}
+
+/* For menu icons if applicable */
+.wp-content .menu-item svg,
+.wp-content .wp-block-navigation svg {
+  width: 1rem;   /* 16px */
+  height: 1rem;  /* 16px */
+}
+
+/* Ensure SVGs maintain aspect ratio */
+.wp-content svg {
+  flex-shrink: 0;
+}
+
+/* Optional: Add hover effect for interactive SVGs */
+.wp-content a:hover svg {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+/* Responsive adjustments for SVGs */
+@media (max-width: 768px) {
+  .wp-content svg {
+    width: 1rem;   /* 16px on mobile */
+    height: 1rem;  /* 16px on mobile */
+  }
+}
+
+
+/* ===============================
+   GLOBAL BUTTON STYLE
+================================ */
+.uagb-button__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wp-block-button__link,
+.uagb-buttons-repeater {
+  background: #B65E3C !important;
+  color: #ffffff !important;
+  padding: 16px 34px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  font-size: 20px;
+  font-weight: 600;
+  border: 2px solid #7b3f2b !important;
+  box-shadow: 0 4px 0 #7b3f2b;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.wp-block-button__link:hover,
+.uagb-buttons-repeater:hover {
+  background: #c96a45 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #7b3f2b;
+}
+
+/* Click */
+.wp-block-button__link:active,
+.uagb-buttons-repeater:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #7b3f2b;
+}

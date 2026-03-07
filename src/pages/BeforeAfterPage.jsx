@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -6,80 +6,53 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { Link } from "react-router-dom";
-import assets from "../assets/assets";
-
-/* =====================================================
-   DATA
-===================================================== */
-export const CASES = [
-  {
-    id: 1,
-    name: "Susanna",
-    procedure: "Rhinoplasty",
-    category: "Nose",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200",
-  },
-  {
-    id: 2,
-    name: "Antonio A",
-    procedure: "Orthognathic Surgery",
-    category: "Jaw",
-    image:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200",
-  },
-  {
-    id: 3,
-    name: "Patricia",
-    procedure: "Jaw Contouring",
-    category: "Jaw",
-    image:
-      "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200",
-  },
-  {
-    id: 4,
-    name: "Karen",
-    procedure: "Facial Symmetry",
-    category: "Face",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200",
-  },
-  {
-    id: 5,
-    name: "Daniel",
-    procedure: "Chin Augmentation",
-    category: "Face",
-    image:
-      "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=1200",
-  },
-  {
-    id: 6,
-    name: "Elena",
-    procedure: "Jawline Definition",
-    category: "Jaw",
-    image:
-      "https://images.unsplash.com/photo-1545996124-0501ebae84d0?q=80&w=1200",
-  },
-];
+import { caseStudyAPI } from "../services/api";
+import LoadingSpinner from "../components/common/LoadingSpinner";
 
 /* =====================================================
    MAIN PAGE
 ===================================================== */
 export default function BeforeAfterPage() {
+  const [caseStudies, setCaseStudies] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("All");
   const [selectedCase, setSelectedCase] = useState(null);
 
+  useEffect(() => {
+    const fetchCaseStudies = async () => {
+      try {
+        setLoading(true);
+        const response = await caseStudyAPI.getAll();
+        // Filter published case studies
+        const publishedCases = response.data.data.filter(cs => cs.status === 'published');
+        setCaseStudies(publishedCases);
+      } catch (error) {
+        console.error('Failed to fetch case studies:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCaseStudies();
+  }, []);
+
+  // Get unique categories
+  const categories = ['All', ...new Set(caseStudies.map(c => c.category))];
+
   const filteredCases =
-    filter === "All" ? CASES : CASES.filter((c) => c.category === filter);
+    filter === "All" ? caseStudies : caseStudies.filter((c) => c.category === filter);
+
+  if (loading) return <LoadingSpinner />;
 
   return (
     <div className="bg-[#1a1f26] text-white min-h-screen overflow-x-hidden">
-      <HeroSection />
+      <HeroSection caseStudies={caseStudies} />
       <StorySection />
       <GallerySection
         filter={filter}
         setFilter={setFilter}
         cases={filteredCases}
+        categories={categories}
         onSelectCase={setSelectedCase}
       />
 
@@ -99,13 +72,18 @@ export default function BeforeAfterPage() {
 /* =====================================================
    HERO SECTION - Wide Scatter
 ===================================================== */
-function HeroSection() {
+function HeroSection({ caseStudies }) {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
+  // Get first 8 case studies with images
+  const casesWithImages = caseStudies
+    .filter(cs => cs.heroImages?.after?.length > 0)
+    .slice(0, 8);
+
   const floatingImages = [
     {
-      src: CASES[0].image,
+      src: casesWithImages[0]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200",
       left: "6%",
       top: "10%",
       rot: -16,
@@ -113,7 +91,7 @@ function HeroSection() {
       size: 210,
     },
     {
-      src: CASES[1].image,
+      src: casesWithImages[1]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200",
       left: "84%",
       top: "15%",
       rot: 12,
@@ -121,7 +99,7 @@ function HeroSection() {
       size: 180,
     },
     {
-      src: CASES[2].image,
+      src: casesWithImages[2]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200",
       left: "4%",
       top: "72%",
       rot: -10,
@@ -129,7 +107,7 @@ function HeroSection() {
       size: 250,
     },
     {
-      src: CASES[3].image,
+      src: casesWithImages[3]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200",
       left: "79%",
       top: "62%",
       rot: 14,
@@ -137,7 +115,7 @@ function HeroSection() {
       size: 195,
     },
     {
-      src: CASES[4].image,
+      src: casesWithImages[4]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=1200",
       left: "46%",
       top: "18%",
       rot: -5,
@@ -145,7 +123,7 @@ function HeroSection() {
       size: 270,
     },
     {
-      src: CASES[5].image,
+      src: casesWithImages[5]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1545996124-0501ebae84d0?q=80&w=1200",
       left: "32%",
       top: "81%",
       rot: 9,
@@ -153,7 +131,7 @@ function HeroSection() {
       size: 200,
     },
     {
-      src: CASES[0].image,
+      src: casesWithImages[6]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200",
       left: "90%",
       top: "38%",
       rot: -13,
@@ -161,7 +139,7 @@ function HeroSection() {
       size: 165,
     },
     {
-      src: CASES[2].image,
+      src: casesWithImages[7]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200",
       left: "11%",
       top: "35%",
       rot: 11,
@@ -283,164 +261,47 @@ function StorySection() {
   );
 }
 
-function GallerySection({ filter, setFilter, cases, onSelectCase }) {
+/* =====================================================
+   GALLERY SECTION
+===================================================== */
+function GallerySection({ filter, setFilter, cases, categories, onSelectCase }) {
   return (
-    <section className="py-12 px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-[#FFF8EF] text-[#1a1f26] ">
-      {/* =====================================
-         SINGLE REAL CASE (PRAKHAR ONLY)
-      ===================================== */}
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="max-w-4xl mx-auto text-center mt-5 "
-      >
-        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26] ">
-          Lokesh Lohiya
-        </h3>
+    <section className="py-12 px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-[#FFF8EF] text-[#1a1f26]">
+      {cases.map((cs) => (
+        <motion.div
+          key={cs._id}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="max-w-4xl mx-auto text-center mt-5"
+        >
+          <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
+            {cs.name}
+          </h3>
 
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img
-            src={assets.lokesh}
-            alt="Lokesh Transformation"
-            className="w-full h-[420px] object-contain bg-[#1a1f26]"
-          />
-        </div>
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src={cs.heroImages?.after[0]?.url || `https://via.placeholder.com/400x500?text=${cs.name}`}
+              alt={`${cs.name} Transformation`}
+              className="w-full h-[420px] object-contain bg-[#1a1f26]"
+            />
+          </div>
 
-        {/* VIEW TRANSFORMATION BUTTON */}
-        <div className="mt-10">
-          <Link
-            to="/case/lokesh"
-            className="inline-block px-10 py-3 rounded-full text-white font-medium
-                       bg-gradient-to-r from-[#9e4a47] to-[#84332F]
-                       shadow-lg shadow-[#9e4a47]/30
-                       hover:shadow-[#9e4a47]/50 transition"
-          >
-            View Transformation →
-          </Link>
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="max-w-4xl mx-auto text-center mt-5"
-      >
-        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">Prakhar</h3>
-
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img
-            src={assets.prakhar4}
-            alt="Prakhar Transformation"
-            className="w-full h-[420px] object-contain bg-[#1a1f26]"
-          />
-        </div>
-
-        {/* VIEW TRANSFORMATION BUTTON */}
-        <div className="mt-10">
-          <Link
-            to="/case/prakhar"
-            className="inline-block px-10 py-3 rounded-full text-white font-medium
-                       bg-gradient-to-r from-[#9e4a47] to-[#84332F]
-                       shadow-lg shadow-[#9e4a47]/30
-                       hover:shadow-[#9e4a47]/50 transition"
-          >
-            View Transformation →
-          </Link>
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="max-w-4xl mx-auto text-center mt-5"
-      >
-        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">Shubham</h3>
-
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img
-            src={assets.shubham3}
-            alt="Prakhar Transformation"
-            className="w-full h-[420px] object-contain bg-[#1a1f26]"
-          />
-        </div>
-
-        {/* VIEW TRANSFORMATION BUTTON */}
-        <div className="mt-10">
-          <Link
-            to="/case/shubham"
-            className="inline-block px-10 py-3 rounded-full text-white font-medium
-                       bg-gradient-to-r from-[#9e4a47] to-[#84332F]
-                       shadow-lg shadow-[#9e4a47]/30
-                       hover:shadow-[#9e4a47]/50 transition"
-          >
-            View Transformation →
-          </Link>
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="max-w-4xl mx-auto text-center mt-5"
-      >
-        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">Gopal</h3>
-
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img
-            src={assets.gopal}
-            alt="Gopal Transformation"
-            className="w-full h-[420px] object-contain bg-[#1a1f26]"
-          />
-        </div>
-
-        {/* VIEW TRANSFORMATION BUTTON */}
-        <div className="mt-10">
-          <Link
-            to="/case/gopal"
-            className="inline-block px-10 py-3 rounded-full text-white font-medium
-                       bg-gradient-to-r from-[#9e4a47] to-[#84332F]
-                       shadow-lg shadow-[#9e4a47]/30
-                       hover:shadow-[#9e4a47]/50 transition"
-          >
-            View Transformation →
-          </Link>
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="max-w-4xl mx-auto text-center mt-10"
-      >
-        <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">Arjun</h3>
-
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img
-            src={assets.arjun6}
-            alt="Prakhar Transformation"
-            className="w-full h-[420px] object-contain bg-[#1a1f26]"
-          />
-        </div>
-
-        {/* VIEW TRANSFORMATION BUTTON */}
-        <div className="mt-10">
-          <Link
-            to="/case/arjun"
-            className="inline-block px-10 py-3 rounded-full text-white font-medium
-                       bg-gradient-to-r from-[#9e4a47] to-[#84332F]
-                       shadow-lg shadow-[#9e4a47]/30
-                       hover:shadow-[#9e4a47]/50 transition"
-          >
-            View Transformation →
-          </Link>
-        </div>
-      </motion.div>
+          {/* VIEW TRANSFORMATION BUTTON */}
+          <div className="mt-10">
+            <Link
+              to={`/case/${cs.slug}`}
+              className="inline-block px-10 py-3 rounded-full text-white font-medium
+                         bg-gradient-to-r from-[#9e4a47] to-[#84332F]
+                         shadow-lg shadow-[#9e4a47]/30
+                         hover:shadow-[#9e4a47]/50 transition"
+            >
+              View Transformation →
+            </Link>
+          </div>
+        </motion.div>
+      ))}
     </section>
   );
 }
@@ -450,6 +311,9 @@ function GallerySection({ filter, setFilter, cases, onSelectCase }) {
 ===================================================== */
 function CaseDetailModal({ caseData, onClose }) {
   const [view, setView] = useState("before");
+
+  const beforeImage = caseData.heroImages?.before[0]?.url;
+  const afterImage = caseData.heroImages?.after[0]?.url;
 
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4 md:p-8">
@@ -482,7 +346,7 @@ function CaseDetailModal({ caseData, onClose }) {
                 className="absolute inset-0"
               >
                 <img
-                  src={caseData.image}
+                  src={view === "before" ? beforeImage : afterImage}
                   alt={`${caseData.name} - ${view}`}
                   className="w-full h-full object-cover"
                 />
@@ -494,35 +358,36 @@ function CaseDetailModal({ caseData, onClose }) {
           </div>
 
           {/* Toggle */}
-          <div className="flex justify-center mt-10">
-            <div className="inline-flex bg-black/40 backdrop-blur-md rounded-full p-2 border border-white/10">
-              <button
-                onClick={() => setView("before")}
-                className={`px-8 py-3 rounded-full transition-all ${
-                  view === "before"
-                    ? "bg-[#9e4a47] shadow-lg"
-                    : "hover:bg-white/10"
-                }`}
-              >
-                Before
-              </button>
-              <button
-                onClick={() => setView("after")}
-                className={`px-8 py-3 rounded-full transition-all ${
-                  view === "after"
-                    ? "bg-[#9e4a47] shadow-lg"
-                    : "hover:bg-white/10"
-                }`}
-              >
-                After
-              </button>
+          {beforeImage && afterImage && (
+            <div className="flex justify-center mt-10">
+              <div className="inline-flex bg-black/40 backdrop-blur-md rounded-full p-2 border border-white/10">
+                <button
+                  onClick={() => setView("before")}
+                  className={`px-8 py-3 rounded-full transition-all ${
+                    view === "before"
+                      ? "bg-[#9e4a47] shadow-lg"
+                      : "hover:bg-white/10"
+                  }`}
+                >
+                  Before
+                </button>
+                <button
+                  onClick={() => setView("after")}
+                  className={`px-8 py-3 rounded-full transition-all ${
+                    view === "after"
+                      ? "bg-[#9e4a47] shadow-lg"
+                      : "hover:bg-white/10"
+                  }`}
+                >
+                  After
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Note */}
           <p className="text-center text-gray-400 mt-8 text-sm">
-            * Currently showing placeholder image • In real project use separate
-            before/after photos
+            * Click on images to view full size
           </p>
         </div>
       </motion.div>

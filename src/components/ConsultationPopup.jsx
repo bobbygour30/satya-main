@@ -32,7 +32,7 @@ const Toast = ({ type, message, onClose }) => {
       ) : (
         <XCircle className="w-5 h-5 text-rose-600" />
       )}
-      <span>{message}</span>
+      <span id="consultation-success-message">{message}</span>
       <button
         onClick={(e) => {
           e.stopPropagation();

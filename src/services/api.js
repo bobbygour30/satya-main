@@ -96,7 +96,7 @@ export const authAPI = {
 // Case Studies API
 export const caseStudyAPI = {
   getAll: () => api.get('/case-studies'),
-  getOne: (id) => api.get(`/case-studies/${id}`),
+  getOne: (idOrSlug) => api.get(`/case-studies/${idOrSlug}`), // This should work with both ID and slug
   create: (data) => api.post('/case-studies', data),
   update: (id, data) => api.put(`/case-studies/${id}`, data),
   delete: (id) => api.delete(`/case-studies/${id}`),

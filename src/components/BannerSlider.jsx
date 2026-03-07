@@ -120,6 +120,7 @@ export default function BannerSlider() {
 
                 {/* Bottom Center CTA */}
                 <button
+                onClick={() => setShowPopup(true)}
                   className="
                     absolute
                     bottom-16

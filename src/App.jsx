@@ -67,6 +67,7 @@ import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminLogin from "./components/admin/AdminLogin";
 import AdminDashboard from "./components/admin/AdminDashboard";
+import DynamicCaseStudy from "./pages/DynamicCaseStudy";
 
 export default function App() {
   return (
@@ -91,6 +92,10 @@ export default function App() {
         <Route path="/case/arjun" element={<Arjun />} />
         <Route path="/case/lokesh" element={<Lokesh />} />
         <Route path="/case/gopal" element={<Gopal />} />
+
+        {/* ================= CASE STUDIES ================= */}
+{/* <Route path="/case/prakhar" element={<CaseDetailPage />} /> */}
+<Route path="/case/:slug" element={<DynamicCaseStudy />} />
 
         {/* ================= CLINIC ================= */}
         <Route path="/delhi" element={<AboutSatyaDelhi />} />

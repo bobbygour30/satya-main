@@ -142,9 +142,6 @@ export default function Navbar() {
             <button className="flex items-center gap-1 text-[#9E4A47] font-medium">
               <MessageCircle size={15} /> WhatsApp Expert
             </button>
-            <button className="flex items-center gap-1 text-[#2B333C]">
-              <Globe size={15} /> EN | HI
-            </button>
             <button
               onClick={() => setShowPopup(true)}
               className="flex cursor-pointer items-center gap-1 bg-[#9E4A47] text-white px-4 py-1.5 rounded-full"

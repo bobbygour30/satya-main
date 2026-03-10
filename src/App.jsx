@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import GoogleTranslate from "./components/GoogleTranslate";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 /* ================= CORE ================= */
 import HomePage from "./pages/HomePage";
@@ -12,9 +14,9 @@ import BlogDetail from "./pages/BlogDetail";
 import BeforeAfterPage from "./pages/BeforeAfterPage";
 
 /* ================= CASE STUDIES ================= */
-import CaseDetailPage from "./pages/CaseDetailPage";
-import Shubham from "./pages/Shubham";
-import Arjun from "./pages/Arjun";
+// import CaseDetailPage from "./pages/CaseDetailPage";
+// import Shubham from "./pages/Shubham";
+// import Arjun from "./pages/Arjun";
 
 /* ================= CLINIC ================= */
 import AboutSatyaDelhi from "./pages/AboutSatyaDelhi";
@@ -39,8 +41,8 @@ import BodyHairTransplant from "./pages/BodyHairTransplant";
 import RepairHairTransplant from "./pages/RepairHairTransplant";
 import LongHairTransplant from "./pages/LongHairTransplant";
 import HairWeaving from "./pages/HairWeaving";
-import Lokesh from "./pages/Lokesh";
-import Gopal from "./pages/Gopal";
+// import Lokesh from "./pages/Lokesh";
+// import Gopal from "./pages/Gopal";
 import HairTreatment from "./pages/HairTreatment";
 import SkinTreatment from "./pages/SkinTreatment";
 import EyebrowHairTransplant from "./pages/EyebrowTransplant";
@@ -69,9 +71,44 @@ import AdminLogin from "./components/admin/AdminLogin";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import DynamicCaseStudy from "./pages/DynamicCaseStudy";
 
+// Add CSS to hide Google Translate's default UI elements
+const globalStyles = `
+  .goog-te-banner-frame {
+    display: none !important;
+  }
+  body {
+    top: 0 !important;
+  }
+  .goog-te-gadget {
+    font-family: inherit !important;
+  }
+  .goog-te-gadget-simple {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .goog-te-gadget-icon {
+    display: none !important;
+  }
+  .goog-te-menu-value {
+    display: none !important;
+  }
+  iframe.goog-te-menu-frame {
+    display: none !important;
+  }
+`;
+
 export default function App() {
   return (
     <AuthProvider>
+      {/* Add global styles */}
+      <style>{globalStyles}</style>
+      
+      {/* Language Switcher Button - Visible on all pages */}
+      <LanguageSwitcher />
+      
+     
+
       <Navbar />
       <ScrollToTop />
 
@@ -87,15 +124,15 @@ export default function App() {
         <Route path="/before-after" element={<BeforeAfterPage />} />
 
         {/* ================= CASE STUDIES ================= */}
-        <Route path="/case/prakhar" element={<CaseDetailPage />} />
+        {/* <Route path="/case/prakhar" element={<CaseDetailPage />} />
         <Route path="/case/shubham" element={<Shubham />} />
         <Route path="/case/arjun" element={<Arjun />} />
         <Route path="/case/lokesh" element={<Lokesh />} />
-        <Route path="/case/gopal" element={<Gopal />} />
+        <Route path="/case/gopal" element={<Gopal />} /> */}
 
         {/* ================= CASE STUDIES ================= */}
-{/* <Route path="/case/prakhar" element={<CaseDetailPage />} /> */}
-<Route path="/case/:slug" element={<DynamicCaseStudy />} />
+        {/* <Route path="/case/prakhar" element={<CaseDetailPage />} /> */}
+        <Route path="/case/:slug" element={<DynamicCaseStudy />} />
 
         {/* ================= CLINIC ================= */}
         <Route path="/delhi" element={<AboutSatyaDelhi />} />

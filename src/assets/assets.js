@@ -296,6 +296,9 @@ import hifubanners from "./HIFU Treatment.png"
 import vampirebanners from "./Vampire Facelift.png"
 import fiveDbanners from "./5d facial treatment.png"
 import mesofacebanners from "./Mesotherapy for face.png"
+
+
+import beforebanner from "./beforebanner.jpeg";
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1Desktop,
@@ -582,7 +585,10 @@ mnrfbanners,
 hifubanners,
 vampirebanners,
 fiveDbanners,
-mesofacebanners
+mesofacebanners,
+
+
+beforebanner,
 };
 
 export default assets;

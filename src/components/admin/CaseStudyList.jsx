@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ReactDOM from 'react-dom';
 import { 
   Edit3, 
   Trash2, 
@@ -20,6 +21,8 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const [deleting, setDeleting] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 });
+  const buttonRefs = useRef({});
+  const dropdownRef = useRef(null);
 
   const handleDelete = async (id) => {
     setDeleting(true);
@@ -52,24 +55,132 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
     }
   };
 
+  const calculateDropdownPosition = (buttonRect) => {
+    const dropdownWidth = 192; // w-48
+    const dropdownHeight = 280; // approximate height
+    
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const scrollY = window.scrollY;
+    const scrollX = window.scrollX;
+    
+    // Default position (below and right-aligned)
+    let top = buttonRect.bottom + scrollY + 5;
+    let left = buttonRect.right + scrollX - dropdownWidth;
+    
+    // Check if dropdown goes off the right edge
+    if (left + dropdownWidth > scrollX + viewportWidth - 10) {
+      left = scrollX + viewportWidth - dropdownWidth - 10;
+    }
+    
+    // Check if dropdown goes off the left edge
+    if (left < scrollX + 10) {
+      left = scrollX + 10;
+    }
+    
+    // Check if dropdown goes off the bottom edge
+    const wouldGoOffBottom = buttonRect.bottom + dropdownHeight + 10 > viewportHeight;
+    
+    if (wouldGoOffBottom) {
+      // Try to place above the button
+      const topAbove = buttonRect.top + scrollY - dropdownHeight - 5;
+      
+      // Check if placing above goes off the top edge
+      if (topAbove < scrollY + 10) {
+        // If both below and above don't work, center vertically in viewport
+        top = scrollY + (viewportHeight / 2) - (dropdownHeight / 2);
+      } else {
+        top = topAbove;
+      }
+    }
+    
+    // Ensure dropdown stays within vertical bounds
+    const minTop = scrollY + 10;
+    const maxTop = scrollY + viewportHeight - dropdownHeight - 10;
+    top = Math.max(minTop, Math.min(top, maxTop));
+    
+    return { top, left };
+  };
+
   const openDropdown = (e, id) => {
     e.stopPropagation();
-    const rect = e.currentTarget.getBoundingClientRect();
-    setDropdownPosition({
-      top: rect.bottom + window.scrollY + 5,
-      left: rect.left + window.scrollX - 140
-    });
-    setSelectedId(selectedId === id ? null : id);
+    e.preventDefault();
+    
+    const button = e.currentTarget;
+    const rect = button.getBoundingClientRect();
+    
+    const position = calculateDropdownPosition(rect);
+    setDropdownPosition(position);
+    setSelectedId(id);
   };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!selectedId) return;
+      
+      const isButtonClick = Object.values(buttonRefs.current).some(
+        ref => ref && ref.contains(e.target)
+      );
+      
+      const isDropdownClick = dropdownRef.current && dropdownRef.current.contains(e.target);
+      
+      if (!isButtonClick && !isDropdownClick) {
+        setSelectedId(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [selectedId]);
+
+  // Close dropdown on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (selectedId) {
+        setSelectedId(null);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, true);
+    return () => window.removeEventListener('scroll', handleScroll, true);
+  }, [selectedId]);
+
+  // Close dropdown on escape key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape' && selectedId) {
+        setSelectedId(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [selectedId]);
+
+  // Reposition dropdown on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (selectedId) {
+        // Find the button and recalculate position
+        const button = buttonRefs.current[selectedId];
+        if (button) {
+          const rect = button.getBoundingClientRect();
+          const position = calculateDropdownPosition(rect);
+          setDropdownPosition(position);
+        }
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [selectedId]);
 
   // Helper function to get the first after image
   const getFirstAfterImage = (caseStudy) => {
     try {
-      // Check if heroImages exists and has after array
       if (caseStudy.heroImages?.after && Array.isArray(caseStudy.heroImages.after) && caseStudy.heroImages.after.length > 0) {
-        // Get the first image from after array
         const firstImage = caseStudy.heroImages.after[0];
-        // Return the URL if it exists
         return firstImage?.url || null;
       }
     } catch (error) {
@@ -81,6 +192,84 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
   if (loading) {
     return <LoadingSpinner />;
   }
+
+  // Dropdown menu component using Portal
+  const DropdownMenu = () => {
+    if (!selectedId) return null;
+    
+    const selectedCase = caseStudies.find(c => c._id === selectedId);
+    if (!selectedCase) return null;
+
+    return ReactDOM.createPortal(
+      <motion.div
+        ref={dropdownRef}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        style={{
+          position: 'absolute',
+          top: dropdownPosition.top,
+          left: dropdownPosition.left,
+          zIndex: 99999,
+        }}
+        className="case-study-dropdown w-48 bg-white rounded-lg shadow-xl border border-gray-200"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="py-1">
+          <button
+            onClick={() => {
+              onEdit(selectedCase);
+              setSelectedId(null);
+            }}
+            className="w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 flex items-center gap-2 transition-colors"
+          >
+            <Edit3 size={14} /> Edit
+          </button>
+          <button
+            onClick={() => {
+              window.open(`/case/${selectedCase.slug}`, '_blank');
+              setSelectedId(null);
+            }}
+            className="w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 flex items-center gap-2 transition-colors"
+          >
+            <Eye size={14} /> View
+          </button>
+          <button
+            onClick={() => {
+              handleDuplicate(selectedId);
+              setSelectedId(null);
+            }}
+            className="w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 flex items-center gap-2 transition-colors"
+          >
+            <Copy size={14} /> Duplicate
+          </button>
+          <button
+            onClick={() => {
+              handleStatusChange(selectedId, selectedCase.status === 'published' ? 'draft' : 'published');
+              setSelectedId(null);
+            }}
+            className="w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 flex items-center gap-2 transition-colors"
+          >
+            {selectedCase.status === 'published' ? (
+              <><XCircle size={14} /> Unpublish</>
+            ) : (
+              <><CheckCircle size={14} /> Publish</>
+            )}
+          </button>
+          <button
+            onClick={() => {
+              setDeleteConfirm(selectedId);
+              setSelectedId(null);
+            }}
+            className="w-full px-4 py-2.5 text-left text-sm text-red-600 hover:bg-red-50 flex items-center gap-2 border-t border-gray-100 mt-1 pt-2 transition-colors"
+          >
+            <Trash2 size={14} /> Delete
+          </button>
+        </div>
+      </motion.div>,
+      document.body
+    );
+  };
 
   return (
     <div className="space-y-6">
@@ -99,14 +288,6 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {caseStudies.map((cs) => {
             const previewImage = getFirstAfterImage(cs);
-            
-            // Debug log to see what's being returned
-            console.log(`Case study ${cs.name}:`, {
-              hasHeroImages: !!cs.heroImages,
-              afterArray: cs.heroImages?.after,
-              afterLength: cs.heroImages?.after?.length,
-              previewImage: previewImage
-            });
 
             return (
               <motion.div
@@ -122,10 +303,10 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
                       src={previewImage}
                       alt={`${cs.name} after result`}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                       onError={(e) => {
-                        console.error('Image failed to load:', previewImage);
-                        e.target.style.display = 'none';
-                        e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center"><svg class="w-8 h-8 text-gray-500" ... /></div>';
+                        e.target.onerror = null;
+                        e.target.src = 'https://via.placeholder.com/400x200?text=Image+Error';
                       }}
                     />
                   ) : (
@@ -169,10 +350,12 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
                     </div>
                     
                     <button
+                      ref={el => buttonRefs.current[cs._id] = el}
                       onClick={(e) => openDropdown(e, cs._id)}
-                      className="p-1 hover:bg-gray-100 rounded ml-2 flex-shrink-0 relative z-10"
+                      className="dropdown-trigger p-2 hover:bg-gray-100 rounded-full ml-2 flex-shrink-0 relative transition-colors focus:outline-none focus:ring-2 focus:ring-[#9E4A47]"
+                      aria-label="More options"
                     >
-                      <MoreVertical size={16} />
+                      <MoreVertical size={18} />
                     </button>
                   </div>
 
@@ -206,85 +389,10 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
         </div>
       )}
 
-      {/* Global Dropdown Menu */}
+      {/* Dropdown Menu using Portal */}
       <AnimatePresence>
-        {selectedId && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            style={{
-              position: 'fixed',
-              top: dropdownPosition.top,
-              left: dropdownPosition.left,
-              zIndex: 9999
-            }}
-            className="w-48 bg-white rounded-lg shadow-xl border border-gray-200"
-          >
-            <div className="py-1">
-              <button
-                onClick={() => {
-                  onEdit(caseStudies.find(cs => cs._id === selectedId));
-                  setSelectedId(null);
-                }}
-                className="w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
-              >
-                <Edit3 size={14} /> Edit
-              </button>
-              <button
-                onClick={() => {
-                  const cs = caseStudies.find(c => c._id === selectedId);
-                  window.open(`/case/${cs.slug}`, '_blank');
-                  setSelectedId(null);
-                }}
-                className="w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
-              >
-                <Eye size={14} /> View
-              </button>
-              <button
-                onClick={() => {
-                  handleDuplicate(selectedId);
-                  setSelectedId(null);
-                }}
-                className="w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
-              >
-                <Copy size={14} /> Duplicate
-              </button>
-              <button
-                onClick={() => {
-                  const cs = caseStudies.find(c => c._id === selectedId);
-                  handleStatusChange(selectedId, cs.status === 'published' ? 'draft' : 'published');
-                  setSelectedId(null);
-                }}
-                className="w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
-              >
-                {caseStudies.find(c => c._id === selectedId)?.status === 'published' ? (
-                  <><XCircle size={14} /> Unpublish</>
-                ) : (
-                  <><CheckCircle size={14} /> Publish</>
-                )}
-              </button>
-              <button
-                onClick={() => {
-                  setDeleteConfirm(selectedId);
-                  setSelectedId(null);
-                }}
-                className="w-full px-4 py-2.5 text-left text-sm text-red-600 hover:bg-red-50 flex items-center gap-2 border-t border-gray-100 mt-1"
-              >
-                <Trash2 size={14} /> Delete
-              </button>
-            </div>
-          </motion.div>
-        )}
+        {selectedId && <DropdownMenu />}
       </AnimatePresence>
-
-      {/* Click outside to close dropdown */}
-      {selectedId && (
-        <div
-          className="fixed inset-0 z-40"
-          onClick={() => setSelectedId(null)}
-        />
-      )}
 
       {/* Delete Confirmation Modal */}
       <AnimatePresence>
@@ -293,7 +401,7 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center z-[10000] p-4"
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-[100000] p-4"
             onClick={() => setDeleteConfirm(null)}
           >
             <motion.div
@@ -339,4 +447,4 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
       </AnimatePresence>
     </div>
   );
-} 
+}

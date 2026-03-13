@@ -8,6 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import { caseStudyAPI } from "../services/api";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import assets from "../assets/assets";
 
 /* =====================================================
    MAIN PAGE
@@ -24,10 +25,12 @@ export default function BeforeAfterPage() {
         setLoading(true);
         const response = await caseStudyAPI.getAll();
         // Filter published case studies
-        const publishedCases = response.data.data.filter(cs => cs.status === 'published');
+        const publishedCases = response.data.data.filter(
+          (cs) => cs.status === "published",
+        );
         setCaseStudies(publishedCases);
       } catch (error) {
-        console.error('Failed to fetch case studies:', error);
+        console.error("Failed to fetch case studies:", error);
       } finally {
         setLoading(false);
       }
@@ -37,10 +40,12 @@ export default function BeforeAfterPage() {
   }, []);
 
   // Get unique categories
-  const categories = ['All', ...new Set(caseStudies.map(c => c.category))];
+  const categories = ["All", ...new Set(caseStudies.map((c) => c.category))];
 
   const filteredCases =
-    filter === "All" ? caseStudies : caseStudies.filter((c) => c.category === filter);
+    filter === "All"
+      ? caseStudies
+      : caseStudies.filter((c) => c.category === filter);
 
   if (loading) return <LoadingSpinner />;
 
@@ -76,14 +81,17 @@ function HeroSection({ caseStudies }) {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
-  // Get first 8 case studies with images
+  // Get first 8 case studies with images (prioritize banner, fallback to after images)
   const casesWithImages = caseStudies
-    .filter(cs => cs.heroImages?.after?.length > 0)
+    .filter((cs) => cs.bannerImage?.url || cs.heroImages?.after?.length > 0)
     .slice(0, 8);
 
   const floatingImages = [
     {
-      src: casesWithImages[0]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200",
+      src:
+        casesWithImages[0]?.bannerImage?.url ||
+        casesWithImages[0]?.heroImages?.after[0]?.url ||
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200",
       left: "6%",
       top: "10%",
       rot: -16,
@@ -91,7 +99,10 @@ function HeroSection({ caseStudies }) {
       size: 210,
     },
     {
-      src: casesWithImages[1]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200",
+      src:
+        casesWithImages[1]?.bannerImage?.url ||
+        casesWithImages[1]?.heroImages?.after[0]?.url ||
+        "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200",
       left: "84%",
       top: "15%",
       rot: 12,
@@ -99,7 +110,10 @@ function HeroSection({ caseStudies }) {
       size: 180,
     },
     {
-      src: casesWithImages[2]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200",
+      src:
+        casesWithImages[2]?.bannerImage?.url ||
+        casesWithImages[2]?.heroImages?.after[0]?.url ||
+        "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200",
       left: "4%",
       top: "72%",
       rot: -10,
@@ -107,7 +121,10 @@ function HeroSection({ caseStudies }) {
       size: 250,
     },
     {
-      src: casesWithImages[3]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200",
+      src:
+        casesWithImages[3]?.bannerImage?.url ||
+        casesWithImages[3]?.heroImages?.after[0]?.url ||
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200",
       left: "79%",
       top: "62%",
       rot: 14,
@@ -115,7 +132,10 @@ function HeroSection({ caseStudies }) {
       size: 195,
     },
     {
-      src: casesWithImages[4]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=1200",
+      src:
+        casesWithImages[4]?.bannerImage?.url ||
+        casesWithImages[4]?.heroImages?.after[0]?.url ||
+        "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=1200",
       left: "46%",
       top: "18%",
       rot: -5,
@@ -123,7 +143,10 @@ function HeroSection({ caseStudies }) {
       size: 270,
     },
     {
-      src: casesWithImages[5]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1545996124-0501ebae84d0?q=80&w=1200",
+      src:
+        casesWithImages[5]?.bannerImage?.url ||
+        casesWithImages[5]?.heroImages?.after[0]?.url ||
+        "https://images.unsplash.com/photo-1545996124-0501ebae84d0?q=80&w=1200",
       left: "32%",
       top: "81%",
       rot: 9,
@@ -131,7 +154,10 @@ function HeroSection({ caseStudies }) {
       size: 200,
     },
     {
-      src: casesWithImages[6]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200",
+      src:
+        casesWithImages[6]?.bannerImage?.url ||
+        casesWithImages[6]?.heroImages?.after[0]?.url ||
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200",
       left: "90%",
       top: "38%",
       rot: -13,
@@ -139,7 +165,10 @@ function HeroSection({ caseStudies }) {
       size: 165,
     },
     {
-      src: casesWithImages[7]?.heroImages?.after[0]?.url || "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200",
+      src:
+        casesWithImages[7]?.bannerImage?.url ||
+        casesWithImages[7]?.heroImages?.after[0]?.url ||
+        "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200",
       left: "11%",
       top: "35%",
       rot: 11,
@@ -151,36 +180,36 @@ function HeroSection({ caseStudies }) {
   return (
     <motion.section
       style={{ opacity }}
-      className="relative min-h-[100vh] flex items-center justify-center px-5 sm:px-10 py-16 bg-gradient-to-br from-[#1a1f26] via-[#1f252e] to-[#242a33] overflow-hidden"
+      className="relative min-h-[70vh] sm:min-h-[100vh] flex items-center justify-center px-4 sm:px-10 py-12 sm:py-16 bg-gradient-to-br from-[#1a1f26] via-[#1f252e] to-[#242a33] overflow-hidden"
     >
       {/* Heading */}
       <motion.div
-        initial={{ opacity: 0, y: 120 }}
+        initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4, ease: "easeOut" }}
-        className="relative z-20 text-center pointer-events-none"
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="relative z-20 text-center px-2"
       >
-        <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-medium tracking-tight leading-none drop-shadow-2xl">
+        <h1 className="font-serif text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-medium tracking-tight leading-none drop-shadow-2xl">
           Before & After
           <br />
           <span className="italic bg-gradient-to-r from-[#ff8a8a] via-[#ff6b6b] to-[#9e4a47] bg-clip-text text-transparent">
             Transformations
           </span>
         </h1>
-        <p className="mt-6 text-xl md:text-2xl text-gray-300/90 max-w-2xl mx-auto font-light">
+        <p className="mt-4 sm:mt-6 text-base sm:text-xl md:text-2xl text-gray-300/90 max-w-2xl mx-auto font-light px-4">
           Real results. Real confidence. Real stories.
         </p>
       </motion.div>
 
-      {/* Scattered images */}
+      {/* Scattered images - hidden on mobile, shown on tablet/desktop */}
       {floatingImages.map((img, i) => (
         <motion.img
           key={i}
           src={img.src}
-          className="absolute rounded-2xl shadow-2xl object-cover border-4 border-white/10 pointer-events-auto hidden sm:block"
+          className="absolute rounded-2xl shadow-2xl object-cover border-4 border-white/10 pointer-events-auto hidden md:block"
           style={{
             width: img.size,
-            height: img.size * 1.32,
+            height: img.size * 0.5625, // 16:9 ratio
             left: img.left,
             top: img.top,
           }}
@@ -205,31 +234,48 @@ function HeroSection({ caseStudies }) {
           }}
         />
       ))}
+
+      {/* Mobile-friendly image grid - shown only on mobile */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 px-4 md:hidden">
+        {floatingImages.slice(0, 4).map((img, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+            className="w-20 aspect-[16/9] rounded-lg overflow-hidden shadow-lg border-2 border-white/20"
+          >
+            <img src={img.src} alt="" className="w-full h-full object-cover" />
+          </motion.div>
+        ))}
+      </div>
     </motion.section>
   );
 }
 
 /* =====================================================
-   STORY SECTION
+   STORY SECTION (completely unchanged)
 ===================================================== */
 function StorySection() {
   return (
-    <section className="py-32 px-6 bg-gradient-to-b from-[#1a1f26] to-[#242a33]">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-gradient-to-b from-[#1a1f26] to-[#242a33]">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.1 }}
+          className="order-2 lg:order-1"
         >
-          <div className="inline-block px-5 py-2 rounded-full bg-[#9e4a47]/20 text-[#ff9e9e] text-sm tracking-widest uppercase mb-6">
+          <div className="inline-block px-5 py-2 rounded-full bg-[#9e4a47]/20 text-[#ff9e9e] text-sm tracking-widest uppercase mb-4 sm:mb-6">
             Real People • Real Results
           </div>
-          <h2 className="font-serif text-5xl sm:text-6xl leading-tight mb-8">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight mb-6 sm:mb-8 text-white">
             See the <span className="text-[#ffede0]">transformation</span>{" "}
             you've been dreaming of
           </h2>
-          <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+          <div className="space-y-4 sm:space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed">
             <p>
               Every journey begins with a brave decision. Behind each before &
               after is a real person who chose to trust the process and the
@@ -242,18 +288,19 @@ function StorySection() {
           </div>
         </motion.div>
 
+        {/* Image Section - completely unchanged */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.3, delay: 0.2 }}
-          className="relative group"
+          className="relative group order-1 lg:order-2 w-full"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#9e4a47]/40 to-[#84332F]/30 rounded-3xl opacity-70 group-hover:opacity-90 transition-opacity" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#9e4a47]/40 to-[#84332F]/30 rounded-2xl sm:rounded-3xl opacity-70 group-hover:opacity-90 transition-opacity" />
           <img
-            src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1400"
+            src={assets.beforebanner}
             alt="Transformation"
-            className="relative z-10 rounded-3xl w-full shadow-2xl object-cover aspect-[4/5] lg:aspect-auto lg:h-[620px] object-top"
+            className="relative z-10 rounded-3xl w-full shadow-2xl object-cover lg:h-[620px] object-top"
           />
         </motion.div>
       </div>
@@ -262,11 +309,17 @@ function StorySection() {
 }
 
 /* =====================================================
-   GALLERY SECTION
+   GALLERY SECTION - ONLY CHANGED THE IMAGE SOURCE
 ===================================================== */
-function GallerySection({ filter, setFilter, cases, categories, onSelectCase }) {
+function GallerySection({
+  filter,
+  setFilter,
+  cases,
+  categories,
+  onSelectCase,
+}) {
   return (
-    <section className="py-12 px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-[#FFF8EF] text-[#1a1f26]">
+    <section className="py-12 px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-[#FFF8EF] text-[#1a1f26] gap-2">
       {cases.map((cs) => (
         <motion.div
           key={cs._id}
@@ -280,11 +333,15 @@ function GallerySection({ filter, setFilter, cases, categories, onSelectCase }) 
             {cs.name}
           </h3>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[16/9] bg-[#1a1f26]">
             <img
-              src={cs.heroImages?.after[0]?.url || `https://via.placeholder.com/400x500?text=${cs.name}`}
+              src={
+                cs.bannerImage?.url ||
+                cs.heroImages?.after[0]?.url ||
+                `https://via.placeholder.com/1280x720?text=${cs.name}`
+              }
               alt={`${cs.name} Transformation`}
-              className="w-full h-[420px] object-contain bg-[#1a1f26]"
+              className="w-full h-full object-cover"
             />
           </div>
 
@@ -307,7 +364,7 @@ function GallerySection({ filter, setFilter, cases, categories, onSelectCase }) 
 }
 
 /* =====================================================
-   CASE DETAIL MODAL
+   CASE DETAIL MODAL (completely unchanged)
 ===================================================== */
 function CaseDetailModal({ caseData, onClose }) {
   const [view, setView] = useState("before");

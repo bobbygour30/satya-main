@@ -3,12 +3,15 @@ import { useParams } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { caseStudyAPI } from '../services/api';
 import LoadingSpinner from '../components/common/LoadingSpinner';
+import SEOMeta from '../components/common/SEOMeta'; // Import SEO component
+import ConsultationPopup from "../components/ConsultationPopup";
 
 export default function DynamicCaseStudy() {
   const { slug } = useParams();
   const [caseData, setCaseData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   /* ================= BEFORE / AFTER ================= */
   const [mode, setMode] = useState(0); // 0: before, 1: after
@@ -27,12 +30,16 @@ export default function DynamicCaseStudy() {
         const response = await caseStudyAPI.getOne(slug);
         console.log('✅ Case study fetched:', response.data);
         
+        console.log('🔍 Response data structure:', {
+          hasData: !!response.data.data,
+          dataKeys: response.data.data ? Object.keys(response.data.data) : [],
+          seoField: response.data.data?.seo,
+          seoValue: response.data.data?.seo
+        });
+        
         setCaseData(response.data.data);
-        document.title = response.data.data.title || 
-          "Hair Transplant Case Study | Satya Skin & Hair";
       } catch (err) {
         console.error('❌ Failed to fetch case study:', err);
-        console.error('Error response:', err.response?.data);
         setError(err.response?.data?.message || 'Case study not found');
       } finally {
         setLoading(false);
@@ -56,8 +63,19 @@ export default function DynamicCaseStudy() {
         hasTableData: !!caseData.tableData,
         tableColumns: caseData.tableData?.columns?.length || 0,
         tableRows: caseData.tableData?.rows?.length || 0,
-        tableImages: caseData.tableData?.images ? Object.keys(caseData.tableData.images).length : 0
+        tableImages: caseData.tableData?.images ? Object.keys(caseData.tableData.images).length : 0,
+        hasSeo: !!caseData.seo,
+        seoData: caseData.seo
       });
+      
+      if (caseData.seo) {
+        console.log('🔍 SEO Data found:', {
+          metaTitle: caseData.seo.metaTitle,
+          metaDescription: caseData.seo.metaDescription
+        });
+      } else {
+        console.log('⚠️ No SEO data in caseData');
+      }
     }
   }, [caseData]);
 
@@ -100,11 +118,16 @@ export default function DynamicCaseStudy() {
   }, [mode, beforeImages, afterImages, currentIndex]);
 
   /* ================= LIGHTBOX ================= */
-  const openLightbox = (imgs, i) => {
-    const valid = imgs.filter(Boolean);
-    if (valid.length) {
-      setLightboxImages(valid);
-      setLightboxIndex(i);
+  const openLightbox = (images, startIndex = 0) => {
+    // Filter out any invalid images and ensure we have an array of URLs
+    const validImageUrls = images
+      .filter(img => img && (img.url || typeof img === 'string'))
+      .map(img => img.url || img);
+    
+    if (validImageUrls.length > 0) {
+      console.log('Opening lightbox with images:', validImageUrls.length, 'start index:', startIndex);
+      setLightboxImages(validImageUrls);
+      setLightboxIndex(Math.min(startIndex, validImageUrls.length - 1));
     }
   };
 
@@ -114,11 +137,23 @@ export default function DynamicCaseStudy() {
   };
 
   const prevLightboxImage = () => {
-    setLightboxIndex((p) => (p === 0 ? lightboxImages.length - 1 : p - 1));
+    if (lightboxImages.length === 0 || lightboxIndex === null) return;
+    
+    setLightboxIndex(prev => {
+      const newIndex = prev === 0 ? lightboxImages.length - 1 : prev - 1;
+      console.log('Previous image:', newIndex);
+      return newIndex;
+    });
   };
 
   const nextLightboxImage = () => {
-    setLightboxIndex((p) => (p === lightboxImages.length - 1 ? 0 : p + 1));
+    if (lightboxImages.length === 0 || lightboxIndex === null) return;
+    
+    setLightboxIndex(prev => {
+      const newIndex = prev === lightboxImages.length - 1 ? 0 : prev + 1;
+      console.log('Next image:', newIndex);
+      return newIndex;
+    });
   };
 
   useEffect(() => {
@@ -166,13 +201,46 @@ export default function DynamicCaseStudy() {
       return viewOrder.indexOf(a.id) - viewOrder.indexOf(b.id);
     });
 
+    // Check if a column has any images
+    const hasColumnImages = (colId) => {
+      return sortedRows.some(row => {
+        const imageKey = `${row.id}_${colId}`;
+        const image = images?.[imageKey];
+        return image?.url || image;
+      });
+    };
+
+    // Check if a row has any images
+    const hasRowImages = (rowId) => {
+      return columns.some(col => {
+        const imageKey = `${rowId}_${col.id}`;
+        const image = images?.[imageKey];
+        return image?.url || image;
+      });
+    };
+
+    // Filter columns that have at least one image
+    const visibleColumns = columns.filter(col => hasColumnImages(col.id));
+    
+    // Filter rows that have at least one image
+    const visibleRows = sortedRows.filter(row => hasRowImages(row.id));
+
+    // If no visible columns or rows, don't show the table
+    if (visibleColumns.length === 0 || visibleRows.length === 0) {
+      return (
+        <div className="text-center py-8 text-gray-500">
+          No progress images available
+        </div>
+      );
+    }
+
     return (
       <div className="w-full overflow-x-auto sm:text-xs text-[8px]">
         <table className="w-full border border-[#FCEBDE] bg-white rounded-xl shadow-sm">
           <thead>
             <tr className="bg-[#9E4A47] text-white">
               <th className="border p-3 text-left font-medium">View</th>
-              {columns?.map((col) => (
+              {visibleColumns?.map((col) => (
                 <th
                   key={col.id}
                   className="border p-3 text-center font-medium bg-[#9E4A47] text-white"
@@ -183,41 +251,56 @@ export default function DynamicCaseStudy() {
             </tr>
           </thead>
           <tbody>
-            {sortedRows.map((row) => (
-              <tr key={row.id}>
-                <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
-                  {viewLabels[row.id] || row.label}
-                </td>
-                {columns?.map((col) => {
-                  // Construct the image key in the format that matches your database
+            {visibleRows.map((row) => {
+              // Collect ALL images for this row to enable navigation in lightbox
+              const rowImages = columns
+                .map(col => {
                   const imageKey = `${row.id}_${col.id}`;
                   const image = images?.[imageKey];
-                  const imageUrl = image?.url || image;
-                  
-                  return (
-                    <td key={col.id} className="border p-0">
-                      <div
-                        className="cursor-pointer transition overflow-hidden"
-                        onClick={() => imageUrl && openLightbox([imageUrl], 0)}
-                      >
-                        {imageUrl ? (
-                          <img
-                            src={imageUrl}
-                            alt={`${row.label} - ${col.label}`}
-                            className="w-full h-16 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <div className="w-full h-16 sm:h-40 md:h-48 lg:h-56 bg-gray-100 flex items-center justify-center">
-                            <span className="text-gray-400 text-xs">No image</span>
-                          </div>
-                        )}
-                      </div>
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
+                  return image?.url || image;
+                })
+                .filter(Boolean); // Remove any null/undefined values
+
+              return (
+                <tr key={row.id}>
+                  <td className="border p-3 font-medium bg-[#9E4A47] text-white text-left">
+                    {viewLabels[row.id] || row.label}
+                  </td>
+                  {visibleColumns?.map((col, colIndex) => {
+                    const imageKey = `${row.id}_${col.id}`;
+                    const image = images?.[imageKey];
+                    const imageUrl = image?.url || image;
+                    
+                    return (
+                      <td key={col.id} className="border p-0">
+                        <div
+                          className="cursor-pointer transition overflow-hidden"
+                          onClick={() => {
+                            if (imageUrl) {
+                              // Open lightbox with ALL images from this row, starting at this column's index
+                              openLightbox(rowImages, colIndex);
+                            }
+                          }}
+                        >
+                          {imageUrl ? (
+                            <img
+                              src={imageUrl}
+                              alt={`${row.label} - ${col.label}`}
+                              className="w-full h-25 sm:h-40 md:h-48 lg:h-56 sm:object-contain"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <div className="w-full h-16 sm:h-40 md:h-48 lg:h-56 bg-gray-100 flex items-center justify-center">
+                              <span className="text-gray-400 text-xs">No image</span>
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
 
@@ -243,251 +326,311 @@ export default function DynamicCaseStudy() {
     );
   }
 
+  // Find the index where the table should be inserted (around the middle)
+  const contentLength = caseData?.content?.length || 0;
+  const middleIndex = Math.floor(contentLength / 2);
+
   return (
-    <div className="bg-[#FFF8EF] min-h-screen text-[#2B333C]">
-      {/* ================= HERO ================= */}
-      <section className="">
-        <div className="max-w-[1380px] mx-auto sm:px-6">
-          <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden min-h-[45vh] lg:min-h-[55vh]">
-            {/* IMAGE SIDE */}
-            <div className="relative w-full overflow-hidden rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl">
-              <div className="relative w-full pb-[120%] lg:pb-[119%]">
-                {displayedImage ? (
-                  <img
-                    src={displayedImage}
-                    alt=""
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="eager"
-                  />
-                ) : (
-                  <div className="absolute inset-0 w-full h-full bg-gray-200 flex items-center justify-center">
-                    <span className="text-gray-500">No hero images available</span>
+    <>
+      {/* ===== ADD SEO META COMPONENT ===== */}
+      <SEOMeta caseStudy={caseData} />
+      
+      <div className="bg-[#FFF8EF] min-h-screen text-[#2B333C]">
+        {/* ================= HERO ================= */}
+        <section className="">
+          <div className="max-w-[1380px] mx-auto sm:px-6">
+            <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden min-h-[45vh] lg:min-h-[55vh]">
+              {/* IMAGE SIDE */}
+              <div className="relative w-full overflow-hidden rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl">
+                <div className="relative w-full pb-[120%] lg:pb-[119%]">
+                  {displayedImage ? (
+                    <img
+                      src={displayedImage}
+                      alt={`${caseData?.name} - ${mode === 0 ? 'Before' : 'After'} view ${currentIndex + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="eager"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 w-full h-full bg-gray-200 flex items-center justify-center">
+                      <span className="text-gray-500">No hero images available</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* BEFORE / AFTER CONTROLS */}
+                {(beforeImages.length > 0 || afterImages.length > 0) && (
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
+                    <div className="flex items-center gap-2 bg-white/30 backdrop-blur border border-white/40 rounded-full px-3 py-2 shadow-sm">
+                      <button 
+                        onClick={prevSlide} 
+                        className="text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={currentImages.length <= 1}
+                      >
+                        <ChevronLeft size={16} />
+                      </button>
+
+                      <button
+                        onClick={switchToBefore}
+                        className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                          mode === 0
+                            ? "bg-[#9E4A47] text-white"
+                            : "text-white hover:bg-white/20"
+                        } ${beforeImages.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        disabled={beforeImages.length === 0}
+                      >
+                        Before 
+                      </button>
+
+                      <button
+                        onClick={switchToAfter}
+                        className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                          mode === 1
+                            ? "bg-[#9E4A47] text-white"
+                            : "text-white hover:bg-white/20"
+                        } ${afterImages.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        disabled={afterImages.length === 0}
+                      >
+                        After
+                      </button>
+
+                      <button 
+                        onClick={nextSlide} 
+                        className="text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={currentImages.length <= 1}
+                      >
+                        <ChevronRight size={16} />
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
 
-              {/* BEFORE / AFTER CONTROLS */}
-              {(beforeImages.length > 0 || afterImages.length > 0) && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
-                  <div className="flex items-center gap-2 bg-white/30 backdrop-blur border border-white/40 rounded-full px-3 py-2 shadow-sm">
-                    <button 
-                      onClick={prevSlide} 
-                      className="text-white disabled:opacity-50 disabled:cursor-not-allowed"
-                      disabled={currentImages.length <= 1}
-                    >
-                      <ChevronLeft size={16} />
-                    </button>
-
-                    <button
-                      onClick={switchToBefore}
-                      className={`px-3 py-1 text-xs rounded-full transition-colors ${
-                        mode === 0
-                          ? "bg-[#9E4A47] text-white"
-                          : "text-white hover:bg-white/20"
-                      } ${beforeImages.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
-                      disabled={beforeImages.length === 0}
-                    >
-                      Before
-                    </button>
-
-                    <button
-                      onClick={switchToAfter}
-                      className={`px-3 py-1 text-xs rounded-full transition-colors ${
-                        mode === 1
-                          ? "bg-[#9E4A47] text-white"
-                          : "text-white hover:bg-white/20"
-                      } ${afterImages.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
-                      disabled={afterImages.length === 0}
-                    >
-                      After 
-                    </button>
-
-                    <button 
-                      onClick={nextSlide} 
-                      className="text-white disabled:opacity-50 disabled:cursor-not-allowed"
-                      disabled={currentImages.length <= 1}
-                    >
-                      <ChevronRight size={16} />
-                    </button>
+              {/* CONTENT SIDE */}
+              <div className="bg-[#2B333C] text-white px-6 sm:px-10 lg:px-14 py-12 flex items-center">
+                <div className="max-w-5xl space-y-6">
+                  <div className="space-y-1">
+                    <p className="uppercase tracking-widest text-xs text-white/60">
+                      Patient Transformation Details
+                    </p>
+                    <h2 className="text-2xl sm:text-3xl font-semibold">
+                      {caseData?.name}’s Hair Restoration Journey
+                    </h2>
                   </div>
-                  
-                 
-                </div>
-              )}
-            </div>
 
-            {/* CONTENT SIDE */}
-            <div className="bg-[#2B333C] text-white px-6 sm:px-10 lg:px-14 py-12 flex items-center">
-              <div className="max-w-5xl space-y-6">
-                <div className="space-y-1">
-                  <p className="uppercase tracking-widest text-xs text-white/60">
-                    Patient Transformation Details
-                  </p>
-                  <h2 className="text-2xl sm:text-3xl font-semibold">
-                    {caseData?.name}’s Hair Restoration Journey
-                  </h2>
-                </div>
+                  <div className="w-24 h-[2px] bg-[#9E4A47]" />
 
-                <div className="w-24 h-[2px] bg-[#9E4A47]" />
-
-                <div className="grid gap-4 sm:gap-6 text-sm sm:text-base">
-                  <p className="leading-relaxed">
-                    <span className="text-white/70">Patient Name</span>
-                    <span className="block text-lg sm:text-xl font-medium mt-1">
-                      {caseData?.patientDetails?.name || caseData?.name}
-                    </span>
-                  </p>
-
-                  <p className="leading-relaxed">
-                    <span className="text-white/70">Total Grafts Implanted</span>
-                    <span className="block mt-1">
-                      <span className="font-medium text-white">1st Surgery:</span>{' '}
-                      {caseData?.patientDetails?.grafts?.first || 'N/A'} MHT
-                      <span className="mx-2 text-white/40">|</span>
-                      <span className="font-medium text-white">2nd Surgery:</span>{' '}
-                      {caseData?.patientDetails?.grafts?.second || 'N/A'} MHT
-                    </span>
-                  </p>
-
-                  <p className="leading-relaxed">
-                    <span className="text-white/70">Technique Used</span>
-                    <span className="block mt-1 text-white">
-                      {caseData?.patientDetails?.technique || 'MHT'}{' '}
-                      <span className="text-white/50">
-                        {caseData?.patientDetails?.techniqueDetail || ''}
+                  <div className="grid gap-4 sm:gap-6 text-sm sm:text-base">
+                    <p className="leading-relaxed">
+                      <span className="text-white/70">Patient Name</span>
+                      <span className="block text-lg sm:text-xl font-medium mt-1">
+                        {caseData?.patientDetails?.name || caseData?.name}
                       </span>
-                    </span>
-                  </p>
+                    </p>
+
+                    <p className="leading-relaxed">
+                      <span className="text-white/70">Total Grafts Implanted</span>
+                      <span className="block mt-1">
+                        <span className="font-medium text-white">1st Surgery:</span>{' '}
+                        {caseData?.patientDetails?.grafts?.first || 'N/A'} MHT
+                        <span className="mx-2 text-white/40">|</span>
+                        <span className="font-medium text-white">2nd Surgery:</span>{' '}
+                        {caseData?.patientDetails?.grafts?.second || 'N/A'} MHT
+                      </span>
+                    </p>
+
+                    <p className="leading-relaxed">
+                      <span className="text-white/70">Technique Used</span>
+                      <span className="block mt-1 text-white">
+                        {caseData?.patientDetails?.technique || 'MHT'}{' '}
+                        <span className="text-white/50">
+                          {caseData?.patientDetails?.techniqueDetail || ''}
+                        </span>
+                      </span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= STORY ================= */}
-      <section className="max-w-7xl mx-auto px-2 sm:px-6 py-12 sm:py-16 space-y-10 leading-relaxed">
-        {/* Dynamic Content */}
-        {caseData?.content?.length > 0 ? (
-          caseData.content.sort((a, b) => a.order - b.order).map((section) => {
-            if (section.type === 'heading') {
-              const HeadingTag = section.level || 'h3';
-              return (
-                <HeadingTag key={section.id} className={`text-2xl font-semibold text-[#0E3A43] ${section.className || ''}`}>
-                  {section.content}
-                </HeadingTag>
-              );
-            }
-            if (section.type === 'paragraph') {
-              return (
-                <p key={section.id} className={section.className || ''}>
-                  {section.content}
-                </p>
-              );
-            }
-            if (section.type === 'list') {
-              return (
-                <ul key={section.id} className={`list-disc pl-6 space-y-2 ${section.className || ''}`}>
-                  {section.items?.map((item, i) => <li key={i}>{item}</li>)}
-                </ul>
-              );
-            }
-            return null;
-          })
-        ) : (
-          <p className="text-gray-500 text-center">No content available for this case study.</p>
-        )}
-
-        {/* ================= TABLE ================= */}
-        <section className="sm:px-6 pb-16">
-          <div className="bg-white/40 rounded-3xl">
-            <h3 className="text-2xl font-semibold text-center lg:mb-4">
-              {caseData?.name}’s Progress & Results
-            </h3>
-            <p className="mb-8 text-center sm:hidden block text-xs">
-              Click on the images to view full size
-            </p>
-            {renderProgressTable()}
           </div>
         </section>
 
-        {/* ================= VIDEO ================= */}
-        {caseData?.video?.url && (
-          <div className="py-10">
-            <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white">
-              <div className="aspect-video">
-                <iframe
-                  className="w-full h-full"
-                  src={caseData.video.url}
-                  title={`${caseData.name} Hair Transplant`}
-                  allowFullScreen
-                />
+        {/* ================= STORY ================= */}
+        <section className="max-w-7xl mx-auto px-2 sm:px-6 py-12 sm:py-16 space-y-10 leading-relaxed">
+          {/* Dynamic Content - First Half */}
+          {caseData?.content?.length > 0 ? (
+            caseData.content
+              .sort((a, b) => a.order - b.order)
+              .slice(0, middleIndex)
+              .map((section) => {
+                if (section.type === 'heading') {
+                  const HeadingTag = section.level || 'h3';
+                  return (
+                    <HeadingTag key={section.id} className={`text-2xl font-semibold text-[#0E3A43] ${section.className || ''}`}>
+                      {section.content}
+                    </HeadingTag>
+                  );
+                }
+                if (section.type === 'paragraph') {
+                  return (
+                    <p key={section.id} className={section.className || ''}>
+                      {section.content}
+                    </p>
+                  );
+                }
+                if (section.type === 'list') {
+                  return (
+                    <ul key={section.id} className={`list-disc pl-6 space-y-2 ${section.className || ''}`}>
+                      {section.items?.map((item, i) => <li key={i}>{item}</li>)}
+                    </ul>
+                  );
+                }
+                return null;
+              })
+          ) : (
+            <p className="text-gray-500 text-center">No content available for this case study.</p>
+          )}
+
+          {/* ================= CTA BUTTON (MIDDLE) ================= */}
+          <div className="py-8 flex justify-center">
+            <button
+              onClick={() => setShowPopup(true)}
+              className="bg-[#9E4A47] hover:bg-[#8a3f3a] text-white font-medium py-4 px-10 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              Book Your First Free Assessment
+            </button>
+          </div>
+
+          {/* ================= TABLE (MIDDLE) ================= */}
+          <section className="sm:px-6 pb-8">
+            <div className="bg-white/40 rounded-3xl">
+              <h3 className="text-2xl font-semibold text-center lg:mb-4">
+                {caseData?.name}’s Progress & Results
+              </h3>
+              <p className="mb-8 text-center sm:hidden block text-xs">
+                Click on the images to view full size
+              </p>
+              {renderProgressTable()}
+            </div>
+          </section>
+
+          {/* ================= Dynamic Content - Second Half ================= */}
+          {caseData?.content?.length > 0 && (
+            <div className="space-y-10">
+              {caseData.content
+                .sort((a, b) => a.order - b.order)
+                .slice(middleIndex)
+                .map((section) => {
+                  if (section.type === 'heading') {
+                    const HeadingTag = section.level || 'h3';
+                    return (
+                      <HeadingTag key={section.id} className={`text-2xl font-semibold text-[#0E3A43] ${section.className || ''}`}>
+                        {section.content}
+                      </HeadingTag>
+                    );
+                  }
+                  if (section.type === 'paragraph') {
+                    return (
+                      <p key={section.id} className={section.className || ''}>
+                        {section.content}
+                      </p>
+                    );
+                  }
+                  if (section.type === 'list') {
+                    return (
+                      <ul key={section.id} className={`list-disc pl-6 space-y-2 ${section.className || ''}`}>
+                        {section.items?.map((item, i) => <li key={i}>{item}</li>)}
+                      </ul>
+                    );
+                  }
+                  return null;
+                })}
+            </div>
+          )}
+
+          {/* ================= VIDEO ================= */}
+          {caseData?.video?.url && (
+            <div className="py-10">
+              <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white">
+                <div className="aspect-video">
+                  <iframe
+                    className="w-full h-full"
+                    src={caseData.video.url}
+                    title={`${caseData.name} Hair Transplant`}
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ================= FAQs ================= */}
+          {caseData?.faqs?.length > 0 && (
+            <>
+              <h3 className="text-2xl font-semibold text-[#0E3A43]">FAQs</h3>
+              <div className="space-y-4">
+                {caseData.faqs.sort((a, b) => a.order - b.order).map((faq) => (
+                  <div key={faq.id}>
+                    <p>
+                      <strong>{faq.question}</strong>
+                    </p>
+                    <p>{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </section>
+
+        {/* ================= LIGHTBOX ================= */}
+        {lightboxIndex !== null && (
+          <div
+            className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4"
+            onClick={closeLightbox}
+          >
+            <div
+              className="relative w-full h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={lightboxImages[lightboxIndex]}
+                alt={`Enlarged view ${lightboxIndex + 1}`}
+                className="max-w-[95%] max-h-[90vh] object-contain"
+              />
+
+              <button
+                onClick={closeLightbox}
+                className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+              >
+                <X size={24} />
+              </button>
+
+              <button
+                onClick={prevLightboxImage}
+                className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+              >
+                <ChevronLeft size={28} />
+              </button>
+
+              <button
+                onClick={nextLightboxImage}
+                className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+              >
+                <ChevronRight size={28} />
+              </button>
+
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+                {lightboxIndex + 1} / {lightboxImages.length}
               </div>
             </div>
           </div>
         )}
+      </div>
 
-        {/* ================= FAQs ================= */}
-        {caseData?.faqs?.length > 0 && (
-          <>
-            <h3 className="text-2xl font-semibold text-[#0E3A43]">FAQs</h3>
-            <div className="space-y-4">
-              {caseData.faqs.sort((a, b) => a.order - b.order).map((faq) => (
-                <div key={faq.id}>
-                  <p>
-                    <strong>{faq.question}</strong>
-                  </p>
-                  <p>{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-      </section>
-
-      {/* ================= LIGHTBOX ================= */}
-      {lightboxIndex !== null && (
-        <div
-          className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4"
-          onClick={closeLightbox}
-        >
-          <div
-            className="relative w-full h-full flex items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={lightboxImages[lightboxIndex]}
-              alt=""
-              className="max-w-[95%] max-h-[90vh] object-contain"
-            />
-
-            <button
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
-            >
-              <X size={24} />
-            </button>
-
-            <button
-              onClick={prevLightboxImage}
-              className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
-            >
-              <ChevronLeft size={28} />
-            </button>
-
-            <button
-              onClick={nextLightboxImage}
-              className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
-            >
-              <ChevronRight size={28} />
-            </button>
-
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
-              {lightboxIndex + 1} / {lightboxImages.length}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+      {/* Consultation Popup */}
+      <ConsultationPopup 
+        isOpen={showPopup} 
+        onClose={() => setShowPopup(false)} 
+      />
+    </>
   );
 }

@@ -79,10 +79,6 @@ export default function AdminLogin() {
             >
               {loading ? 'Logging in...' : 'Login'}
             </button>
-
-            <div className="text-center text-sm text-gray-400">
-              Default: admin / admin123
-            </div>
           </form>
         </div>
       </div>

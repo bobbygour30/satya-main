@@ -121,6 +121,41 @@ export const uploadAPI = {
       },
     });
   },
+
+  // Add to your existing uploadAPI object
+uploadBannerImage: (caseStudyId, file, alt, onProgress) => {
+  const formData = new FormData();
+  formData.append('image', file);
+  if (alt) formData.append('alt', alt);
+  
+  return api.post(`/uploads/banner/${caseStudyId}`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    onUploadProgress: (progressEvent) => {
+      if (onProgress) {
+        const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+        onProgress(percentCompleted);
+      }
+    },
+  });
+},
+
+deleteBannerImage: (caseStudyId) => api.delete(`/uploads/banner/${caseStudyId}`),
+
+  // Add to your existing uploadAPI object
+uploadOGImage: (caseStudyId, file, onProgress) => {
+  const formData = new FormData();
+  formData.append('image', file);
+  
+  return api.post(`/uploads/og-image/${caseStudyId}`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    onUploadProgress: (progressEvent) => {
+      if (onProgress) {
+        const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+        onProgress(percentCompleted);
+      }
+    },
+  });
+},
   
   bulkUploadHeroImages: (caseStudyId, type, files, onProgress) => {
     const formData = new FormData();

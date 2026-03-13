@@ -3,7 +3,12 @@ DirectoryIndex index.html
 Options -Indexes -MultiViews
 RewriteEngine On
 
-# React Router
+# Bot Detection - Redirect social media crawlers to OG endpoint
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegrambot|slack|discordbot|pinterest|facebookbot|facebot|Googlebot) [NC]
+RewriteCond %{REQUEST_URI} ^/case/(.+)$
+RewriteRule ^case/(.+)$ https://satya-admin-backend.vercel.app/api/og/%1 [L,R=302]
+
+# React Router - Serve index.html for all non-file/directory requests
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [L]

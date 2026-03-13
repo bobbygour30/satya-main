@@ -2,6 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Bot Detection Script for Social Media Crawlers -->
+    <script>
+      (function() {
+        // List of bot user agents (social media crawlers)
+        var bots = [
+          'twitterbot', 
+          'facebookexternalhit', 
+          'linkedinbot', 
+          'whatsapp', 
+          'telegrambot', 
+          'googlebot', 
+          'slack', 
+          'discordbot', 
+          'pinterest',
+          'facebookbot',
+          'facebot'
+        ];
+        
+        var ua = navigator.userAgent.toLowerCase();
+        
+        // Check if current user agent is a bot
+        var isBot = bots.some(function(bot) { 
+          return ua.indexOf(bot) !== -1; 
+        });
+        
+        // Get current path
+        var path = window.location.pathname;
+        
+        // If it's a bot and it's a case study page, redirect to OG endpoint
+        if (isBot && path.startsWith('/case/')) {
+          var slug = path.replace('/case/', '');
+          // Remove trailing slash if present
+          slug = slug.replace(/\/$/, '');
+          window.location.replace('https://satya-admin-backend.vercel.app/api/og/' + slug);
+        }
+      })();
+    </script>
     <meta name="description" content="" />
 
     <!-- FAVICON -->
@@ -31,6 +68,8 @@
       fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
+
+    
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Satya - Skin & Hair</title>

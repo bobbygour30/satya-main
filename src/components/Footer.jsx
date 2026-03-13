@@ -8,15 +8,66 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
-import assets from "../assets/assets";
+import { Link } from "react-router-dom";
+
+// Your MENU array
+const MENU = [
+  /* ================= HAIR ================= */
+  {
+    title: "Hair",
+    items: [
+      { label: "Concerns", isConcerns: true },
+      { label: "FUE Hair Transplant", path: "/hair-transplant/fue" },
+      { label: "FUT Hair Transplant", path: "/hair-transplant/fut" },
+      { label: "Beard Hair Transplant", path: "/hair-transplant/beard-hair-transplant" },
+      { label: "Eyebrow Reconstruction", path: "/hair-transplant/eyebrow-transplant" },
+      { label: "Body Hair Transplant", path: "/hair-transplant/body" },
+    ],
+    concerns: [
+      { label: "Telogen Effluvium", path: "/hair-transplant/telogen" },
+      { label: "Alopecia Areata", path: "/hair-transplant/alopecia" },
+      { label: "Male Hair Loss", path: "/hair-transplant/male-hair-loss" },
+      { label: "Female Hair Loss", path: "/hair-transplant/female-hair-loss" },
+    ],
+  },
+  /* ================= SKIN ================= */
+  {
+    title: "Skin",
+    items: [
+      { label: "Concerns", isConcerns: true },
+      { label: "Mole Removal", path: "/skin/mole-removal" },
+      { label: "Laser Hair Reduction", path: "/skin/laser-hair-reduction" },
+      { label: "Chemical Peel", path: "/skin/chemical-peel" },
+      { label: "Laser Toning Treatment", path: "/skin/laser-toning" },
+    ],
+    concerns: [
+      { label: "Pigmentation", path: "/skin/concerns/pigmentation" },
+      { label: "Wrinkles & Fine Lines", path: "/skin/concerns/wrinkles-fine-lines" },
+      { label: "Acne / Acne Scars", path: "/skin/concerns/acne-acne-scars" },
+      { label: "Dull Skin & Open Pores", path: "/skin/concerns/dull-skin-open-pores" },
+    ],
+  },
+
+  /* ================= RESULTS ================= */
+  {
+    title: "Results",
+    items: [
+      { label: "Hair Results", path: "/hair-result" },
+      { label: "Skin Results", path: "/skin-result" },
+      { label: "Case Studies", path: "/before-after" },
+    ],
+  },
+
+
+];
 
 export default function Footer() {
   return (
     <>
       <footer className="bg-[#2B333C] text-white overflow-hidden relative">
         {/* Main Footer */}
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-6">
             
             {/* Brand & Description */}
             <div className="lg:col-span-2">
@@ -73,60 +124,63 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Treatments */}
-            <div>
-              <h3 className="font-semibold text-lg mb-5 text-white">Treatments</h3>
-              <ul className="space-y-3 text-[#DFDFDD] text-sm">
-                {[
-                  "Hair Transplant",
-                  "PRP Therapy",
-                  "Skin Treatments",
-                  "Laser Procedures",
-                  "Aesthetic Dermatology",
-                ].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="hover:text-[#FFF8EF] transition">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Dynamically render MENU columns – tighter spacing */}
+            {MENU.map((section) => (
+              <div key={section.title}>
+                <h3 className="font-semibold text-base mb-4 text-white tracking-tight">
+                  {section.title}
+                </h3>
+                <ul className="space-y-1.5 text-[#DFDFDD] text-xs">
+                  {section.items.map((item) => (
+                    <li key={item.label}>
+                      {item.isConcerns ? (
+                        <span className="font-medium text-white block">
+                          {item.label}
+                        </span>
+                      ) : (
+                        <Link
+                          to={item.path}
+                          className="hover:text-[#FFF8EF] transition-colors block"
+                        >
+                          {item.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
 
-            {/* Company */}
-            <div>
-              <h3 className="font-semibold text-lg mb-5 text-white">Company</h3>
-              <ul className="space-y-3 text-[#DFDFDD] text-sm">
-                {[
-                  "About Us",
-                  "Our Doctors",
-                  "Before & After",
-                  "Blogs",
-                  "Contact Us",
-                ].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="hover:text-[#FFF8EF] transition">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  {/* Render concerns if they exist – even tighter */}
+                  {section.concerns && section.concerns.length > 0 && (
+                    <div className="pt-1">
+                      {section.concerns.map((concern) => (
+                        <li key={concern.label} className="pl-4">
+                          <Link
+                            to={concern.path}
+                            className="hover:text-[#FFF8EF] transition-colors block"
+                          >
+                            {concern.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </div>
+                  )}
+                </ul>
+              </div>
+            ))}
 
-            {/* Contact */}
+            {/* Contact – compact */}
             <div>
-              <h3 className="font-semibold text-lg mb-5 text-white">Get in Touch</h3>
+              <h3 className="font-semibold text-base mb-4 text-white tracking-tight">Get in Touch</h3>
 
-              <ul className="space-y-4 text-[#DFDFDD] text-sm">
+              <ul className="space-y-3 text-[#DFDFDD] text-xs">
                 <li className="flex items-start gap-3">
-                  <Phone size={16} className="text-[#9E4A47] mt-1" />
+                  <Phone size={16} className="text-[#9E4A47] mt-0.5" />
                   <span>
                     +91 99995 70494 <br /> +91 99100 94945
                   </span>
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <MapPin size={16} className="text-[#9E4A47] mt-1" />
+                  <MapPin size={16} className="text-[#9E4A47] mt-0.5" />
                   <span>
                     <strong>Gurugram:</strong> 4301, DLF Phase 4, Near Galleria,
                     Gurugram-122002
@@ -134,7 +188,7 @@ export default function Footer() {
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <MapPin size={16} className="text-[#9E4A47] mt-1" />
+                  <MapPin size={16} className="text-[#9E4A47] mt-0.5" />
                   <span>
                     <strong>Delhi:</strong> ED 38 /A Pitampura metro station,
                     Madhuban Chowk, Delhi-110034
@@ -143,8 +197,8 @@ export default function Footer() {
               </ul>
 
               {/* Legal */}
-              <div className="mt-8 pt-6 border-t border-[#828D9C]/30">
-                <ul className="space-y-2 text-xs text-[#828D9C]">
+              <div className="mt-6 pt-5 border-t border-[#828D9C]/30">
+                <ul className="space-y-1 text-[10px] text-[#828D9C]">
                   {["Privacy Policy", "Terms & Conditions"].map((item) => (
                     <li key={item}>
                       <a href="#" className="hover:text-[#FFF8EF] transition">
@@ -160,7 +214,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="bg-[#2B333C] border-t border-[#828D9C]/30">
-          <div className="max-w-7xl mx-auto px-6 py-6 flex justify-center items-center text-sm text-[#DFDFDD]">
+          <div className="max-w-7xl mx-auto px-6 py-5 flex justify-center items-center text-xs text-[#DFDFDD]">
             <p>
               © {new Date().getFullYear()} Satya Skin & Hair Solutions. All rights
               reserved.
@@ -174,7 +228,7 @@ export default function Footer() {
         href="https://wa.me/919910094945"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center "
+        className="fixed bottom-5 right-5 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

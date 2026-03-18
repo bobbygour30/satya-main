@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import assets from "../assets/assets";
+import SEO from "../components/SEO";
 const faqs = [
   {
                 q: "Is Telogen Effluvium permanent?",
@@ -49,6 +50,13 @@ export default function TelogenEffluvium() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Telogen Effluvium Treatment | Sudden Hair Shedding Specialist Gurgaon"
+        description="Experiencing sudden excessive hair fall? Learn about Telogen Effluvium causes, symptoms, and treatment in Delhi & Gurgaon at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/hair-transplant/telogen"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM TELOGEN EFFLUVIUM HERO BANNER === */}
       <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Positioned Right */}

@@ -16,35 +16,21 @@ const MENU = [
   {
     title: "Hair",
     items: [
-      { label: "Concerns", isConcerns: true },
       { label: "FUE Hair Transplant", path: "/hair-transplant/fue" },
       { label: "FUT Hair Transplant", path: "/hair-transplant/fut" },
       { label: "Beard Hair Transplant", path: "/hair-transplant/beard-hair-transplant" },
       { label: "Eyebrow Reconstruction", path: "/hair-transplant/eyebrow-transplant" },
       { label: "Body Hair Transplant", path: "/hair-transplant/body" },
     ],
-    concerns: [
-      { label: "Telogen Effluvium", path: "/hair-transplant/telogen" },
-      { label: "Alopecia Areata", path: "/hair-transplant/alopecia" },
-      { label: "Male Hair Loss", path: "/hair-transplant/male-hair-loss" },
-      { label: "Female Hair Loss", path: "/hair-transplant/female-hair-loss" },
-    ],
   },
   /* ================= SKIN ================= */
   {
     title: "Skin",
     items: [
-      { label: "Concerns", isConcerns: true },
       { label: "Mole Removal", path: "/skin/mole-removal" },
       { label: "Laser Hair Reduction", path: "/skin/laser-hair-reduction" },
       { label: "Chemical Peel", path: "/skin/chemical-peel" },
       { label: "Laser Toning Treatment", path: "/skin/laser-toning" },
-    ],
-    concerns: [
-      { label: "Pigmentation", path: "/skin/concerns/pigmentation" },
-      { label: "Wrinkles & Fine Lines", path: "/skin/concerns/wrinkles-fine-lines" },
-      { label: "Acne / Acne Scars", path: "/skin/concerns/acne-acne-scars" },
-      { label: "Dull Skin & Open Pores", path: "/skin/concerns/dull-skin-open-pores" },
     ],
   },
 
@@ -148,21 +134,7 @@ export default function Footer() {
                     </li>
                   ))}
 
-                  {/* Render concerns if they exist – even tighter */}
-                  {section.concerns && section.concerns.length > 0 && (
-                    <div className="pt-1">
-                      {section.concerns.map((concern) => (
-                        <li key={concern.label} className="pl-4">
-                          <Link
-                            to={concern.path}
-                            className="hover:text-[#FFF8EF] transition-colors block"
-                          >
-                            {concern.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </div>
-                  )}
+                  
                 </ul>
               </div>
             ))}

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import assets from "../assets/assets";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -54,6 +55,13 @@ export default function EyebrowHairTransplant() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Eyebrow Transplant | Natural Eyebrow Restoration"
+        description="Struggling with thin or patchy eyebrows? Eyebrow transplant offers a permanent and natural-looking solution. Advanced techniques ensure precise shaping and long-lasting results."
+        canonical="https://satyaskinhair.com/hair-transplant/eyebrow-transplant"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM EYEBROW TRANSPLANT HERO BANNER === */}
       <section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}

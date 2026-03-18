@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import assets from "../assets/assets";
+import SEO from "../components/SEO";
 
 const container = {
   hidden: { opacity: 0 },
@@ -19,6 +20,13 @@ export default function BodyHairTransplant() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Body Hair Transplant | Advanced Hair Restoration Solution"
+        description="Body hair transplant uses beard or chest hair to restore scalp density. Ideal for limited donor area and advanced baldness cases."
+        canonical="https://satyaskinhair.com/hair-transplant/body"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM BODY HAIR TRANSPLANT HERO BANNER === */}
       <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}

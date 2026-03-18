@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -52,8 +53,15 @@ export default function RepairHairTransplant() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Repair Hair Transplant | Corrective Hair Transplant – Satya"
+        description="Unhappy with previous hair transplant results? Explore expert Repair Hair Transplant in Delhi & Gurgaon for failed, patchy, or unnatural transplants at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/hair-transplant/repair"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM REPAIR HAIR HERO BANNER === */}
-      <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
   className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 

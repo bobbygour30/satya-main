@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -64,8 +65,15 @@ export default function PRPHairTreatment() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="PRP Treatment for Hair | Platelet Rich Plasma Hair Therapy Gurgaon"
+        description="Looking for PRP treatment for hair?  Discover Platelet Rich Plasma therapy for hair fall and thinning in Gurgaon at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/hair-transplant/prp"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM PRP HERO BANNER === */}
-      <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"

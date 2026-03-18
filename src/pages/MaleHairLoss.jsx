@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import assets from "../assets/assets";
+import SEO from "../components/SEO";
 const faqs = [
   {
                 q: "Can male hair loss be stopped permanently?",
@@ -49,6 +50,13 @@ export default function MaleHairLoss() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Comprehensive Male Hair Loss Treatment| Receding Hairline & Baldness Expert Gurgaon"
+        description="Facing male hair loss or receding hairline? Explore advanced medical and surgical hair restoration in Delhi & Gurgaon at Satya Skin & Hair Solutions. Personalized solutions for long-term results."
+        canonical="https://satyaskinhair.com/hair-transplant/male-hair-loss"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM MALE HAIR LOSS HERO BANNER === */}
       <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Positioned Right */}

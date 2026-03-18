@@ -36,6 +36,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
     title: "Repair Hair Transplant | Medicine Failure to Natural Results",
     category: "hair",
     status: "draft",
+    best: false, // ← ADD THIS LINE
     bannerImage: null,
 
     // ===== NEW SEO FIELDS =====
@@ -510,63 +511,69 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
         </div>
       </div>
 
-      {/* Basic Info Row */}
-      <div className="bg-white rounded-xl shadow-sm p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div>
-          <label className="block text-sm font-medium mb-1">
-            Case Study Name
-          </label>
-          <input
-            type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full p-2 border rounded-lg"
-            placeholder="e.g., Lokesh Lohia"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Page Title</label>
-          <input
-            type="text"
-            value={formData.title}
-            onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
-            }
-            className="w-full p-2 border rounded-lg"
-            placeholder="Page title"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Category</label>
-          <select
-            value={formData.category}
-            onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
-            className="w-full p-2 border rounded-lg"
-          >
-            <option value="hair">Hair Transplant</option>
-            <option value="nose">Rhinoplasty</option>
-            <option value="jaw">Jaw Surgery</option>
-            <option value="face">Facial Surgery</option>
-            <option value="beard">Beard Transplant</option>
-            <option value="eyebrow">Eyebrow Transplant</option>
-          </select>
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Status</label>
-          <select
-            value={formData.status}
-            onChange={(e) =>
-              setFormData({ ...formData, status: e.target.value })
-            }
-            className="w-full p-2 border rounded-lg"
-          >
-            <option value="draft">Draft</option>
-            <option value="published">Published</option>
-          </select>
-        </div>
-      </div>
+     {/* Basic Info Row */}
+<div className="bg-white rounded-xl shadow-sm p-4 grid grid-cols-1 md:grid-cols-5 gap-4">
+  <div>
+    <label className="block text-sm font-medium mb-1">Case Study Name</label>
+    <input
+      type="text"
+      value={formData.name}
+      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+      className="w-full p-2 border rounded-lg"
+      placeholder="e.g., Lokesh Lohia"
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1">Page Title</label>
+    <input
+      type="text"
+      value={formData.title}
+      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+      className="w-full p-2 border rounded-lg"
+      placeholder="Page title"
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1">Category</label>
+    <select
+      value={formData.category}
+      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+      className="w-full p-2 border rounded-lg"
+    >
+      <option value="hair">Hair Transplant</option>
+      <option value="nose">Rhinoplasty</option>
+      <option value="jaw">Jaw Surgery</option>
+      <option value="face">Facial Surgery</option>
+      <option value="beard">Beard Transplant</option>
+      <option value="eyebrow">Eyebrow Transplant</option>
+    </select>
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1">Status</label>
+    <select
+      value={formData.status}
+      onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+      className="w-full p-2 border rounded-lg"
+    >
+      <option value="draft">Draft</option>
+      <option value="published">Published</option>
+    </select>
+  </div>
+  <div className="flex items-center justify-center">
+    <div className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg w-full">
+      <input
+        type="checkbox"
+        id="best"
+        checked={formData.best || false}
+        onChange={(e) => setFormData({ ...formData, best: e.target.checked })}
+        className="w-5 h-5 text-[#9E4A47] border-gray-300 rounded focus:ring-[#9E4A47]"
+      />
+      <label htmlFor="best" className="text-sm font-medium text-gray-700">
+        Best Case Study
+      </label>
+    </div>
+  </div>
+</div>
 
       {/* Tabs */}
       {!previewMode && (

@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -56,6 +57,13 @@ export default function FUEHairTransplant() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="FUE Hair Transplant in Gurgaon | DSFT™ Advanced Hair Restoration | Satya"
+        description="Looking for FUE Hair Transplant in Gurgaon? Satya Skin & Hair Solutions offers advanced DSFT™ technique, donor-safe planning, natural hairline design, and long-term results. Book consultation today"
+        canonical="https://satyaskinhair.com/hair-transplant/fue"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM FUE HERO BANNER === */}
       <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}

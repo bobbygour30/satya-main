@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import assets from "../assets/assets";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -50,6 +51,13 @@ export default function SyntheticHairTransplant() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Synthetic Hair Transplant | Artificial Hair Implant Risks, Cost & Alternatives"
+        description="Learn about Synthetic Hair Transplant (artificial hair implant), its risks, complications, cost factors, and why careful evaluation is essential before choosing this method."
+        canonical="https://satyaskinhair.com/hair-transplant/synthetic"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM SYNTHETIC HAIR TRANSPLANT HERO BANNER === */}
 <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
   {/* Background Image - Desktop Only */}

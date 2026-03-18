@@ -28,7 +28,17 @@ export default function BeforeAfterPage() {
         const publishedCases = response.data.data.filter(
           (cs) => cs.status === "published",
         );
-        setCaseStudies(publishedCases);
+        
+        // Sort case studies: best first, then by date (newest first)
+        const sortedCases = [...publishedCases].sort((a, b) => {
+          // First sort by best (true comes first)
+          if (a.best && !b.best) return -1;
+          if (!a.best && b.best) return 1;
+          // Then sort by date (newest first)
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+        
+        setCaseStudies(sortedCases);
       } catch (error) {
         console.error("Failed to fetch case studies:", error);
       } finally {
@@ -259,7 +269,7 @@ function HeroSection({ caseStudies }) {
 function StorySection() {
   return (
     <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-gradient-to-b from-[#1a1f26] to-[#242a33]">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className=" grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -300,7 +310,7 @@ function StorySection() {
           <img
             src={assets.beforebanner}
             alt="Transformation"
-            className="relative z-10 rounded-3xl w-full shadow-2xl object-cover lg:h-[620px] object-top"
+            className="relative z-10 rounded-3xl w-full shadow-2xl object-contain"
           />
         </motion.div>
       </div>
@@ -309,7 +319,7 @@ function StorySection() {
 }
 
 /* =====================================================
-   GALLERY SECTION - ONLY CHANGED THE IMAGE SOURCE
+   GALLERY SECTION - WITH BEST BADGE AND SORTING
 ===================================================== */
 function GallerySection({
   filter,
@@ -327,13 +337,23 @@ function GallerySection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="max-w-4xl mx-auto text-center mt-5"
+          className="max-w-4xl mx-auto text-center mt-5 border border-[#1a1f26]/20 rounded-3xl p-6 bg-[#FCEBDE]/60 shadow-lg relative"
         >
           <h3 className="font-serif text-4xl mb-10 text-[#1a1f26]">
             {cs.name}
           </h3>
 
           <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[16/9] bg-[#1a1f26]">
+            {/* BEST BADGE - Now properly positioned inside the relative container */}
+            {/* {cs.best && (
+              <div className="absolute top-3 left-3 z-20">
+                <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+                  <span className="text-yellow-100">⭐</span>
+                  Best
+                </div>
+              </div>
+            )} */}
+            
             <img
               src={
                 cs.bannerImage?.url ||

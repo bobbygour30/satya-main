@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import assets from "../assets/assets";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import SEO from "../components/SEO";
 const faqs = [
   {
     q: "Is alopecia areata permanent?",
@@ -51,6 +52,13 @@ export default function AlopeciaAreata() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Alopecia Areata Treatment in Delhi | Patchy Hair Loss Specialist in Gurgaon"
+        description="Experiencing sudden patchy hair loss? Learn about causes, symptoms, and advanced alopecia areata treatment in Delhi & Gurgaon at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/hair-transplant/alopecia"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM ALOPECIA AREATA HERO BANNER === */}
       <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Positioned Right */}

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import assets from "../assets/assets";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -46,8 +47,15 @@ export default function MaximumHarvestingTechnique() {
   };
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Maximum Harvesting Technique (MHT) | Advanced FUT + FUE Hair Transplant "
+        description="Discover Maximum Harvesting Technique (MHT) in Delhi & Gurgaon – a combination of FUT and FUE designed for optimal graft extraction, donor preservation, and maximum density restoration."
+        canonical="https://satyaskinhair.com/hair-transplant/mht"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM MHT HERO BANNER === */}
-<section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+<section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
   {/* Background Image - Desktop Only */}
   <div
     className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"

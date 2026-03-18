@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -128,8 +129,15 @@ export default function LaserCombTreatment() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Laser Comb Treatment | Best Laser Comb for Hair Growth in India "
+        description="Reverse early hair loss with Laser Comb Treatment in Delhi & Gurgaon. Safe, painless low-level laser therapy for hair growth at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/hair-transplant/laser-comb"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM LASER COMB HERO BANNER === */}
-      <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-left bg-contain opacity-90"

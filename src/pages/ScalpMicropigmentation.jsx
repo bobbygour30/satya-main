@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -116,8 +117,15 @@ export default function ScalpMicropigmentation() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Scalp Micropigmentation (SMP) in Delhi | Best SMP Treatment in Gurgaon"
+        description="Looking for Scalp Micropigmentation in Delhi? Get natural-looking, non-surgical SMP treatment in Gurgaon at Satya Skin & Hair Solutions for thinning hair, scars & baldness."
+        canonical="https://satyaskinhair.com/hair-transplant/scalp-micropigmentation"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM SMP HERO BANNER === */}
-      <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"

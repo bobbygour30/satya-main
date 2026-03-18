@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import assets from "../assets/assets";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -50,6 +51,13 @@ export default function BeardHairTransplant() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Beard Hair Transplant Delhi & Gurgaon | Natural Beard Restoration – Satya Skin & Hair"
+        description="Looking for Beard Hair Transplant in Delhi or Gurgaon? Get natural, dense beard restoration with expert planning at Satya Skin & Hair Solutions. Book consultation."
+        canonical="https://satyaskinhair.com/hair-transplant/beard-hair-transplant"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM BEARD TRANSPLANT HERO BANNER === */}
 <section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
   {/* Background Image - Desktop Only */}

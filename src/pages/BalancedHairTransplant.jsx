@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import assets from "../assets/assets";
+import SEO from "../components/SEO";
 
 const container = {
   hidden: { opacity: 0 },
@@ -19,8 +20,15 @@ export default function BalancedHairTransplant() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Balanced Hair Transplant™ | Donor Preservation & Minimal Medicine Approach"
+        description="Discover Balanced Hair Transplant™  a strategic, donor-preserving, minimal-medication hair restoration approach combining FUT, FUE, and advanced techniques for sustainable results."
+        canonical="https://satyaskinhair.com/hair-transplant/balanced"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM BALANCED HAIR TRANSPLANT HERO BANNER === */}
-      <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"

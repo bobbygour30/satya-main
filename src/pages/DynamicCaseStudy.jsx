@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { caseStudyAPI } from '../services/api';
-import LoadingSpinner from '../components/common/LoadingSpinner';
-import SEOMeta from '../components/common/SEOMeta'; // Import SEO component
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { caseStudyAPI } from "../services/api";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+import SEOMeta from "../components/common/SEOMeta"; // Import SEO component
 import ConsultationPopup from "../components/ConsultationPopup";
 
 export default function DynamicCaseStudy() {
@@ -25,22 +25,22 @@ export default function DynamicCaseStudy() {
     const fetchCaseStudy = async () => {
       try {
         setLoading(true);
-        console.log('🔍 Fetching case study with slug:', slug);
-        
+        console.log("🔍 Fetching case study with slug:", slug);
+
         const response = await caseStudyAPI.getOne(slug);
-        console.log('✅ Case study fetched:', response.data);
-        
-        console.log('🔍 Response data structure:', {
+        console.log("✅ Case study fetched:", response.data);
+
+        console.log("🔍 Response data structure:", {
           hasData: !!response.data.data,
           dataKeys: response.data.data ? Object.keys(response.data.data) : [],
           seoField: response.data.data?.seo,
-          seoValue: response.data.data?.seo
+          seoValue: response.data.data?.seo,
         });
-        
+
         setCaseData(response.data.data);
       } catch (err) {
-        console.error('❌ Failed to fetch case study:', err);
-        setError(err.response?.data?.message || 'Case study not found');
+        console.error("❌ Failed to fetch case study:", err);
+        setError(err.response?.data?.message || "Case study not found");
       } finally {
         setLoading(false);
       }
@@ -54,7 +54,7 @@ export default function DynamicCaseStudy() {
   // Log the data structure for debugging
   useEffect(() => {
     if (caseData) {
-      console.log('📊 Case Data Structure:', {
+      console.log("📊 Case Data Structure:", {
         name: caseData.name,
         slug: caseData.slug,
         hasHeroImages: !!caseData.heroImages,
@@ -63,18 +63,20 @@ export default function DynamicCaseStudy() {
         hasTableData: !!caseData.tableData,
         tableColumns: caseData.tableData?.columns?.length || 0,
         tableRows: caseData.tableData?.rows?.length || 0,
-        tableImages: caseData.tableData?.images ? Object.keys(caseData.tableData.images).length : 0,
+        tableImages: caseData.tableData?.images
+          ? Object.keys(caseData.tableData.images).length
+          : 0,
         hasSeo: !!caseData.seo,
-        seoData: caseData.seo
+        seoData: caseData.seo,
       });
-      
+
       if (caseData.seo) {
-        console.log('🔍 SEO Data found:', {
+        console.log("🔍 SEO Data found:", {
           metaTitle: caseData.seo.metaTitle,
-          metaDescription: caseData.seo.metaDescription
+          metaDescription: caseData.seo.metaDescription,
         });
       } else {
-        console.log('⚠️ No SEO data in caseData');
+        console.log("⚠️ No SEO data in caseData");
       }
     }
   }, [caseData]);
@@ -82,7 +84,7 @@ export default function DynamicCaseStudy() {
   const beforeImages = caseData?.heroImages?.before || [];
   const afterImages = caseData?.heroImages?.after || [];
   const currentImages = mode === 0 ? beforeImages : afterImages;
-  const displayedImage = currentImages[currentIndex]?.url || '';
+  const displayedImage = currentImages[currentIndex]?.url || "";
 
   const prevSlide = () => {
     if (currentImages.length === 0) return;
@@ -121,11 +123,16 @@ export default function DynamicCaseStudy() {
   const openLightbox = (images, startIndex = 0) => {
     // Filter out any invalid images and ensure we have an array of URLs
     const validImageUrls = images
-      .filter(img => img && (img.url || typeof img === 'string'))
-      .map(img => img.url || img);
-    
+      .filter((img) => img && (img.url || typeof img === "string"))
+      .map((img) => img.url || img);
+
     if (validImageUrls.length > 0) {
-      console.log('Opening lightbox with images:', validImageUrls.length, 'start index:', startIndex);
+      console.log(
+        "Opening lightbox with images:",
+        validImageUrls.length,
+        "start index:",
+        startIndex,
+      );
       setLightboxImages(validImageUrls);
       setLightboxIndex(Math.min(startIndex, validImageUrls.length - 1));
     }
@@ -138,20 +145,20 @@ export default function DynamicCaseStudy() {
 
   const prevLightboxImage = () => {
     if (lightboxImages.length === 0 || lightboxIndex === null) return;
-    
-    setLightboxIndex(prev => {
+
+    setLightboxIndex((prev) => {
       const newIndex = prev === 0 ? lightboxImages.length - 1 : prev - 1;
-      console.log('Previous image:', newIndex);
+      console.log("Previous image:", newIndex);
       return newIndex;
     });
   };
 
   const nextLightboxImage = () => {
     if (lightboxImages.length === 0 || lightboxIndex === null) return;
-    
-    setLightboxIndex(prev => {
+
+    setLightboxIndex((prev) => {
       const newIndex = prev === lightboxImages.length - 1 ? 0 : prev + 1;
-      console.log('Next image:', newIndex);
+      console.log("Next image:", newIndex);
       return newIndex;
     });
   };
@@ -178,7 +185,7 @@ export default function DynamicCaseStudy() {
     }
 
     const { rows, columns, images } = caseData.tableData;
-    
+
     if (!rows || !columns || rows.length === 0 || columns.length === 0) {
       return (
         <div className="text-center py-8 text-gray-500">
@@ -186,14 +193,14 @@ export default function DynamicCaseStudy() {
         </div>
       );
     }
-    
+
     // Define the four views in the exact order needed
-    const viewOrder = ['front', 'right', 'left', 'back'];
+    const viewOrder = ["front", "right", "left", "back"];
     const viewLabels = {
-      front: 'Front',
-      right: 'Right',
-      left: 'Left',
-      back: 'Top / Back'
+      front: "Front",
+      right: "Right",
+      left: "Left",
+      back: "Top / Back",
     };
 
     // Sort rows by the view order
@@ -203,7 +210,7 @@ export default function DynamicCaseStudy() {
 
     // Check if a column has any images
     const hasColumnImages = (colId) => {
-      return sortedRows.some(row => {
+      return sortedRows.some((row) => {
         const imageKey = `${row.id}_${colId}`;
         const image = images?.[imageKey];
         return image?.url || image;
@@ -212,7 +219,7 @@ export default function DynamicCaseStudy() {
 
     // Check if a row has any images
     const hasRowImages = (rowId) => {
-      return columns.some(col => {
+      return columns.some((col) => {
         const imageKey = `${rowId}_${col.id}`;
         const image = images?.[imageKey];
         return image?.url || image;
@@ -220,10 +227,10 @@ export default function DynamicCaseStudy() {
     };
 
     // Filter columns that have at least one image
-    const visibleColumns = columns.filter(col => hasColumnImages(col.id));
-    
+    const visibleColumns = columns.filter((col) => hasColumnImages(col.id));
+
     // Filter rows that have at least one image
-    const visibleRows = sortedRows.filter(row => hasRowImages(row.id));
+    const visibleRows = sortedRows.filter((row) => hasRowImages(row.id));
 
     // If no visible columns or rows, don't show the table
     if (visibleColumns.length === 0 || visibleRows.length === 0) {
@@ -254,7 +261,7 @@ export default function DynamicCaseStudy() {
             {visibleRows.map((row) => {
               // Collect ALL images for this row to enable navigation in lightbox
               const rowImages = columns
-                .map(col => {
+                .map((col) => {
                   const imageKey = `${row.id}_${col.id}`;
                   const image = images?.[imageKey];
                   return image?.url || image;
@@ -270,7 +277,7 @@ export default function DynamicCaseStudy() {
                     const imageKey = `${row.id}_${col.id}`;
                     const image = images?.[imageKey];
                     const imageUrl = image?.url || image;
-                    
+
                     return (
                       <td key={col.id} className="border p-0">
                         <div
@@ -291,7 +298,9 @@ export default function DynamicCaseStudy() {
                             />
                           ) : (
                             <div className="w-full h-16 sm:h-40 md:h-48 lg:h-56 bg-gray-100 flex items-center justify-center">
-                              <span className="text-gray-400 text-xs">No image</span>
+                              <span className="text-gray-400 text-xs">
+                                No image
+                              </span>
                             </div>
                           )}
                         </div>
@@ -305,22 +314,30 @@ export default function DynamicCaseStudy() {
         </table>
 
         <div className="mt-6 text-center">
-          <p className="text-lg font-semibold text-[#2B333C]">{caseData?.name}</p>
-          <p className="text-sm opacity-80">{caseData?.patientDetails?.clinic || 'SATYA SKIN & HAIR SOLUTIONS'}</p>
+          <p className="text-lg font-semibold text-[#2B333C]">
+            {caseData?.name}
+          </p>
+          <p className="text-sm opacity-80">
+            {caseData?.patientDetails?.clinic || "SATYA SKIN & HAIR SOLUTIONS"}
+          </p>
         </div>
       </div>
     );
   };
 
   if (loading) return <LoadingSpinner />;
-  
+
   if (error || !caseData) {
     return (
       <div className="bg-[#FFF8EF] min-h-screen flex items-center justify-center">
         <div className="text-center text-[#2B333C] max-w-md px-4">
           <h1 className="text-2xl font-semibold mb-4">Case Study Not Found</h1>
-          <p className="text-gray-600 mb-2">The case study "{slug}" you're looking for doesn't exist.</p>
-          <p className="text-sm text-gray-500">Please check the URL or try another case study.</p>
+          <p className="text-gray-600 mb-2">
+            The case study "{slug}" you're looking for doesn't exist.
+          </p>
+          <p className="text-sm text-gray-500">
+            Please check the URL or try another case study.
+          </p>
         </div>
       </div>
     );
@@ -330,40 +347,46 @@ export default function DynamicCaseStudy() {
   const contentLength = caseData?.content?.length || 0;
   const middleIndex = Math.floor(contentLength / 2);
 
+  // Check if second surgery data exists and has a value
+  const hasSecondSurgery =
+    caseData?.patientDetails?.grafts?.second &&
+    caseData?.patientDetails?.grafts?.second !== "N/A" &&
+    caseData?.patientDetails?.grafts?.second.trim() !== "";
+
   return (
     <>
       {/* ===== ADD SEO META COMPONENT ===== */}
       <SEOMeta caseStudy={caseData} />
-      
+
       <div className="bg-[#FFF8EF] min-h-screen text-[#2B333C]">
         {/* ================= HERO ================= */}
         <section className="">
-          <div className="max-w-[1380px] mx-auto sm:px-6">
-            <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden min-h-[45vh] lg:min-h-[55vh]">
+          <div className="max-w-[1080px] mx-auto sm:px-6">
+            <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden bg-[#2B333C]">
               {/* IMAGE SIDE */}
-              <div className="relative w-full overflow-hidden rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl">
-                <div className="relative w-full pb-[120%] lg:pb-[119%]">
-                  {displayedImage ? (
-                    <img
-                      src={displayedImage}
-                      alt={`${caseData?.name} - ${mode === 0 ? 'Before' : 'After'} view ${currentIndex + 1}`}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      loading="eager"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 w-full h-full bg-gray-200 flex items-center justify-center">
-                      <span className="text-gray-500">No hero images available</span>
-                    </div>
-                  )}
-                </div>
+              <div className="relative w-full h-full min-h-[550px] pb-14 sm:pb-16 md:pb-20 bg-gray-900">
+                {displayedImage ? (
+                  <img
+                    src={displayedImage}
+                    alt={`${caseData?.name} - ${mode === 0 ? "Before" : "After"} view ${currentIndex + 1}`}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="eager"
+                  />
+                ) : (
+                  <div className="absolute inset-0 w-full h-full bg-gray-200 flex items-center justify-center">
+                    <span className="text-gray-500">
+                      No hero images available
+                    </span>
+                  </div>
+                )}
 
                 {/* BEFORE / AFTER CONTROLS */}
                 {(beforeImages.length > 0 || afterImages.length > 0) && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
-                    <div className="flex items-center gap-2 bg-white/30 backdrop-blur border border-white/40 rounded-full px-3 py-2 shadow-sm">
-                      <button 
-                        onClick={prevSlide} 
-                        className="text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-full px-4">
+                    <div className="flex items-center justify-center gap-2 bg-white/30 backdrop-blur border border-white/40 rounded-full px-1 py-1 shadow-sm w-fit mx-auto">
+                      <button
+                        onClick={prevSlide}
+                        className="text-white disabled:opacity-50 disabled:cursor-not-allowed p-1"
                         disabled={currentImages.length <= 1}
                       >
                         <ChevronLeft size={16} />
@@ -371,31 +394,31 @@ export default function DynamicCaseStudy() {
 
                       <button
                         onClick={switchToBefore}
-                        className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                        className={`px-4 py-1.5 text-xs rounded-full transition-colors ${
                           mode === 0
                             ? "bg-[#9E4A47] text-white"
                             : "text-white hover:bg-white/20"
-                        } ${beforeImages.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        } ${beforeImages.length === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
                         disabled={beforeImages.length === 0}
                       >
-                        Before 
+                        Before
                       </button>
 
                       <button
                         onClick={switchToAfter}
-                        className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                        className={`px-4 py-1.5 text-xs rounded-full transition-colors ${
                           mode === 1
                             ? "bg-[#9E4A47] text-white"
                             : "text-white hover:bg-white/20"
-                        } ${afterImages.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        } ${afterImages.length === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
                         disabled={afterImages.length === 0}
                       >
                         After
                       </button>
 
-                      <button 
-                        onClick={nextSlide} 
-                        className="text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                      <button
+                        onClick={nextSlide}
+                        className="text-white disabled:opacity-50 disabled:cursor-not-allowed p-1"
                         disabled={currentImages.length <= 1}
                       >
                         <ChevronRight size={16} />
@@ -406,44 +429,58 @@ export default function DynamicCaseStudy() {
               </div>
 
               {/* CONTENT SIDE */}
-              <div className="bg-[#2B333C] text-white px-6 sm:px-10 lg:px-14 py-12 flex items-center">
-                <div className="max-w-5xl space-y-6">
+              <div className="bg-[#2B333C] text-white px-6 sm:px-8 lg:px-10 py-8 sm:py-10 flex items-center">
+                <div className="w-full space-y-4 sm:space-y-5">
                   <div className="space-y-1">
                     <p className="uppercase tracking-widest text-xs text-white/60">
                       Patient Transformation Details
                     </p>
-                    <h2 className="text-2xl sm:text-3xl font-semibold">
+                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold">
                       {caseData?.name}’s Hair Restoration Journey
                     </h2>
                   </div>
 
-                  <div className="w-24 h-[2px] bg-[#9E4A47]" />
+                  <div className="w-20 h-[2px] bg-[#9E4A47]" />
 
-                  <div className="grid gap-4 sm:gap-6 text-sm sm:text-base">
+                  <div className="grid gap-3 sm:gap-4 text-sm sm:text-base">
                     <p className="leading-relaxed">
-                      <span className="text-white/70">Patient Name</span>
-                      <span className="block text-lg sm:text-xl font-medium mt-1">
+                      <span className="text-white/70 text-xs sm:text-sm">
+                        Patient Name
+                      </span>
+                      <span className="block text-base sm:text-lg font-medium mt-0.5">
                         {caseData?.patientDetails?.name || caseData?.name}
                       </span>
                     </p>
 
                     <p className="leading-relaxed">
-                      <span className="text-white/70">Total Grafts Implanted</span>
-                      <span className="block mt-1">
-                        <span className="font-medium text-white">1st Surgery:</span>{' '}
-                        {caseData?.patientDetails?.grafts?.first || 'N/A'} MHT
-                        <span className="mx-2 text-white/40">|</span>
-                        <span className="font-medium text-white">2nd Surgery:</span>{' '}
-                        {caseData?.patientDetails?.grafts?.second || 'N/A'} MHT
+                      <span className="text-white/70 text-xs sm:text-sm">
+                        Total Grafts Implanted
+                      </span>
+                      <span className="block mt-0.5 text-sm sm:text-base">
+                        <span className="font-medium text-white">
+                          1st Surgery:
+                        </span>{" "}
+                        {caseData?.patientDetails?.grafts?.first || "N/A"} MHT
+                        {hasSecondSurgery && (
+                          <>
+                            <span className="mx-2 text-white/40">|</span>
+                            <span className="font-medium text-white">
+                              2nd Surgery:
+                            </span>{" "}
+                            {caseData?.patientDetails?.grafts?.second} MHT
+                          </>
+                        )}
                       </span>
                     </p>
 
                     <p className="leading-relaxed">
-                      <span className="text-white/70">Technique Used</span>
-                      <span className="block mt-1 text-white">
-                        {caseData?.patientDetails?.technique || 'MHT'}{' '}
+                      <span className="text-white/70 text-xs sm:text-sm">
+                        Technique Used
+                      </span>
+                      <span className="block mt-0.5 text-sm sm:text-base text-white">
+                        {caseData?.patientDetails?.technique || "MHT"}{" "}
                         <span className="text-white/50">
-                          {caseData?.patientDetails?.techniqueDetail || ''}
+                          {caseData?.patientDetails?.techniqueDetail || ""}
                         </span>
                       </span>
                     </p>
@@ -462,32 +499,42 @@ export default function DynamicCaseStudy() {
               .sort((a, b) => a.order - b.order)
               .slice(0, middleIndex)
               .map((section) => {
-                if (section.type === 'heading') {
-                  const HeadingTag = section.level || 'h3';
+                if (section.type === "heading") {
+                  const HeadingTag = section.level || "h3";
                   return (
-                    <HeadingTag key={section.id} className={`text-2xl font-semibold text-[#0E3A43] ${section.className || ''}`}>
+                    <HeadingTag
+                      key={section.id}
+                      className={`text-2xl font-semibold text-[#0E3A43] ${section.className || ""}`}
+                    >
                       {section.content}
                     </HeadingTag>
                   );
                 }
-                if (section.type === 'paragraph') {
+                if (section.type === "paragraph") {
                   return (
-                    <p key={section.id} className={section.className || ''}>
+                    <p key={section.id} className={section.className || ""}>
                       {section.content}
                     </p>
                   );
                 }
-                if (section.type === 'list') {
+                if (section.type === "list") {
                   return (
-                    <ul key={section.id} className={`list-disc pl-6 space-y-2 ${section.className || ''}`}>
-                      {section.items?.map((item, i) => <li key={i}>{item}</li>)}
+                    <ul
+                      key={section.id}
+                      className={`list-disc pl-6 space-y-2 ${section.className || ""}`}
+                    >
+                      {section.items?.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
                     </ul>
                   );
                 }
                 return null;
               })
           ) : (
-            <p className="text-gray-500 text-center">No content available for this case study.</p>
+            <p className="text-gray-500 text-center">
+              No content available for this case study.
+            </p>
           )}
 
           {/* ================= CTA BUTTON (MIDDLE) ================= */}
@@ -520,25 +567,33 @@ export default function DynamicCaseStudy() {
                 .sort((a, b) => a.order - b.order)
                 .slice(middleIndex)
                 .map((section) => {
-                  if (section.type === 'heading') {
-                    const HeadingTag = section.level || 'h3';
+                  if (section.type === "heading") {
+                    const HeadingTag = section.level || "h3";
                     return (
-                      <HeadingTag key={section.id} className={`text-2xl font-semibold text-[#0E3A43] ${section.className || ''}`}>
+                      <HeadingTag
+                        key={section.id}
+                        className={`text-2xl font-semibold text-[#0E3A43] ${section.className || ""}`}
+                      >
                         {section.content}
                       </HeadingTag>
                     );
                   }
-                  if (section.type === 'paragraph') {
+                  if (section.type === "paragraph") {
                     return (
-                      <p key={section.id} className={section.className || ''}>
+                      <p key={section.id} className={section.className || ""}>
                         {section.content}
                       </p>
                     );
                   }
-                  if (section.type === 'list') {
+                  if (section.type === "list") {
                     return (
-                      <ul key={section.id} className={`list-disc pl-6 space-y-2 ${section.className || ''}`}>
-                        {section.items?.map((item, i) => <li key={i}>{item}</li>)}
+                      <ul
+                        key={section.id}
+                        className={`list-disc pl-6 space-y-2 ${section.className || ""}`}
+                      >
+                        {section.items?.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
                       </ul>
                     );
                   }
@@ -568,14 +623,16 @@ export default function DynamicCaseStudy() {
             <>
               <h3 className="text-2xl font-semibold text-[#0E3A43]">FAQs</h3>
               <div className="space-y-4">
-                {caseData.faqs.sort((a, b) => a.order - b.order).map((faq) => (
-                  <div key={faq.id}>
-                    <p>
-                      <strong>{faq.question}</strong>
-                    </p>
-                    <p>{faq.answer}</p>
-                  </div>
-                ))}
+                {caseData.faqs
+                  .sort((a, b) => a.order - b.order)
+                  .map((faq) => (
+                    <div key={faq.id}>
+                      <p>
+                        <strong>{faq.question}</strong>
+                      </p>
+                      <p>{faq.answer}</p>
+                    </div>
+                  ))}
               </div>
             </>
           )}
@@ -627,9 +684,9 @@ export default function DynamicCaseStudy() {
       </div>
 
       {/* Consultation Popup */}
-      <ConsultationPopup 
-        isOpen={showPopup} 
-        onClose={() => setShowPopup(false)} 
+      <ConsultationPopup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
       />
     </>
   );

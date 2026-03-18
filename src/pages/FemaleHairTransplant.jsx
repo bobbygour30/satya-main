@@ -3,31 +3,32 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import assets from "../assets/assets";
+import SEO from "../components/SEO";
 const faqs = [
   {
-                q: "Is female hair transplant permanent?",
-                a: "Yes. When selected from safe donor zones, transplanted hair grows permanently.",
-              },
-              {
-                q: "Can women get hair transplants without shaving?",
-                a: "Yes. Non-shaven or partially shaven techniques are available for many women.",
-              },
-              {
-                q: "Is female hair transplant painful?",
-                a: "No. Performed under local anesthesia — minimal discomfort.",
-              },
-              {
-                q: "How many grafts are needed for women?",
-                a: "Varies widely — often fewer than men, but placement is more precise and conservative.",
-              },
-              {
-                q: "Can hair transplant treat diffuse thinning in women?",
-                a: "Yes, in suitable stable cases with strong donor and careful planning.",
-              },
-              {
-                q: "Is female hair transplant safe?",
-                a: "Yes — when preceded by proper diagnosis, medical optimization, and performed by experienced specialists.",
-              },
+    q: "Is female hair transplant permanent?",
+    a: "Yes. When selected from safe donor zones, transplanted hair grows permanently.",
+  },
+  {
+    q: "Can women get hair transplants without shaving?",
+    a: "Yes. Non-shaven or partially shaven techniques are available for many women.",
+  },
+  {
+    q: "Is female hair transplant painful?",
+    a: "No. Performed under local anesthesia — minimal discomfort.",
+  },
+  {
+    q: "How many grafts are needed for women?",
+    a: "Varies widely — often fewer than men, but placement is more precise and conservative.",
+  },
+  {
+    q: "Can hair transplant treat diffuse thinning in women?",
+    a: "Yes, in suitable stable cases with strong donor and careful planning.",
+  },
+  {
+    q: "Is female hair transplant safe?",
+    a: "Yes — when preceded by proper diagnosis, medical optimization, and performed by experienced specialists.",
+  },
 ];
 const container = {
   hidden: { opacity: 0 },
@@ -41,7 +42,7 @@ const fadeUp = {
 
 export default function FemaleHairTransplant() {
   const [showPopup, setShowPopup] = useState(false);
-    const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -49,76 +50,85 @@ export default function FemaleHairTransplant() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      <SEO
+        title="Female Hair Transplant Delhi & Gurgaon | Hair Transplant for Women – Satya Skin & Hair"
+        description="Looking for Female Hair Transplant in Delhi or Gurgaon? Discover safe, natural hair transplant solutions for women with expert planning at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/hair-transplant/female-hair-loss"
+        showSchema={false} // Only home page uses schema
+      />
       {/* === PREMIUM FEMALE HAIR TRANSPLANT HERO BANNER === */}
-<section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
-  {/* Background Image - Desktop Only */}
-  <div
-    className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
-    style={{
-      backgroundImage: `url('${assets.femalehairlossbanners || assets.banner}')`,
-    }}
-  />
+      <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+        {/* Background Image - Desktop Only */}
+        <div
+          className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
+          style={{
+            backgroundImage: `url('${assets.femalehairlossbanners || assets.banner}')`,
+          }}
+        />
 
-  <motion.div
-    className="relative z-10 px-5 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-2 sm:gap-10 items-center sm:py-12 lg:py-0"
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1 }}
-  >
-    {/* LEFT CONTENT */}
-    <div className="space-y-6 sm:space-y-8">
-    
+        <motion.div
+          className="relative z-10 px-5 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-2 sm:gap-10 items-center sm:py-12 lg:py-0"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          {/* LEFT CONTENT */}
+          <div className="space-y-6 sm:space-y-8">
+            <div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
+                Female Hair Transplant
+              </h1>
 
-      <div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
-          Female Hair Transplant
-        </h1>
+              <p className="text-[#9E4A47] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mt-2">
+                Natural Volume, Conservative Planning, Permanent Results
+              </p>
+            </div>
 
-        <p className="text-[#9E4A47] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mt-2">
-          Natural Volume, Conservative Planning, Permanent Results
-        </p>
-      </div>
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl">
+              Women typically experience diffuse thinning, widening part lines,
+              or frontal recession — patterns very different from male baldness.
+              Female hair restoration demands gentle, precise techniques that
+              preserve existing hair, respect hairline aesthetics, and deliver
+              natural-looking density and coverage — performed with specialized
+              care under Dr. Shail Gupta at Satya Skin & Hair Solutions in Delhi
+              & Gurgaon.
+            </p>
 
-      <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl">
-        Women typically experience diffuse thinning, widening part lines, or frontal recession — patterns very different from male baldness. 
-        Female hair restoration demands gentle, precise techniques that preserve existing hair, respect hairline aesthetics, and deliver 
-        natural-looking density and coverage — performed with specialized care under Dr. Shail Gupta at Satya Skin & Hair Solutions in Delhi & Gurgaon.
-      </p>
-
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setShowPopup(true)}
-        className="
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowPopup(true)}
+              className="
           bg-[#9E4A47] hover:bg-[#84332F] text-white
           py-2 px-5 sm:py-3 sm:px-8 lg:py-4 lg:px-10
           rounded-full font-semibold
           text-sm sm:text-base lg:text-lg
           shadow-lg transition-all duration-300
         "
-      >
-        Book FREE Consultation →
-      </motion.button>
-    </div>
+            >
+              Book FREE Consultation →
+            </motion.button>
+          </div>
 
-    {/* Mobile Image (Zoomed) */}
-    <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
-      <img
-        src={assets.femalehairlossbanners}
-        alt="Female Hair Transplant - Natural Restoration for Women"
-        className="
+          {/* Mobile Image (Zoomed) */}
+          <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
+            <img
+              src={assets.femalehairlossbanners}
+              alt="Female Hair Transplant - Natural Restoration for Women"
+              className="
           w-full 
           h-[300px] sm:h-[350px]
           object-cover
           scale-110
         "
-      />
-    </div>
+            />
+          </div>
 
-    {/* Desktop Empty Column (preserves layout) */}
-    <div className="hidden lg:block" />
-  </motion.div>
-</section>
+          {/* Desktop Empty Column (preserves layout) */}
+          <div className="hidden lg:block" />
+        </motion.div>
+      </section>
 
       {/* === Seamless Running Ribbon Strip === */}
       <div className="relative w-full overflow-hidden">
@@ -138,20 +148,28 @@ export default function FemaleHairTransplant() {
           {/* Content Block (duplicated for seamless loop) */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Natural Feminine Density • Conservative Grafting • Donor Protection • Non-Shaven Options • Seamless Blending • Satya Specialized Care
+              Natural Feminine Density • Conservative Grafting • Donor
+              Protection • Non-Shaven Options • Seamless Blending • Satya
+              Specialized Care
             </span>
             <span className="px-12">
-              Natural Feminine Density • Conservative Grafting • Donor Protection • Non-Shaven Options • Seamless Blending • Satya Specialized Care
+              Natural Feminine Density • Conservative Grafting • Donor
+              Protection • Non-Shaven Options • Seamless Blending • Satya
+              Specialized Care
             </span>
           </div>
 
           {/* Duplicate again for smoothness */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Natural Feminine Density • Conservative Grafting • Donor Protection • Non-Shaven Options • Seamless Blending • Satya Specialized Care
+              Natural Feminine Density • Conservative Grafting • Donor
+              Protection • Non-Shaven Options • Seamless Blending • Satya
+              Specialized Care
             </span>
             <span className="px-12">
-              Natural Feminine Density • Conservative Grafting • Donor Protection • Non-Shaven Options • Seamless Blending • Satya Specialized Care
+              Natural Feminine Density • Conservative Grafting • Donor
+              Protection • Non-Shaven Options • Seamless Blending • Satya
+              Specialized Care
             </span>
           </div>
         </motion.div>
@@ -236,7 +254,9 @@ export default function FemaleHairTransplant() {
               </span>
             </div>
             <p className="text-[#828D9C] italic border-l-4 border-[#9E4A47] pl-4">
-              Specialized in female hair biology — gentle, conservative techniques for natural volume, feminine hairlines, and preserved existing hair.
+              Specialized in female hair biology — gentle, conservative
+              techniques for natural volume, feminine hairlines, and preserved
+              existing hair.
             </p>
           </motion.div>
         </div>
@@ -256,17 +276,25 @@ export default function FemaleHairTransplant() {
               What Is a Female Hair Transplant?
             </h2>
             <p className="text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
-              Female hair transplant relocates healthy follicles to thinning areas with extreme care to preserve existing hair, avoid shock loss, and create soft, natural density. Unlike male transplants, it emphasizes conservative grafting, precise placement, and feminine aesthetics at Satya.
+              Female hair transplant relocates healthy follicles to thinning
+              areas with extreme care to preserve existing hair, avoid shock
+              loss, and create soft, natural density. Unlike male transplants,
+              it emphasizes conservative grafting, precise placement, and
+              feminine aesthetics at Satya.
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={container} className="space-y-8">
               <p className="text-lg leading-relaxed text-[#2B333C]/90">
-                Women typically experience diffuse thinning or widening part — requiring specialized planning to blend seamlessly with surrounding hair.
+                Women typically experience diffuse thinning or widening part —
+                requiring specialized planning to blend seamlessly with
+                surrounding hair.
               </p>
 
-              <h3 className="text-2xl font-bold text-[#9E4A47]">Common Causes of Female Hair Loss</h3>
+              <h3 className="text-2xl font-bold text-[#9E4A47]">
+                Common Causes of Female Hair Loss
+              </h3>
               <motion.ul
                 variants={fadeUp}
                 className="grid sm:grid-cols-2 gap-4"
@@ -344,7 +372,8 @@ export default function FemaleHairTransplant() {
                   <li>Medical treatments insufficient</li>
                 </ul>
                 <p className="italic text-[#9E4A47]">
-                  Ethical selection is key — not every woman needs or benefits from surgery.
+                  Ethical selection is key — not every woman needs or benefits
+                  from surgery.
                 </p>
               </div>
             </div>
@@ -372,7 +401,9 @@ export default function FemaleHairTransplant() {
                     viewport={{ once: true }}
                     className="bg-white p-6 rounded-xl shadow-lg border border-[#DFDFDD] text-center"
                   >
-                    <p className="text-lg font-semibold text-[#2B333C]">{tech}</p>
+                    <p className="text-lg font-semibold text-[#2B333C]">
+                      {tech}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -471,7 +502,10 @@ export default function FemaleHairTransplant() {
             Cost of Female Hair Transplant in Delhi & Gurgaon
           </h2>
           <p className="text-lg leading-relaxed text-[#2B333C]/90">
-            Cost varies by thinning extent, grafts needed, donor quality, technique (FUE/FUT/non-shaven), and design complexity. At Satya, pricing is transparent, ethical, and personalized — no inflated grafts or hidden charges.
+            Cost varies by thinning extent, grafts needed, donor quality,
+            technique (FUE/FUT/non-shaven), and design complexity. At Satya,
+            pricing is transparent, ethical, and personalized — no inflated
+            grafts or hidden charges.
           </p>
         </div>
 
@@ -480,7 +514,10 @@ export default function FemaleHairTransplant() {
             Important Truth About Female Hair Transplant
           </h2>
           <p className="text-lg leading-relaxed text-[#2B333C]/90">
-            Female hair transplant cannot follow male protocols. Aggressive approaches risk damaging existing hair, causing shock loss, poor density, or unnatural appearance. It requires deep understanding of female hair patterns and conservative execution.
+            Female hair transplant cannot follow male protocols. Aggressive
+            approaches risk damaging existing hair, causing shock loss, poor
+            density, or unnatural appearance. It requires deep understanding of
+            female hair patterns and conservative execution.
           </p>
         </div>
 
@@ -489,11 +526,26 @@ export default function FemaleHairTransplant() {
             Female Hair Transplant Procedure at Satya
           </h2>
           <div className="space-y-6 text-lg text-[#2B333C]/90">
-            <p><strong>1. Consultation & Diagnosis</strong> — Pattern assessment, hormonal/medical evaluation, donor analysis, long-term planning.</p>
-            <p><strong>2. Donor Hair Extraction</strong> — Careful FUE/FUT; donor aesthetics preserved; no over-harvesting.</p>
-            <p><strong>3. Graft Preparation</strong> — Magnified handling; single/multi-hair grafts planned separately; survival prioritized.</p>
-            <p><strong>4. Slit Creation & Implantation</strong> — Precise angles; density controlled to minimize shock loss; no-touch technique.</p>
-            <p><strong>5. Post-Operative Care</strong> — Minimal meds, clear instructions, no unnecessary add-ons, long-term follow-up.</p>
+            <p>
+              <strong>1. Consultation & Diagnosis</strong> — Pattern assessment,
+              hormonal/medical evaluation, donor analysis, long-term planning.
+            </p>
+            <p>
+              <strong>2. Donor Hair Extraction</strong> — Careful FUE/FUT; donor
+              aesthetics preserved; no over-harvesting.
+            </p>
+            <p>
+              <strong>3. Graft Preparation</strong> — Magnified handling;
+              single/multi-hair grafts planned separately; survival prioritized.
+            </p>
+            <p>
+              <strong>4. Slit Creation & Implantation</strong> — Precise angles;
+              density controlled to minimize shock loss; no-touch technique.
+            </p>
+            <p>
+              <strong>5. Post-Operative Care</strong> — Minimal meds, clear
+              instructions, no unnecessary add-ons, long-term follow-up.
+            </p>
           </div>
         </div>
       </section>
@@ -505,7 +557,8 @@ export default function FemaleHairTransplant() {
             Ready for Natural, Fuller Hair?
           </h2>
           <p className="text-xl opacity-90">
-            Female hair loss needs specialized, gentle care — get the right diagnosis and plan tailored to you.
+            Female hair loss needs specialized, gentle care — get the right
+            diagnosis and plan tailored to you.
           </p>
           <button
             onClick={() => setShowPopup(true)}

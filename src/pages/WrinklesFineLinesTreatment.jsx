@@ -10,30 +10,31 @@ import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
-    q: "Is FUT hair transplant a permanent solution?",
-    a: "Yes. Hair that is moved from the safe donor zone grows back for good.",
+    q: "At what age should I start wrinkle treatment?",
+    a: "Preventive treatments can begin in late 20s or early 30s depending on skin condition.",
   },
   {
-    q: "Is FUT better than FUE?",
-    a: "It depends on the situation. FUT is usually better for people who are very bald and want to keep their donor hair.",
+    q: "Is Botox safe?",
+    a: "Yes, when administered by experienced dermatologists using proper dosage.",
   },
   {
-    q: "Will people be able to see the FUT scar?",
-    a: "Most of the time, the scar is thin and well hidden by the hair around it.",
+    q: "Can wrinkles be removed permanently?",
+    a: "Wrinkles can be significantly reduced, but aging continues naturally. Maintenance helps prolong results.",
   },
   {
-    q: "How many grafts can be done with FUT?",
-    a: "Usually 3000 to 4500 grafts, but sometimes more if the scalp is loose.",
+    q: "Are anti-aging treatments painful?",
+    a: "Most treatments involve minimal discomfort and require little downtime.",
   },
   {
-    q: "Is it possible to do FUT again?",
-    a: "Yes. If you plan ahead, you can safely do FUT more than once.",
+    q: "Can I combine treatments?",
+    a: "Yes, combination therapy often gives better and more natural results.",
   },
   {
-    q: "Does FUT hurt?",
-    a: "The procedure is done with local anesthesia and most people can handle it.",
+    q: "Is there downtime?",
+    a: "Most non-surgical treatments have little to no downtime.",
   },
 ];
+
 const container = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -44,7 +45,7 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-export default function FUTHairTransplant() {
+export default function WrinklesFineLinesTreatment() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -56,18 +57,18 @@ export default function FUTHairTransplant() {
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
       {/* ==================== SEO META (exactly like HomePage) ==================== */}
       <SEO
-        title="FUT Hair Transplant in India | Strip Hair Transplant – Satya"
-        description="Looking for FUT Hair Transplant in Delhi or Gurgaon? Learn how strip hair transplant offers higher graft yield and long-term results at Satya Skin & Hair Solutions."
-        canonical="https://satyaskinhair.com/hair-transplant/fut"
+        title="Wrinkles & Fine Lines Treatment | Anti Aging Skin Specialist Gurgaon"
+        description="Concerned about wrinkles and fine lines? Discover advanced anti-aging treatments in Delhi & Gurgaon for smoother, firmer, youthful-looking skin at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/skin/wrinkles-fine-lines"
         showSchema={false} // Only home page uses schema
       />
-      {/* === PREMIUM FUT HERO BANNER === */}
+      {/* === PREMIUM HERO BANNER === */}
       <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.futbanners || assets.banner}')`,
+            backgroundImage: `url('${assets.wrinkle || assets.banner}')`,
           }}
         />
 
@@ -81,26 +82,23 @@ export default function FUTHairTransplant() {
           <div className="space-y-6 sm:space-y-8">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
-                FUT Hair Transplant
+                Wrinkles & Fine Lines Treatment
               </h1>
 
               <p className="text-[#9E4A47] text-lg sm:text-xl md:text-2xl font-semibold mt-2">
-                Best FUT Hair Transplant in India
+                Best Wrinkle & Fine Lines Treatment in Delhi & Gurgaon
               </p>
             </div>
 
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl">
-              When hair loss gets worse over time, choosing the right technique
-              is more important than following trends. FUE is heavily
-              advertised, but it isn't always the best choice for people with
-              large bald areas, weak donor density, or previous failed
-              transplants. A FUT Hair Transplant, also called a strip
-              transplant, is a scientifically proven method that delivers
-              strong, long-term results. Under expert supervision, we prioritize
-              donor safety and sustainability.
+              Wrinkles and fine lines are among the earliest visible signs of aging. They often appear subtly — around the eyes, forehead, mouth, and neck — before gradually becoming deeper and more noticeable.
+              While aging is natural, premature wrinkles caused by stress, sun exposure, pollution, and lifestyle factors can make the skin look tired and older than its actual age.
+              At Satya Skin & Hair Solutions, we offer medically guided treatments for wrinkles and fine lines in Delhi & Gurgaon, focusing on collagen stimulation, skin tightening, and long-term skin health rather than temporary fixes.
             </p>
 
             <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setShowPopup(true)}
               className="
           bg-[#9E4A47] hover:bg-[#84332F] text-white
@@ -117,8 +115,8 @@ export default function FUTHairTransplant() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.futbanners}
-              alt="FUT Hair Transplant"
+              src={assets.wrinkle}
+              alt="Wrinkles & Fine Lines Treatment"
               className="
       w-full 
       h-[300px] sm:h-[350px]
@@ -151,28 +149,20 @@ export default function FUTHairTransplant() {
           {/* Content Block (duplicated for seamless loop) */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              High Graft Yield • Superior Donor Preservation • Long-Term
-              Sustainability • Natural Dense Results • Ethical & Scientific
-              Planning • Satya Excellence
+              Collagen Stimulation • Skin Tightening • Natural Youthful Results • Expert Dermatologist Care • Personalized Anti-Aging • Long-Term Skin Health • Satya Excellence
             </span>
             <span className="px-12">
-              High Graft Yield • Superior Donor Preservation • Long-Term
-              Sustainability • Natural Dense Results • Ethical & Scientific
-              Planning • Satya Excellence
+              Collagen Stimulation • Skin Tightening • Natural Youthful Results • Expert Dermatologist Care • Personalized Anti-Aging • Long-Term Skin Health • Satya Excellence
             </span>
           </div>
 
           {/* Duplicate again for smoothness */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              High Graft Yield • Superior Donor Preservation • Long-Term
-              Sustainability • Natural Dense Results • Ethical & Scientific
-              Planning • Satya Excellence
+              Collagen Stimulation • Skin Tightening • Natural Youthful Results • Expert Dermatologist Care • Personalized Anti-Aging • Long-Term Skin Health • Satya Excellence
             </span>
             <span className="px-12">
-              High Graft Yield • Superior Donor Preservation • Long-Term
-              Sustainability • Natural Dense Results • Ethical & Scientific
-              Planning • Satya Excellence
+              Collagen Stimulation • Skin Tightening • Natural Youthful Results • Expert Dermatologist Care • Personalized Anti-Aging • Long-Term Skin Health • Satya Excellence
             </span>
           </div>
         </motion.div>
@@ -257,14 +247,13 @@ export default function FUTHairTransplant() {
               </span>
             </div>
             <p className="text-[#828D9C] italic border-l-4 border-[#9E4A47] pl-4">
-              Ethical, patient-centric protocols — balancing safety, graft
-              yield, artistry, and lifelong donor sustainability.
+              Ethical, patient-centric protocols — balancing safety, collagen stimulation, artistry, and lifelong skin health.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* === What is FUT + Advantages + Video === */}
+      {/* === Why Do Wrinkles Develop + Types + Treatment Options + Video === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
         <div className="max-w-7xl mx-auto space-y-16">
           <motion.div
@@ -275,32 +264,25 @@ export default function FUTHairTransplant() {
             className="text-center space-y-4"
           >
             <h2 className="text-2xl md:text-5xl font-bold text-[#9E4A47]">
-              What Is an FUT Hair Transplant?
+              Why Do Wrinkles & Fine Lines Develop?
             </h2>
             <p className="text-base md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
-              At Satya Skin & Hair Solutions in Gurugram & Delhi NCR, FUT is
-              performed under Dr. Shail Gupta — emphasizing maximum graft
-              harvest, donor preservation, and durable, natural results.
-              Scientifically proven for advanced cases.
+              At Satya Skin & Hair Solutions in Gurugram & Delhi NCR, we focus on collagen stimulation, skin tightening, and long-term skin health rather than temporary fixes.
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={container} className="space-y-8">
               <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                FUT is a hair restoration surgery in which a small strip of skin
-                is precisely extracted from the secure donor location on the
-                back of the scalp. The strip is then carefully dissected under
-                the powerful microscopes, and the individual follicular units
-                are separated to be grafted into the bald or thinning areas.
-                Unlike the case in FUE, the process enables the full utilization
-                of the donor's hair while at the same
+                Wrinkles form when: Collagen production declines • Skin loses elasticity • Repeated facial movements create expression lines • Sun damage breaks down skin fibers • Skin becomes dehydrated • Lifestyle stress accelerates aging.
               </p>
 
               <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                Unlike FUE, FUT maximizes donor utilization in a single session
-                while preserving long-term donor integrity — ideal when high
-                graft numbers are needed without risking widespread thinning.
+                There are two major types: Dynamic Wrinkles (caused by repeated facial expressions like smile lines, forehead lines, crow’s feet) and Static Wrinkles (visible even when the face is at rest due to collagen loss and skin thinning). Understanding the type helps determine the right treatment.
+              </p>
+
+              <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
+                Treatment Options for Wrinkles & Fine Lines — At Satya Skin & Hair Solutions, treatments are customized based on age, skin type, and wrinkle depth. Often, combination treatments provide the most natural and balanced results.
               </p>
 
               <motion.ul
@@ -308,12 +290,12 @@ export default function FUTHairTransplant() {
                 className="grid sm:grid-cols-2 gap-4"
               >
                 {[
-                  "High graft yield per session",
-                  "Superior donor preservation",
-                  "Long-term sustainability",
-                  "Natural dense appearance",
-                  "Best for advanced baldness",
-                  "Ideal for repair cases",
+                  "Botox Treatment – Relaxes dynamic wrinkles like forehead lines and crow’s feet",
+                  "Dermal Fillers – Restore lost volume and soften deep lines",
+                  "HIFU Skin Tightening – Non-surgical lifting and collagen stimulation",
+                  "Microneedling / RF Microneedling – Boosts collagen and improves fine lines naturally",
+                  "Chemical Peels – Improve superficial fine lines and skin texture",
+                  "Laser Skin Rejuvenation – Stimulates deeper collagen remodeling",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -338,7 +320,7 @@ export default function FUTHairTransplant() {
               </motion.ul>
             </motion.div>
 
-            {/* Central Video Embed - using a placeholder; replace with actual FUT video if available */}
+            {/* Central Video Embed */}
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -348,8 +330,8 @@ export default function FUTHairTransplant() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // You can replace this with a FUT-specific video link
-                  title="FUT Hair Transplant Procedure"
+                 src="https://www.youtube.com/embed/MWObPqvRRgk?si=LvQMMjZnOyN-CCxp"
+                  title="Wrinkles & Fine Lines Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -361,20 +343,20 @@ export default function FUTHairTransplant() {
         </div>
       </section>
 
-      {/* === When FUT is Recommended === */}
+      {/* === When Should You Consider Treatment === */}
       <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
-            When Is FUT Hair Transplant Recommended?
+            When Should You Consider Wrinkle & Fine Lines Treatment?
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              "Advanced grades of baldness",
-              "Large bald areas requiring high graft numbers",
-              "Progressive hair loss",
-              "Previous failed or over-harvested FUE cases",
-              "Corrective hair transplant cases",
-              "Patients needing future donor reserve",
+              "Early crow’s feet around eyes",
+              "Forehead lines that remain even at rest",
+              "Smile lines becoming deeper",
+              "Loss of facial volume",
+              "Skin looking dull or sagging",
+              "Makeup settling into fine lines",
             ].map((rec, i) => (
               <motion.div
                 key={i}
@@ -391,40 +373,42 @@ export default function FUTHairTransplant() {
             ))}
           </div>
           <p className="text-center md:text-lg text-[#2B333C]/80 mt-10 max-w-4xl mx-auto">
-            FUT Hair Transplant is especially useful in cases such as: For such
-            cases, FUT Hair Transplant Gurgaon & Delhi often provides safer and
-            more durable outcomes.
+            Early intervention often gives the most natural results. You may benefit if you notice any of the above signs.
           </p>
         </div>
       </section>
 
-      {/* === Advantages Grid === */}
+      {/* === Benefits Grid === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
-            Advantages of FUT Hair Transplant
+            Benefits of Professional Wrinkle Treatment
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "High Graft Yield",
-                text: "With FUT, it’s possible to collect more grafts from a patient in a single sitting than what’s safe under the FUE method",
+                title: "Smoother skin texture",
+                text: "Reduced appearance of fine lines and improved overall skin quality.",
               },
               {
-                title: "Better Donor Preservation",
-                text: "The strip is removed from the safest donor area, and hence, there is no donor thinning, as happens with repeated FUE procedures.",
+                title: "Reduced appearance of fine lines",
+                text: "Targeted treatment softens dynamic and static wrinkles effectively.",
               },
               {
-                title: "Long-Term Sustainability",
-                text: "FUT maintains donor reserves for future hair loss. It is suitable for young persons who experience severe hair loss.",
+                title: "Improved skin firmness",
+                text: "Collagen stimulation restores elasticity and tightness.",
               },
               {
-                title: "Results that are real",
-                text: "The grafts are then correctly trimmed and positioned to allow for the natural and thick regrowth of hair.",
+                title: "Natural, refreshed look",
+                text: "Subtle results that restore a rested, youthful version of you.",
               },
               {
-                title: "Best for hair transplants that fix problems",
-                text: "When the donor sites are already damaged, FUT is likely to be the best option for repairing them.",
+                title: "Preventive anti-aging effect",
+                text: "Early treatment slows down further wrinkle formation.",
+              },
+              {
+                title: "Boosted collagen production",
+                text: "Long-term skin health through scientifically proven methods.",
               },
             ].map((adv, i) => (
               <motion.div
@@ -445,47 +429,46 @@ export default function FUTHairTransplant() {
         </div>
       </section>
 
-      {/* === Scar & Recovery === */}
+      {/* === Consultation & Results Duration === */}
       <section className="py-7 sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
         <div className="max-w-6xl mx-auto text-center space-y-10">
           <h2 className="text-2xl md:text-4xl font-bold text-[#9E4A47]">
-            What About the Scar in FUT Hair Transplant?
+            What to Expect from Wrinkle & Fine Lines Treatment
           </h2>
 
           <div className="space-y-6">
             <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#DFDFDD]">
               <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">
-                The Linear Scar in FUT
+                What to Expect During Consultation
               </h3>
               <p className="md:text-lg text-[#2B333C]/90">
-                FUT does result in a linear scar, but when performed correctly:
+                Your anti-aging consultation includes:
               </p>
               <ul className="mt-4 text-left list-disc pl-6 space-y-2 text-[#2B333C]/90">
-                <li>Trichophytic closure is used</li>
-                <li>Scar remains thin and well concealed</li>
-                <li>Hair grows through the scar in many cases</li>
+                <li>Skin quality assessment</li>
+                <li>Wrinkle depth evaluation</li>
+                <li>Collagen loss grading</li>
+                <li>Facial balance analysis</li>
+                <li>Personalized treatment plan</li>
               </ul>
               <p className="mt-4 italic text-[#828D9C]">
-                FUT is not scar-less, but it is donor-friendly, which matters
-                far more long-term.
+                No single treatment suits everyone.
               </p>
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#DFDFDD]">
               <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">
-                What Is the Recovery Time After FUT Hair Transplant?
+                How Long Do Results Last?
               </h3>
               <p className="md:text-lg text-[#2B333C]/90 mb-6">
-                Recovery after FUT Hair Transplant is predictable:
+                Duration depends on treatment type:
               </p>
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 gap-8">
                 {[
-                  { time: "3–4 months", desc: "New hair growth begins" },
-                  { time: "6–8 months", desc: "Visible density improvement" },
-                  {
-                    time: "9–12 months",
-                    desc: "Final result",
-                  },
+                  { time: "Botox: 4–6 months", desc: "Relaxes dynamic wrinkles" },
+                  { time: "Fillers: 8–18 months", desc: "Restores volume" },
+                  { time: "HIFU: 12–18 months", desc: "Skin tightening & lifting" },
+                  { time: "Microneedling", desc: "Gradual improvement over sessions" },
                 ].map((item, i) => (
                   <div key={i} className="bg-[#FCEBDE]/40 p-6 rounded-xl">
                     <div className="md:text-3xl font-bold text-[#9E4A47] mb-2">
@@ -496,75 +479,57 @@ export default function FUTHairTransplant() {
                 ))}
               </div>
               <p className="mt-8 text-lg text-[#828D9C] italic">
-                Mild pain or tightness for a few days • Sutures removed in 10–14
-                days • Routine activities resume in about a week
+                Maintenance helps sustain results naturally • Most non-surgical treatments have little to no downtime
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* === Cost & Truth & Procedure === */}
+      {/* === Cost & Why Choose Satya & Treatment Options === */}
       <section className="sm:py-16 px-6 md:px-16 lg:px-24 space-y-16">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Cost of FUT Hair Transplant in Delhi & Gurgaon
+            Cost of Wrinkle & Fine Lines Treatment in Delhi & Gurgaon
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            The cost of FUT Hair Transplant in Delhi and Gurgaon depends on:
-            Number of grafts required • Extent of baldness • Donor scalp laxity
-            • Complexity of the surgery • Surgeon experience At Satya Skin &
-            Hair Solutions, pricing is transparent and ethical, with no
-            compromise on surgical quality or graft survival.
+            Cost depends on: Area being treated • Depth of wrinkles • Type of treatment selected • Number of sessions required
+            At Satya Skin & Hair Solutions, treatment plans are customized, not package-driven.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto bg-gradient-to-br from-[#9E4A47]/5 to-[#B87C72]/5 rounded-3xl p-10 border border-[#9E4A47]/20">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            FUT vs FUE: The Truth Patients Must Know
+            Why Choose Satya Skin & Hair Solutions?
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            FUT is not outdated. FUE isn't always better. A lot of the time, the
-            best long-term results come from a combination of FUT and FUE.
-            Clinics that only offer one type of surgery usually do so because
-            they don't have enough training, not because it's better for the
-            patient.
+            Dermatologist-led anti-aging treatments • Advanced FDA-approved technologies • Natural-looking results • Focus on skin health, not overcorrection • Personalized approach for Indian skin types
+            Patients looking for effective wrinkle treatment in Delhi and fine lines treatment in Gurgaon trust our expertise for subtle, elegant outcomes.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            FUT Hair Transplant Procedure at Satya Skin & Hair Solutions
+            Our Customized Treatment Approach at Satya
           </h2>
           <div className="space-y-6 md:text-lg text-[#2B333C]/90 ">
             <p>
-              <strong>Planning and Consultation</strong> — A full evaluation of
-              hair loss • Mapping the donor zone • Planning for long-term hair
-              loss • Choosing a technique (FUT, FUE, or a mix of the two)
+              <strong>Botox Treatment</strong> — Relaxes dynamic wrinkles like forehead lines and crow’s feet.
             </p>
             <p>
-              <strong>Donor Strip Harvesting</strong> — Strip taken from the
-              safest area for donors • Closure done with the trichophytic method
-              • Make sure the scars are as small as possible
+              <strong>Dermal Fillers</strong> — Restore lost volume and soften deep lines.
             </p>
             <p>
-              <strong>Graft Dissection</strong> — Grafts dissected under
-              operating microscopes • Multi-hair grafts preserved • High graft
-              survival ensured
+              <strong>HIFU Skin Tightening</strong> — Non-surgical lifting and collagen stimulation.
             </p>
             <p>
-              <strong>Slit Creation</strong> — Slits created at correct angles
-              and direction • Hairline design planned artistically • Density
-              distributed scientifically
+              <strong>Microneedling / RF Microneedling</strong> — Boosts collagen and improves fine lines naturally.
             </p>
             <p>
-              <strong>Graft Implantation</strong> — No-touch, surgeon-controlled
-              implantation • Focus on natural blending and density
+              <strong>Chemical Peels</strong> — Improve superficial fine lines and skin texture.
             </p>
             <p>
-              <strong>Post-Operative Care</strong> — Clear aftercare
-              instructions • Minimal but effective medication • No unnecessary
-              PRP sessions • Long-term follow-up planning
+              <strong>Laser Skin Rejuvenation</strong> — Stimulates deeper collagen remodeling.
             </p>
           </div>
         </div>
@@ -574,12 +539,10 @@ export default function FUTHairTransplant() {
       <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-r from-[#9E4A47] to-[#B87C72] text-white text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="md:text-4xl md:text-5xl font-bold">
-            Book Your FUT Hair Transplant Consultation in Delhi & Gurgaon
+            Book Your Wrinkle & Fine Line Consultation in Delhi & Gurgaon
           </h2>
           <p className="md:text-xl opacity-90">
-            If you're thinking about getting a FUT hair transplant in Delhi or
-            Gurgaon, you need to get expert advice first to avoid damaging the
-            donor and regretting it later.
+            If you are noticing early aging signs and want a safe, non-surgical solution, expert evaluation is the first step.
           </p>
           <button
             onClick={() => setShowPopup(true)}
@@ -645,10 +608,7 @@ export default function FUTHairTransplant() {
           </div>
         </div>
       </section>
-      <ConsultationPopup
-        isOpen={showPopup}
-        onClose={() => setShowPopup(false)}
-      />
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

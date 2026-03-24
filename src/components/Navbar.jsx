@@ -55,10 +55,10 @@ const MENU = [
       { label: "Laser Toning Treatment", path: "/skin/laser-toning" },
     ],
     concerns: [
-      { label: "Pigmentation", path: "/skin/concerns/pigmentation" },
-      { label: "Wrinkles & Fine Lines", path: "/skin/concerns/wrinkles-fine-lines" },
-      { label: "Acne / Acne Scars", path: "/skin/concerns/acne-acne-scars" },
-      { label: "Dull Skin & Open Pores", path: "/skin/concerns/dull-skin-open-pores" },
+      { label: "Pigmentation", path: "/skin/pigmentation" },
+      { label: "Wrinkles & Fine Lines", path: "/skin/wrinkles-fine-lines" },
+      { label: "Acne / Acne Scars", path: "/skin/acne-scars" },
+      { label: "Dull Skin & Open Pores", path: "/skin/dull-skin-open-pores" },
     ],
   },
 

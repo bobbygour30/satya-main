@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
@@ -41,6 +42,7 @@ const fadeUp = {
 
 export default function FiveDFacialTreatment() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -310,7 +312,7 @@ export default function FiveDFacialTreatment() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/VIDEO_ID_5D_FACIAL"
+                  src="https://www.youtube.com/embed/tY9l6g7QSzA?si=dUmrwjQ1kn4U5v3_"
                   title="5D Facial Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -562,6 +564,7 @@ export default function FiveDFacialTreatment() {
           </div>
         </div>
       </section>
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

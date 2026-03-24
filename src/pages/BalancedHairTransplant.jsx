@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 import assets from "../assets/assets";
 import SEO from "../components/SEO";
+import ConsultationPopup from "../components/ConsultationPopup";
 
 const container = {
   hidden: { opacity: 0 },
@@ -533,7 +534,7 @@ export default function BalancedHairTransplant() {
         </div>
       </section>
 
-      {/* === No FAQ in provided content, so omitted - can add if needed === */}
+     <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

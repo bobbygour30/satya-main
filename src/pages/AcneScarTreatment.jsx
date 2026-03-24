@@ -10,28 +10,28 @@ import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
-    q: "Is it permanent to remove a mole?",
-    a: "Yes, it usually doesn’t grow back if you get the mole removed the right way.",
+    q: "Can acne be cured permanently?",
+    a: "Acne can be effectively controlled with proper medical management, though hormonal acne may require maintenance.",
   },
   {
-    q: "Will there be a scar after mole removal?",
-    a: "In most cases this technique results in healing with minimal or no visible scarring.",
+    q: "Can acne scars be removed completely?",
+    a: "Deep scars may not disappear completely but can be significantly improved with advanced treatments.",
   },
   {
-    q: "Is mole removal painful?",
-    a: "No. People do well who have the procedure performed with local anesthesia.",
+    q: "Is laser treatment safe for acne scars?",
+    a: "Yes, when performed by experienced dermatologists with correct settings.",
   },
   {
-    q: "Can moles grow back after removal?",
-    a: "Rarely, if mole cells remain. Proper removal minimizes recurrence.",
+    q: "How early should acne be treated?",
+    a: "Early treatment prevents long-term scarring and pigmentation.",
   },
   {
-    q: "How long does it take to heal?",
-    a: "1–2 weeks is the normal healing time, depending on the method.",
+    q: "Do home remedies work for acne scars?",
+    a: "Home remedies rarely improve deep scars effectively.",
   },
   {
-    q: "Is laser mole removal safe for face?",
-    a: "Yes, when conducted by skilled dermatologists with the right parameters.",
+    q: "Is acne treatment painful?",
+    a: "Most treatments cause minimal discomfort and are well tolerated.",
   },
 ];
 
@@ -45,7 +45,7 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-export default function MoleRemovalTreatment() {
+export default function AcneScarTreatment() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -57,9 +57,9 @@ export default function MoleRemovalTreatment() {
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
       {/* ==================== SEO META ==================== */}
       <SEO
-        title="Mole Removal Treatment – Satya | Safe & Scar-Minimized Mole Removal in Delhi & Gurgaon"
-        description="Looking for Mole Removal Treatment in Delhi or the Best Doctor for Mole Removal Treatment in Gurgaon? Safe, scar-minimized mole removal by dermatologist experts at Satya Skin & Hair Solutions."
-        canonical="https://satyaskinhair.com/skin/mole-removal"
+        title="Acne & Acne Scar Treatment in Delhi | Best Dermatologist for Acne Scars Gurgaon"
+        description="Struggling with acne or stubborn acne scars? Get advanced acne and acne scar treatment in Delhi & Gurgaon with dermatologist-led solutions at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/skin/acne-scar"
         showSchema={false}
       />
 
@@ -69,7 +69,7 @@ export default function MoleRemovalTreatment() {
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.moleRemovalBanner || assets.banner}')`,
+            backgroundImage: `url('${assets.acnebanner || assets.banner}')`,
           }}
         />
 
@@ -83,18 +83,18 @@ export default function MoleRemovalTreatment() {
           <div className="space-y-6 sm:space-y-8">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
-                Best Mole Removal Treatment
+                Acne & Acne Scar Treatment
               </h1>
 
               <p className="text-[#9E4A47] text-lg sm:text-xl md:text-2xl font-semibold mt-2">
-                Mole Removal Treatment – Satya
+                Clear Skin Begins with the Right Acne & Acne Scar Treatment
               </p>
             </div>
 
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl">
-              Moles are bumps on the skin that can appear anywhere on the body. Most moles are harmless, but some people opt to have them removed for cosmetic reasons or because they become irritated or repeatedly injured, or for medical reasons.
-              If you are looking for Mole Removal Treatment in Delhi or Best Doctor For Mole Removal Treatment In Gurgaon, you need to get a proper medical assessment first.
-              At Satya Skin & Hair Solutions you get the mole removal performed under the supervision of a Dermatologist by safe latest technology procedures incorporating least scarring, precision and skin safety.
+              Acne is not just a teenage problem. It affects adults, professionals, and even people with otherwise healthy skin. From painful breakouts to long-lasting acne scars, the emotional and psychological impact can be significant.
+              While over-the-counter creams may temporarily suppress pimples, untreated acne often leaves behind dark marks, pigmentation, and permanent scarring.
+              At Satya Skin & Hair Solutions, we provide advanced Acne Treatment in Delhi and expert-led Acne Scar Treatment in Gurgaon, focusing on medical diagnosis, inflammation control, and long-term skin repair.
             </p>
 
             <motion.button
@@ -116,8 +116,8 @@ export default function MoleRemovalTreatment() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.moleRemovalBanner}
-              alt="Mole Removal Treatment"
+              src={assets.acnebanner}
+              alt="Acne & Acne Scar Treatment"
               className="
                 w-full 
                 h-[300px] sm:h-[350px]
@@ -147,19 +147,19 @@ export default function MoleRemovalTreatment() {
         >
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Scar-Minimized Removal • Laser Precision • Radiofrequency Accuracy • Surgical Safety • Permanent Results • Facial Aesthetics • Minimal Downtime • Satya Excellence
+              Active Acne Control • Scar Reduction • Pigmentation Fading • Collagen Repair • Root Cause Treatment • Clear Skin Forever • Satya Excellence
             </span>
             <span className="px-12">
-              Scar-Minimized Removal • Laser Precision • Radiofrequency Accuracy • Surgical Safety • Permanent Results • Facial Aesthetics • Minimal Downtime • Satya Excellence
+              Active Acne Control • Scar Reduction • Pigmentation Fading • Collagen Repair • Root Cause Treatment • Clear Skin Forever • Satya Excellence
             </span>
           </div>
 
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Scar-Minimized Removal • Laser Precision • Radiofrequency Accuracy • Surgical Safety • Permanent Results • Facial Aesthetics • Minimal Downtime • Satya Excellence
+              Active Acne Control • Scar Reduction • Pigmentation Fading • Collagen Repair • Root Cause Treatment • Clear Skin Forever • Satya Excellence
             </span>
             <span className="px-12">
-              Scar-Minimized Removal • Laser Precision • Radiofrequency Accuracy • Surgical Safety • Permanent Results • Facial Aesthetics • Minimal Downtime • Satya Excellence
+              Active Acne Control • Scar Reduction • Pigmentation Fading • Collagen Repair • Root Cause Treatment • Clear Skin Forever • Satya Excellence
             </span>
           </div>
         </motion.div>
@@ -240,13 +240,13 @@ export default function MoleRemovalTreatment() {
               </span>
             </div>
             <p className="text-[#828D9C] italic border-l-4 border-[#9E4A47] pl-4">
-              Ethical, patient-centric protocols — balancing safety, precision removal, minimal scarring, and skin health.
+              Ethical, patient-centric protocols — balancing safety, acne control, scar repair, and lifelong clear skin.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* === What Is + When to Consider + Benefits + Video === */}
+      {/* === Why Acne + Types + Treatment Options + Video === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
         <div className="max-w-7xl mx-auto space-y-16">
           <motion.div
@@ -257,30 +257,27 @@ export default function MoleRemovalTreatment() {
             className="text-center space-y-4"
           >
             <h2 className="text-2xl md:text-5xl font-bold text-[#9E4A47]">
-              What Is Mole Removal Treatment?
+              Why Does Acne Occur?
             </h2>
+            <p className="text-base md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
+              Acne develops when sebaceous glands produce excess oil, pores get clogged with dead skin cells, bacteria multiply within blocked follicles, and hormonal changes trigger inflammation. Treating the root cause prevents recurrence.
+            </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={container} className="space-y-8">
-              <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                A dermatologist performs Mole Removal Procedure to eliminate unwanted or suspicious moles safely. Based on the mole type, size and depth, treatment might involve laser, radiofrequency, surgical excision or shave removal. The aim is to remove the mole in its entirety and to do so with minimal scarring, while also protecting the skin around it.
-              </p>
-
               <h3 className="text-xl md:text-3xl font-bold text-[#9E4A47]">
-                When Should You Consider Mole Removal?
+                Types of Acne We Manage
               </h3>
               <motion.ul
                 variants={fadeUp}
                 className="grid sm:grid-cols-2 gap-4"
               >
                 {[
-                  "The mole changes in size, color, or shape",
-                  "It bleeds, itches, or causes discomfort",
-                  "It gets irritated by clothing or shaving",
-                  "It affects your facial aesthetics",
-                  "You want cosmetic mole removal",
-                  "There is suspicion of abnormal skin growth",
+                  "Active Acne — Inflamed pimples, cystic acne, whiteheads, blackheads.",
+                  "Hormonal Acne — Usually seen on jawline and chin area.",
+                  "Adult Acne — Persistent acne beyond teenage years.",
+                  "Back & Body Acne — Often resistant to routine skincare.",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -305,18 +302,17 @@ export default function MoleRemovalTreatment() {
               </motion.ul>
 
               <h3 className="text-xl md:text-3xl font-bold text-[#9E4A47] mt-8">
-                Benefits of Professional Mole Removal
+                Types of Acne Scars
               </h3>
               <motion.ul
                 variants={fadeUp}
                 className="grid sm:grid-cols-2 gap-4"
               >
                 {[
-                  "Safe & Medical Oversight — Performed by expert dermatologists with sterile, controlled protocols.",
-                  "Minimal Scarring — Contemporary techniques minimize the risk of visible scarring, particularly on the face.",
-                  "Quick Procedure — Most mole removal procedures take 15 - 30 minutes.",
-                  "Permanent Removal — When properly removed, a mole does not normally come back.",
-                  "Better Looking Skin — Increased confidence when you can remove face and any stock moles.",
+                  "Ice Pick Scars — Deep, narrow scars.",
+                  "Boxcar Scars — Wider, depressed scars.",
+                  "Rolling Scars — Wave-like uneven texture.",
+                  "Post-Acne Pigmentation — Dark marks left after pimples heal.",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -339,6 +335,79 @@ export default function MoleRemovalTreatment() {
                   </li>
                 ))}
               </motion.ul>
+
+              <h3 className="text-xl md:text-3xl font-bold text-[#9E4A47] mt-8">
+                Acne Treatment Options
+              </h3>
+              <motion.ul
+                variants={fadeUp}
+                className="grid sm:grid-cols-2 gap-4"
+              >
+                {[
+                  "Medical Acne Therapy — Prescription medications to control oil and inflammation.",
+                  "Chemical Peels for Acne — Reduce active acne and post-acne pigmentation.",
+                  "Laser Acne Treatment — Helps reduce inflammation and bacterial activity.",
+                  "Oral Treatment (When Required) — For severe hormonal or cystic acne cases.",
+                ].map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center gap-3 bg-white/70 px-5 py-3 rounded-xl shadow-sm border border-[#DFDFDD]"
+                  >
+                    <svg
+                      className="w-5 h-5 text-[#9E4A47]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M5 13l4 4L19 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="font-medium">{item}</span>
+                  </li>
+                ))}
+              </motion.ul>
+
+              <h3 className="text-xl md:text-3xl font-bold text-[#9E4A47] mt-8">
+                Acne Scar Treatment Options
+              </h3>
+              <motion.ul
+                variants={fadeUp}
+                className="grid sm:grid-cols-2 gap-4"
+              >
+                {[
+                  "Microneedling / RF Microneedling — Stimulates collagen to improve scar texture.",
+                  "Fractional Laser Resurfacing — Targets deeper scars.",
+                  "Subcision — Releases fibrous scar bands under the skin.",
+                  "Chemical Reconstruction — Improves certain types of deep scars.",
+                ].map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center gap-3 bg-white/70 px-5 py-3 rounded-xl shadow-sm border border-[#DFDFDD]"
+                  >
+                    <svg
+                      className="w-5 h-5 text-[#9E4A47]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M5 13l4 4L19 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="font-medium">{item}</span>
+                  </li>
+                ))}
+              </motion.ul>
+              <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
+                Often, combination therapy provides the best results.
+              </p>
             </motion.div>
 
             <motion.div
@@ -350,8 +419,8 @@ export default function MoleRemovalTreatment() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/epBv7GhxjjM?si=MlpT6ES5vjL8FdOh"
-                  title="Mole Removal Treatment at Satya"
+                  src="https://www.youtube.com/embed/ujEC8aS54bQ?si=c9c5MQ7GDcudEgSA"
+                  title="Acne & Acne Scar Treatment at Satya"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -363,31 +432,21 @@ export default function MoleRemovalTreatment() {
         </div>
       </section>
 
-      {/* === Types of Techniques === */}
+      {/* === Benefits Grid === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
-            Types of Mole Removal Techniques
+            Benefits of Professional Acne & Acne Scar Treatment
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                title: "Laser Mole Removal",
-                text: "Is best for smaller, more superficial moles. Less bleeding and quicker healing.",
-              },
-              {
-                title: "Radiofrequency Mole Removal",
-                text: "Exact removal with a controlled heat energy.",
-              },
-              {
-                title: "Surgical Excision",
-                text: "For deeper or suspicious moles. This guarantees a thorough removal.",
-              },
-              {
-                title: "Shave Removal",
-                text: "Perfect for raised moles that are not too deep-rooted in the skin.",
-              },
-            ].map((tech, i) => (
+              "Reduced active breakouts",
+              "Smoother skin texture",
+              "Faded dark spots",
+              "Improved skin clarity",
+              "Controlled oil production",
+              "Long-term acne management",
+            ].map((benefit, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -396,62 +455,75 @@ export default function MoleRemovalTreatment() {
                 viewport={{ once: true }}
                 className="bg-white p-8 rounded-2xl shadow-lg border border-[#DFDFDD] hover:shadow-2xl transition-all duration-300"
               >
-                <h3 className="font-semibold text-[#9E4A47] mb-3 text-lg">{tech.title}</h3>
-                <p className="text-[#828D9C] leading-relaxed">{tech.text}</p>
+                <p className="text-base md:text-xl font-semibold text-[#2B333C]">
+                  {benefit}
+                </p>
               </motion.div>
             ))}
           </div>
           <p className="text-center md:text-lg text-[#2B333C]/80 mt-10 max-w-4xl mx-auto">
-            The method is chosen according to safety, mole thickness and cosmetic result.
+            The goal is not just temporary relief, but sustained skin health.
           </p>
         </div>
       </section>
 
-      {/* === Procedure + Aftercare + Cost === */}
+      {/* === How Long Does Treatment Take? === */}
+      <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-white p-10 rounded-3xl shadow-xl border border-[#DFDFDD] text-center"
+          >
+            <h3 className="md:text-3xl font-semibold text-[#9E4A47] mb-6">
+              How Long Does Treatment Take?
+            </h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { time: "Active acne control", desc: "4–8 weeks" },
+                { time: "Acne scar improvement", desc: "3–6 sessions" },
+                { time: "Pigmentation fading", desc: "Gradual over sessions" },
+              ].map((item, i) => (
+                <div key={i} className="border-l-4 border-[#9E4A47] pl-6 text-left">
+                  <div className="font-bold text-[#2B333C] text-lg">{item.time}</div>
+                  <div className="text-[#9E4A47] text-2xl font-semibold mt-1">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-8 italic text-[#828D9C]">
+              Consistency is key to visible transformation.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* === Cost & Why Choose === */}
       <section className="sm:py-16 px-6 md:px-16 lg:px-24 space-y-16">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            What Happens During Mole Removal Treatment?
-          </h2>
-          <div className="space-y-6 md:text-lg text-[#2B333C]/90">
-            <p><strong>Consultation and Skin Check</strong> — Checking moles • Examination with a dermatoscope • A look at the medical history • Choice of method</p>
-            <p><strong>Procedure</strong> — The area was cleaned and numbed with local anesthesia • The chosen method of removal was used • Very Minimal pain during the procedure</p>
-            <p><strong>Post-Treatment Care</strong> — Mild dressing if required • Healing guidance provided • Sun protection advised • Scar care instructions given</p>
-          </div>
-          <p className="mt-6 text-[#9E4A47] font-semibold">Most patients resume routine activities immediately.</p>
-        </div>
-
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
-          <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Getting Better After Mole Removal
+            Cost of Acne & Acne Scar Treatment in Delhi & Gurgaon
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            A little redness for a few days • Formation of small scabs • Getting better in 7 to 14 days • Little time off. Following aftercare instructions ensures optimal healing and minimal scarring.
-          </p>
-        </div>
-
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
-          <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            How much does mole removal treatment cost in Delhi and Gurgaon?
-          </h2>
-          <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            The cost depends on: How big and deep the mole is • Where on the body it is • Technique used • If a biopsy is needed. Prices at Satya Skin & Hair Solutions are clear and based on a proper dermatological evaluation.
+            Cost depends on: Severity of acne • Type of scars • Treatment selected • Number of sessions required
+            At Satya Skin & Hair Solutions, plans are customized based on clinical assessment rather than pre-set packages.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto bg-gradient-to-br from-[#9E4A47]/5 to-[#B87C72]/5 rounded-3xl p-10 border border-[#9E4A47]/20">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Why Satya Skin & Hair Solutions?
+            Why Choose Satya Skin & Hair Solutions?
           </h2>
           <ul className="list-disc pl-6 space-y-3 md:text-lg text-[#2B333C]/90">
-            <li>Dermatologist performed procedures</li>
-            <li>State of the art laser and surgical techniques</li>
-            <li>Focus on least scarring</li>
-            <li>Indian skin safe</li>
-            <li>Fair medical opinion</li>
+            <li>Dermatologist-supervised protocols</li>
+            <li>Advanced acne scar technologies</li>
+            <li>Safe for Indian skin types</li>
+            <li>Long-term management approach</li>
+            <li>Focus on preventing recurrence</li>
           </ul>
           <p className="mt-6 md:text-lg text-[#2B333C]/90">
-            We have gained a great reputation amongst those who want the best treatment for Mole Removal in Gurgaon. Our clinic is the right place for you if you want your moles removed safely and effectively.
+            Patients looking for acne treatment in Delhi and acne scar treatment in Gurgaon trust our evidence-based and personalized approach.
           </p>
         </div>
       </section>
@@ -460,10 +532,10 @@ export default function MoleRemovalTreatment() {
       <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-r from-[#9E4A47] to-[#B87C72] text-white text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="md:text-4xl md:text-5xl font-bold">
-            Book an appointment for mole removal
+            Book Acne & Acne Scar Consultation in Delhi & Gurgaon
           </h2>
           <p className="md:text-xl opacity-90">
-            If you want to get mole removal treatment in Delhi or find the best doctor for mole removal treatment in Gurgaon, the first step is to talk to an expert.
+            If you are dealing with persistent acne or acne scars, early intervention leads to better results.
           </p>
           <button
             onClick={() => setShowPopup(true)}

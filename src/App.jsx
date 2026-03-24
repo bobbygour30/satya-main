@@ -27,7 +27,7 @@ import LaserHairRemoval from "./pages/LaserHairRemoval";
 import ChemicalPeelTreatment from "./pages/ChemicalPeelTreatment";
 import MoleRemovalTreatment from "./pages/MoleRemovalTreatment";
 import LaserToningTreatment from "./pages/LaserToningTreatment";
-import CO2FractionalLaserTreatment from "./pages/CO2FractionalLaserTreatment";
+import CO2FractionalLaserTreatment from "./pages/FractionalCO2Laser";
 import MNRFTreatment from "./pages/MNRFTreatment";
 // import BotoxTreatment from "./pages/BotoxTreatment";
 
@@ -70,6 +70,11 @@ import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminLogin from "./components/admin/AdminLogin";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import DynamicCaseStudy from "./pages/DynamicCaseStudy";
+import WrinklesFineLinesTreatment from "./pages/WrinklesFineLinesTreatment";
+import PigmentationTreatment from "./pages/PigmentationTreatment";
+import DullSkinOpenPores from "./pages/DullSkinOpenPores";
+import AcneScarTreatment from "./pages/AcneScarTreatment";
+import LipEnhancement from "./pages/LipEnhancement";
 
 // Add CSS to hide Google Translate's default UI elements
 const globalStyles = `
@@ -156,6 +161,12 @@ export default function App() {
         <Route path="/skin/5d-facial" element={<FiveDFacialTreatment />} />
         <Route path="/skin/vampire-facelift" element={<VampireFacelift />} />
         <Route path="/skin/mesotherapy" element={<MesotherapyTreatment />} />
+        <Route path="/skin/lip-enhancement" element={<LipEnhancement />} />
+        {/* Skin Concerns */}
+        <Route path="/skin/wrinkles-fine-lines" element={<WrinklesFineLinesTreatment />} />
+        <Route path="/skin/pigmentation" element={<PigmentationTreatment />} />
+        <Route path="/skin/dull-skin-open-pores" element={<DullSkinOpenPores />} />
+        <Route path="/skin/acne-scars" element={<AcneScarTreatment />} />
 
         {/* ================= HAIR ================= */}
         <Route path="/hair-treatment" element={<HairTreatment />} />

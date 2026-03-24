@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import SEO from "../components/SEO";
+import ConsultationPopup from "../components/ConsultationPopup";
 const faqs = [
   {
     q: "Is alopecia areata permanent?",
@@ -639,6 +640,7 @@ export default function AlopeciaAreata() {
           </div>
         </div>
       </section>
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

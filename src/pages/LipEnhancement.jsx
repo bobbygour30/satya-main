@@ -10,28 +10,28 @@ import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
-    q: "Is it permanent to remove a mole?",
-    a: "Yes, it usually doesn’t grow back if you get the mole removed the right way.",
+    q: "Will my lips look unnatural?",
+    a: "No. Treatment is customized for subtle, proportionate enhancement.",
   },
   {
-    q: "Will there be a scar after mole removal?",
-    a: "In most cases this technique results in healing with minimal or no visible scarring.",
+    q: "Is lip filler reversible?",
+    a: "Yes. Hyaluronic acid fillers can be dissolved if required.",
   },
   {
-    q: "Is mole removal painful?",
-    a: "No. People do well who have the procedure performed with local anesthesia.",
+    q: "How soon can I return to work?",
+    a: "Most patients resume normal activities the same day.",
   },
   {
-    q: "Can moles grow back after removal?",
-    a: "Rarely, if mole cells remain. Proper removal minimizes recurrence.",
+    q: "Does lip enhancement hurt?",
+    a: "Minimal discomfort due to topical numbing.",
   },
   {
-    q: "How long does it take to heal?",
-    a: "1–2 weeks is the normal healing time, depending on the method.",
+    q: "Can I choose how full I want my lips?",
+    a: "Yes, volume is completely customizable.",
   },
   {
-    q: "Is laser mole removal safe for face?",
-    a: "Yes, when conducted by skilled dermatologists with the right parameters.",
+    q: "When can I apply lipstick?",
+    a: "Usually after 24 hours.",
   },
 ];
 
@@ -45,7 +45,7 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-export default function MoleRemovalTreatment() {
+export default function LipEnhancement() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -57,19 +57,19 @@ export default function MoleRemovalTreatment() {
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
       {/* ==================== SEO META ==================== */}
       <SEO
-        title="Mole Removal Treatment – Satya | Safe & Scar-Minimized Mole Removal in Delhi & Gurgaon"
-        description="Looking for Mole Removal Treatment in Delhi or the Best Doctor for Mole Removal Treatment in Gurgaon? Safe, scar-minimized mole removal by dermatologist experts at Satya Skin & Hair Solutions."
-        canonical="https://satyaskinhair.com/skin/mole-removal"
+        title="Lip Enhancement in Delhi | Natural Lip Filler & Lip Contouring Treatment Gurgaon"
+        description="Enhance lip volume and definition with safe lip enhancement in Delhi & Gurgaon. Get natural-looking lip fillers and contouring at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/skin/lip-enhancement"
         showSchema={false}
       />
 
       {/* === PREMIUM HERO BANNER === */}
-      <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[69vh] lg:min-h-[60vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.moleRemovalBanner || assets.banner}')`,
+            backgroundImage: `url('${assets.lipEnhancement || assets.banner}')`,
           }}
         />
 
@@ -83,18 +83,18 @@ export default function MoleRemovalTreatment() {
           <div className="space-y-6 sm:space-y-8">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
-                Best Mole Removal Treatment
+                Lip Enhancement Treatment
               </h1>
 
               <p className="text-[#9E4A47] text-lg sm:text-xl md:text-2xl font-semibold mt-2">
-                Mole Removal Treatment – Satya
+                Sculpted, Balanced & Naturally Beautiful Lips
               </p>
             </div>
 
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl">
-              Moles are bumps on the skin that can appear anywhere on the body. Most moles are harmless, but some people opt to have them removed for cosmetic reasons or because they become irritated or repeatedly injured, or for medical reasons.
-              If you are looking for Mole Removal Treatment in Delhi or Best Doctor For Mole Removal Treatment In Gurgaon, you need to get a proper medical assessment first.
-              At Satya Skin & Hair Solutions you get the mole removal performed under the supervision of a Dermatologist by safe latest technology procedures incorporating least scarring, precision and skin safety.
+              Lips are one of the most expressive features of the face. Even a subtle change in lip volume, shape, or symmetry can significantly improve overall facial harmony. Modern Lip Enhancement Treatment is no longer about overfilled lips, it is about proportion, contour, and balance.
+              At Satya Skin & Hair Solutions, we provide advanced Lip Enhancement in Delhi and Gurgaon, focusing on customized lip contouring that complements your facial structure rather than overpowering it.
+              Lip enhancement is a non-surgical cosmetic procedure designed to improve lip volume, lip symmetry, lip definition, lip contour, hydration and smoothness. The most commonly used treatment involves hyaluronic acid-based dermal fillers, a substance naturally present in the body that helps retain moisture and add soft volume.
             </p>
 
             <motion.button
@@ -116,8 +116,8 @@ export default function MoleRemovalTreatment() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.moleRemovalBanner}
-              alt="Mole Removal Treatment"
+              src={assets.lipEnhancement}
+              alt="Lip Enhancement Treatment"
               className="
                 w-full 
                 h-[300px] sm:h-[350px]
@@ -147,19 +147,19 @@ export default function MoleRemovalTreatment() {
         >
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Scar-Minimized Removal • Laser Precision • Radiofrequency Accuracy • Surgical Safety • Permanent Results • Facial Aesthetics • Minimal Downtime • Satya Excellence
+              Natural Volume • Balanced Contouring • Subtle Definition • Hyaluronic Fillers • Lip Symmetry • Youthful Plumpness • Satya Excellence
             </span>
             <span className="px-12">
-              Scar-Minimized Removal • Laser Precision • Radiofrequency Accuracy • Surgical Safety • Permanent Results • Facial Aesthetics • Minimal Downtime • Satya Excellence
+              Natural Volume • Balanced Contouring • Subtle Definition • Hyaluronic Fillers • Lip Symmetry • Youthful Plumpness • Satya Excellence
             </span>
           </div>
 
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Scar-Minimized Removal • Laser Precision • Radiofrequency Accuracy • Surgical Safety • Permanent Results • Facial Aesthetics • Minimal Downtime • Satya Excellence
+              Natural Volume • Balanced Contouring • Subtle Definition • Hyaluronic Fillers • Lip Symmetry • Youthful Plumpness • Satya Excellence
             </span>
             <span className="px-12">
-              Scar-Minimized Removal • Laser Precision • Radiofrequency Accuracy • Surgical Safety • Permanent Results • Facial Aesthetics • Minimal Downtime • Satya Excellence
+              Natural Volume • Balanced Contouring • Subtle Definition • Hyaluronic Fillers • Lip Symmetry • Youthful Plumpness • Satya Excellence
             </span>
           </div>
         </motion.div>
@@ -240,13 +240,13 @@ export default function MoleRemovalTreatment() {
               </span>
             </div>
             <p className="text-[#828D9C] italic border-l-4 border-[#9E4A47] pl-4">
-              Ethical, patient-centric protocols — balancing safety, precision removal, minimal scarring, and skin health.
+              Ethical, patient-centric protocols — balancing safety, natural proportion, and medically guided artistry.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* === What Is + When to Consider + Benefits + Video === */}
+      {/* === What Is + How Fillers Work + Who Should + Customized + Video === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
         <div className="max-w-7xl mx-auto space-y-16">
           <motion.div
@@ -257,30 +257,30 @@ export default function MoleRemovalTreatment() {
             className="text-center space-y-4"
           >
             <h2 className="text-2xl md:text-5xl font-bold text-[#9E4A47]">
-              What Is Mole Removal Treatment?
+              What Is Lip Enhancement?
             </h2>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={container} className="space-y-8">
               <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                A dermatologist performs Mole Removal Procedure to eliminate unwanted or suspicious moles safely. Based on the mole type, size and depth, treatment might involve laser, radiofrequency, surgical excision or shave removal. The aim is to remove the mole in its entirety and to do so with minimal scarring, while also protecting the skin around it.
+                Lip enhancement is a non-surgical cosmetic procedure designed to improve lip volume, lip symmetry, lip definition, lip contour, hydration and smoothness. The most commonly used treatment involves hyaluronic acid-based dermal fillers, a substance naturally present in the body that helps retain moisture and add soft volume.
               </p>
 
               <h3 className="text-xl md:text-3xl font-bold text-[#9E4A47]">
-                When Should You Consider Mole Removal?
+                Who Should Consider Lip Enhancement?
               </h3>
               <motion.ul
                 variants={fadeUp}
                 className="grid sm:grid-cols-2 gap-4"
               >
                 {[
-                  "The mole changes in size, color, or shape",
-                  "It bleeds, itches, or causes discomfort",
-                  "It gets irritated by clothing or shaving",
-                  "It affects your facial aesthetics",
-                  "You want cosmetic mole removal",
-                  "There is suspicion of abnormal skin growth",
+                  "Have naturally thin lips",
+                  "Have uneven upper and lower lip proportions",
+                  "Notice volume loss with aging",
+                  "Want improved lip border definition",
+                  "Have vertical lip lines",
+                  "Desire subtle contour enhancement",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -305,40 +305,35 @@ export default function MoleRemovalTreatment() {
               </motion.ul>
 
               <h3 className="text-xl md:text-3xl font-bold text-[#9E4A47] mt-8">
-                Benefits of Professional Mole Removal
+                How Lip Fillers Work
               </h3>
+              <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
+                Hyaluronic acid fillers add controlled volume beneath the skin, attract and retain moisture, enhance natural lip shape, improve smoothness, restore youthful plumpness. The goal is natural integration — lips should look enhanced, not artificial.
+              </p>
+
+              <h3 className="text-xl md:text-3xl font-bold text-[#9E4A47] mt-8">
+                Customized Lip Contouring Approach
+              </h3>
+              <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
+                Every lip is different. At Satya, treatment planning includes:
+              </p>
               <motion.ul
                 variants={fadeUp}
-                className="grid sm:grid-cols-2 gap-4"
+                className="space-y-3 text-[#2B333C]/90"
               >
                 {[
-                  "Safe & Medical Oversight — Performed by expert dermatologists with sterile, controlled protocols.",
-                  "Minimal Scarring — Contemporary techniques minimize the risk of visible scarring, particularly on the face.",
-                  "Quick Procedure — Most mole removal procedures take 15 - 30 minutes.",
-                  "Permanent Removal — When properly removed, a mole does not normally come back.",
-                  "Better Looking Skin — Increased confidence when you can remove face and any stock moles.",
+                  "1. Facial Proportion Analysis — Lip size is evaluated relative to nose, chin, and jawline.",
+                  "2. Cupid’s Bow Enhancement — Defines the central lip curve.",
+                  "3. Vermilion Border Definition — Sharpens lip outline subtly.",
+                  "4. Volume Distribution — Balances upper and lower lip ratio.",
+                  "5. Lip Hydration Boost — Improves dryness and texture.",
                 ].map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex items-center gap-3 bg-white/70 px-5 py-3 rounded-xl shadow-sm border border-[#DFDFDD]"
-                  >
-                    <svg
-                      className="w-5 h-5 text-[#9E4A47]"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        d="M5 13l4 4L19 7"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="font-medium">{item}</span>
-                  </li>
+                  <li key={i} className="font-medium">{item}</li>
                 ))}
               </motion.ul>
+              <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
+                The treatment respects natural anatomy.
+              </p>
             </motion.div>
 
             <motion.div
@@ -350,8 +345,8 @@ export default function MoleRemovalTreatment() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/epBv7GhxjjM?si=MlpT6ES5vjL8FdOh"
-                  title="Mole Removal Treatment at Satya"
+                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_"
+                  title="Lip Enhancement Treatment at Satya"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -363,31 +358,33 @@ export default function MoleRemovalTreatment() {
         </div>
       </section>
 
-      {/* === Types of Techniques === */}
+      {/* === Procedure + Benefits Grid === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
-            Types of Mole Removal Techniques
+            The Procedure: What to Expect
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="max-w-3xl mx-auto bg-white p-10 rounded-3xl shadow-xl border border-[#DFDFDD] mb-12">
+            <p className="md:text-lg text-[#2B333C]/90 mb-6">
+              Detailed consultation and lip assessment • Application of numbing cream • Precise micro-injections using fine needles or cannula • Gentle molding for symmetry
+            </p>
+            <p className="text-[#9E4A47] font-semibold">Procedure duration: 20–30 minutes</p>
+            <p className="text-[#9E4A47] font-semibold">Results: Immediate, with final shape settling in 3–5 days.</p>
+          </div>
+
+          <h2 className="text-xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
+            Benefits of Lip Enhancement
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                title: "Laser Mole Removal",
-                text: "Is best for smaller, more superficial moles. Less bleeding and quicker healing.",
-              },
-              {
-                title: "Radiofrequency Mole Removal",
-                text: "Exact removal with a controlled heat energy.",
-              },
-              {
-                title: "Surgical Excision",
-                text: "For deeper or suspicious moles. This guarantees a thorough removal.",
-              },
-              {
-                title: "Shave Removal",
-                text: "Perfect for raised moles that are not too deep-rooted in the skin.",
-              },
-            ].map((tech, i) => (
+              "Immediate visible improvement",
+              "Non-surgical",
+              "Minimal downtime",
+              "Reversible (hyaluronic acid fillers)",
+              "Natural softness",
+              "Customizable shape",
+              "Long-lasting yet adjustable",
+            ].map((benefit, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -396,62 +393,66 @@ export default function MoleRemovalTreatment() {
                 viewport={{ once: true }}
                 className="bg-white p-8 rounded-2xl shadow-lg border border-[#DFDFDD] hover:shadow-2xl transition-all duration-300"
               >
-                <h3 className="font-semibold text-[#9E4A47] mb-3 text-lg">{tech.title}</h3>
-                <p className="text-[#828D9C] leading-relaxed">{tech.text}</p>
+                <p className="text-base md:text-xl font-semibold text-[#2B333C]">
+                  {benefit}
+                </p>
               </motion.div>
             ))}
           </div>
-          <p className="text-center md:text-lg text-[#2B333C]/80 mt-10 max-w-4xl mx-auto">
-            The method is chosen according to safety, mole thickness and cosmetic result.
-          </p>
         </div>
       </section>
 
-      {/* === Procedure + Aftercare + Cost === */}
+      {/* === How Long + vs Lip Flip + Safety + Cost === */}
       <section className="sm:py-16 px-6 md:px-16 lg:px-24 space-y-16">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            What Happens During Mole Removal Treatment?
-          </h2>
-          <div className="space-y-6 md:text-lg text-[#2B333C]/90">
-            <p><strong>Consultation and Skin Check</strong> — Checking moles • Examination with a dermatoscope • A look at the medical history • Choice of method</p>
-            <p><strong>Procedure</strong> — The area was cleaned and numbed with local anesthesia • The chosen method of removal was used • Very Minimal pain during the procedure</p>
-            <p><strong>Post-Treatment Care</strong> — Mild dressing if required • Healing guidance provided • Sun protection advised • Scar care instructions given</p>
-          </div>
-          <p className="mt-6 text-[#9E4A47] font-semibold">Most patients resume routine activities immediately.</p>
-        </div>
-
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
-          <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Getting Better After Mole Removal
+            How Long Do Results Last?
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            A little redness for a few days • Formation of small scabs • Getting better in 7 to 14 days • Little time off. Following aftercare instructions ensures optimal healing and minimal scarring.
+            Lip fillers typically last between 6 to 12 months. Longevity depends on metabolism, lifestyle, amount of filler used, product type. Maintenance sessions help sustain volume.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            How much does mole removal treatment cost in Delhi and Gurgaon?
+            Lip Enhancement vs Lip Flip
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            The cost depends on: How big and deep the mole is • Where on the body it is • Technique used • If a biopsy is needed. Prices at Satya Skin & Hair Solutions are clear and based on a proper dermatological evaluation.
+            Lip fillers add volume, improve shape, enhance symmetry. Lip flip (Botox-based) gives subtle upper lip outward roll with no volume addition. Some patients combine both for balanced results.
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
+          <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
+            Is Lip Enhancement Safe?
+          </h2>
+          <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
+            Yes, when performed by trained dermatologists using high-quality hyaluronic acid fillers. Temporary side effects may include mild swelling, slight bruising, tenderness. These usually resolve within a few days.
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
+          <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
+            Lip Enhancement Cost in Delhi & Gurgaon
+          </h2>
+          <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
+            Cost depends on type of filler, volume required, custom contouring complexity. Accurate pricing is determined after consultation and lip analysis.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto bg-gradient-to-br from-[#9E4A47]/5 to-[#B87C72]/5 rounded-3xl p-10 border border-[#9E4A47]/20">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Why Satya Skin & Hair Solutions?
+            Why Choose Satya Skin & Hair Solutions?
           </h2>
           <ul className="list-disc pl-6 space-y-3 md:text-lg text-[#2B333C]/90">
-            <li>Dermatologist performed procedures</li>
-            <li>State of the art laser and surgical techniques</li>
-            <li>Focus on least scarring</li>
-            <li>Indian skin safe</li>
-            <li>Fair medical opinion</li>
+            <li>Dermatologist-led aesthetic planning</li>
+            <li>Natural proportion-focused enhancement</li>
+            <li>Premium hyaluronic acid fillers</li>
+            <li>Ethical injection techniques</li>
+            <li>Safety-first protocols</li>
           </ul>
           <p className="mt-6 md:text-lg text-[#2B333C]/90">
-            We have gained a great reputation amongst those who want the best treatment for Mole Removal in Gurgaon. Our clinic is the right place for you if you want your moles removed safely and effectively.
+            Patients seeking Lip Enhancement in Delhi and Gurgaon choose precision, balance, and medically guided artistry.
           </p>
         </div>
       </section>
@@ -460,10 +461,10 @@ export default function MoleRemovalTreatment() {
       <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-r from-[#9E4A47] to-[#B87C72] text-white text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="md:text-4xl md:text-5xl font-bold">
-            Book an appointment for mole removal
+            Book Lip Enhancement Consultation in Delhi & Gurgaon
           </h2>
           <p className="md:text-xl opacity-90">
-            If you want to get mole removal treatment in Delhi or find the best doctor for mole removal treatment in Gurgaon, the first step is to talk to an expert.
+            If you want refined, naturally fuller lips without surgery, lip enhancement may be the right choice.
           </p>
           <button
             onClick={() => setShowPopup(true)}

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import assets from "../assets/assets";
 import SEO from "../components/SEO";
+import ConsultationPopup from "../components/ConsultationPopup";
 const faqs = [
   {
                 q: "Can male hair loss be stopped permanently?",
@@ -609,6 +610,7 @@ export default function MaleHairLoss() {
           </div>
         </div>
       </section>
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

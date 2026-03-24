@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
@@ -45,6 +46,7 @@ const fadeUp = {
 
 export default function LaserHairRemoval() {
   const [activeIndex, setActiveIndex] = useState(null);
+   const [showPopup, setShowPopup] = useState(false);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -317,7 +319,7 @@ export default function LaserHairRemoval() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/dmJscKHN4JI?si=B72yurh7L3_zCxCy"
+                  src="https://www.youtube.com/embed/dmJscKHN4JI?si=H9-UrcYsgykR2IdY"
                   title="Laser Hair Removal Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -554,6 +556,7 @@ export default function LaserHairRemoval() {
           </div>
         </div>
       </section>
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

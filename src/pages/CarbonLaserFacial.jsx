@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
@@ -41,6 +42,7 @@ const fadeUp = {
 
 export default function CarbonLaserFacial() {
   const [activeIndex, setActiveIndex] = useState(null);
+   const [showPopup, setShowPopup] = useState(false);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -313,7 +315,7 @@ export default function CarbonLaserFacial() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/0jRxJt2aUlo?si=OppbES-mt5ap_FLw" 
+                  src="https://www.youtube.com/embed/0jRxJt2aUlo?si=-ejTKk8m3eEB05iK"
                   title="Carbon Laser Facial Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -574,6 +576,7 @@ export default function CarbonLaserFacial() {
           </div>
         </div>
       </section>
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import assets from "../assets/assets";
 import SEO from "../components/SEO";
+import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
@@ -633,6 +634,7 @@ export default function BeardHairTransplant() {
           </div>
         </div>
       </section>
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

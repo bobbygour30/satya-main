@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
@@ -45,6 +46,7 @@ const fadeUp = {
 
 export default function VampireFacelift() {
   const [activeIndex, setActiveIndex] = useState(null);
+   const [showPopup, setShowPopup] = useState(false);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -562,6 +564,7 @@ export default function VampireFacelift() {
           </div>
         </div>
       </section>
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

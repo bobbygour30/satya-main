@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
@@ -49,6 +50,7 @@ const fadeUp = {
 
 export default function HIFUTreatment() {
   const [activeIndex, setActiveIndex] = useState(null);
+   const [showPopup, setShowPopup] = useState(false);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -320,7 +322,7 @@ export default function HIFUTreatment() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/4qS3Oa8q4k4"
+                  src="https://www.youtube.com/embed/5HQ_x1YPS1s?si=DcuVxTwTx7cbzZwo"
                   title="HIFU Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -558,6 +560,7 @@ export default function HIFUTreatment() {
           </div>
         </div>
       </section>
+      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }

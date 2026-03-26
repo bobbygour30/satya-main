@@ -119,28 +119,28 @@ const treatments = [
   {
     title: "ClearSkin Pro",
     image: assets.clearSkinProBanner,
-    link: "/skin/clearskin-pro",
+    link: "/skin/clearskin-laser",
     content:
       "ClearSkin PRO is an FDA-approved, award-winning laser therapy that has great documented results for skin rejuvenation procedures. It has very strong energy emission and is very safe. ClearSkin PRO is a big step forward in therapeutic anti-aging therapies. It can help with wrinkles, lines, tightening pores, and other signs of aging.",
   },
   {
     title: "Botulinum Toxin",
     image: assets.botulinumToxinBanner,
-    link: "/skin/botulinum-toxin",
+    link: "/skin/botox",
     content:
       "By relaxing the muscles that make wrinkles, injections help to get rid of them. People also use these kinds of shots to treat medical problems like hyperhidrosis, migraines, an overactive bladder, and eye problems. To keep the results, treatments should be done again every three to six months.",
   },
   {
     title: "Skin Polishing / Microdermabrasion",
     image: assets.skinPolishingBanner,
-    link: "/skin/skin-polishing",
+    link: "/skin/microdermabrasion",
     content:
       "Pixel Er laser is the newest type of Erbium fractional laser. It has both the fractional technology and the ablative effect of the Erbium YAG laser. Micro-ablative columns of laser go deep into the skin and cause controlled damage below the surface.",
   },
   {
     title: "IPL Photofacial",
     image: assets.iplPhotofacialBanner,
-    link: "/skin/ipl-photofacial",
+    link: "/skin/photo-facial",
     content:
       "Satyaskinhair “ offers a rejuvenation experience that goes deeper than the surface, giving you skin that looks young and healthy. IPL Photofacial will make your skin look better! An IPL Photofacial is short for Intense Pulsed Light Photorejuvenation.",
   },

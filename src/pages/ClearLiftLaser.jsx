@@ -10,44 +10,28 @@ import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
-    q: "How long does it take for Botox to work?",
-    a: "Botox usually starts showing results within 3–5 days, with full results visible in 10–14 days.",
+    q: "Is ClearLift Laser safe for all skin types?",
+    a: "Yes, it is generally safe for most skin types when performed under professional supervision.",
   },
   {
-    q: "How long does Botox last?",
-    a: "Results typically last between 3 to 6 months, depending on individual factors.",
+    q: "When will I see results?",
+    a: "Gradual improvement is visible after a few sessions as collagen production increases.",
   },
   {
-    q: "What is BOTOX?",
-    a: "Botox is a purified protein (botulinum toxin) used to relax muscles and reduce wrinkles.",
+    q: "Is there downtime?",
+    a: "No, ClearLift has minimal to no downtime.",
   },
   {
-    q: "How do wrinkles form?",
-    a: "Wrinkles form due to repeated muscle movements, aging, collagen loss, and environmental factors.",
+    q: "Can it remove wrinkles completely?",
+    a: "It improves fine lines and wrinkles but may not completely eliminate deep wrinkles.",
   },
   {
-    q: "How does Botox work?",
-    a: "Botox blocks nerve signals to muscles, reducing their movement and smoothing the skin above them.",
+    q: "How long does each session take?",
+    a: "Each session typically takes 20–30 minutes.",
   },
   {
-    q: "Is Botox safe?",
-    a: "Yes, Botox is safe when administered by qualified dermatologists in controlled doses.",
-  },
-  {
-    q: "When will the results be visible?",
-    a: "Results become noticeable within a few days and peak in about 2 weeks.",
-  },
-  {
-    q: "Is it just one-time affair?",
-    a: "No, Botox requires repeat sessions every 3–6 months to maintain results.",
-  },
-  {
-    q: "Are there any contraindications?",
-    a: "Botox may not be suitable for pregnant women, certain neurological conditions, or specific medical histories.",
-  },
-  {
-    q: "What about the common myths we hear about Botox?",
-    a: "When done correctly, Botox does not freeze your face. It enhances natural expressions while reducing wrinkles.",
+    q: "Can I combine ClearLift with other treatments?",
+    a: "Yes, it can be combined with PRP, peels, or other therapies for better results.",
   },
 ];
 const container = {
@@ -60,7 +44,7 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-export default function BotoxTreatment() {
+export default function ClearLiftLaser() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -72,18 +56,18 @@ export default function BotoxTreatment() {
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
       {/* ==================== SEO META (exactly like HomePage) ==================== */}
       <SEO
-        title="Botox Treatment in Delhi | Best Botox Injection Doctors in Gurgaon"
-        description="Get safe and natural Botox treatment in Delhi & Gurgaon. Reduce wrinkles, fine lines & treat medical conditions with expert dermatologists."
-        canonical="https://satyaskinhair.com/skin/botox"
+        title="ClearLift Laser Treatment in Delhi | Non-Ablative Skin Rejuvenation Gurgaon"
+        description="Get youthful, glowing skin with ClearLift Laser Treatment in Delhi & Gurgaon. Non-ablative laser for wrinkles, pigmentation, and skin rejuvenation."
+        canonical="https://satyaskinhair.com/skin/clearlift-laser"
         showSchema={false} // Only home page uses schema
       />
-      {/* === PREMIUM BOTOX HERO BANNER === */}
+      {/* === PREMIUM CLEARLIFT LASER HERO BANNER === */}
       <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.botox || assets.banner}')`,
+            backgroundImage: `url('${assets.clearlift || assets.banner}')`,
           }}
         />
 
@@ -97,16 +81,16 @@ export default function BotoxTreatment() {
           <div className="space-y-6 sm:space-y-8">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
-                Botox Treatment
+                ClearLift Laser Treatment
               </h1>
 
               <p className="text-[#9E4A47] text-lg sm:text-xl md:text-2xl font-semibold mt-2">
-                Best Botox Treatment in Delhi & Gurgaon
+                Best ClearLift Laser Treatment in Delhi & Gurgaon
               </p>
             </div>
 
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl">
-              Aging, stress, and repetitive facial movements lead to the formation of wrinkles and fine lines, especially on the forehead, around the eyes, and between the brows. Botox treatment is one of the most effective non-surgical solutions to relax these lines and restore a smoother appearance. At Satya Skin & Hair Solutions, we provide advanced Botox treatment in Delhi and Gurgaon, performed by experienced dermatologists focusing on natural-looking results.
+              When it comes to improving skin quality without aggressive procedures, ClearLift Laser Treatment stands out as a modern, non-invasive solution. Designed for people who want visible skin improvement without downtime, this treatment uses advanced laser technology to rejuvenate the skin from within. At Satya Skin & Hair Solutions, we offer customized ClearLift Laser Treatment in Delhi and Gurgaon, focusing on safe, gradual, and natural-looking skin enhancement.
             </p>
 
             <motion.button
@@ -126,8 +110,8 @@ export default function BotoxTreatment() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.botox}
-              alt="Botox Treatment"
+              src={assets.clearlift}
+              alt="ClearLift Laser Treatment"
               className="
       w-full 
       h-[300px] sm:h-[350px]
@@ -160,20 +144,20 @@ export default function BotoxTreatment() {
           {/* Content Block (duplicated for seamless loop) */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Natural Results • Wrinkle Reduction • Muscle Relaxation • No Downtime • Precise Dosing • Facial Harmony • Satya Excellence
+              Non-Ablative Rejuvenation • No Downtime • Collagen Stimulation • Lunchtime Laser • Natural Glow • Gentle Yet Effective • Satya Excellence
             </span>
             <span className="px-12">
-              Natural Results • Wrinkle Reduction • Muscle Relaxation • No Downtime • Precise Dosing • Facial Harmony • Satya Excellence
+              Non-Ablative Rejuvenation • No Downtime • Collagen Stimulation • Lunchtime Laser • Natural Glow • Gentle Yet Effective • Satya Excellence
             </span>
           </div>
 
           {/* Duplicate again for smoothness */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Natural Results • Wrinkle Reduction • Muscle Relaxation • No Downtime • Precise Dosing • Facial Harmony • Satya Excellence
+              Non-Ablative Rejuvenation • No Downtime • Collagen Stimulation • Lunchtime Laser • Natural Glow • Gentle Yet Effective • Satya Excellence
             </span>
             <span className="px-12">
-              Natural Results • Wrinkle Reduction • Muscle Relaxation • No Downtime • Precise Dosing • Facial Harmony • Satya Excellence
+              Non-Ablative Rejuvenation • No Downtime • Collagen Stimulation • Lunchtime Laser • Natural Glow • Gentle Yet Effective • Satya Excellence
             </span>
           </div>
         </motion.div>
@@ -258,13 +242,13 @@ export default function BotoxTreatment() {
               </span>
             </div>
             <p className="text-[#828D9C] italic border-l-4 border-[#9E4A47] pl-4">
-              Ethical, patient-centric protocols — balancing safety, precision, natural results, and long-term facial harmony.
+              Ethical, patient-centric protocols — balancing safety, precision, artistry, and long-term skin health.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* === What is Botox + How it Works + Areas + Video === */}
+      {/* === What is ClearLift Laser + How it Works + Video === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
         <div className="max-w-7xl mx-auto space-y-16">
           <motion.div
@@ -275,42 +259,27 @@ export default function BotoxTreatment() {
             className="text-center space-y-4"
           >
             <h2 className="text-2xl md:text-5xl font-bold text-[#9E4A47]">
-              What Is Botox Treatment?
+              What is ClearLift Laser Treatment?
             </h2>
             <p className="text-base md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
-              At Satya Skin & Hair Solutions in Gurugram & Delhi NCR, Botox Treatment is performed under expert dermatologist supervision — emphasizing natural-looking results, precise dosing, and long-term facial harmony.
+              At Satya Skin & Hair Solutions in Gurugram & Delhi NCR, ClearLift Laser Treatment is performed under expert dermatologist supervision — emphasizing gentle, non-ablative skin rejuvenation with zero downtime and natural-looking results.
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={container} className="space-y-8">
               <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                Botox is a purified form of botulinum toxin type A used in very small, controlled doses for medical and aesthetic purposes. In cosmetic dermatology, Botox works by temporarily relaxing targeted facial muscles that cause dynamic wrinkles.
+                ClearLift™, developed by Alma Lasers, is a fractional, non-ablative laser treatment that targets deeper layers of the skin without damaging the surface.
               </p>
 
               <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                This relaxation allows the skin overlying those muscles to appear smoother. Botox does not fill the skin; instead, it reduces muscle activity that contributes to wrinkle formation.
+                This means no peeling or skin damage, minimal discomfort, and little to no downtime. It is often called a “lunchtime laser” because you can resume daily activities immediately after treatment.
               </p>
 
-              <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                Why People Choose Botox Treatment? People choose Botox treatment to soften wrinkles caused by facial expressions such as frowning, squinting, or raising eyebrows. Common search queries include Botox for wrinkles, anti-wrinkle injections, and Botox face treatment. Botox is preferred because it is minimally invasive, requires no surgery, and has predictable, gradual effects when performed correctly.
-              </p>
-
-              <div>
-                <p className="font-semibold text-[#9E4A47] mb-3">Which Facial Areas Can Be Treated With Botox?</p>
-                <ul className="grid sm:grid-cols-2 gap-3 text-base md:text-lg text-[#2B333C]/90">
-                  <li className="flex items-start gap-2">• Forehead lines</li>
-                  <li className="flex items-start gap-2">• Frown lines between the eyebrows</li>
-                  <li className="flex items-start gap-2">• Crow’s feet around the eyes</li>
-                  <li className="flex items-start gap-2">• Bunny lines on the nose</li>
-                  <li className="flex items-start gap-2">• Jawline or masseter muscles (selected cases)</li>
-                </ul>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#9E4A47]/5 to-[#B87C72]/5 p-6 rounded-2xl border border-[#9E4A47]/20">
-                <p className="font-semibold text-[#9E4A47] mb-3">Botox vs Dermal Fillers – Understanding the Difference</p>
+              <div className="bg-white/70 p-6 rounded-2xl border border-[#DFDFDD]">
+                <p className="font-semibold text-[#9E4A47] mb-3">How Does ClearLift Laser Work?</p>
                 <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                  Many people confuse Botox with fillers. Botox relaxes muscles to reduce expression lines, while fillers add volume to areas with structural loss. Botox is ideal for dynamic wrinkles, while fillers address volume-related concerns. At Satya Skin & Hair Solutions, treatment choice is based on facial anatomy and movement patterns, not trends.
+                  ClearLift uses controlled laser energy to penetrate the deeper layers of the skin, stimulate collagen production, improve blood circulation, and trigger skin renewal. Since the surface skin remains intact, the treatment is gentle yet effective.
                 </p>
               </div>
 
@@ -319,10 +288,10 @@ export default function BotoxTreatment() {
                 className="grid sm:grid-cols-2 gap-4"
               >
                 {[
-                  "Temporarily relaxes targeted facial muscles",
-                  "Reduces dynamic wrinkles",
-                  "Minimally invasive with no surgery",
-                  "Predictable and natural-looking results",
+                  "No peeling or skin damage",
+                  "Minimal discomfort",
+                  "Little to no downtime",
+                  "Safe for most skin types",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -357,8 +326,8 @@ export default function BotoxTreatment() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual Botox video link
-                  title="Botox Treatment Procedure"
+                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual ClearLift video link
+                  title="ClearLift Laser Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -370,75 +339,72 @@ export default function BotoxTreatment() {
         </div>
       </section>
 
-      {/* === Procedure + Consultation + What to Expect === */}
+      {/* === Skin Concerns Grid === */}
       <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
-            Consultation, Procedure & What to Expect After Botox Treatment
+            Skin Concerns Treated with ClearLift
           </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Consultation & Procedure */}
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#DFDFDD]">
-              <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-6">
-                Consultation and Facial Assessment + How Botox Treatment Is Performed
-              </h3>
-              <div className="space-y-6 md:text-lg text-[#2B333C]/90">
-                <p>
-                  Every Botox treatment begins with a detailed facial assessment. Muscle strength, facial symmetry, expression patterns, and skin condition are evaluated before planning injections.
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              "Fine lines and wrinkles",
+              "Uneven skin tone",
+              "Pigmentation",
+              "Redness and vascular appearance",
+              "Mild skin laxity",
+              "Dull and tired skin",
+              "Early signs of aging",
+            ].map((concern, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-8 rounded-2xl shadow-lg border border-[#DFDFDD] hover:shadow-2xl transition-all duration-300"
+              >
+                <p className="text-base md:text-xl font-semibold text-[#2B333C]">
+                  {concern}
                 </p>
-                <p>
-                  Botox treatment is performed in a clinical setting using fine needles. Small amounts of Botox are injected into specific muscles based on facial mapping. The procedure typically takes a short time. Most patients describe minimal discomfort. No general anaesthesia is required, and patients can usually resume normal activities soon after.
-                </p>
-              </div>
-            </div>
-
-            {/* Aftercare & Results Timing */}
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#DFDFDD]">
-              <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-6">
-                What to Expect After Botox Treatment + When Do Results Become Visible?
-              </h3>
-              <div className="space-y-6 md:text-lg text-[#2B333C]/90">
-                <p>
-                  After Botox treatment, mild redness or tiny injection marks may be visible and usually settle within a few hours. Bruising is uncommon but can occur in some individuals. Patients are advised to avoid rubbing the treated area and to follow simple post-treatment instructions to support optimal results.
-                </p>
-                <p>
-                  Botox does not work instantly. Results typically begin to appear within a few days and continue to develop over one to two weeks. Wrinkles gradually soften as muscle activity reduces. This gradual onset is why Botox results look natural when planned correctly.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="max-w-5xl mx-auto bg-[#FCEBDE]/40 p-8 rounded-3xl text-center">
-            <div className="md:text-3xl font-bold text-[#9E4A47] mb-2">How Long Do Botox Results Last?</div>
-            <p className="md:text-lg text-[#2B333C]/90">
-              Botox effects are temporary. Muscle relaxation typically lasts for several months, after which muscle activity gradually returns. Duration varies depending on muscle strength, treatment area, and individual metabolism. Repeat treatments are planned conservatively.
-            </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* === Preventive + Men/Women + Safety + Natural Expressions === */}
+      {/* === Benefits Grid === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
-            Preventive Botox • Safety • Natural Results
+            Benefits of ClearLift Laser Treatment
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Botox for Preventive Ageing",
-                text: "Some individuals seek Botox for preventive purposes to reduce the formation of deep expression lines over time. Preventive Botox uses lower doses and focuses on muscle relaxation rather than visible wrinkle correction. This approach is discussed carefully during consultation to ensure it aligns with facial dynamics and patient expectations.",
+                title: "Non-invasive and non-ablative",
+                text: "No damage to the skin surface.",
               },
               {
-                title: "Botox Treatment for Men and Women",
-                text: "Botox treatment is suitable for both men and women. Men often require different dosing due to stronger facial muscles. Treatment planning considers facial structure and muscle strength rather than a one-size-fits-all approach.",
+                title: "Minimal discomfort",
+                text: "Comfortable lunchtime procedure.",
               },
               {
-                title: "Safety and Side Effects of Botox Treatment",
-                text: "Botox is considered safe when administered by a trained medical professional. Temporary side effects may include mild swelling, redness, or headache. Rare side effects such as drooping can occur if Botox is improperly placed. This is why precise technique and anatomical knowledge are essential.",
+                title: "No downtime",
+                text: "Return to work or daily activities immediately.",
               },
-            ].map((item, i) => (
+              {
+                title: "Safe for most skin types",
+                text: "Including Indian skin tones.",
+              },
+              {
+                title: "Improves skin texture and tone",
+                text: "Smoother, brighter, even complexion.",
+              },
+              {
+                title: "Stimulates collagen production",
+                text: "Natural, gradual rejuvenation.",
+              },
+            ].map((adv, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -448,65 +414,151 @@ export default function BotoxTreatment() {
                 className="bg-white p-8 rounded-2xl shadow-lg border border-[#DFDFDD] hover:shadow-2xl transition-all duration-300"
               >
                 <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">
-                  {item.title}
+                  {adv.title}
                 </h3>
-                <p className="text-[#828D9C] leading-relaxed ">{item.text}</p>
+                <p className="text-[#828D9C] leading-relaxed ">{adv.text}</p>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#DFDFDD]">
-              <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">
-                Botox and Natural Facial Expressions
-              </h3>
-              <p className="md:text-lg text-[#2B333C]/90">
-                A common concern is whether Botox will make the face look frozen. When planned conservatively, Botox softens wrinkles while preserving natural movement. At Satya Skin & Hair Solutions, the goal is facial harmony and subtle improvement, not stiffness or loss of expression.
+      {/* === Procedure & Recovery === */}
+      <section className="py-7 sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
+        <div className="max-w-6xl mx-auto text-center space-y-10">
+          <h2 className="text-2xl md:text-4xl font-bold text-[#9E4A47]">
+            What Happens During the Procedure?
+          </h2>
+
+          <div className="space-y-6">
+            <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#DFDFDD]">
+              <p className="md:text-lg text-[#2B333C]/90 mb-6">
+                Procedure time: 20–30 minutes
               </p>
+              <div className="space-y-6 md:text-lg text-[#2B333C]/90">
+                <p>
+                  <strong>Skin is cleansed</strong> — Thorough cleansing to prepare the skin.
+                </p>
+                <p>
+                  <strong>Protective eyewear is provided</strong> — Complete eye protection during treatment.
+                </p>
+                <p>
+                  <strong>Laser pulses are delivered to targeted areas</strong> — Controlled energy reaches deeper layers.
+                </p>
+                <p>
+                  <strong>Mild warming sensation may be felt</strong> — Comfortable and quick session.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#DFDFDD]">
+            <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#DFDFDD]">
               <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">
-                Who May Not Be Suitable for Botox Treatment?
+                What to Expect After Treatment?
               </h3>
-              <p className="md:text-lg text-[#2B333C]/90">
-                Botox may not be recommended for individuals with certain neuromuscular conditions, active skin infections at injection sites, or unrealistic expectations. A medical consultation helps determine suitability and ensures patient safety.
+              <p className="md:text-lg text-[#2B333C]/90 mb-6">
+                Recovery after ClearLift Laser Treatment is predictable:
               </p>
-              <p className="mt-6 md:text-lg text-[#2B333C]/90">
-                Botox primarily affects muscle activity, not skin texture. For concerns like pigmentation, scars, or skin laxity, other treatments may be recommended alongside or instead of Botox.
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  { time: "Immediate", desc: "No significant redness or peeling" },
+                  { time: "Immediate", desc: "Return to normal routine" },
+                  {
+                    time: "Over sessions",
+                    desc: "Gradual improvement as collagen builds",
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#FCEBDE]/40 p-6 rounded-xl">
+                    <div className="md:text-3xl font-bold text-[#9E4A47] mb-2">
+                      {item.time}
+                    </div>
+                    <p className="md:text-lg text-[#2B333C]">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-8 text-lg text-[#828D9C] italic">
+                Results improve as collagen builds over time
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* === Additional Insights + Why Satya === */}
+      {/* === Sessions + Ideal Candidate + Safety + Cost + Why Satya === */}
       <section className="sm:py-16 px-6 md:px-16 lg:px-24 space-y-16">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Botox Before and After Expectations + Botox vs Home Remedies or Creams
+            How Many Sessions Are Required?
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            People searching for Botox before and after images should understand that results vary. Botox softens lines rather than erasing all wrinkles completely. The aim is refreshed, relaxed appearance rather than dramatic change. Realistic expectations lead to higher satisfaction.<br /><br />
-            Topical creams cannot relax facial muscles. While skincare improves skin health, it cannot replicate the effect of Botox on expression lines. This is why Botox remains a preferred medical option for dynamic wrinkles.
+            3–5 sessions for optimal results • Sessions spaced 2–4 weeks apart • Maintenance sessions recommended
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto bg-gradient-to-br from-[#9E4A47]/5 to-[#B87C72]/5 rounded-3xl p-10 border border-[#9E4A47]/20">
-          <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Long-Term Planning With Botox Treatment
-          </h2>
-          <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            Botox is most effective when used as part of a long-term facial ageing strategy. Overuse or frequent high-dose treatments can alter facial balance. At Satya Skin & Hair Solutions, long-term planning ensures results remain natural as facial structure changes with age.
-          </p>
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+          {/* Ideal Candidate */}
+          <div className="bg-white p-10 rounded-3xl shadow-2xl border border-[#DFDFDD]">
+            <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
+              Who Is an Ideal Candidate?
+            </h2>
+            <p className="md:text-lg text-[#2B333C]/90">
+              ClearLift is suitable for:<br />
+              • Individuals with early signs of aging<br />
+              • People with pigmentation or uneven tone<br />
+              • Those wanting non-invasive treatment<br />
+              • Busy individuals avoiding downtime
+            </p>
+          </div>
+
+          {/* Safety + Cost */}
+          <div className="space-y-8">
+            <div className="bg-white p-10 rounded-3xl shadow-2xl border border-[#DFDFDD]">
+              <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
+                Is ClearLift Laser Painful?
+              </h2>
+              <p className="md:text-lg text-[#2B333C]/90">
+                ClearLift is designed to be comfortable. Most patients feel only mild warmth or tingling during the procedure.
+              </p>
+            </div>
+
+            <div className="bg-white p-10 rounded-3xl shadow-2xl border border-[#DFDFDD]">
+              <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
+                Is ClearLift Laser Safe?
+              </h2>
+              <p className="md:text-lg text-[#2B333C]/90">
+                Yes, when performed under dermatologist supervision. It is:<br />
+                • Non-ablative<br />
+                • Controlled and precise<br />
+                • Suitable for Indian skin types
+              </p>
+            </div>
+
+            <div className="bg-white p-10 rounded-3xl shadow-2xl border border-[#DFDFDD]">
+              <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
+                Cost of ClearLift Laser Treatment in Delhi & Gurgaon
+              </h2>
+              <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
+                Cost depends on:<br />
+                • Area treated<br />
+                • Number of sessions<br />
+                • Skin condition<br /><br />
+                Consultation helps determine the exact plan.
+              </p>
+            </div>
+          </div>
         </div>
 
+        {/* Why Satya */}
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Why Choose Satya Skin & Hair Solutions for Botox Treatment in Gurgaon?
+            Why Choose Satya Skin & Hair Solutions?
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            People searching for the best Botox treatment in Gurgaon often prioritise safety, experience, and natural results. At Satya Skin & Hair Solutions, Botox treatments are performed with medical oversight, conservative dosing, and personalised facial assessment to ensure subtle, balanced outcomes.
+            • Dermatologist-led treatments<br />
+            • Advanced Alma laser technology<br />
+            • Customized protocols<br />
+            • Safe for Indian skin<br />
+            • Focus on long-term skin health<br /><br />
+            Patients searching for ClearLift Laser Treatment in Delhi and Gurgaon benefit from expert-guided care and realistic results.
           </p>
         </div>
       </section>
@@ -515,10 +567,10 @@ export default function BotoxTreatment() {
       <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-r from-[#9E4A47] to-[#B87C72] text-white text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="md:text-4xl md:text-5xl font-bold">
-            Book Your Botox Treatment Consultation in Delhi & Gurgaon
+            Book ClearLift Laser Treatment in Delhi & Gurgaon
           </h2>
           <p className="md:text-xl opacity-90">
-            Botox treatment is a medical aesthetic procedure that requires proper assessment and planning. A consultation helps determine suitability, treatment areas, and expected outcomes. If you are considering Botox treatment in Delhi & Gurgaon, a doctor-led consultation at Satya Skin & Hair Solutions ensures clarity, safety, and informed decision-making.
+            If you want smoother, brighter skin without downtime, ClearLift Laser Treatment is a reliable option.
           </p>
           <button
             onClick={() => setShowPopup(true)}

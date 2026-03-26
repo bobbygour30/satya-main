@@ -75,6 +75,15 @@ import PigmentationTreatment from "./pages/PigmentationTreatment";
 import DullSkinOpenPores from "./pages/DullSkinOpenPores";
 import AcneScarTreatment from "./pages/AcneScarTreatment";
 import LipEnhancement from "./pages/LipEnhancement";
+import IPLPhotoFacial from "./pages/IPLPhotoFacial";
+import Microdermabrasion from "./pages/Microdermabrasion";
+import BotoxTreatment from "./pages/BotoxTreatment";
+import ClearSkinLaser from "./pages/ClearSkinLaser";
+import ClearLiftLaser from "./pages/ClearLiftLaser";
+import FormaFacial from "./pages/FormaFacial";
+import PRPTherapy from "./pages/PRPTherapy";
+import AFTSSRTreatment from "./pages/AFTSSRTreatment";
+import DermalFillersTreatment from "./pages/DermalFillersTreatment";
 
 // Add CSS to hide Google Translate's default UI elements
 const globalStyles = `
@@ -162,6 +171,15 @@ export default function App() {
         <Route path="/skin/vampire-facelift" element={<VampireFacelift />} />
         <Route path="/skin/mesotherapy" element={<MesotherapyTreatment />} />
         <Route path="/skin/lip-enhancement" element={<LipEnhancement />} />
+        <Route path="/skin/photo-facial" element={<IPLPhotoFacial />} />
+        <Route path="/skin/microdermabrasion" element={<Microdermabrasion />} />
+        <Route path="/skin/botox" element={<BotoxTreatment />} />
+        <Route path="/skin/clearskin-laser" element={<ClearSkinLaser />} />
+        <Route path="/skin/clearlift-laser" element={<ClearLiftLaser />} />
+        <Route path="/skin/forma-facial" element={<FormaFacial />} />
+        <Route path="/skin/prp-therapy" element={<PRPTherapy />} />
+        <Route path="/skin/aft-ssr" element={<AFTSSRTreatment />} />
+        <Route path="/skin/dermal-fillers" element={<DermalFillersTreatment />} />
         {/* Skin Concerns */}
         <Route path="/skin/wrinkles-fine-lines" element={<WrinklesFineLinesTreatment />} />
         <Route path="/skin/pigmentation" element={<PigmentationTreatment />} />

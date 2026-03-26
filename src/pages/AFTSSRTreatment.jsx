@@ -10,44 +10,44 @@ import ConsultationPopup from "../components/ConsultationPopup";
 
 const faqs = [
   {
-    q: "How long does it take for Botox to work?",
-    a: "Botox usually starts showing results within 3–5 days, with full results visible in 10–14 days.",
+    q: "Can AFT-SSR help with acne scars?",
+    a: "AFT-SSR helps improve mild acne scars and post-acne marks by boosting collagen and reducing redness. It smoothens skin texture over time but may need combination treatments for deeper scars.",
   },
   {
-    q: "How long does Botox last?",
-    a: "Results typically last between 3 to 6 months, depending on individual factors.",
+    q: "Is AFT-SSR suitable for sensitive skin?",
+    a: "Yes, AFT-SSR is designed to deliver controlled and uniform light energy, making it safer for sensitive and Indian skin types when performed under dermatologist supervision.",
   },
   {
-    q: "What is BOTOX?",
-    a: "Botox is a purified protein (botulinum toxin) used to relax muscles and reduce wrinkles.",
+    q: "Can AFT-SSR reduce pigmentation permanently?",
+    a: "AFT-SSR reduces pigmentation effectively, but results are not always permanent. Maintenance, sun protection, and skincare are essential to prevent recurrence.",
   },
   {
-    q: "How do wrinkles form?",
-    a: "Wrinkles form due to repeated muscle movements, aging, collagen loss, and environmental factors.",
+    q: "Is AFT-SSR better than laser toning or chemical peels?",
+    a: "AFT-SSR treats multiple concerns like pigmentation and redness together, while lasers and peels are more targeted. Often, combination treatments give the best results.",
   },
   {
-    q: "How does Botox work?",
-    a: "Botox blocks nerve signals to muscles, reducing their movement and smoothing the skin above them.",
+    q: "What results should I expect from AFT-SSR?",
+    a: "You can expect gradual improvement in skin tone, brightness, and texture over 3–4 sessions. Results are natural and improve further with collagen stimulation.",
   },
   {
-    q: "Is Botox safe?",
-    a: "Yes, Botox is safe when administered by qualified dermatologists in controlled doses.",
+    q: "How many sessions are required?",
+    a: "Most patients need 3–6 sessions depending on skin concerns. Maintenance sessions may be recommended for long-term results.",
   },
   {
-    q: "When will the results be visible?",
-    a: "Results become noticeable within a few days and peak in about 2 weeks.",
+    q: "Is there any downtime after AFT-SSR?",
+    a: "There is minimal downtime. Mild redness may occur for a few hours, and most patients resume daily activities immediately.",
   },
   {
-    q: "Is it just one-time affair?",
-    a: "No, Botox requires repeat sessions every 3–6 months to maintain results.",
+    q: "Can AFT-SSR treat redness and rosacea?",
+    a: "Yes, AFT-SSR can help reduce redness and visible blood vessels by targeting vascular components in the skin.",
   },
   {
-    q: "Are there any contraindications?",
-    a: "Botox may not be suitable for pregnant women, certain neurological conditions, or specific medical histories.",
+    q: "How long does each session take?",
+    a: "Each session typically takes 20–30 minutes, depending on the area being treated.",
   },
   {
-    q: "What about the common myths we hear about Botox?",
-    a: "When done correctly, Botox does not freeze your face. It enhances natural expressions while reducing wrinkles.",
+    q: "Can AFT-SSR be combined with other treatments?",
+    a: "Yes, it is often combined with peels, lasers, or medical skincare for enhanced and faster results.",
   },
 ];
 const container = {
@@ -60,7 +60,7 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-export default function BotoxTreatment() {
+export default function AFTSSRTreatment() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -72,18 +72,18 @@ export default function BotoxTreatment() {
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
       {/* ==================== SEO META (exactly like HomePage) ==================== */}
       <SEO
-        title="Botox Treatment in Delhi | Best Botox Injection Doctors in Gurgaon"
-        description="Get safe and natural Botox treatment in Delhi & Gurgaon. Reduce wrinkles, fine lines & treat medical conditions with expert dermatologists."
-        canonical="https://satyaskinhair.com/skin/botox"
+        title="AFT-SSR Treatment in Delhi | Advanced Skin Rejuvenation & Pigmentation Therapy"
+        description="Get clear, brighter skin with AFT-SSR treatment in Delhi & Gurgaon. Advanced light-based therapy for pigmentation, redness, and skin rejuvenation at Satya Skin & Hair Solutions."
+        canonical="https://satyaskinhair.com/skin/aft-ssr"
         showSchema={false} // Only home page uses schema
       />
-      {/* === PREMIUM BOTOX HERO BANNER === */}
+      {/* === PREMIUM AFT-SSR HERO BANNER === */}
       <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.botox || assets.banner}')`,
+            backgroundImage: `url('${assets.aftssr || assets.banner}')`,
           }}
         />
 
@@ -97,16 +97,16 @@ export default function BotoxTreatment() {
           <div className="space-y-6 sm:space-y-8">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
-                Botox Treatment
+                AFT-SSR Treatment
               </h1>
 
               <p className="text-[#9E4A47] text-lg sm:text-xl md:text-2xl font-semibold mt-2">
-                Best Botox Treatment in Delhi & Gurgaon
+                Best AFT-SSR Treatment in Delhi & Gurgaon
               </p>
             </div>
 
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl">
-              Aging, stress, and repetitive facial movements lead to the formation of wrinkles and fine lines, especially on the forehead, around the eyes, and between the brows. Botox treatment is one of the most effective non-surgical solutions to relax these lines and restore a smoother appearance. At Satya Skin & Hair Solutions, we provide advanced Botox treatment in Delhi and Gurgaon, performed by experienced dermatologists focusing on natural-looking results.
+              Modern skin concerns like pigmentation, redness, uneven tone, and dullness require solutions that go beyond creams and facials. AFT-SSR (Advanced Fluorescent Technology – Selective Spectrum Rejuvenation) is a next-generation, non-invasive skin treatment that uses controlled light energy to target multiple skin concerns safely. At Satya Skin & Hair Solutions, we offer customized AFT-SSR Treatment in Delhi and Gurgaon, designed to improve skin clarity, texture, and overall radiance under expert dermatologist supervision.
             </p>
 
             <motion.button
@@ -126,8 +126,8 @@ export default function BotoxTreatment() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.botox}
-              alt="Botox Treatment"
+              src={assets.aftssr}
+              alt="AFT-SSR Treatment"
               className="
       w-full 
       h-[300px] sm:h-[350px]
@@ -160,20 +160,20 @@ export default function BotoxTreatment() {
           {/* Content Block (duplicated for seamless loop) */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Natural Results • Wrinkle Reduction • Muscle Relaxation • No Downtime • Precise Dosing • Facial Harmony • Satya Excellence
+              Clear Even Skin • Pigmentation Reduction • Redness Control • Collagen Boost • No Downtime • Safe for Indian Skin • Satya Excellence
             </span>
             <span className="px-12">
-              Natural Results • Wrinkle Reduction • Muscle Relaxation • No Downtime • Precise Dosing • Facial Harmony • Satya Excellence
+              Clear Even Skin • Pigmentation Reduction • Redness Control • Collagen Boost • No Downtime • Safe for Indian Skin • Satya Excellence
             </span>
           </div>
 
           {/* Duplicate again for smoothness */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
-              Natural Results • Wrinkle Reduction • Muscle Relaxation • No Downtime • Precise Dosing • Facial Harmony • Satya Excellence
+              Clear Even Skin • Pigmentation Reduction • Redness Control • Collagen Boost • No Downtime • Safe for Indian Skin • Satya Excellence
             </span>
             <span className="px-12">
-              Natural Results • Wrinkle Reduction • Muscle Relaxation • No Downtime • Precise Dosing • Facial Harmony • Satya Excellence
+              Clear Even Skin • Pigmentation Reduction • Redness Control • Collagen Boost • No Downtime • Safe for Indian Skin • Satya Excellence
             </span>
           </div>
         </motion.div>
@@ -258,13 +258,13 @@ export default function BotoxTreatment() {
               </span>
             </div>
             <p className="text-[#828D9C] italic border-l-4 border-[#9E4A47] pl-4">
-              Ethical, patient-centric protocols — balancing safety, precision, natural results, and long-term facial harmony.
+              Ethical, patient-centric protocols — balancing safety, precision, artistry, and long-term skin health.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* === What is Botox + How it Works + Areas + Video === */}
+      {/* === What is AFT-SSR + How it Works + Video === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
         <div className="max-w-7xl mx-auto space-y-16">
           <motion.div
@@ -275,42 +275,27 @@ export default function BotoxTreatment() {
             className="text-center space-y-4"
           >
             <h2 className="text-2xl md:text-5xl font-bold text-[#9E4A47]">
-              What Is Botox Treatment?
+              What Is AFT-SSR Treatment?
             </h2>
             <p className="text-base md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
-              At Satya Skin & Hair Solutions in Gurugram & Delhi NCR, Botox Treatment is performed under expert dermatologist supervision — emphasizing natural-looking results, precise dosing, and long-term facial harmony.
+              At Satya Skin & Hair Solutions in Gurugram & Delhi NCR, AFT-SSR Treatment is performed under expert dermatologist supervision — emphasizing advanced light-based skin rejuvenation, pigmentation reduction, and natural radiance with minimal downtime.
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={container} className="space-y-8">
               <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                Botox is a purified form of botulinum toxin type A used in very small, controlled doses for medical and aesthetic purposes. In cosmetic dermatology, Botox works by temporarily relaxing targeted facial muscles that cause dynamic wrinkles.
+                AFT-SSR is an advanced form of light-based skin therapy that delivers filtered and controlled light energy into the skin. Unlike traditional IPL, AFT technology ensures more uniform energy distribution, reduced risk of overheating, better safety for Indian skin types, and enhanced treatment precision.
               </p>
 
               <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                This relaxation allows the skin overlying those muscles to appear smoother. Botox does not fill the skin; instead, it reduces muscle activity that contributes to wrinkle formation.
+                The “Selective Spectrum Rejuvenation” component allows the treatment to target specific skin concerns without damaging surrounding tissue.
               </p>
 
-              <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                Why People Choose Botox Treatment? People choose Botox treatment to soften wrinkles caused by facial expressions such as frowning, squinting, or raising eyebrows. Common search queries include Botox for wrinkles, anti-wrinkle injections, and Botox face treatment. Botox is preferred because it is minimally invasive, requires no surgery, and has predictable, gradual effects when performed correctly.
-              </p>
-
-              <div>
-                <p className="font-semibold text-[#9E4A47] mb-3">Which Facial Areas Can Be Treated With Botox?</p>
-                <ul className="grid sm:grid-cols-2 gap-3 text-base md:text-lg text-[#2B333C]/90">
-                  <li className="flex items-start gap-2">• Forehead lines</li>
-                  <li className="flex items-start gap-2">• Frown lines between the eyebrows</li>
-                  <li className="flex items-start gap-2">• Crow’s feet around the eyes</li>
-                  <li className="flex items-start gap-2">• Bunny lines on the nose</li>
-                  <li className="flex items-start gap-2">• Jawline or masseter muscles (selected cases)</li>
-                </ul>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#9E4A47]/5 to-[#B87C72]/5 p-6 rounded-2xl border border-[#9E4A47]/20">
-                <p className="font-semibold text-[#9E4A47] mb-3">Botox vs Dermal Fillers – Understanding the Difference</p>
+              <div className="bg-white/70 p-6 rounded-2xl border border-[#DFDFDD]">
+                <p className="font-semibold text-[#9E4A47] mb-3">How Does AFT-SSR Work?</p>
                 <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                  Many people confuse Botox with fillers. Botox relaxes muscles to reduce expression lines, while fillers add volume to areas with structural loss. Botox is ideal for dynamic wrinkles, while fillers address volume-related concerns. At Satya Skin & Hair Solutions, treatment choice is based on facial anatomy and movement patterns, not trends.
+                  AFT-SSR works through selective light absorption: light energy penetrates the skin, pigmented or damaged cells absorb the energy, targeted cells break down or are eliminated, skin regeneration is triggered, and collagen production increases, improving texture and firmness. The result is clearer, brighter, and more even-toned skin over time.
                 </p>
               </div>
 
@@ -319,10 +304,10 @@ export default function BotoxTreatment() {
                 className="grid sm:grid-cols-2 gap-4"
               >
                 {[
-                  "Temporarily relaxes targeted facial muscles",
-                  "Reduces dynamic wrinkles",
-                  "Minimally invasive with no surgery",
-                  "Predictable and natural-looking results",
+                  "More uniform energy distribution",
+                  "Reduced risk of overheating",
+                  "Better safety for Indian skin types",
+                  "Enhanced treatment precision",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -357,8 +342,8 @@ export default function BotoxTreatment() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual Botox video link
-                  title="Botox Treatment Procedure"
+                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual AFT-SSR video link
+                  title="AFT-SSR Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -370,75 +355,73 @@ export default function BotoxTreatment() {
         </div>
       </section>
 
-      {/* === Procedure + Consultation + What to Expect === */}
+      {/* === Skin Concerns Grid === */}
       <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
-            Consultation, Procedure & What to Expect After Botox Treatment
+            Skin Concerns Treated with AFT-SSR
           </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Consultation & Procedure */}
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#DFDFDD]">
-              <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-6">
-                Consultation and Facial Assessment + How Botox Treatment Is Performed
-              </h3>
-              <div className="space-y-6 md:text-lg text-[#2B333C]/90">
-                <p>
-                  Every Botox treatment begins with a detailed facial assessment. Muscle strength, facial symmetry, expression patterns, and skin condition are evaluated before planning injections.
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              "Pigmentation and dark spots",
+              "Sun damage and tanning",
+              "Uneven skin tone",
+              "Redness and rosacea",
+              "Fine lines and early wrinkles",
+              "Dull and tired skin",
+              "Mild acne marks",
+              "Rough skin texture",
+            ].map((concern, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-8 rounded-2xl shadow-lg border border-[#DFDFDD] hover:shadow-2xl transition-all duration-300"
+              >
+                <p className="text-base md:text-xl font-semibold text-[#2B333C]">
+                  {concern}
                 </p>
-                <p>
-                  Botox treatment is performed in a clinical setting using fine needles. Small amounts of Botox are injected into specific muscles based on facial mapping. The procedure typically takes a short time. Most patients describe minimal discomfort. No general anaesthesia is required, and patients can usually resume normal activities soon after.
-                </p>
-              </div>
-            </div>
-
-            {/* Aftercare & Results Timing */}
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#DFDFDD]">
-              <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-6">
-                What to Expect After Botox Treatment + When Do Results Become Visible?
-              </h3>
-              <div className="space-y-6 md:text-lg text-[#2B333C]/90">
-                <p>
-                  After Botox treatment, mild redness or tiny injection marks may be visible and usually settle within a few hours. Bruising is uncommon but can occur in some individuals. Patients are advised to avoid rubbing the treated area and to follow simple post-treatment instructions to support optimal results.
-                </p>
-                <p>
-                  Botox does not work instantly. Results typically begin to appear within a few days and continue to develop over one to two weeks. Wrinkles gradually soften as muscle activity reduces. This gradual onset is why Botox results look natural when planned correctly.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="max-w-5xl mx-auto bg-[#FCEBDE]/40 p-8 rounded-3xl text-center">
-            <div className="md:text-3xl font-bold text-[#9E4A47] mb-2">How Long Do Botox Results Last?</div>
-            <p className="md:text-lg text-[#2B333C]/90">
-              Botox effects are temporary. Muscle relaxation typically lasts for several months, after which muscle activity gradually returns. Duration varies depending on muscle strength, treatment area, and individual metabolism. Repeat treatments are planned conservatively.
-            </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* === Preventive + Men/Women + Safety + Natural Expressions === */}
+      {/* === Benefits Grid === */}
       <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
-            Preventive Botox • Safety • Natural Results
+            Benefits of AFT-SSR Treatment
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Botox for Preventive Ageing",
-                text: "Some individuals seek Botox for preventive purposes to reduce the formation of deep expression lines over time. Preventive Botox uses lower doses and focuses on muscle relaxation rather than visible wrinkle correction. This approach is discussed carefully during consultation to ensure it aligns with facial dynamics and patient expectations.",
+                title: "Non-invasive and painless",
+                text: "No needles, no surgery.",
               },
               {
-                title: "Botox Treatment for Men and Women",
-                text: "Botox treatment is suitable for both men and women. Men often require different dosing due to stronger facial muscles. Treatment planning considers facial structure and muscle strength rather than a one-size-fits-all approach.",
+                title: "No downtime",
+                text: "Resume daily activities immediately.",
               },
               {
-                title: "Safety and Side Effects of Botox Treatment",
-                text: "Botox is considered safe when administered by a trained medical professional. Temporary side effects may include mild swelling, redness, or headache. Rare side effects such as drooping can occur if Botox is improperly placed. This is why precise technique and anatomical knowledge are essential.",
+                title: "Safe for most skin types",
+                text: "Including Indian skin tones.",
               },
-            ].map((item, i) => (
+              {
+                title: "Targets multiple concerns in one treatment",
+                text: "Pigmentation, redness, texture — all at once.",
+              },
+              {
+                title: "Improves collagen production",
+                text: "Firmer, smoother skin over time.",
+              },
+              {
+                title: "Enhances skin clarity and brightness",
+                text: "Natural, even-toned glow.",
+              },
+            ].map((adv, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -448,66 +431,172 @@ export default function BotoxTreatment() {
                 className="bg-white p-8 rounded-2xl shadow-lg border border-[#DFDFDD] hover:shadow-2xl transition-all duration-300"
               >
                 <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">
-                  {item.title}
+                  {adv.title}
                 </h3>
-                <p className="text-[#828D9C] leading-relaxed ">{item.text}</p>
+                <p className="text-[#828D9C] leading-relaxed ">{adv.text}</p>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#DFDFDD]">
-              <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">
-                Botox and Natural Facial Expressions
-              </h3>
-              <p className="md:text-lg text-[#2B333C]/90">
-                A common concern is whether Botox will make the face look frozen. When planned conservatively, Botox softens wrinkles while preserving natural movement. At Satya Skin & Hair Solutions, the goal is facial harmony and subtle improvement, not stiffness or loss of expression.
-              </p>
+      {/* === Procedure Section (Before + During + After) === */}
+      <section className="py-7 sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
+        <div className="max-w-6xl mx-auto text-center space-y-10">
+          <h2 className="text-2xl md:text-4xl font-bold text-[#9E4A47]">
+            What Happens During AFT-SSR Treatment?
+          </h2>
+
+          <div className="space-y-6">
+            {/* Before */}
+            <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#DFDFDD]">
+              <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">Before the Procedure</h3>
+              <div className="space-y-4 md:text-lg text-[#2B333C]/90">
+                <p>• Consultation with a dermatologist</p>
+                <p>• Skin type and concern assessment</p>
+                <p>• Identification of pigmentation depth</p>
+                <p>• Customized treatment planning</p>
+              </div>
             </div>
 
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#DFDFDD]">
-              <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">
-                Who May Not Be Suitable for Botox Treatment?
-              </h3>
-              <p className="md:text-lg text-[#2B333C]/90">
-                Botox may not be recommended for individuals with certain neuromuscular conditions, active skin infections at injection sites, or unrealistic expectations. A medical consultation helps determine suitability and ensures patient safety.
+            {/* During */}
+            <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#DFDFDD]">
+              <p className="md:text-lg text-[#2B333C]/90 mb-6">
+                Session duration: 20–30 minutes
               </p>
-              <p className="mt-6 md:text-lg text-[#2B333C]/90">
-                Botox primarily affects muscle activity, not skin texture. For concerns like pigmentation, scars, or skin laxity, other treatments may be recommended alongside or instead of Botox.
+              <div className="space-y-6 md:text-lg text-[#2B333C]/90">
+                <p>
+                  <strong>Skin is cleansed</strong> — Thorough cleansing to prepare the skin.
+                </p>
+                <p>
+                  <strong>Cooling gel is applied</strong> — For comfort and better light penetration.
+                </p>
+                <p>
+                  <strong>A handheld device delivers controlled light pulses</strong> — Targeted energy reaches specific concerns.
+                </p>
+                <p>
+                  <strong>Protective eyewear is used</strong> — Complete eye safety.
+                </p>
+                <p>You may feel a mild warm or snapping sensation.</p>
+              </div>
+            </div>
+
+            {/* After */}
+            <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#DFDFDD]">
+              <h3 className="md:text-2xl font-semibold text-[#9E4A47] mb-4">What Happens After the Procedure?</h3>
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  { time: "Immediate", desc: "Mild redness for a few hours" },
+                  { time: "Immediate", desc: "No major downtime" },
+                  {
+                    time: "Over sessions",
+                    desc: "Gradual improvement in skin tone",
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#FCEBDE]/40 p-6 rounded-xl">
+                    <div className="md:text-3xl font-bold text-[#9E4A47] mb-2">
+                      {item.time}
+                    </div>
+                    <p className="md:text-lg text-[#2B333C]">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-8 text-lg text-[#828D9C] italic">
+                Pigmentation fades over sessions • Patients can resume daily activities immediately
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* === Additional Insights + Why Satya === */}
+      {/* === Sessions + Comparison + Safety === */}
       <section className="sm:py-16 px-6 md:px-16 lg:px-24 space-y-16">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Botox Before and After Expectations + Botox vs Home Remedies or Creams
+            How Many Sessions Are Required?
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            People searching for Botox before and after images should understand that results vary. Botox softens lines rather than erasing all wrinkles completely. The aim is refreshed, relaxed appearance rather than dramatic change. Realistic expectations lead to higher satisfaction.<br /><br />
-            Topical creams cannot relax facial muscles. While skincare improves skin health, it cannot replicate the effect of Botox on expression lines. This is why Botox remains a preferred medical option for dynamic wrinkles.
+            AFT-SSR works gradually:<br />
+            • Mild concerns: 3–4 sessions<br />
+            • Moderate pigmentation: 4–6 sessions<br />
+            • Maintenance: Periodic sessions<br /><br />
+            Sessions are usually spaced 3–4 weeks apart.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto bg-gradient-to-br from-[#9E4A47]/5 to-[#B87C72]/5 rounded-3xl p-10 border border-[#9E4A47]/20">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Long-Term Planning With Botox Treatment
+            AFT-SSR vs Traditional IPL
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            Botox is most effective when used as part of a long-term facial ageing strategy. Overuse or frequent high-dose treatments can alter facial balance. At Satya Skin & Hair Solutions, long-term planning ensures results remain natural as facial structure changes with age.
+            AFT-SSR is more advanced than IPL because:<br />
+            • Better energy control<br />
+            • Reduced side effects<br />
+            • More uniform results<br />
+            • Safer for Indian skin tones
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
           <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
-            Why Choose Satya Skin & Hair Solutions for Botox Treatment in Gurgaon?
+            Is AFT-SSR Safe?
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            People searching for the best Botox treatment in Gurgaon often prioritise safety, experience, and natural results. At Satya Skin & Hair Solutions, Botox treatments are performed with medical oversight, conservative dosing, and personalised facial assessment to ensure subtle, balanced outcomes.
+            Yes, when performed under trained dermatologist supervision.<br />
+            Possible temporary effects:<br />
+            • Mild redness<br />
+            • Slight warmth<br /><br />
+            These typically resolve within a few hours.
           </p>
+        </div>
+      </section>
+
+      {/* === Ideal Candidate + Cost + Why Satya === */}
+      <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+          <div className="bg-white p-10 rounded-3xl shadow-2xl border border-[#DFDFDD]">
+            <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
+              Who Is an Ideal Candidate?
+            </h2>
+            <p className="md:text-lg text-[#2B333C]/90">
+              AFT-SSR is suitable for:<br />
+              • Pigmentation issues<br />
+              • Uneven skin tone<br />
+              • Early aging signs<br />
+              • Redness or sensitivity<br />
+              • Dull skin<br /><br />
+              Not recommended for active infections or certain skin conditions without evaluation.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-white p-10 rounded-3xl shadow-2xl border border-[#DFDFDD]">
+              <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
+                Cost of AFT-SSR Treatment in Delhi & Gurgaon
+              </h2>
+              <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
+                Cost depends on:<br />
+                • Area treated<br />
+                • Number of sessions<br />
+                • Skin concern severity<br /><br />
+                A consultation helps determine the exact treatment plan.
+              </p>
+            </div>
+
+            <div className="bg-white p-10 rounded-3xl shadow-2xl border border-[#DFDFDD]">
+              <h2 className="md:text-3xl font-bold text-[#9E4A47] mb-6">
+                Why Choose Satya Skin & Hair Solutions?
+              </h2>
+              <p className="md:text-lg text-[#2B333C]/90">
+                • Dermatologist-led treatment protocols<br />
+                • Advanced AFT technology<br />
+                • Customized energy settings<br />
+                • Safe for Indian skin<br />
+                • Focus on long-term skin health<br /><br />
+                Patients searching for AFT-SSR treatment in Delhi and Gurgaon benefit from structured, evidence-based care.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -515,10 +604,10 @@ export default function BotoxTreatment() {
       <section className="py-10 sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-r from-[#9E4A47] to-[#B87C72] text-white text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="md:text-4xl md:text-5xl font-bold">
-            Book Your Botox Treatment Consultation in Delhi & Gurgaon
+            Book AFT-SSR Treatment in Delhi & Gurgaon
           </h2>
           <p className="md:text-xl opacity-90">
-            Botox treatment is a medical aesthetic procedure that requires proper assessment and planning. A consultation helps determine suitability, treatment areas, and expected outcomes. If you are considering Botox treatment in Delhi & Gurgaon, a doctor-led consultation at Satya Skin & Hair Solutions ensures clarity, safety, and informed decision-making.
+            If you want clearer, brighter, and more even skin without downtime, AFT-SSR is a reliable solution.
           </p>
           <button
             onClick={() => setShowPopup(true)}

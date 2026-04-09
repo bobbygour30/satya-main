@@ -6,6 +6,7 @@ import assets from "../assets/assets";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import ConsultationPopup from "../components/ConsultationPopup";
+import SEO from "../components/SEO";
 
 const faqs = [
   {
@@ -58,6 +59,13 @@ export default function MesotherapyTreatment() {
 
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
+      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+            <SEO
+              title="Mesotherapy Treatment | Targeted Skin Rejuvenation Gurgaon"
+              description="Experience the future of skin rejuvenation with mesotherapy in Delhi & Gurgaon. Safe, targeted treatment for glowing, youthful skin at Satya Skin & Hair Solutions."
+              canonical="https://satyaskinhair.com/skin/mesotherapy"
+              showSchema={false} // Only home page uses schema
+            />
       {/* === PREMIUM MESOTHERAPY HERO BANNER === */}
       <section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
@@ -322,7 +330,7 @@ export default function MesotherapyTreatment() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/VIDEO_ID_MESOTHERAPY"
+                  src="https://www.youtube.com/embed/APMVgDMdVzU?si=IaetxQ8eZ7MjfkqF"
                   title="Mesotherapy Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

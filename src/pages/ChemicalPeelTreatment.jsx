@@ -69,7 +69,7 @@ export default function ChemicalPeelTreatment() {
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.chemicalPeelBanner || assets.banner}')`,
+            backgroundImage: `url('${assets.chemicalpeel || assets.banner}')`,
           }}
         />
 
@@ -116,7 +116,7 @@ export default function ChemicalPeelTreatment() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.chemicalPeelBanner}
+              src={assets.chemicalpeel}
               alt="Chemical Peel Treatment"
               className="
                 w-full 

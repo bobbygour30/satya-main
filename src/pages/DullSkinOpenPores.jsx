@@ -67,9 +67,9 @@ export default function DullSkinOpenPores() {
       <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
-          className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
+          className="hidden lg:block absolute inset-0 bg-no-repeat bg-left bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.dullskinbanners || assets.banner}')`,
+            backgroundImage: `url('${assets.dullskin || assets.banner}')`,
           }}
         />
 
@@ -80,7 +80,7 @@ export default function DullSkinOpenPores() {
           transition={{ duration: 1 }}
         >
           {/* LEFT TEXT CONTENT */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
                 Treatment for Dull Skin & Open Pores in Delhi & Gurgaon
@@ -116,7 +116,7 @@ export default function DullSkinOpenPores() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.dullskinbanners}
+              src={assets.dullskin}
               alt="Dull Skin & Open Pores Treatment"
               className="
                 w-full 

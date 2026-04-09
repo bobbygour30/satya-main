@@ -69,7 +69,7 @@ export default function LaserToningTreatment() {
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.laserToningBanner || assets.banner}')`,
+            backgroundImage: `url('${assets.lazertoning || assets.banner}')`,
           }}
         />
 
@@ -116,7 +116,7 @@ export default function LaserToningTreatment() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.laserToningBanner}
+              src={assets.lazertoning}
               alt="Laser Toning Treatment"
               className="
                 w-full 

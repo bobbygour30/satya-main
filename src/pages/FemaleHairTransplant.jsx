@@ -341,7 +341,7 @@ export default function FemaleHairTransplant() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/F_XXj5aPYKQ" // Replace with female hair loss/transplant video
+                  src="https://www.youtube.com/embed/MWObPqvRRgk?si=BJeB4ODAjtziYPy5"
                   title="Female Hair Transplant Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

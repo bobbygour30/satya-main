@@ -63,12 +63,12 @@ export default function DermalFillersTreatment() {
         showSchema={false}
       />
       {/* === PREMIUM DERMAL FILLERS HERO BANNER === */}
-      <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[69vh] lg:min-h-[65vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.dermalfillers || assets.banner}')`,
+            backgroundImage: `url('${assets.dermalFillers || assets.banner}')`,
           }}
         />
 
@@ -112,7 +112,7 @@ export default function DermalFillersTreatment() {
           {/* Mobile Image */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.dermalfillers}
+              src={assets.dermalFillers}
               alt="Dermal Fillers Treatment"
               className="
       w-full 
@@ -245,110 +245,176 @@ export default function DermalFillersTreatment() {
       </section>
 
       {/* === What Are Dermal Fillers + Why Used + How Common === */}
-      <section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={container}
-            className="text-center space-y-4"
-          >
-            <h2 className="text-2xl md:text-5xl font-bold text-[#9E4A47]">
-              What Are Dermal Fillers?
-            </h2>
-            <p className="text-base md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
-              Dermal fillers are soft tissue fillers injected into the skin at different depths to restore volume, smooth wrinkles, and enhance facial features naturally.
-            </p>
-          </motion.div>
+<section className="sm:py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
+  <div className="max-w-7xl mx-auto space-y-16">
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={container}
+      className="text-center space-y-4"
+    >
+      <h2 className="text-2xl md:text-5xl font-bold text-[#9E4A47]">
+        What Are Dermal Fillers?
+      </h2>
+      <p className="text-base md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
+        Dermal fillers are soft tissue fillers injected into the skin at different depths to restore volume, smooth wrinkles, and enhance facial features naturally.
+      </p>
+    </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <motion.div variants={container} className="space-y-8">
-              <div className="bg-white/70 p-6 rounded-2xl border border-[#DFDFDD]">
-                <p className="font-semibold text-[#9E4A47] mb-3">What Are Dermal Fillers?</p>
-                <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                  Dermal fillers are soft tissue fillers injected into the skin at different depths to:
-                </p>
-                <ul className="mt-3 space-y-2 text-base md:text-lg text-[#2B333C]/90 list-disc pl-5">
-                  <li>Fill wrinkles and fine lines</li>
-                  <li>Restore lost volume</li>
-                  <li>Enhance facial features</li>
-                  <li>Improve skin contour and symmetry</li>
-                </ul>
-                <p className="mt-4 text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                  Most modern fillers are made of Hyaluronic acid (HA) — a naturally occurring substance in the skin that helps retain moisture and maintain structure.
-                </p>
-              </div>
-
-              <div className="bg-white/70 p-6 rounded-2xl border border-[#DFDFDD]">
-                <p className="font-semibold text-[#9E4A47] mb-3">Why Are Dermal Fillers Used?</p>
-                <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                  Dermal fillers are widely used to address:
-                </p>
-                <ul className="mt-3 space-y-2 text-base md:text-lg text-[#2B333C]/90 list-disc pl-5">
-                  <li>Wrinkles and folds (nasolabial lines, marionette lines)</li>
-                  <li>Volume loss in cheeks and temples</li>
-                  <li>Under-eye hollowness (tear trough)</li>
-                  <li>Thin or uneven lips</li>
-                  <li>Jawline and chin definition</li>
-                  <li>Skin sagging due to aging</li>
-                </ul>
-                <p className="mt-4 text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                  They not only improve appearance but also stimulate collagen production, enhancing long-term skin quality.
-                </p>
-              </div>
-
-              <div className="bg-white/70 p-6 rounded-2xl border border-[#DFDFDD]">
-                <p className="font-semibold text-[#9E4A47] mb-3">How Common Are Dermal Fillers?</p>
-                <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                  Dermal fillers are among the most popular non-surgical cosmetic treatments worldwide due to:
-                </p>
-                <ul className="mt-3 space-y-2 text-base md:text-lg text-[#2B333C]/90 list-disc pl-5">
-                  <li>Immediate visible results</li>
-                  <li>Minimal downtime</li>
-                  <li>High safety profile</li>
-                  <li>Natural-looking outcomes</li>
-                </ul>
-                <p className="mt-4 text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-                  They are commonly chosen by individuals who want subtle yet effective facial rejuvenation without surgery.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Types of Dermal Fillers */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9 }}
-              viewport={{ once: true }}
-              className="bg-white/70 rounded-3xl p-8 border border-[#DFDFDD]"
-            >
-              <h3 className="text-2xl font-bold text-[#9E4A47] mb-6">Types of Dermal Fillers</h3>
-              <p className="text-base md:text-lg mb-6 text-[#2B333C]/90">
-                Different fillers are used based on the treatment area and desired outcome:
-              </p>
-              <div className="space-y-6">
-                <div>
-                  <h4 className="font-bold text-[#0E3A43] text-lg">1. Hyaluronic Acid (HA)</h4>
-                  <p className="text-[#828D9C]">• Most commonly used<br />• Hydrates and plumps the skin<br />• Ideal for lips, under-eyes, and fine lines</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0E3A43] text-lg">2. Calcium Hydroxylapatite (CaHA)</h4>
-                  <p className="text-[#828D9C]">• Thicker filler for deeper lines<br />• Stimulates collagen<br />• Used for cheeks and facial contouring</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0E3A43] text-lg">3. Poly-L-lactic Acid (PLLA)</h4>
-                  <p className="text-[#828D9C]">• Works gradually<br />• Boosts natural collagen production<br />• Best for overall facial volume restoration</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0E3A43] text-lg">4. Polymethylmethacrylate (PMMA)</h4>
-                  <p className="text-[#828D9C]">• Semi-permanent filler<br />• Provides long-lasting structure<br />• Used in deeper wrinkles and scars</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      {/* Left Column - Content Cards */}
+      <motion.div variants={container} className="space-y-8">
+        <div className="bg-white p-8 rounded-3xl shadow-lg border border-[#DFDFDD] hover:shadow-xl transition-all duration-300">
+          <p className="font-semibold text-[#9E4A47] text-xl mb-4">What Are Dermal Fillers?</p>
+          <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90 mb-5">
+            Dermal fillers are soft tissue fillers injected into the skin at different depths to:
+          </p>
+          <ul className="space-y-3 text-base md:text-lg text-[#2B333C]/90">
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Fill wrinkles and fine lines
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Restore lost volume
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Enhance facial features
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Improve skin contour and symmetry
+            </li>
+          </ul>
+          <p className="mt-6 text-base md:text-lg leading-relaxed text-[#2B333C]/90">
+            Most modern fillers are made of <strong>Hyaluronic acid (HA)</strong> — a naturally occurring substance in the skin that helps retain moisture and maintain structure.
+          </p>
         </div>
-      </section>
+
+        <div className="bg-white p-8 rounded-3xl shadow-lg border border-[#DFDFDD] hover:shadow-xl transition-all duration-300">
+          <p className="font-semibold text-[#9E4A47] text-xl mb-4">Why Are Dermal Fillers Used?</p>
+          <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90 mb-5">
+            Dermal fillers are widely used to address:
+          </p>
+          <ul className="space-y-3 text-base md:text-lg text-[#2B333C]/90">
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Wrinkles and folds (nasolabial lines, marionette lines)
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Volume loss in cheeks and temples
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Under-eye hollowness (tear trough)
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Thin or uneven lips
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Jawline and chin definition
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Skin sagging due to aging
+            </li>
+          </ul>
+          <p className="mt-6 text-base md:text-lg leading-relaxed text-[#2B333C]/90">
+            They not only improve appearance but also stimulate collagen production, enhancing long-term skin quality.
+          </p>
+        </div>
+
+        <div className="bg-white p-8 rounded-3xl shadow-lg border border-[#DFDFDD] hover:shadow-xl transition-all duration-300">
+          <p className="font-semibold text-[#9E4A47] text-xl mb-4">How Common Are Dermal Fillers?</p>
+          <p className="text-base md:text-lg leading-relaxed text-[#2B333C]/90 mb-5">
+            Dermal fillers are among the most popular non-surgical cosmetic treatments worldwide due to:
+          </p>
+          <ul className="space-y-3 text-base md:text-lg text-[#2B333C]/90">
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Immediate visible results
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Minimal downtime
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              High safety profile
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#9E4A47] mt-1">•</span>
+              Natural-looking outcomes
+            </li>
+          </ul>
+          <p className="mt-6 text-base md:text-lg leading-relaxed text-[#2B333C]/90">
+            They are commonly chosen by individuals who want subtle yet effective facial rejuvenation without surgery.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Right Column - Video + Types */}
+      <div className="space-y-10">
+        {/* Video Embed */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ once: true }}
+          className="rounded-3xl overflow-hidden shadow-2xl border-2 border-[#DFDFDD]/50"
+        >
+          <div className="aspect-video">
+            <iframe
+              src="https://www.youtube.com/embed/vTkYy0e-Qhc?si=sVkHZ8ZC5WSmD1Il"
+              title="Dermal Fillers Procedure"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+          </div>
+        </motion.div>
+
+        {/* Types of Dermal Fillers */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-3xl p-8 shadow-lg border border-[#DFDFDD]"
+        >
+          <h3 className="text-2xl font-bold text-[#9E4A47] mb-6">Types of Dermal Fillers</h3>
+          <p className="text-base md:text-lg mb-6 text-[#2B333C]/90">
+            Different fillers are used based on the treatment area and desired outcome:
+          </p>
+          <div className="space-y-7">
+            <div>
+              <h4 className="font-bold text-[#0E3A43] text-lg mb-1">1. Hyaluronic Acid (HA)</h4>
+              <p className="text-[#828D9C]">Most commonly used • Hydrates and plumps • Ideal for lips, under-eyes, and fine lines</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-[#0E3A43] text-lg mb-1">2. Calcium Hydroxylapatite (CaHA)</h4>
+              <p className="text-[#828D9C]">Thicker filler for deeper lines • Stimulates collagen • Used for cheeks and contouring</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-[#0E3A43] text-lg mb-1">3. Poly-L-lactic Acid (PLLA)</h4>
+              <p className="text-[#828D9C]">Works gradually • Boosts natural collagen • Best for overall volume restoration</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-[#0E3A43] text-lg mb-1">4. Polymethylmethacrylate (PMMA)</h4>
+              <p className="text-[#828D9C]">Semi-permanent • Long-lasting structure • Used in deeper wrinkles and scars</p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* === Procedure Section (Before + During + After) === */}
       <section className="py-7 sm:py-20 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">

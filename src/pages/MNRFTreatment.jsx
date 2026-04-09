@@ -50,20 +50,20 @@ export default function MNRFTreatment() {
       <section className="relative w-full min-h-[64vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
-          className="hidden lg:block absolute inset-0 bg-no-repeat bg-left bg-contain opacity-90"
+          className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
             backgroundImage: `url('${assets.mnrfbanners}')`,
           }}
         />
 
         <motion.div
-          className="relative z-10 px-5 sm:px-6 w-full  grid grid-cols-1 lg:grid-cols-2 sm:gap-10 items-center sm:py-12 lg:py-0 sm:ml-150"
+          className="relative z-10 px-5 sm:px-6 w-full  grid grid-cols-1 lg:grid-cols-2 sm:gap-10 items-center sm:py-12 lg:py-0"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
           {/* LEFT CONTENT */}
-          <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
+          <div className="space-y-6 sm:space-y-8">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-extrabold leading-tight text-[#0E3A43]">
                 MNRF Treatment in Gurugram

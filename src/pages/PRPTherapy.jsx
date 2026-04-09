@@ -79,7 +79,7 @@ export default function PRPTherapy() {
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.prp || assets.banner}')`,
+            backgroundImage: `url('${assets.prpTreatment || assets.banner}')`,
           }}
         />
 
@@ -122,7 +122,7 @@ export default function PRPTherapy() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.prp}
+              src={assets.prpTreatment}
               alt="PRP Therapy"
               className="
       w-full 
@@ -331,7 +331,7 @@ export default function PRPTherapy() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual PRP video link
+                  src="https://www.youtube.com/embed/nxBziKe-usk?si=JAXE-nvEFIuqIHqT"
                   title="PRP Therapy Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

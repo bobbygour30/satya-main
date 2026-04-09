@@ -318,7 +318,7 @@ export default function VampireFacelift() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/VIDEO_ID_VAMPIRE_FACELIFT"
+                  src="https://www.youtube.com/embed/C4i9iLEdOms?si=DtDT66JRBAGjb-3F"
                   title="Vampire Facelift Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

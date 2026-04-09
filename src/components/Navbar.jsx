@@ -134,7 +134,7 @@ export default function Navbar() {
               <MapPin size={14} /> DLF Phase 4, Gurgaon | Delhi NCR
             </span>
             <span className="flex items-center gap-1">
-              <Phone size={14} /> +91 9910 094945
+              <Phone size={14} /> +919910094945
             </span>
           </div>
 

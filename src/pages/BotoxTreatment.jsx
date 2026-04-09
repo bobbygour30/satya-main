@@ -357,7 +357,7 @@ export default function BotoxTreatment() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual Botox video link
+                  src="https://www.youtube.com/embed/d0NUXfK5I5g?si=dD7ip7o7HndVdv_S"
                   title="Botox Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

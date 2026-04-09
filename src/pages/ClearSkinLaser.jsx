@@ -62,12 +62,12 @@ export default function ClearSkinLaser() {
         showSchema={false} // Only home page uses schema
       />
       {/* === PREMIUM CLEARSKIN LASER HERO BANNER === */}
-      <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[69vh] lg:min-h-[60vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.clearskin || assets.banner}')`,
+            backgroundImage: `url('${assets.clearskinpro || assets.banner}')`,
           }}
         />
 
@@ -110,7 +110,7 @@ export default function ClearSkinLaser() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.clearskin}
+              src={assets.clearskinpro}
               alt="ClearSkin Laser Treatment"
               className="
       w-full 
@@ -326,7 +326,7 @@ export default function ClearSkinLaser() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual ClearSkin Laser video link
+                  src="https://www.youtube.com/embed/EnV1niFd4wQ?si=pwGgztCfg6HAU2xa"
                   title="ClearSkin Laser Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

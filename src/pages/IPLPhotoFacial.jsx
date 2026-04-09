@@ -83,7 +83,7 @@ export default function IPLPhotoFacial() {
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.iplPhotoFacial || assets.banner}')`,
+            backgroundImage: `url('${assets.iplphoto || assets.banner}')`,
           }}
         />
 
@@ -126,7 +126,7 @@ export default function IPLPhotoFacial() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.iplPhotoFacial}
+              src={assets.iplphoto}
               alt="IPL Photo Facial Treatment"
               className="
       w-full 
@@ -335,7 +335,7 @@ export default function IPLPhotoFacial() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual IPL Photo Facial video link
+                  src="https://www.youtube.com/embed/nvYP8sd6sHA?si=lR9TAFLE7YfHPFI1"
                   title="IPL Photo Facial Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

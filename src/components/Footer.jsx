@@ -147,7 +147,7 @@ export default function Footer() {
                 <li className="flex items-start gap-3">
                   <Phone size={16} className="text-[#9E4A47] mt-0.5" />
                   <span>
-                    +91 99995 70494 <br /> +91 99100 94945
+                    +919999570494 <br /> +919910094945
                   </span>
                 </li>
 

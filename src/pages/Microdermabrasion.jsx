@@ -74,12 +74,12 @@ export default function Microdermabrasion() {
         showSchema={false} // Only home page uses schema
       />
       {/* === PREMIUM MICRODERMABRASION HERO BANNER === */}
-      <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[69vh] lg:min-h-[60vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
-          className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
+          className="hidden lg:block absolute inset-0 bg-no-repeat bg-left bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.microdermabrasion || assets.banner}')`,
+            backgroundImage: `url('${assets.skinpolishing || assets.banner}')`,
           }}
         />
 
@@ -90,7 +90,7 @@ export default function Microdermabrasion() {
           transition={{ duration: 1 }}
         >
           {/* LEFT TEXT CONTENT */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
                 Skin Polishing / Microdermabrasion
@@ -122,7 +122,7 @@ export default function Microdermabrasion() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.microdermabrasion}
+              src={assets.skinpolishing}
               alt="Skin Polishing Microdermabrasion"
               className="
       w-full 
@@ -338,7 +338,7 @@ export default function Microdermabrasion() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual Microdermabrasion video link
+                  src="https://www.youtube.com/embed/y4x1DWoLj5o?si=H0pA62hLavzO5ast"
                   title="Skin Polishing Microdermabrasion Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

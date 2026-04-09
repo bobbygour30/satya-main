@@ -1,12 +1,12 @@
 /* ================= BANNERS ================= */
 import banner1Desktop from "./banner1.webp";
-import banner1Mobile from "./banner1mobile.jpeg";
-import banner2Desktop from "./banner2.jpeg";
-import banner2Mobile from "./banner2mobile.jpeg";
-import banner3Desktop from "./banner3.jpeg";
-import banner3Mobile from "./banner3mobile.jpeg";
-import banner4Desktop from "./banner4.jpeg";
-import banner4Mobile from "./banner4mobile.jpeg";
+import banner1Mobile from "./banner1mobile.webp";
+import banner2Desktop from "./banner2.webp";
+import banner2Mobile from "./banner2mobile.webp";
+import banner3Desktop from "./banner3.webp";
+import banner3Mobile from "./banner3mobile.webp";
+import banner4Desktop from "./banner4.webp";
+import banner4Mobile from "./banner4mobile.webp";
 
 /* ================= LOGOS ================= */
 import logo1 from "./logo1.webp";
@@ -17,23 +17,23 @@ import logo5 from "./logo5.png";
 
 /* ================= CLINIC IMAGES ================= */
 /* Delhi */
-import delhi1 from "./delhi (1).jpg";
-import delhi2 from "./delhi (2).jpg";
-import delhi3 from "./delhi (3).jpg";
-import delhi4 from "./delhi (4).jpg";
-import delhi5 from "./delhi (5).jpg";
+import delhi1 from "./delhi (1).webp";
+import delhi2 from "./delhi (2).webp";
+import delhi3 from "./delhi (3).webp";
+import delhi4 from "./delhi (4).webp";
+import delhi5 from "./delhi (5).webp";
 
 /* Gurgaon */
-import gurgao1 from "./gurgao (1).png";
-import gurgao2 from "./gurgao (2).jpg";
-import gurgao3 from "./gurgao (3).jpg";
-import gurgao5 from "./gurgao (5).jpg";
-import gurgao6 from "./gurgao (6).jpg";
-import gurgao7 from "./gurgao (7).jpg";
+import gurgao1 from "./gurgao (1).webp";
+import gurgao2 from "./gurgao (2).webp";
+import gurgao3 from "./gurgao (3).webp";
+import gurgao5 from "./gurgao (5).webp";
+import gurgao6 from "./gurgao (6).webp";
+import gurgao7 from "./gurgao (7).webp";
 
 /* ================= DOCTORS ================= */
-import drRuchiAgarwal from "./Dr Ruchi Agarwal.jpeg";
-import drShailGupta from "./Dr Shail Gupta.jpeg";
+import drRuchiAgarwal from "./Dr Ruchi Agarwal.webp";
+import drShailGupta from "./Dr Shail Gupta.webp";
 
 import skin from "./skin.jpg";
 import skin2 from "./skin2.jpg";
@@ -122,7 +122,7 @@ import syntheticbanners from "./Synthetic hair transplant.png";
 import mesobanners from "./Mesotherapy for hair.png";
 import stemcellbanners from "./Stem Cell Hair Transplant.png";
 import prpbanners from "./PRP for hair.png";
-import lasorbanners from "./Laser Hair Reduction.png";
+import lasorbanners from "./Laser Hair Reduction.webp";
 import scalpbanners from "./scalp micropigmentation.png";
 import lasercombbanners from "./Laser comb therapy.png";
 
@@ -130,25 +130,38 @@ import lasercombbanners from "./Laser comb therapy.png";
 //skin 
 
 import carbonlaserbanners from "./Carbon Laser Facial (2).png"
-import mnrfbanners from "./MNRF Treatment.png"
-import hifubanners from "./HIFU Treatment.png"
+import mnrfbanners from "./MNRF Treatment.webp"
+import hifubanners from "./HIFU Treatment.webp"
 import vampirebanners from "./Vampire Facelift.png"
-import fiveDbanners from "./5d facial treatment.png"
-import mesofacebanners from "./Mesotherapy for face.png"
+import fiveDbanners from "./5d facial treatment.webp";
+import mesofacebanners from "./Mesotherapy for face.webp";  
 
 
 import beforebanner from "./beforebanner.jpeg";
 
 
 
-import antiwrinklebanners from "./Anti Wrinkle Treatment.png";
-import acnebanners from "./Acne Scars.png";
-import co2LaserBanners from "./Fractional CO2 Laser.png";
-import lipEnhancement from "./Lip Enhancement.png";
+import antiwrinklebanners from "./Anti Wrinkle Treatment.webp";
+import acnebanners from "./Acne Scars.webp";
+import co2LaserBanners from "./Fractional CO2 Laser.webp";
+import lipEnhancement from "./Lip Enhancement.webp";
 import wrinkle from "./wrinkle_fine lines banner.png";
-import pigmentationbanners from "./Pigmentation banner.png";
+import pigmentationbanners from "./Pigmentation Treatment.webp";
 import dullskinbanners from "./dull skin.png";
 import acnebanner from "./acne banner.png";
+import chemicalpeel from "./Chemical Peel new.webp";
+import dermalFillers from "./Dermal Fillers.webp";
+import moleRemoval from "./Mole Removal (2).webp";
+import aftSsr from "./AFT-SSR.webp";
+import prpTreatment from "./PRP  Treatment.webp";
+import formaFacial from "./Forma facia.webp";
+import clearlift from "./Clearlift Laser.webp";
+import clearskinpro from "./Clearskin Pro.webp";
+import botox from "./Botox.webp";
+import skinpolishing from "./skin polishing.webp";
+import iplphoto from "./IPL Photofacial.webp";
+import lazertoning from "./Laser Toning.webp";
+import dullskin from "./Dull Skin & Open Pores.webp";
 
 /* ================= EXPORT OBJECT ================= */
 const assets = {
@@ -292,6 +305,19 @@ wrinkle,
 pigmentationbanners,
 dullskinbanners,
 acnebanner,
+chemicalpeel,
+dermalFillers,
+moleRemoval,
+aftSsr,
+prpTreatment,
+formaFacial,
+clearlift,
+clearskinpro,
+botox,
+skinpolishing,
+iplphoto,
+lazertoning,
+dullskin,
 };
 
 export default assets;

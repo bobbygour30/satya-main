@@ -82,7 +82,7 @@ export default function LipEnhancement() {
           {/* LEFT TEXT CONTENT */}
           <div className="space-y-6 sm:space-y-8">
             <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold leading-tight text-[#0E3A43]">
                 Lip Enhancement Treatment
               </h1>
 
@@ -345,7 +345,7 @@ export default function LipEnhancement() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_"
+                  src="https://www.youtube.com/embed/brALrIUaOB0?si=QdAeuN2VPBRek02d" 
                   title="Lip Enhancement Treatment at Satya"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

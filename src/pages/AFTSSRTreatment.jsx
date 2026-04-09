@@ -81,9 +81,9 @@ export default function AFTSSRTreatment() {
       <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
-          className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
+          className="hidden lg:block absolute inset-0 bg-no-repeat bg-left bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.aftssr || assets.banner}')`,
+            backgroundImage: `url('${assets.aftSsr || assets.banner}')`,
           }}
         />
 
@@ -94,7 +94,7 @@ export default function AFTSSRTreatment() {
           transition={{ duration: 1 }}
         >
           {/* LEFT TEXT CONTENT */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1 lg:ml-72">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
                 AFT-SSR Treatment
@@ -126,7 +126,7 @@ export default function AFTSSRTreatment() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.aftssr}
+              src={assets.aftSsr}
               alt="AFT-SSR Treatment"
               className="
       w-full 
@@ -342,7 +342,7 @@ export default function AFTSSRTreatment() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual AFT-SSR video link
+                  src="https://www.youtube.com/embed/MWObPqvRRgk?si=RvSeelRNM8LnavW2"
                   title="AFT-SSR Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

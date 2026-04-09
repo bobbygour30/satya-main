@@ -96,6 +96,74 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     
+    <!-- Telecrm API Lead Creation Script -->
+    <script>
+      (function() {
+        // Telecrm API Configuration
+        const ENTERPRISE_ID = "67bc6699bd76f4ce2ec8304c";
+        const API_URL = "https://next-api.telecrm.in/enterprise/" + ENTERPRISE_ID + "/autoupdatelead";
+        const BEARER_TOKEN = "9e29b4f4-90ce-43ff-9437-bfe947c2977d1775459016913:3faf8505-8fe6-4bd3-9b96-bf3453629c52";
+        
+        // Lead data to be pushed
+        const leadData = {
+          "fields": {
+            "name": "John",
+            "phone": "+91999999999",
+            "email": "john.doe@example.com",
+            "rating": 3,
+            "status": "Fresh",
+            "assignee": "john.doe@example.com",
+            "property1": "+91999999999",
+            "property2": "+91999999999"
+          },
+          "actions": [
+            {
+              "type": 1001,
+              "fields": {
+                "property1": "John",
+                "property2": "John"
+              },
+              "created_on": "01/01/2023 11:30:00"
+            }
+          ]
+        };
+        
+        // Function to send lead data to Telecrm
+        async function sendLeadToTelecrm() {
+          try {
+            console.log("Sending lead data to Telecrm API...");
+            
+            const response = await fetch(API_URL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + BEARER_TOKEN
+              },
+              body: JSON.stringify(leadData)
+            });
+            
+            if (response.ok) {
+              const result = await response.json();
+              console.log("✅ Lead successfully created/updated in Telecrm:", result);
+            } else {
+              const errorText = await response.text();
+              console.error("❌ Telecrm API Error:", response.status, errorText);
+            }
+          } catch (error) {
+            console.error("❌ Network error while calling Telecrm API:", error);
+          }
+        }
+        
+        // Execute the API call when the page loads
+        // Using DOMContentLoaded to ensure the page is ready
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", sendLeadToTelecrm);
+        } else {
+          sendLeadToTelecrm();
+        }
+      })();
+    </script>
+    
     <!-- Start of Tawk.to Script -->
     <script type="text/javascript">
       var Tawk_API = Tawk_API || {};

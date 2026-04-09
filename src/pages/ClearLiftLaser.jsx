@@ -62,7 +62,7 @@ export default function ClearLiftLaser() {
         showSchema={false} // Only home page uses schema
       />
       {/* === PREMIUM CLEARLIFT LASER HERO BANNER === */}
-      <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+      <section className="relative w-full min-h-[69vh] lg:min-h-[60vh] flex items-center overflow-hidden bg-[#FCEBDE]">
         {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
@@ -326,7 +326,7 @@ export default function ClearLiftLaser() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual ClearLift video link
+                  src="https://www.youtube.com/embed/5II9ryJVrRE?si=dYw_1zsqY-rR8wc4"
                   title="ClearLift Laser Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

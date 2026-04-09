@@ -67,7 +67,7 @@ export default function FormaFacial() {
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
           style={{
-            backgroundImage: `url('${assets.forma || assets.banner}')`,
+            backgroundImage: `url('${assets.formaFacial || assets.banner}')`,
           }}
         />
 
@@ -110,7 +110,7 @@ export default function FormaFacial() {
           {/* Mobile Image (Zoomed) */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
-              src={assets.forma}
+              src={assets.formaFacial}
               alt="Forma Facial Treatment"
               className="
       w-full 
@@ -326,7 +326,7 @@ export default function FormaFacial() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/rWqn50qQeKU?si=1BzJadtdCKt6zCD_" // Replace with actual Forma video link
+                  src="https://www.youtube.com/embed/zQQBxV3WQRM?si=L50iBqKWEKFmyRWg"
                   title="Forma Facial Treatment Procedure"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

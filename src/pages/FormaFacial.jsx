@@ -103,7 +103,7 @@ export default function FormaFacial() {
           shadow-lg transition-all duration-300
         "
             >
-              Book FREE Consultation →
+              Book Consultation →
             </motion.button>
           </div>
 
@@ -611,7 +611,7 @@ export default function FormaFacial() {
             onClick={() => setShowPopup(true)}
             className="bg-white text-[#9E4A47] py-5 px-9 rounded-full font-bold md:text-xl shadow-2xl hover:bg-[#FFF8EF] transition-all"
           >
-            Book Your FREE Consultation Today
+            Book Your Consultation Today
           </button>
         </div>
       </section>

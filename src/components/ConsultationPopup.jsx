@@ -1,8 +1,9 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle, XCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { trackFormSubmission, trackFormOpen, trackFormAbandonment, trackEmailSent } from "../utils/analytics";
 
 /* ---------- EMAILJS CONFIG ---------- */
 const EMAILJS_SERVICE_ID = "service_s1wuxko";
@@ -50,6 +51,31 @@ const Toast = ({ type, message, onClose }) => {
 const ConsultationPopup = ({ isOpen, onClose }) => {
   const formRef = useRef();
   const [toast, setToast] = useState(null);
+  const [popupOpenTime, setPopupOpenTime] = useState(null);
+  const [hasTrackedOpen, setHasTrackedOpen] = useState(false);
+
+  // Track when popup opens
+  useEffect(() => {
+    if (isOpen && !hasTrackedOpen) {
+      // Record the time when popup opened
+      setPopupOpenTime(Date.now());
+      // Track popup open event
+      trackFormOpen('consultation');
+      setHasTrackedOpen(true);
+    }
+    
+    // Track abandonment when popup closes without submission
+    if (!isOpen && popupOpenTime && !hasTrackedOpen === false) {
+      // Only track abandonment if popup was open for more than 3 seconds
+      const timeSpent = (Date.now() - popupOpenTime) / 1000;
+      if (timeSpent > 3) {
+        trackFormAbandonment('consultation', Math.round(timeSpent));
+      }
+      // Reset tracking flag for next open
+      setHasTrackedOpen(false);
+      setPopupOpenTime(null);
+    }
+  }, [isOpen, popupOpenTime, hasTrackedOpen]);
 
   const showToast = (type, message) => {
     setToast({ type, message });
@@ -58,6 +84,9 @@ const ConsultationPopup = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Get form data for tracking
+    const formData = new FormData(formRef.current);
 
     emailjs
       .sendForm(
@@ -68,12 +97,27 @@ const ConsultationPopup = ({ isOpen, onClose }) => {
       )
       .then(
         () => {
+          // Track successful form submission to Meta Pixel & GA4
+          trackFormSubmission(formData, 'success', 'consultation');
+          
+          // Track successful email sending
+          trackEmailSent('consultation');
+          
           showToast("success", "Thank you! We’ll contact you within 24 hours.");
           formRef.current.reset();
+          
+          // Reset popup open tracking since form was submitted
+          setHasTrackedOpen(false);
+          setPopupOpenTime(null);
+          
           setTimeout(() => onClose(), 800); // Close popup after toast appears
         },
         (error) => {
-          console.error(error);
+          console.error("EmailJS Error:", error);
+          
+          // Track failed form submission (optional, for debugging)
+          trackFormSubmission(formData, 'error', 'consultation');
+          
           showToast("error", "Oops! Something went wrong. Please try again.");
         }
       );
@@ -137,7 +181,7 @@ const ConsultationPopup = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Hidden message field */}
-                <input type="hidden" name="message" value="" />
+                <input type="hidden" name="message" value="Consultation request from Satya website" />
 
                 {/* Submit Button */}
                 <motion.button

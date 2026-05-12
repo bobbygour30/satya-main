@@ -84,6 +84,7 @@ import FormaFacial from "./pages/FormaFacial";
 import PRPTherapy from "./pages/PRPTherapy";
 import AFTSSRTreatment from "./pages/AFTSSRTreatment";
 import DermalFillersTreatment from "./pages/DermalFillersTreatment";
+import NewCasestudy from "./pages/NewCasestudy";
 
 // Add CSS to hide Google Translate's default UI elements
 const globalStyles = `
@@ -136,6 +137,7 @@ export default function App() {
 
         {/* ================= BEFORE / AFTER ================= */}
         <Route path="/before-after" element={<BeforeAfterPage />} />
+        <Route path="/new-case" element={<NewCasestudy />} />
 
         {/* ================= CASE STUDIES ================= */}
         {/* <Route path="/case/prakhar" element={<CaseDetailPage />} />

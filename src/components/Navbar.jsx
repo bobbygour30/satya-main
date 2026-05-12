@@ -33,7 +33,7 @@ const MENU = [
       { label: "FUE Hair Transplant", path: "/hair-transplant/fue" },
       { label: "FUT Hair Transplant", path: "/hair-transplant/fut" },
       { label: "Beard Hair Transplant", path: "/hair-transplant/beard-hair-transplant" },
-      { label: "Eyebrow Reconstruction", path: "/hair-transplant/eyebrow-transplant" },
+      { label: "Eyebrow Transplant", path: "/hair-transplant/eyebrow-transplant" },
       { label: "Body Hair Transplant", path: "/hair-transplant/body" }, 
     ],
     concerns: [
@@ -66,8 +66,8 @@ const MENU = [
   {
     title: "Results",
     items: [
-      { label: "Hair Results", path: "/hair-result" },
-      { label: "Skin Results", path: "/skin-result" },
+      // { label: "Hair Results", path: "/hair-result" },
+      // { label: "Skin Results", path: "/skin-result" },
       { label: "Case Studies", path: "/before-after" },
     ],
   },
@@ -133,9 +133,13 @@ export default function Navbar() {
             <span className="flex items-center gap-1">
               <MapPin size={14} /> DLF Phase 4, Gurgaon | Delhi NCR
             </span>
-            <span className="flex items-center gap-1">
-              <Phone size={14} /> +919910094945
-            </span>
+           <a
+  href="tel:+919910094945"
+  className="flex items-center gap-1 cursor-pointer"
+>
+  <Phone size={14} />
+  +919910094945
+</a>
           </div>
 
           <div className="flex gap-6 items-center">

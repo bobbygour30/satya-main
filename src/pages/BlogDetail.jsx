@@ -8,7 +8,7 @@ export default function BlogDetail() {
 
   useEffect(() => {
     fetch(
-      `https://blogs.satyaskinhair.com/wp-json/wp/v2/posts?slug=${slug}&_embed`
+      `https://blogs.satyaskinhair.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
     )
       .then((res) => res.json())
       .then((data) => {
@@ -40,7 +40,7 @@ export default function BlogDetail() {
   const author = post._embedded?.author?.[0]?.name || "Satya Clinic";
 
   return (
-    <section className="bg-[#FFF8EF] py-24 px-4">
+    <section className="bg-[#FFF8EF] py-6 px-2">
       <div className="max-w-7xl mx-auto">
         <Link to="/blogs" className="text-[#9E4A47] text-sm mb-8 inline-block">
           ← Back to Blogs
@@ -51,16 +51,17 @@ export default function BlogDetail() {
           {/* LEFT CONTENT */}
           <div className="lg:col-span-2 bg-white rounded-2xl overflow-hidden">
             {/* IMAGE */}
-            <div className="h-[420px]">
+            {/* IMAGE - Add a class for better targeting */}
+            <div className=" blog-detail-image-container">
               <img
                 src={image}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover blog-detail-image"
               />
             </div>
 
             {/* CONTENT */}
-            <div className="p-8 md:p-10">
+            <div className=" p-1 sm:p-4">
               <p className="text-xs uppercase text-[#B87C72] mb-3">
                 {new Date(post.date).toLocaleDateString("en-IN")} · {author}
               </p>
@@ -73,10 +74,9 @@ export default function BlogDetail() {
               <div className="h-px bg-[#DFDFDD] mb-10" />
 
               <article
-  className="wp-content text-[#2B333C]"
-  dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-/>
-
+                className="wp-content text-[#2B333C]"
+                dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+              />
             </div>
           </div>
 
@@ -98,8 +98,12 @@ export default function BlogDetail() {
                 Recent Posts
               </h3>
               <ul className="space-y-3 text-sm">
-                <li className="text-[#2B333C]">How to Stop Hair Loss Due to PCOS</li>
-                <li className="text-[#2B333C]">Side Effects of Hair Transplant</li>
+                <li className="text-[#2B333C]">
+                  How to Stop Hair Loss Due to PCOS
+                </li>
+                <li className="text-[#2B333C]">
+                  Side Effects of Hair Transplant
+                </li>
                 <li className="text-[#2B333C]">Best Nutrients for Hair</li>
               </ul>
             </div>

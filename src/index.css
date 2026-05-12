@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -21,7 +20,6 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  /* reduce repaints when animating child transform */
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -31,14 +29,11 @@
 .logo-track {
   display: inline-flex;
   align-items: center;
-  gap: 0; /* spacing handled by .logo-item margin */
-  /* ensure it uses GPU for transform */
+  gap: 0;
   will-change: transform;
   transform: translateZ(0);
-  /* keep the track on a single compositing layer */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  /* animation: adjust duration if you want faster/slower */
   animation: logo-scroll 20s linear infinite;
 }
 
@@ -55,7 +50,7 @@
   opacity: 0.9;
   transition: opacity 200ms ease, transform 200ms ease;
   user-select: none;
-  pointer-events: none; /* prevents unintended interactions while sliding */
+  pointer-events: none;
 }
 
 .logo-item:hover .logo-img {
@@ -68,32 +63,6 @@
   animation-play-state: paused;
 }
 
-/* Edge gradient fade (optional) — uncomment if desired */
-/*
-.logo-slider::before,
-.logo-slider::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 8%;
-  pointer-events: none;
-  z-index: 10;
-}
-.logo-slider::before {
-  left: 0;
-  background: linear-gradient(to right, white 0%, rgba(255,255,255,0) 100%);
-}
-.logo-slider::after {
-  right: 0;
-  background: linear-gradient(to left, white 0%, rgba(255,255,255,0) 100%);
-}
-*/
-
-/* Keyframes:
-   We move -50% because the track contains two identical sets (200% width).
-   TranslateX -50% moves exactly one set left, then loops back to 0 seamlessly.
-*/
 @keyframes logo-scroll {
   from {
     transform: translateX(0);
@@ -105,16 +74,31 @@
 
 /* ---------- Responsive tweaks (optional) ---------- */
 @media (max-width: 640px) {
-  .logo-img { height: 28px; } /* small phones */
-  .logo-item { margin-left: 12px; margin-right: 12px; }
+  .logo-img {
+    height: 28px;
+  }
+  .logo-item {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
 }
 @media (min-width: 641px) and (max-width: 1024px) {
-  .logo-img { height: 40px; } /* tablets */
-  .logo-item { margin-left: 16px; margin-right: 16px; }
+  .logo-img {
+    height: 40px;
+  }
+  .logo-item {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
 @media (min-width: 1025px) {
-  .logo-img { height: 56px; } /* desktop */
-  .logo-item { margin-left: 24px; margin-right: 24px; }
+  .logo-img {
+    height: 56px;
+  }
+  .logo-item {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 }
 
 /* ===============================
@@ -167,9 +151,9 @@
 
 /* Target SVG icons in WordPress content */
 .wp-content svg {
-  width: 1.25rem;  /* 20px - adjust as needed */
-  height: 1.25rem; /* 20px - adjust as needed */
-  vertical-align: middle; /* Aligns nicely with text */
+  width: 1.25rem;
+  height: 1.25rem;
+  vertical-align: middle;
   display: inline-block;
 }
 
@@ -177,29 +161,29 @@
 .wp-content .wp-block-image svg,
 .wp-content figure svg,
 .wp-content .icon svg {
-  width: 1.5rem;  /* 24px */
-  height: 1.5rem; /* 24px */
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 /* For SVG icons within links or buttons */
 .wp-content a svg,
 .wp-content button svg {
-  width: 1.125rem;  /* 18px */
-  height: 1.125rem; /* 18px */
-  margin-right: 0.25rem; /* Adds spacing if text follows */
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-right: 0.25rem;
 }
 
 /* If SVGs are inside specific WordPress blocks */
 .wp-content .wp-block-social-links svg {
-  width: 1.5rem;  /* 24px */
-  height: 1.5rem; /* 24px */
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 /* For menu icons if applicable */
 .wp-content .menu-item svg,
 .wp-content .wp-block-navigation svg {
-  width: 1rem;   /* 16px */
-  height: 1rem;  /* 16px */
+  width: 1rem;
+  height: 1rem;
 }
 
 /* Ensure SVGs maintain aspect ratio */
@@ -216,11 +200,10 @@
 /* Responsive adjustments for SVGs */
 @media (max-width: 768px) {
   .wp-content svg {
-    width: 1rem;   /* 16px on mobile */
-    height: 1rem;  /* 16px on mobile */
+    width: 1rem;
+    height: 1rem;
   }
 }
-
 
 /* ===============================
    GLOBAL BUTTON STYLE
@@ -343,4 +326,160 @@ body {
 /* remove the vertical divider line */
 .goog-te-gadget-simple span[style*="border-left"] {
   display: none !important;
+}
+
+/* ===============================
+   FULL WIDTH IMAGES & VIDEOS - MOBILE FIX
+================================ */
+
+/* Make all images full width on mobile */
+@media (max-width: 1023px) {
+  .wp-content img {
+    width: 100vw !important;
+    max-width: none !important;
+    height: auto !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    border-radius: 0 !important;
+  }
+
+  /* Make all video containers full width */
+  .wp-content .wp-block-embed,
+  .wp-content .wp-block-video,
+  .wp-content figure.wp-block-video,
+  .wp-content figure.wp-block-embed {
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    position: relative !important;
+  }
+
+  /* Target YouTube embeds and iframes */
+  .wp-content iframe,
+  .wp-content video,
+  .wp-content embed,
+  .wp-content object {
+    width: 100vw !important;
+    max-width: none !important;
+    height: auto !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+  }
+
+  /* Maintain aspect ratio for videos */
+  .wp-content iframe[src*="youtube"],
+  .wp-content iframe[src*="youtu.be"],
+  .wp-content iframe[src*="vimeo"] {
+    aspect-ratio: 16/9 !important;
+  }
+
+  /* Target the specific YouTube video container classes */
+  .ytmVideoCoverHost,
+  .ytmCuedOverlayHost,
+  [class*="ytmVideo"],
+  [class*="ytmCued"] {
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    display: block !important;
+  }
+
+  /* Fix for WordPress block gallery and images */
+  .wp-content .wp-block-gallery,
+  .wp-content .wp-block-image,
+  .wp-content figure {
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* Desktop screens - revert to normal */
+@media (min-width: 1024px) {
+  .wp-content img {
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 1rem !important;
+  }
+
+  .wp-content .wp-block-embed,
+  .wp-content .wp-block-video,
+  .wp-content iframe,
+  .wp-content video {
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .ytmVideoCoverHost,
+  .ytmCuedOverlayHost,
+  [class*="ytmVideo"],
+  [class*="ytmCued"] {
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .wp-content .wp-block-gallery,
+  .wp-content .wp-block-image,
+  .wp-content figure {
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Fix for featured image */
+.blog-detail-image-container {
+  overflow: hidden;
+}
+
+@media (max-width: 1023px) {
+  .blog-detail-image {
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    height: auto !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-detail-image {
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Ensure proper video aspect ratio on all devices */
+.wp-content iframe[src*="youtube"],
+.wp-content iframe[src*="youtu.be"],
+.wp-content iframe[src*="vimeo"] {
+  aspect-ratio: 16/9 !important;
+}
+
+/* Remove any overflow issues */
+.wp-content {
+  overflow-x: hidden !important;
+}
+
+/* Make sure video overlays are properly positioned */
+.ytmCuedOverlayPlayButton {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 10 !important;
 }

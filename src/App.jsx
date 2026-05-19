@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -85,6 +86,7 @@ import PRPTherapy from "./pages/PRPTherapy";
 import AFTSSRTreatment from "./pages/AFTSSRTreatment";
 import DermalFillersTreatment from "./pages/DermalFillersTreatment";
 import NewCasestudy from "./pages/NewCasestudy";
+import BodyContouringTreatment from "./pages/BodyContouringTreatment";
 
 // Add CSS to hide Google Translate's default UI elements
 const globalStyles = `
@@ -187,6 +189,7 @@ export default function App() {
         <Route path="/skin/pigmentation" element={<PigmentationTreatment />} />
         <Route path="/skin/dull-skin-open-pores" element={<DullSkinOpenPores />} />
         <Route path="/skin/acne-scars" element={<AcneScarTreatment />} />
+        <Route path="/skin/body-contouring-treatment-gurgaon" element={<BodyContouringTreatment />} />
 
         {/* ================= HAIR ================= */}
         <Route path="/hair-treatment" element={<HairTreatment />} />

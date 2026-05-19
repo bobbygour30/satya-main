@@ -32,12 +32,18 @@ const MENU = [
       { label: "Concerns", isConcerns: true },
       { label: "FUE Hair Transplant", path: "/hair-transplant/fue" },
       { label: "FUT Hair Transplant", path: "/hair-transplant/fut" },
-      { label: "Beard Hair Transplant", path: "/hair-transplant/beard-hair-transplant" },
-      { label: "Eyebrow Transplant", path: "/hair-transplant/eyebrow-transplant" },
-      { label: "Body Hair Transplant", path: "/hair-transplant/body" }, 
+      {
+        label: "Beard Hair Transplant",
+        path: "/hair-transplant/beard-hair-transplant",
+      },
+      {
+        label: "Eyebrow Transplant",
+        path: "/hair-transplant/eyebrow-transplant",
+      },
+      { label: "Body Hair Transplant", path: "/hair-transplant/body" },
     ],
     concerns: [
-       { label: "Telogen Effluvium", path: "/hair-transplant/telogen" },
+      { label: "Telogen Effluvium", path: "/hair-transplant/telogen" },
       { label: "Alopecia Areata", path: "/hair-transplant/alopecia" },
       { label: "Male Hair Loss", path: "/hair-transplant/male-hair-loss" },
       { label: "Female Hair Loss", path: "/hair-transplant/female-hair-loss" },
@@ -133,13 +139,20 @@ export default function Navbar() {
             <span className="flex items-center gap-1">
               <MapPin size={14} /> DLF Phase 4, Gurgaon | Delhi NCR
             </span>
-           <a
-  href="tel:+919910094945"
-  className="flex items-center gap-1 cursor-pointer"
->
-  <Phone size={14} />
-  +919910094945
-</a>
+            <a
+              href="tel:+919910094945"
+              className="flex items-center gap-1 cursor-pointer"
+            >
+              <Phone size={14} />
+              +919910094945
+            </a>
+            <a
+              href="tel:+919971064917"
+              className="flex items-center gap-1 cursor-pointer"
+            >
+              <Phone size={14} />
+              +919971064917
+            </a>
           </div>
 
           <div className="flex gap-6 items-center">
@@ -218,9 +231,9 @@ export default function Navbar() {
               </div>
 
               {MENU.map((menu) => (
-                <MobileAccordion 
-                  key={menu.title} 
-                  {...menu} 
+                <MobileAccordion
+                  key={menu.title}
+                  {...menu}
                   onLinkClick={() => setMobileOpen(false)}
                 />
               ))}
@@ -239,7 +252,10 @@ export default function Navbar() {
         )}
       </header>
 
-      <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+      <ConsultationPopup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+      />
     </>
   );
 }
@@ -270,13 +286,18 @@ function HoverDropdown({ title, items, concerns }) {
         <span className="font-medium text-[#2B333C] group-hover:text-[#9E4A47]">
           {title}
         </span>
-        <ChevronDown size={16} className="text-[#828D9C] group-hover:text-[#9E4A47]" />
+        <ChevronDown
+          size={16}
+          className="text-[#828D9C] group-hover:text-[#9E4A47]"
+        />
       </div>
 
       <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
         <div
           className={`bg-[#FFF8EF] border border-[#DFDFDD] shadow-2xl rounded-xl overflow-hidden flex ${
-            activeSubmenu === "concerns" && hasConcerns ? "min-w-[680px]" : "min-w-[320px]"
+            activeSubmenu === "concerns" && hasConcerns
+              ? "min-w-[680px]"
+              : "min-w-[320px]"
           }`}
         >
           {/* LEFT COLUMN */}
@@ -338,7 +359,7 @@ function HoverDropdown({ title, items, concerns }) {
                       className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      View More 
+                      View More
                     </Link>
                   )}
 
@@ -348,7 +369,7 @@ function HoverDropdown({ title, items, concerns }) {
                       className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      View More 
+                      View More
                     </Link>
                   )}
 
@@ -360,7 +381,7 @@ function HoverDropdown({ title, items, concerns }) {
                       }}
                       className="text-[#9E4A47] hover:text-[#7d3a38] text-sm font-medium flex items-center gap-1.5"
                     >
-                      View More 
+                      View More
                     </button>
                   )}
                 </>
@@ -376,8 +397,14 @@ function HoverDropdown({ title, items, concerns }) {
               </h4>
               <ul className="space-y-2.5 text-sm text-[#2B333C]">
                 {concerns.map((concern, idx) => (
-                  <li key={idx} className="hover:text-[#9E4A47] transition-colors">
-                    <Link to={concern.path} onClick={() => setActiveSubmenu(null)}>
+                  <li
+                    key={idx}
+                    className="hover:text-[#9E4A47] transition-colors"
+                  >
+                    <Link
+                      to={concern.path}
+                      onClick={() => setActiveSubmenu(null)}
+                    >
                       {concern.label}
                     </Link>
                   </li>

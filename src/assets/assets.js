@@ -163,6 +163,9 @@ import iplphoto from "./IPL Photofacial.webp";
 import lazertoning from "./Laser Toning.webp";
 import dullskin from "./Dull Skin & Open Pores.webp";
 
+import bodyContouring from "./body-conturing.png";
+import bodyContouring1 from "./body-conturing1.webp";
+
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1Desktop,
@@ -318,6 +321,8 @@ skinpolishing,
 iplphoto,
 lazertoning,
 dullskin,
+bodyContouring,
+bodyContouring1,
 };
 
 export default assets;

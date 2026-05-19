@@ -151,6 +151,13 @@ const treatments = [
     content:
       "Pixel Er laser is the newest type of Erbium fractional laser. It combines the fractional technology with the ablative effect of the Erbium YAG laser. Micro-ablative columns of laser go deep into the skin and cause a controlled injury below the surface.",
   },
+  {
+    title: "Body Contouring Treatment",
+    image: assets.bodyContouring,
+    link: "/skin/body-contouring-treatment-gurgaon",
+    content:
+      "Advanced body contouring treatments designed to target stubborn fat, improve body definition, and enhance natural curves  without invasive surgery. At Satya Skin & Hair Solutions, we use modern, clinically backed technologies to help sculpt a more toned and confident you with minimal downtime.",
+  },
 ];
 
 

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X, ChevronLeft, ChevronRight } from "lucide-react";
 import assets from "../assets/assets";
 import SEO from "../components/SEO";
 import ConsultationPopup from "../components/ConsultationPopup";
@@ -32,6 +32,7 @@ const faqs = [
     a: "Concerns include scalp tissue damage, chronic inflammation, reduced flexibility, and complications for future natural transplants.",
   },
 ];
+
 const container = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -45,96 +46,148 @@ const fadeUp = {
 export default function SyntheticHairTransplant() {
   const [showPopup, setShowPopup] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const beforeAfterImages = [
+    {
+      id: 1,
+      image: assets.syntheticResult1 || "https://via.placeholder.com/600x400/9E4A47/FFFFFF?text=Result+Image+1",
+      // title: "Scalp Density Restoration",
+    },
+    {
+      id: 2,
+      image: assets.syntheticResult2 || "https://via.placeholder.com/600x400/9E4A47/FFFFFF?text=Result+Image+2",
+      // title: "Crown Area Coverage",
+    },
+    {
+      id: 3,
+      image: assets.syntheticResult3 || "https://via.placeholder.com/600x400/9E4A47/FFFFFF?text=Result+Image+3",
+      // title: "Frontal Hairline Enhancement",
+    },
+  ];
+
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+    setLightboxImage(beforeAfterImages[index].image);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    setLightboxIndex(0);
+    document.body.style.overflow = "auto";
+  };
+
+  const nextImage = () => {
+    const nextIndex = (lightboxIndex + 1) % beforeAfterImages.length;
+    setLightboxIndex(nextIndex);
+    setLightboxImage(beforeAfterImages[nextIndex].image);
+  };
+
+  const prevImage = () => {
+    const prevIndex = (lightboxIndex - 1 + beforeAfterImages.length) % beforeAfterImages.length;
+    setLightboxIndex(prevIndex);
+    setLightboxImage(beforeAfterImages[prevIndex].image);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+  };
+
+  React.useEffect(() => {
+    if (lightboxImage) {
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      window.removeEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxImage, lightboxIndex]);
+
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C] overflow-hidden">
-      {/* ==================== SEO META (exactly like HomePage) ==================== */}
+      {/* ==================== SEO META ==================== */}
       <SEO
         title="Synthetic Hair Transplant | Artificial Hair Implant Risks, Cost & Alternatives"
         description="Learn about Synthetic Hair Transplant (artificial hair implant), its risks, complications, cost factors, and why careful evaluation is essential before choosing this method."
         canonical="https://satyaskinhair.com/hair-transplant/synthetic"
-        showSchema={false} // Only home page uses schema
+        showSchema={false}
       />
+
       {/* === PREMIUM SYNTHETIC HAIR TRANSPLANT HERO BANNER === */}
-<section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
-  {/* Background Image - Desktop Only */}
-  <div
-    className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
-    style={{
-      backgroundImage: `url('${assets.syntheticbanners}')`,
-    }}
-  />
+      <section className="relative w-full min-h-[64vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-[#FCEBDE]">
+        {/* Background Image - Desktop Only */}
+        <div
+          className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain opacity-90"
+          style={{
+            backgroundImage: `url('${assets.syntheticbanners}')`,
+          }}
+        />
 
-  <motion.div
-    className="relative z-10 px-5 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-2 sm:gap-10 items-center sm:py-12 lg:py-0"
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1 }}
-  >
-    {/* LEFT CONTENT */}
-    <div className="space-y-6 sm:space-y-8">
+        <motion.div
+          className="relative z-10 px-5 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-2 sm:gap-10 items-center sm:py-12 lg:py-0"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          {/* LEFT CONTENT */}
+          <div className="space-y-6 sm:space-y-8">
+            <div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
+                Synthetic Hair Transplant
+              </h1>
 
-      <div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#0E3A43]">
-          Synthetic Hair Transplant
-        </h1>
+              <p className="text-[#9E4A47] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mt-2">
+                Artificial Hair Implants – Risks & Long-Term Considerations
+              </p>
+            </div>
 
-        <p className="text-[#9E4A47] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mt-2">
-          Artificial Hair Implants – Risks & Long-Term Considerations
-        </p>
-      </div>
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl">
+              Synthetic hair transplant (also called artificial hair implant or bio-fibre implantation) inserts non-biological fibres directly into the scalp to simulate hair density. 
+              Unlike traditional transplants that use your own follicles, this method offers quicker visual results but comes with notable risks, maintenance needs, 
+              and long-term implications that every patient should fully understand before deciding.
+            </p>
 
-      <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl">
-        Synthetic hair transplant (also called artificial hair implant or bio-fibre implantation) inserts non-biological fibres directly into the scalp to simulate hair density. 
-        Unlike traditional transplants that use your own follicles, this method offers quicker visual results but comes with notable risks, maintenance needs, 
-        and long-term implications that every patient should fully understand before deciding.
-      </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowPopup(true)}
+              className="
+                bg-[#9E4A47] hover:bg-[#84332F] text-white
+                py-2 px-5 sm:py-3 sm:px-8 lg:py-4 lg:px-10
+                rounded-full font-semibold
+                text-sm sm:text-base lg:text-lg
+                shadow-lg transition-all duration-300
+              "
+            >
+              Book FREE Consultation →
+            </motion.button>
+          </div>
 
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setShowPopup(true)}
-        className="
-          bg-[#9E4A47] hover:bg-[#84332F] text-white
-          py-2 px-5 sm:py-3 sm:px-8 lg:py-4 lg:px-10
-          rounded-full font-semibold
-          text-sm sm:text-base lg:text-lg
-          shadow-lg transition-all duration-300
-        "
-      >
-        Book FREE Consultation →
-      </motion.button>
-    </div>
+          {/* Mobile Image */}
+          <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
+            <img
+              src={assets.syntheticbanners}
+              alt="Synthetic Hair Transplant - Artificial Hair Implants Overview"
+              className="w-full h-[300px] sm:h-[350px] object-cover scale-110"
+            />
+          </div>
 
-    {/* Mobile Image (Zoomed) */}
-    <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
-      <img
-        src={assets.syntheticbanners}
-        alt="Synthetic Hair Transplant - Artificial Hair Implants Overview"
-        className="
-          w-full 
-          h-[300px] sm:h-[350px]
-          object-cover
-          scale-110
-        "
-      />
-    </div>
-
-    {/* Desktop Empty Column (preserves layout) */}
-    <div className="hidden lg:block" />
-  </motion.div>
-</section>
+          {/* Desktop Empty Column */}
+          <div className="hidden lg:block" />
+        </motion.div>
+      </section>
 
       {/* === Seamless Running Ribbon Strip === */}
       <div className="relative w-full overflow-hidden">
-        {/* Gradient Background Strip */}
         <div className="absolute inset-0 h-16 md:h-20 bg-gradient-to-r from-[#9E4A47] via-[#B87C72] to-[#9E4A47] opacity-95 shadow-lg" />
 
-        {/* Moving Content */}
         <motion.div
           className="relative flex w-max text-white font-medium text-sm md:text-base tracking-wide py-4 md:py-5"
           animate={{ x: ["0%", "-50%"] }}
@@ -144,7 +197,6 @@ export default function SyntheticHairTransplant() {
             ease: "linear",
           }}
         >
-          {/* Content Block (duplicated for seamless loop) */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
               Instant Density • No Donor Needed • Informed Risks • Long-Term Considerations • Ethical Guidance • Satya Expertise
@@ -153,8 +205,6 @@ export default function SyntheticHairTransplant() {
               Instant Density • No Donor Needed • Informed Risks • Long-Term Considerations • Ethical Guidance • Satya Expertise
             </span>
           </div>
-
-          {/* Duplicate again for smoothness */}
           <div className="flex whitespace-nowrap">
             <span className="px-12">
               Instant Density • No Donor Needed • Informed Risks • Long-Term Considerations • Ethical Guidance • Satya Expertise
@@ -171,7 +221,6 @@ export default function SyntheticHairTransplant() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(252,235,222,0.5),transparent_70%)] pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 max-w-7xl mx-auto">
-          {/* === LEFT SIDE: DOCTOR IMAGES === */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -179,48 +228,31 @@ export default function SyntheticHairTransplant() {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row gap-8 justify-center items-center"
           >
-            {/* Doctor 1 */}
             <div className="text-center">
               <motion.img
                 src={assets.drShailGupta}
                 alt="Dr. Shail Gupta"
                 className="w-[250px] md:w-[280px] rounded-3xl shadow-2xl object-cover"
                 animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
-              <p className="mt-4 font-bold text-[#2B333C] text-lg">
-                Dr. Shail Gupta
-              </p>
-              <p className="text-[#9E4A47] font-medium text-sm">
-                MBBS, MD — Founder
-              </p>
+              <p className="mt-4 font-bold text-[#2B333C] text-lg">Dr. Shail Gupta</p>
+              <p className="text-[#9E4A47] font-medium text-sm">MBBS, MD — Founder</p>
             </div>
 
-            {/* Doctor 2 */}
             <div className="text-center">
               <motion.img
                 src={assets.drRuchiAgarwal}
                 alt="Dr. Ruchi Agarwal"
                 className="w-[250px] md:w-[280px] rounded-3xl shadow-2xl object-cover"
                 animate={{ y: [0, -12, 0] }}
-                transition={{
-                  duration: 7,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               />
-              <p className="mt-4 font-bold text-[#2B333C] text-lg">
-                Dr. Ruchi Agarwal
-              </p>
+              <p className="mt-4 font-bold text-[#2B333C] text-lg">Dr. Ruchi Agarwal</p>
               <p className="text-[#9E4A47] font-medium text-sm">Co-Founder</p>
             </div>
           </motion.div>
 
-          {/* === RIGHT SIDE: CONTENT === */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -228,21 +260,12 @@ export default function SyntheticHairTransplant() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <p className="text-[#9E4A47] font-semibold uppercase tracking-wider">
-              Expert Care at Satya
-            </p>
-
-            <h2 className="text-4xl font-bold text-[#2B333C]">
-              Meet the Team Behind Your Transformation
-            </h2>
+            <p className="text-[#9E4A47] font-semibold uppercase tracking-wider">Expert Care at Satya</p>
+            <h2 className="text-4xl font-bold text-[#2B333C]">Meet the Team Behind Your Transformation</h2>
 
             <div className="flex flex-wrap gap-4">
-              <span className="bg-[#FCEBDE] px-4 py-2 rounded-full font-medium text-[#9E4A47]">
-                46+ Years Combined
-              </span>
-              <span className="bg-[#FCEBDE] px-4 py-2 rounded-full font-medium">
-                50,000+ Procedures
-              </span>
+              <span className="bg-[#FCEBDE] px-4 py-2 rounded-full font-medium text-[#9E4A47]">46+ Years Combined</span>
+              <span className="bg-[#FCEBDE] px-4 py-2 rounded-full font-medium">50,000+ Procedures</span>
             </div>
             <p className="text-[#828D9C] italic border-l-4 border-[#9E4A47] pl-4">
               Transparent advice on synthetic options — prioritizing scalp health, risk awareness, and sustainable natural alternatives where possible.
@@ -279,10 +302,7 @@ export default function SyntheticHairTransplant() {
                 The procedure typically involves: Local anaesthesia • Insertion of artificial fibres using a specialised implanter device • Immediate visible density Unlike FUT or FUE, no hair follicles are harvested. The fibres are mechanically inserted into the scalp tissue.
               </p>
 
-              <motion.ul
-                variants={fadeUp}
-                className="grid sm:grid-cols-2 gap-4"
-              >
+              <motion.ul variants={fadeUp} className="grid sm:grid-cols-2 gap-4">
                 {[
                   "Immediate cosmetic improvement",
                   "No need for donor hair",
@@ -293,18 +313,8 @@ export default function SyntheticHairTransplant() {
                     key={i}
                     className="flex items-center gap-3 bg-white/70 px-5 py-3 rounded-xl shadow-sm border border-[#DFDFDD]"
                   >
-                    <svg
-                      className="w-5 h-5 text-[#9E4A47]"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        d="M5 13l4 4L19 7"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                    <svg className="w-5 h-5 text-[#9E4A47]" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     <span className="font-medium">{item}</span>
                   </li>
@@ -312,7 +322,6 @@ export default function SyntheticHairTransplant() {
               </motion.ul>
             </motion.div>
 
-            {/* Central Video Embed - placeholder; replace with synthetic hair procedure video if available */}
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -322,7 +331,7 @@ export default function SyntheticHairTransplant() {
             >
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/QZJq1Yysg5s?si=3oiYGdHFl-3XW79E" // Replace with actual synthetic hair transplant video
+                  src="https://www.youtube.com/embed/QZJq1Yysg5s?si=3oiYGdHFl-3XW79E"
                   title="Synthetic Hair Transplant Procedure Overview"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -368,9 +377,7 @@ export default function SyntheticHairTransplant() {
                 viewport={{ once: true }}
                 className="bg-white p-8 rounded-2xl shadow-lg border border-[#DFDFDD] hover:shadow-2xl transition-all duration-300"
               >
-                <h3 className="text-2xl font-semibold text-[#9E4A47] mb-4">
-                  {risk.title}
-                </h3>
+                <h3 className="text-2xl font-semibold text-[#9E4A47] mb-4">{risk.title}</h3>
                 <p className="text-[#828D9C] leading-relaxed">{risk.text}</p>
               </motion.div>
             ))}
@@ -397,31 +404,11 @@ export default function SyntheticHairTransplant() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#DFDFDD]">
-                <tr>
-                  <td className="py-4 px-6 font-medium">Hair Source</td>
-                  <td className="py-4 px-6">Artificial fibres</td>
-                  <td className="py-4 px-6">Patient’s own follicles</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-medium">Growth</td>
-                  <td className="py-4 px-6">No natural growth</td>
-                  <td className="py-4 px-6">Permanent hair growth</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-medium">Rejection Risk</td>
-                  <td className="py-4 px-6">Possible</td>
-                  <td className="py-4 px-6">No rejection</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-medium">Maintenance</td>
-                  <td className="py-4 px-6">Regular replacement required</td>
-                  <td className="py-4 px-6">Permanent graft survival</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-medium">Infection Risk</td>
-                  <td className="py-4 px-6">Higher</td>
-                  <td className="py-4 px-6">Lower if performed properly</td>
-                </tr>
+                <tr><td className="py-4 px-6 font-medium">Hair Source</td><td className="py-4 px-6">Artificial fibres</td><td className="py-4 px-6">Patient's own follicles</td></tr>
+                <tr><td className="py-4 px-6 font-medium">Growth</td><td className="py-4 px-6">No natural growth</td><td className="py-4 px-6">Permanent hair growth</td></tr>
+                <tr><td className="py-4 px-6 font-medium">Rejection Risk</td><td className="py-4 px-6">Possible</td><td className="py-4 px-6">No rejection</td></tr>
+                <tr><td className="py-4 px-6 font-medium">Maintenance</td><td className="py-4 px-6">Regular replacement required</td><td className="py-4 px-6">Permanent graft survival</td></tr>
+                <tr><td className="py-4 px-6 font-medium">Infection Risk</td><td className="py-4 px-6">Higher</td><td className="py-4 px-6">Lower if performed properly</td></tr>
               </tbody>
             </table>
           </div>
@@ -477,18 +464,14 @@ export default function SyntheticHairTransplant() {
       {/* === Cost + Considerations === */}
       <section className="py-16 px-6 md:px-16 lg:px-24 space-y-16">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-2xl border border-[#DFDFDD]">
-          <h2 className="text-3xl font-bold text-[#9E4A47] mb-6">
-            Cost Considerations
-          </h2>
+          <h2 className="text-3xl font-bold text-[#9E4A47] mb-6">Cost Considerations</h2>
           <p className="text-lg leading-relaxed text-[#2B333C]/90">
             Synthetic Hair Transplant cost varies depending on: Number of fibres implanted • Maintenance sessions required • Clinic standards • Geographic location However, the long-term cost may increase due to repeated sessions and maintenance procedures.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto bg-gradient-to-br from-[#9E4A47]/5 to-[#B87C72]/5 rounded-3xl p-10 border border-[#9E4A47]/20">
-          <h2 className="text-3xl font-bold text-[#9E4A47] mb-6">
-            Important Considerations Before Choosing Synthetic Hair Transplant
-          </h2>
+          <h2 className="text-3xl font-bold text-[#9E4A47] mb-6">Important Considerations Before Choosing Synthetic Hair Transplant</h2>
           <ul className="text-lg leading-relaxed text-[#2B333C]/90 space-y-2 list-disc pl-6">
             <li>Understand potential complications</li>
             <li>Assess long-term scalp health risks</li>
@@ -496,20 +479,136 @@ export default function SyntheticHairTransplant() {
             <li>Seek detailed medical consultation</li>
             <li>Evaluate realistic expectations</li>
           </ul>
-          <p className="mt-4 text-lg leading-relaxed text-[#2B333C]/90">
-            Immediate density does not always translate into long-term safety.
-          </p>
+          <p className="mt-4 text-lg leading-relaxed text-[#2B333C]/90">Immediate density does not always translate into long-term safety.</p>
         </div>
       </section>
+
+      {/* === BEFORE & AFTER REAL RESULTS SECTION with Click to Full View === */}
+      <section className="py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FCEBDE]/30 to-[#FFF8EF]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-[#9E4A47] mb-4">
+              Before & After Real Results
+            </h2>
+            <p className="text-lg text-[#2B333C]/80 max-w-3xl mx-auto">
+              See the transformative results of synthetic hair transplant procedures. 
+              Individual results may vary based on medical history and treatment plan.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {beforeAfterImages.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.15, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="group cursor-pointer"
+                onClick={() => openLightbox(index)}
+              >
+                <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-[#DFDFDD] hover:shadow-2xl transition-all duration-300">
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={`Result ${item.id}`}
+                      className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Overlay hint for click */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 bg-black/60 text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">
+                        Click to enlarge
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === LIGHTBOX MODAL - Full Screen Image Viewer === */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex items-center justify-center"
+            onClick={closeLightbox}
+          >
+            {/* Close button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-[10000] bg-white/10 hover:bg-white/20 rounded-full p-2 transition-all duration-300"
+              aria-label="Close full view"
+            >
+              <X className="w-8 h-8 text-white" />
+            </button>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+              className="absolute left-4 z-[10000] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all duration-300"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-8 h-8 text-white" />
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+              className="absolute right-4 z-[10000] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all duration-300"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-8 h-8 text-white" />
+            </button>
+
+            {/* Image counter */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[10000] bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+              {lightboxIndex + 1} / {beforeAfterImages.length}
+            </div>
+
+            {/* Main Image */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="max-w-[90vw] max-h-[90vh] cursor-pointer"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={lightboxImage}
+                alt="Full size view"
+                className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* === Conclusion + CTA === */}
       <section className="py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-r from-[#9E4A47] to-[#B87C72] text-white text-center">
         <div className="max-w-4xl mx-auto space-y-8">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Conclusion
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold">Conclusion</h2>
           <p className="text-xl opacity-90">
-            Synthetic Hair Transplant offers instant cosmetic improvement but carries significant medical and long-term considerations. Unlike natural hair transplantation techniques that use the patient’s own follicles, synthetic implants involve foreign materials that may lead to complications, maintenance dependency, and reduced scalp health over time. Patients considering this option should make an informed decision after understanding both benefits and risks.
+            Synthetic Hair Transplant offers instant cosmetic improvement but carries significant medical and long-term considerations. 
+            Unlike natural hair transplantation techniques that use the patient's own follicles, synthetic implants involve foreign 
+            materials that may lead to complications, maintenance dependency, and reduced scalp health over time. Patients considering 
+            this option should make an informed decision after understanding both benefits and risks.
           </p>
           <button
             onClick={() => setShowPopup(true)}
@@ -520,6 +619,7 @@ export default function SyntheticHairTransplant() {
         </div>
       </section>
 
+      {/* === FAQ Section === */}
       <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FCEBDE]/30">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-[#9E4A47] mb-12 text-center">
@@ -529,7 +629,6 @@ export default function SyntheticHairTransplant() {
           <div className="space-y-4">
             {faqs.map((faq, index) => {
               const isOpen = activeIndex === index;
-
               return (
                 <motion.div
                   key={index}
@@ -537,24 +636,16 @@ export default function SyntheticHairTransplant() {
                   transition={{ layout: { duration: 0.4, ease: "easeInOut" } }}
                   className="bg-white rounded-2xl shadow-sm border border-[#DFDFDD] overflow-hidden"
                 >
-                  {/* Question */}
                   <button
                     onClick={() => toggleFAQ(index)}
                     className="w-full flex items-center justify-between p-6 text-left"
                   >
-                    <span className="font-semibold text-lg text-[#2B333C]">
-                      {faq.q}
-                    </span>
-
-                    <motion.div
-                      animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <span className="font-semibold text-lg text-[#2B333C]">{faq.q}</span>
+                    <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
                       <ChevronDown className="text-[#9E4A47]" size={22} />
                     </motion.div>
                   </button>
 
-                  {/* Answer */}
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
@@ -575,6 +666,7 @@ export default function SyntheticHairTransplant() {
           </div>
         </div>
       </section>
+
       <ConsultationPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );

@@ -165,6 +165,9 @@ import dullskin from "./Dull Skin & Open Pores.webp";
 
 import bodyContouring from "./body-conturing.png";
 import bodyContouring1 from "./body-conturing1.webp";
+import syntheticResult1 from "./Synthetic Hair Transplant 1.jpeg";
+import syntheticResult2 from "./Synthetic Hair Transplant 2.jpeg";
+import syntheticResult3 from "./Synthetic Hair Transplant Result 3.jpeg";
 
 /* ================= EXPORT OBJECT ================= */
 const assets = {
@@ -323,6 +326,10 @@ lazertoning,
 dullskin,
 bodyContouring,
 bodyContouring1,
+
+syntheticResult1,
+syntheticResult2,
+syntheticResult3
 };
 
 export default assets;

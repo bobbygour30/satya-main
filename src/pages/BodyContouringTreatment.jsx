@@ -74,7 +74,7 @@ export default function BodyContouringTreatment() {
 
       {/* === PREMIUM HERO BANNER === */}
       <section className="relative w-full min-h-[69vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FCEBDE]">
-        {/* Background Image - Desktop Only - FIXED VISIBILITY */}
+        {/* Background Image - Desktop Only */}
         <div
           className="hidden lg:block absolute inset-0 bg-no-repeat bg-right bg-contain"
           style={{
@@ -127,7 +127,7 @@ export default function BodyContouringTreatment() {
             </motion.button>
           </div>
 
-          {/* Mobile Image - FIXED ASSET KEY */}
+          {/* Mobile Image */}
           <div className="lg:hidden mt-8 overflow-hidden rounded-xl">
             <img
               src={assets.bodyContouring1}
@@ -218,14 +218,14 @@ export default function BodyContouringTreatment() {
             </div>
             
             <p className="text-[#828D9C] italic border-l-4 border-[#9E4A47] pl-4">
-              {`"Body contouring is not weight loss. It is precision..."`} — Dr. Ruchi Agarwal, Co-Founder
+              {`"Body contouring is not weight loss. It is precision. The goal is to reduce specific fat deposits, improve muscle tone, and tighten lax skin, in a patient who is already close to their target physique."`} — Dr. Ruchi Agarwal, Co-Founder
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* === What is Non-Invasive Body Contouring === */}
-      <section className="py-16 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
+      {/* === What is Non-Invasive Body Contouring + Video Section === */}
+      <section className="py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#FFF8EF] to-[#FCEBDE]/40">
         <div className="max-w-7xl mx-auto space-y-16">
           <motion.div
             initial="hidden"
@@ -237,58 +237,120 @@ export default function BodyContouringTreatment() {
             <h2 className="text-3xl md:text-5xl font-bold text-[#9E4A47]">
               What Is Non-Invasive Body Contouring?
             </h2>
+            <p className="text-lg md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
+              Non-invasive body contouring refers to procedures that reduce localised fat, improve skin laxity, or strengthen muscle tone without incisions, anaesthesia, or recovery time — precision tools for patients at or near their target weight.
+            </p>
           </motion.div>
 
-          <div className="prose max-w-4xl mx-auto text-base md:text-lg leading-relaxed text-[#2B333C]/90">
-            <p>
-              Non-invasive body contouring refers to procedures that reduce localised fat, improve skin laxity, or strengthen muscle tone without incisions, anaesthesia, or recovery time.
-            </p>
-            <p className="mt-4">
-              These are <strong>not weight-loss treatments</strong>. They are precision tools for patients who are at or near their target weight but struggle with specific areas.
-            </p>
-          </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={container} className="space-y-8">
+              <p className="text-lg leading-relaxed text-[#2B333C]/90">
+                These are <strong>not weight-loss treatments</strong>. They are precision tools for patients who are at or near their target weight but struggle with specific anatomical areas that have not responded to lifestyle intervention.
+              </p>
 
-          {/* Technologies Table */}
-          <div className="max-w-5xl mx-auto bg-white rounded-3xl p-8 shadow-xl border border-[#DFDFDD]">
-            <h3 className="text-2xl font-bold text-[#9E4A47] mb-6 text-center">Our Technologies</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="border-b border-[#DFDFDD]">
-                    <th className="pb-4 pr-6 font-semibold">Technology</th>
-                    <th className="pb-4 pr-6 font-semibold">Primary Target</th>
-                    <th className="pb-4 pr-6 font-semibold">Sessions</th>
-                    <th className="pb-4 font-semibold">Downtime</th>
-                   </tr>
-                </thead>
-                <tbody className="text-[#2B333C]/90">
-                  <tr className="border-b border-[#DFDFDD]">
-                    <td className="py-4 pr-6 font-medium">Cryolipolysis</td>
-                    <td className="py-4 pr-6">Localised subcutaneous fat</td>
-                    <td className="py-4 pr-6">1–2 per area</td>
-                    <td className="py-4">None</td>
-                   </tr>
-                  <tr className="border-b border-[#DFDFDD]">
-                    <td className="py-4 pr-6 font-medium">HIFU</td>
-                    <td className="py-4 pr-6">Fat + skin laxity</td>
-                    <td className="py-4 pr-6">2–4</td>
-                    <td className="py-4">None</td>
-                   </tr>
-                  <tr>
-                    <td className="py-4 pr-6 font-medium">HIFEM</td>
-                    <td className="py-4 pr-6">Muscle tone + fat reduction</td>
-                    <td className="py-4 pr-6">4–6</td>
-                    <td className="py-4">None</td>
-                   </tr>
-                </tbody>
-              </table>
-            </div>
+              <p className="text-lg leading-relaxed text-[#2B333C]/90">
+                Three technologies are available at Satya Skin & Hair Solutions, each addressing a distinct clinical problem: Cryolipolysis for localised fat reduction, HIFU for combined fat reduction and skin tightening, and HIFEM for muscle toning with secondary fat reduction.
+              </p>
+
+              <motion.ul
+                variants={fadeUp}
+                className="grid sm:grid-cols-2 gap-4"
+              >
+                {[
+                  "No incisions or anaesthesia",
+                  "Zero downtime required",
+                  "Physician-led assessment",
+                  "FDA-cleared technologies",
+                  "Gradual natural results",
+                  "Clinically validated efficacy",
+                ].map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center gap-3 bg-white/70 px-5 py-3 rounded-xl shadow-sm border border-[#DFDFDD]"
+                  >
+                    <svg
+                      className="w-5 h-5 text-[#9E4A47]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M5 13l4 4L19 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="font-medium">{item}</span>
+                  </li>
+                ))}
+              </motion.ul>
+            </motion.div>
+
+            {/* YouTube Video Embed */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9 }}
+              viewport={{ once: true }}
+              className="rounded-3xl overflow-hidden shadow-2xl border-2 border-[#DFDFDD]/50"
+            >
+              <div className="aspect-video">
+                <iframe
+                  src="https://www.youtube.com/embed/yXJnuJ74KV4?si=7JTzq9ZOp7dvfU0k" 
+                  title="Non-Invasive Body Contouring Treatment - Cryolipolysis, HIFU & HIFEM"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Table */}
+      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
+        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-8 shadow-xl border border-[#DFDFDD]">
+          <h3 className="text-2xl font-bold text-[#9E4A47] mb-6 text-center">Our Technologies</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-[#DFDFDD]">
+                  <th className="pb-4 pr-6 font-semibold">Technology</th>
+                  <th className="pb-4 pr-6 font-semibold">Primary Target</th>
+                  <th className="pb-4 pr-6 font-semibold">Sessions</th>
+                  <th className="pb-4 font-semibold">Downtime</th>
+                </tr>
+              </thead>
+              <tbody className="text-[#2B333C]/90">
+                <tr className="border-b border-[#DFDFDD]">
+                  <td className="py-4 pr-6 font-medium">Cryolipolysis</td>
+                  <td className="py-4 pr-6">Localised subcutaneous fat</td>
+                  <td className="py-4 pr-6">1–2 per area</td>
+                  <td className="py-4">None</td>
+                 </tr>
+                <tr className="border-b border-[#DFDFDD]">
+                  <td className="py-4 pr-6 font-medium">HIFU</td>
+                  <td className="py-4 pr-6">Fat + skin laxity</td>
+                  <td className="py-4 pr-6">2–4</td>
+                  <td className="py-4">None</td>
+                 </tr>
+                <tr>
+                  <td className="py-4 pr-6 font-medium">HIFEM</td>
+                  <td className="py-4 pr-6">Muscle tone + fat reduction</td>
+                  <td className="py-4 pr-6">4–6</td>
+                  <td className="py-4">None</td>
+                 </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
       {/* Cryolipolysis Section - Full Content */}
-      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
+      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FCEBDE]/30">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
             Cryolipolysis — Controlled Fat Freezing
@@ -320,7 +382,7 @@ export default function BodyContouringTreatment() {
       </section>
 
       {/* HIFU Section */}
-      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FCEBDE]/30">
+      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
             HIFU Body Contouring: Fat Reduction With Skin Tightening
@@ -351,7 +413,7 @@ export default function BodyContouringTreatment() {
       </section>
 
       {/* HIFEM Section */}
-      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
+      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FCEBDE]/30">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#9E4A47] mb-12">
             HIFEM: Supramaximal Muscle Stimulation for Toning
@@ -382,22 +444,22 @@ export default function BodyContouringTreatment() {
       </section>
 
       {/* Combination Section */}
-      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FCEBDE]/20">
+      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-[#9E4A47]">Can Treatments Be Combined?</h2>
           <p className="text-lg text-[#2B333C]/90 max-w-3xl mx-auto">
             Yes, and in many cases, combination protocols deliver superior outcomes. The three technologies address complementary clinical concerns:
           </p>
           <div className="grid md:grid-cols-3 gap-6 mt-8">
-            <div className="bg-white p-6 rounded-2xl shadow-lg">
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-[#DFDFDD]">
               <h3 className="font-bold text-xl text-[#9E4A47] mb-3">Cryolipolysis + HIFEM</h3>
               <p>Simultaneous fat reduction and muscle strengthening — ideal for abdominal contouring.</p>
             </div>
-            <div className="bg-white p-6 rounded-2xl shadow-lg">
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-[#DFDFDD]">
               <h3 className="font-bold text-xl text-[#9E4A47] mb-3">HIFU + HIFEM</h3>
               <p>Addresses skin laxity and muscle tone where both are present.</p>
             </div>
-            <div className="bg-white p-6 rounded-2xl shadow-lg">
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-[#DFDFDD]">
               <h3 className="font-bold text-xl text-[#9E4A47] mb-3">HIFU + Cryolipolysis</h3>
               <p>For patients with significant fat volume and co-existing laxity.</p>
             </div>
@@ -406,7 +468,7 @@ export default function BodyContouringTreatment() {
       </section>
 
       {/* Why Choose Satya */}
-      <section className="py-16 px-6 md:px-16 lg:px-24">
+      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FCEBDE]/30">
         <div className="max-w-5xl mx-auto bg-gradient-to-br from-[#9E4A47]/5 to-[#B87C72]/5 rounded-3xl p-10 border border-[#9E4A47]/20">
           <h2 className="text-3xl md:text-4xl font-bold text-[#9E4A47] mb-6">
             Why Choose Satya Skin & Hair Solutions?
@@ -441,7 +503,7 @@ export default function BodyContouringTreatment() {
       </section>
 
       {/* === FAQ === */}
-      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FCEBDE]/30">
+      <section className="py-16 px-6 md:px-16 lg:px-24 bg-[#FFF8EF]">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-[#9E4A47] mb-12 text-center">
             Frequently Asked Questions

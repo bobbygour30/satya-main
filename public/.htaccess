@@ -8,7 +8,20 @@ RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|twitterbot|linkedinbot|whats
 RewriteCond %{REQUEST_URI} ^/case/(.+)$
 RewriteRule ^case/(.+)$ https://satya-admin-backend.vercel.app/api/og/%1 [L,R=302]
 
-# React Router - Serve index.html for all non-file/directory requests
+# Handle static files and HTML files
+# If request is for a file that exists (css, js, images), serve it
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# If request is for a directory, serve index.html from that directory
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*)/$ $1/index.html [L]
+
+# Check if .html file exists
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*?)/?$ $1.html [L]
+
+# For blog posts and dynamic routes, fallback to index.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [L]

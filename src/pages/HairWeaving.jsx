@@ -275,7 +275,7 @@ export default function HairWeavingSolutions() {
             <p className="md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
               Hair Weaving Solutions are non-surgical ways to replace hair. They attach a custom-made hair unit (also called a hair patch or hair system) to the scalp using special methods.
               Modern hair weaving systems are different from wigs in that
-              • Made to fit the person perfectly\
+              • Made to fit the person perfectly
               
               • Looks natural and lets air through
               • Safe enough for everyday use
@@ -606,10 +606,10 @@ export default function HairWeavingSolutions() {
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
             The cost of Hair Weaving Solutions in Delhi and Gurgaon depends on:
-            • Type of hair system used\
-             • Hair quality (synthetic vs natural)\
-             • Size of coverage area\
-             • Attachment technique\
+            • Type of hair system used
+             • Hair quality (synthetic vs natural)
+             • Size of coverage area
+             • Attachment technique
              • Maintenance frequency
             At Satya Skin & Hair Solutions, pricing is transparent, and patients are clearly informed about long-term maintenance costs before proceeding.
           </p>
@@ -621,10 +621,10 @@ export default function HairWeavingSolutions() {
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
             We do not promote hair weaving as a replacement for medical treatment when a transplant is clearly better.
-            Our philosophy:\
-             • Diagnose first\
-             • Explain all options honestly\
-             • Discuss long-term implications\
+            Our philosophy:
+             • Diagnose first
+             • Explain all options honestly
+             • Discuss long-term implications
              • Let the patient decide
             Hair weaving is offered only when it genuinely suits the patient’s condition and expectations.
           </p>

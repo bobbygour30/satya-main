@@ -1,11 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <!-- Bot Detection Script for Social Media Crawlers -->
     <script>
       (function() {
-        // List of bot user agents (social media crawlers)
         var bots = [
           'twitterbot', 
           'facebookexternalhit', 
@@ -21,32 +21,23 @@
         ];
         
         var ua = navigator.userAgent.toLowerCase();
-        
-        // Check if current user agent is a bot
         var isBot = bots.some(function(bot) { 
           return ua.indexOf(bot) !== -1; 
         });
-        
-        // Get current path
         var path = window.location.pathname;
         
-        // If it's a bot and it's a case study page, redirect to OG endpoint
         if (isBot && path.startsWith('/case/')) {
           var slug = path.replace('/case/', '');
-          // Remove trailing slash if present
           slug = slug.replace(/\/$/, '');
           window.location.replace('https://satya-admin-backend.vercel.app/api/og/' + slug);
         }
       })();
     </script>
-    <meta name="description" content="" />
 
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="/favicon.png" />
 
-    
-
-    <!-- ✅ Google Tag Manager (NEW - GTM-59BT7BH4) -->
+    <!-- ✅ Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -54,7 +45,6 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-59BT7BH4');
     </script>
-    <!-- End Google Tag Manager (NEW) -->
 
     <!-- Meta Pixel Code -->
     <script>
@@ -69,38 +59,54 @@
       fbq('init', '1452609146243499');
       fbq('track', 'PageView');
     </script>
-    <!-- End Meta Pixel Code -->
 
-    <!-- Google Analytics 4 (GA4) - Add this if not already present -->
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KBWHLBC4SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'G-KBWHLBC4SK'); // Replace with your actual GA4 Measurement ID
+      gtag('config', 'G-KBWHLBC4SK');
     </script>
-    <!-- End Google Analytics 4 -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Satya - Skin & Hair</title>
+    
+    <!-- SEO_TAGS will be inserted here -->
+    
+    <!-- Schema.org JSON-LD for Product -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Satya Skin & Hair Solutions",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.5",
+          "ratingCount": 565,
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "url": "https://satyaskinhair.com/",
+        "image": "https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/width:2000/height:2000/https://cdn.gamma.app/3pjpymp9a7vlfhg/c472d799fd6e4d3dacf235cf60fceb3f/original/Logo-2-1.png",
+        "brand": {
+          "@type": "Brand",
+          "name": "Satya Skin & Hair Solutions"
+        }
+      }
+    </script>
   </head>
 
   <body>
-
-    <!-- ✅ Google Tag Manager (noscript) NEW -->
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59BT7BH4"
       height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
-    <!-- End Google Tag Manager (noscript) NEW -->
 
-    <!-- Meta Pixel (noscript) -->
     <noscript>
       <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1452609146243499&ev=PageView&noscript=1"
       />
     </noscript>
-    <!-- End Meta Pixel (noscript) -->
 
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
@@ -108,12 +114,10 @@
     <!-- Telecrm API Lead Creation Script -->
     <script>
       (function() {
-        // Telecrm API Configuration
         const ENTERPRISE_ID = "67bc6699bd76f4ce2ec8304c";
         const API_URL = "https://next-api.telecrm.in/enterprise/" + ENTERPRISE_ID + "/autoupdatelead";
         const BEARER_TOKEN = "9e29b4f4-90ce-43ff-9437-bfe947c2977d1775459016913:3faf8505-8fe6-4bd3-9b96-bf3453629c52";
         
-        // Lead data to be pushed
         const leadData = {
           "fields": {
             "name": "John",
@@ -137,11 +141,9 @@
           ]
         };
         
-        // Function to send lead data to Telecrm
         async function sendLeadToTelecrm() {
           try {
             console.log("Sending lead data to Telecrm API...");
-            
             const response = await fetch(API_URL, {
               method: "POST",
               headers: {
@@ -150,7 +152,6 @@
               },
               body: JSON.stringify(leadData)
             });
-            
             if (response.ok) {
               const result = await response.json();
               console.log("✅ Lead successfully created/updated in Telecrm:", result);
@@ -159,12 +160,10 @@
               console.error("❌ Telecrm API Error:", response.status, errorText);
             }
           } catch (error) {
-            console.error("❌ Network error while calling Telecrm API:", error);
+            console.error("❌ Network error:", error);
           }
         }
         
-        // Execute the API call when the page loads
-        // Using DOMContentLoaded to ensure the page is ready
         if (document.readyState === "loading") {
           document.addEventListener("DOMContentLoaded", sendLeadToTelecrm);
         } else {
@@ -173,11 +172,10 @@
       })();
     </script>
     
-    <!-- Start of Tawk.to Script -->
+    <!-- Tawk.to Script -->
     <script type="text/javascript">
       var Tawk_API = Tawk_API || {};
       var Tawk_LoadStart = new Date();
-      
       (function() {
         var s1 = document.createElement("script");
         var s0 = document.getElementsByTagName("script")[0];
@@ -188,6 +186,5 @@
         s0.parentNode.insertBefore(s1, s0);
       })();
     </script>
-    <!-- End of Tawk.to Script -->
   </body>
 </html>

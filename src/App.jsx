@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -87,6 +86,7 @@ import AFTSSRTreatment from "./pages/AFTSSRTreatment";
 import DermalFillersTreatment from "./pages/DermalFillersTreatment";
 import NewCasestudy from "./pages/NewCasestudy";
 import BodyContouringTreatment from "./pages/BodyContouringTreatment";
+import CompleteCaseStudyPage from "./pages/CompleteCaseStudyPage";
 
 // Add CSS to hide Google Translate's default UI elements
 const globalStyles = `
@@ -150,7 +150,7 @@ export default function App() {
 
         {/* ================= CASE STUDIES ================= */}
         {/* <Route path="/case/prakhar" element={<CaseDetailPage />} /> */}
-        <Route path="/case/:slug" element={<DynamicCaseStudy />} />
+        <Route path="/case/:slug" element={<CompleteCaseStudyPage />} />
 
         {/* ================= CLINIC ================= */}
         <Route path="/delhi" element={<AboutSatyaDelhi />} />

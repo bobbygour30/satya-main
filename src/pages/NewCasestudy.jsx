@@ -10,6 +10,7 @@ import PatientTestimonial from '../components/case-study/PatientTestimonial'
 import DoctorProfileComponent from '../components/case-study/DoctorProfileComponent'
 import SuccessStoriesComponent from '../components/case-study/SuccessStoriesComponent'
 import FooterSection from '../components/case-study/FooterSection'
+import ProgressGallery from '../components/case-study/ProgressGallery'
 
 const NewCasestudy = () => {
   return (
@@ -19,6 +20,7 @@ const NewCasestudy = () => {
       <LokeshJourneyDetailComponent />
       <TreatmentJourneyProtocol />
       <TransformationProtocols />
+      <ProgressGallery />
       <MeasuredOutcomesSection />
       <VisualEvidenceComponent />
       <PatientTestimonial />

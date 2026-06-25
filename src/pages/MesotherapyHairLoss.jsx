@@ -687,9 +687,9 @@ export default function MesotherapyHairLoss() {
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
             The cost of Mesotherapy for Hair Loss in Delhi and Gurgaon depends on:
-            • Number of sessions required\
-             • Type of nutrient solutions used\
-             • Clinic expertise and location\
+            • Number of sessions required
+             • Type of nutrient solutions used
+             • Clinic expertise and location
              • Combination with other therapies
             At Satya Skin & Hair Solutions, pricing is transparent and ethical.
           </p>

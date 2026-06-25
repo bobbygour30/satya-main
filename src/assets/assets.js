@@ -169,6 +169,11 @@ import syntheticResult1 from "./Synthetic Hair Transplant 1.jpeg";
 import syntheticResult2 from "./Synthetic Hair Transplant 2.jpeg";
 import syntheticResult3 from "./Synthetic Hair Transplant Result 3.jpeg";
 
+
+import drshailteam from "./Dr. Shail's Team.jpeg";
+import prp4 from "./PRP-hair-treatment-procedure.webp";
+import lowlazor from "./LOW-LAZER-LIGHT-THERAPY.jpg";
+import gfc from "./GFC Therapy.png";
 /* ================= EXPORT OBJECT ================= */
 const assets = {
   banner1Desktop,
@@ -329,7 +334,13 @@ bodyContouring1,
 
 syntheticResult1,
 syntheticResult2,
-syntheticResult3
+syntheticResult3,
+
+drshailteam,
+
+prp4,
+lowlazor,
+gfc
 };
 
 export default assets;

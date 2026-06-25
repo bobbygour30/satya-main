@@ -68,7 +68,6 @@ api.interceptors.response.use(
     // Handle 500 Internal Server Error
     if (error.response?.status === 500) {
       console.error('🔥 Server Error:', error.response.data);
-      // You could show a toast notification here
     }
 
     // Handle network errors
@@ -96,7 +95,7 @@ export const authAPI = {
 // Case Studies API
 export const caseStudyAPI = {
   getAll: () => api.get('/case-studies'),
-  getOne: (idOrSlug) => api.get(`/case-studies/${idOrSlug}`), // This should work with both ID and slug
+  getOne: (idOrSlug) => api.get(`/case-studies/${idOrSlug}`), // This works with both ID and slug
   create: (data) => api.post('/case-studies', data),
   update: (id, data) => api.put(`/case-studies/${id}`, data),
   delete: (id) => api.delete(`/case-studies/${id}`),
@@ -106,6 +105,7 @@ export const caseStudyAPI = {
 
 // Upload API with progress tracking
 export const uploadAPI = {
+  // Hero image upload (single)
   uploadHeroImage: (caseStudyId, type, file, name, onProgress) => {
     const formData = new FormData();
     formData.append('image', file);
@@ -114,7 +114,7 @@ export const uploadAPI = {
     return api.post(`/uploads/hero/${caseStudyId}/${type}`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
       onUploadProgress: (progressEvent) => {
-        if (onProgress) {
+        if (onProgress && progressEvent.total) {
           const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
           onProgress(percentCompleted);
         }
@@ -122,41 +122,7 @@ export const uploadAPI = {
     });
   },
 
-  // Add to your existing uploadAPI object
-uploadBannerImage: (caseStudyId, file, alt, onProgress) => {
-  const formData = new FormData();
-  formData.append('image', file);
-  if (alt) formData.append('alt', alt);
-  
-  return api.post(`/uploads/banner/${caseStudyId}`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-    onUploadProgress: (progressEvent) => {
-      if (onProgress) {
-        const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-        onProgress(percentCompleted);
-      }
-    },
-  });
-},
-
-deleteBannerImage: (caseStudyId) => api.delete(`/uploads/banner/${caseStudyId}`),
-
-  // Add to your existing uploadAPI object
-uploadOGImage: (caseStudyId, file, onProgress) => {
-  const formData = new FormData();
-  formData.append('image', file);
-  
-  return api.post(`/uploads/og-image/${caseStudyId}`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-    onUploadProgress: (progressEvent) => {
-      if (onProgress) {
-        const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-        onProgress(percentCompleted);
-      }
-    },
-  });
-},
-  
+  // Bulk hero image upload
   bulkUploadHeroImages: (caseStudyId, type, files, onProgress) => {
     const formData = new FormData();
     files.forEach(file => formData.append('images', file));
@@ -164,7 +130,43 @@ uploadOGImage: (caseStudyId, file, onProgress) => {
     return api.post(`/uploads/hero/${caseStudyId}/${type}/bulk`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
       onUploadProgress: (progressEvent) => {
-        if (onProgress) {
+        if (onProgress && progressEvent.total) {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          onProgress(percentCompleted);
+        }
+      },
+    });
+  },
+
+  // Banner image upload
+  uploadBannerImage: (caseStudyId, file, alt, onProgress) => {
+    const formData = new FormData();
+    formData.append('image', file);
+    if (alt) formData.append('alt', alt);
+    
+    return api.post(`/uploads/banner/${caseStudyId}`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+      onUploadProgress: (progressEvent) => {
+        if (onProgress && progressEvent.total) {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          onProgress(percentCompleted);
+        }
+      },
+    });
+  },
+
+  // Delete banner image
+  deleteBannerImage: (caseStudyId) => api.delete(`/uploads/banner/${caseStudyId}`),
+
+  // OG Image upload (Social Media Feature Image)
+  uploadOGImage: (caseStudyId, file, onProgress) => {
+    const formData = new FormData();
+    formData.append('image', file);
+    
+    return api.post(`/uploads/og-image/${caseStudyId}`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+      onUploadProgress: (progressEvent) => {
+        if (onProgress && progressEvent.total) {
           const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
           onProgress(percentCompleted);
         }
@@ -172,26 +174,30 @@ uploadOGImage: (caseStudyId, file, onProgress) => {
     });
   },
   
+  // Table image upload (for progress table)
   uploadTableImage: (caseStudyId, rowId, colId, file, alt) => {
     const formData = new FormData();
     formData.append('image', file);
-    formData.append('alt', alt);
+    if (alt) formData.append('alt', alt);
     
     return api.post(`/uploads/table/${caseStudyId}/${rowId}/${colId}`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
   },
   
+  // Delete any image by ID
   deleteImage: (imageId) => api.delete(`/uploads/${imageId}`),
   
+  // Reorder images
   reorderImages: (caseStudyId, type, imageOrders) => 
     api.put(`/uploads/reorder/${caseStudyId}/${type}`, { imageOrders }),
   
+  // Get images for a case study
   getImages: (caseStudyId, type) => 
     api.get(`/uploads/${caseStudyId}/${type || ''}`),
 };
 
-// Health check
+// Health check API
 export const healthAPI = {
   check: () => api.get('/health'),
 };

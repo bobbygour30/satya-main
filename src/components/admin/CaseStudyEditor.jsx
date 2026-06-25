@@ -23,49 +23,74 @@ import {
   Scissors,
   Hospital,
   Globe,
-  Film, // Added for SEO icon
+  Film,
+  Info,
+  Award,
+  BarChart,
+  Users,
+  Quote,
+  TrendingUp,
+  FileText,
+  Layers,
+  Grid,
+  Star,
+  Heart,
+  Flag,
+  Briefcase,
+  Clock,
+  Zap
 } from "lucide-react";
 import { caseStudyAPI, uploadAPI } from "../../services/api";
 import ImageUploader from "../common/ImageUploader";
 
 export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
-  const [activeTab, setActiveTab] = useState("hero");
+  const [activeTab, setActiveTab] = useState("banner");
   const [formData, setFormData] = useState({
     // Basic Info
-    name: "Lokesh Lohia",
-    title: "Repair Hair Transplant | Medicine Failure to Natural Results",
+    name: "",
+    title: "",
     category: "hair",
     status: "draft",
-    best: false, // ← ADD THIS LINE
+    best: false,
     bannerImage: null,
 
-    // ===== NEW SEO FIELDS =====
+    // ===== BANNER DETAILS (NEW) =====
+    bannerDetails: {
+      patientName: "",
+      totalGrafts: {
+        first: "",
+        second: "",
+        technique: "MHT (FUT + FUE)"
+      },
+      techniqueUsed: "MHT (FUT + FUE)",
+      sessions: ""
+    },
+
+    // SEO Fields
     seo: {
       metaTitle: "",
       metaDescription: "",
-      metaKeywords: "",
-      canonicalUrl: "",
       ogImage: "",
-      noIndex: false,
     },
 
     // Patient Details
     patientDetails: {
-      name: "Lokesh Lohia",
-      age: "32",
+      name: "",
+      age: "",
       gender: "Male",
+      duration: "28",
       grafts: {
-        first: "2700",
-        second: "3400",
+        first: "",
+        second: "",
       },
       technique: "MHT",
       techniqueDetail: "(Combined with DSFT)",
       clinic: "SATYA SKIN & HAIR SOLUTIONS",
-      surgeryDate: "2023",
-      followUp: "7 Months",
-      medications: ["Finasteride 1mg", "Minoxidil"],
-      donorArea: "Occipital region",
-      complications: "Poor hairline design from previous surgery",
+      surgeryDate: "",
+      followUp: "",
+      medications: [],
+      donorArea: "",
+      complications: ""
     },
 
     // Hero Images
@@ -77,92 +102,99 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
     // Table Data
     tableData: {
       rows: [
-        { id: "front", label: "Front", order: 0 },
-        { id: "right", label: "Right", order: 1 },
-        { id: "left", label: "Left", order: 2 },
-        { id: "back", label: "Top / Back", order: 3 },
+        { id: "front", label: "FRONT VIEW", order: 0 },
+        { id: "right", label: "RIGHT PROFILE", order: 1 },
+        { id: "left", label: "LEFT PROFILE", order: 2 },
+        { id: "back", label: "TOP / BACK", order: 3 },
       ],
       columns: [
-        { id: "before1", label: "Before 1st Surgery", order: 0 },
-        { id: "immediate1", label: "Immediate 1st Surgery", order: 1 },
-        { id: "month6", label: "6 Months Post 1st Surgery", order: 2 },
-        { id: "immediate2", label: "Immediate 2nd Surgery", order: 3 },
-        { id: "month7", label: "7 Month Post 2nd Surgery", order: 4 },
+        { id: "before", label: "BEFORE SURGERY", order: 0 },
+        { id: "immediate", label: "IMMEDIATE POST", order: 1 },
+        { id: "month14", label: "MONTH 14", order: 2 },
+        { id: "month28", label: "MONTH 28", order: 3 },
       ],
       images: {},
     },
 
     // Content Sections
-    content: [
-      {
-        id: "h1",
-        type: "heading",
-        level: "h1",
-        content:
-          "Repair Hair Transplant Case Study | Hair Transplant in Gurgaon",
-        order: 0,
-      },
-      {
-        id: "intro",
-        type: "paragraph",
-        className: "text-xl italic border-l-4 border-[#9E4A47] pl-6",
-        content:
-          "Repair hair transplant cases are more complex than first-time procedures. The process requires teams to fix existing surgical errors while dealing with restrictions on available donor sites.",
-        order: 1,
-      },
-      // ... rest of your content array
-    ],
+    content: [],
 
     // Video
     video: {
-      url: "https://www.youtube.com/embed/PWxwgQsRwcI",
+      url: "",
       platform: "youtube",
-      title: "Lokesh Lohia Hair Transplant Journey",
+      title: "",
     },
 
     // FAQs
-    faqs: [
+    faqs: [],
+
+    // Stats (for TreatmentStatsComponent)
+    stats: [
+      { value: "94", unit: "%", label: "DENSITY RESTORED" },
+      { value: "3", label: "PROTOCOLS USED" },
+      { value: "28", label: "MONTH JOURNEY" },
+      { value: "12", unit: "+", label: "TREATMENT SESSIONS" },
+    ],
+
+    // Protocols (for TransformationProtocols component)
+    protocols: [
       {
-        id: 1,
-        question: "What is a Repair Hair Transplant?",
-        answer:
-          "A Repair Hair Transplant is a procedure performed on patients who are unhappy with their previous hair transplants. It addresses issues such as poor design, incorrect angles, or improper use of the donor area.",
-        order: 0,
+        id: "01",
+        title: "Low-Level Laser Therapy",
+        description: "650nm photobiomodulation to stimulate follicular activity, increase ATP production, and improve scalp circulation — a non-invasive foundation for all other treatments.",
+        placeholder: "LLLT TREATMENT IMAGE",
+        image: null,
       },
       {
-        id: 2,
-        question: "What is MHT (Maximum Harvest Technique)?",
-        answer:
-          "MHT is a method that combines FUE and FUT hair transplant techniques to safely extract a larger number of grafts from the donor area while keeping scarring to a minimum.",
-        order: 1,
+        id: "02",
+        title: "PRP Hair Treatment",
+        description: "Autologous platelet-rich plasma derived from the patient's own blood, concentrated and injected to deliver growth factors directly to dormant follicles.",
+        placeholder: "PRP PROCEDURE IMAGE",
+        image: null,
       },
       {
-        id: 3,
-        question: "Why use DSFT?",
-        answer:
-          "DSFT, or Direct Stimulation Follicular Transplant, helps stimulate the grafts during the implantation process, leading to a 97% graft survival rate and quicker hair growth.",
-        order: 2,
+        id: "03",
+        title: "GFC Therapy",
+        description: "Growth Factor Concentrate — a next-generation evolution of PRP with significantly higher concentration, delivering superior follicular regeneration outcomes.",
+        placeholder: "GFC THERAPY IMAGE",
+        image: null,
+      },
+    ],
+
+    // Outcomes (for MeasuredOutcomesSection)
+    outcomes: [
+      { label: "Hair Density", value: 94 },
+      { label: "Hairline Coverage", value: 88 },
+      { label: "Hair Shaft Diameter", value: 76 },
+      { label: "Scalp Sebum Balance", value: 82 },
+      { label: "Patient Satisfaction", value: 97 },
+    ],
+
+    // Success Stories
+    successStories: [
+      {
+        treatment: "HAIR RESTORATION · 18 MONTHS",
+        name: "Arun, 29",
+        details: "Norwood Grade IV · PRP Protocol",
+        image: null,
       },
       {
-        id: 4,
-        question: "What is the Min-Med Approach?",
-        answer:
-          "The Min-Med Approach is a proprietary method developed by Dr. Satya that uses a low or no dose of Finasteride, helping to protect the patient's long-term health.",
-        order: 3,
+        treatment: "SCALP TREATMENT · 12 MONTHS",
+        name: "Meera, 41",
+        details: "Diffuse thinning · LLLT + GFC",
+        image: null,
       },
       {
-        id: 5,
-        question: "Can repair transplants look natural?",
-        answer:
-          "Yes, a natural appearance can be achieved through proper angulation, careful planning of density, and conservation of the donor area, as demonstrated in Lokesh's case.",
-        order: 4,
+        treatment: "HAIR RESTORATION · 22 MONTHS",
+        name: "Vikram, 38",
+        details: "Norwood Grade VI · Full protocol",
+        image: null,
       },
     ],
 
     // Preview Image
     previewImage: "",
-
-    // Metadata
     views: 0,
   });
 
@@ -210,7 +242,8 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
       setSaving(false);
     }
   };
-  // Add banner image handlers
+
+  // Banner image handlers
   const handleBannerUpload = async (file) => {
     if (!caseStudy?._id) {
       setSaveStatus({
@@ -225,7 +258,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
       const response = await uploadAPI.uploadBannerImage(
         caseStudy._id,
         file,
-        formData.name,
+        formData.name
       );
       setFormData((prev) => ({
         ...prev,
@@ -267,6 +300,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
     }
   };
 
+  // Hero image handlers
   const handleHeroUpload = async (type, file, index) => {
     if (!caseStudy?._id) {
       setSaveStatus({
@@ -282,7 +316,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
         caseStudy._id,
         type,
         file,
-        `Hero ${type} view ${index + 1}`,
+        `Hero ${type} view ${index + 1}`
       );
 
       setFormData((prev) => {
@@ -324,6 +358,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
     }
   };
 
+  // Table image handlers
   const handleTableImageUpload = async (rowId, colId, file) => {
     if (!caseStudy?._id) {
       setSaveStatus({
@@ -341,7 +376,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
         rowId,
         colId,
         file,
-        "",
+        ""
       );
       setFormData((prev) => ({
         ...prev,
@@ -360,6 +395,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
     }
   };
 
+  // Content handlers
   const handleAddContent = (type) => {
     const newSection = {
       id: `section_${Date.now()}`,
@@ -380,7 +416,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
     setFormData((prev) => ({
       ...prev,
       content: prev.content.map((section) =>
-        section.id === id ? { ...section, ...updates } : section,
+        section.id === id ? { ...section, ...updates } : section
       ),
     }));
   };
@@ -418,16 +454,134 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
     }));
   };
 
-  // Updated tabs to include SEO
+  // Stats handlers
+  const handleAddStat = () => {
+    setFormData((prev) => ({
+      ...prev,
+      stats: [...prev.stats, { value: "", unit: "", label: "" }],
+    }));
+  };
+
+  const handleUpdateStat = (index, field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      stats: prev.stats.map((stat, i) =>
+        i === index ? { ...stat, [field]: value } : stat
+      ),
+    }));
+  };
+
+  const handleDeleteStat = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      stats: prev.stats.filter((_, i) => i !== index),
+    }));
+  };
+
+  // Protocols handlers
+  const handleAddProtocol = () => {
+    const newId = String(formData.protocols.length + 1).padStart(2, "0");
+    setFormData((prev) => ({
+      ...prev,
+      protocols: [
+        ...prev.protocols,
+        {
+          id: newId,
+          title: "",
+          description: "",
+          placeholder: "",
+          image: null,
+        },
+      ],
+    }));
+  };
+
+  const handleUpdateProtocol = (index, field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      protocols: prev.protocols.map((protocol, i) =>
+        i === index ? { ...protocol, [field]: value } : protocol
+      ),
+    }));
+  };
+
+  const handleDeleteProtocol = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      protocols: prev.protocols.filter((_, i) => i !== index),
+    }));
+  };
+
+  // Outcomes handlers
+  const handleAddOutcome = () => {
+    setFormData((prev) => ({
+      ...prev,
+      outcomes: [...prev.outcomes, { label: "", value: 0 }],
+    }));
+  };
+
+  const handleUpdateOutcome = (index, field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      outcomes: prev.outcomes.map((outcome, i) =>
+        i === index ? { ...outcome, [field]: value } : outcome
+      ),
+    }));
+  };
+
+  const handleDeleteOutcome = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      outcomes: prev.outcomes.filter((_, i) => i !== index),
+    }));
+  };
+
+  // Success Stories handlers
+  const handleAddSuccessStory = () => {
+    setFormData((prev) => ({
+      ...prev,
+      successStories: [
+        ...prev.successStories,
+        {
+          treatment: "",
+          name: "",
+          details: "",
+          image: null,
+        },
+      ],
+    }));
+  };
+
+  const handleUpdateSuccessStory = (index, field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      successStories: prev.successStories.map((story, i) =>
+        i === index ? { ...story, [field]: value } : story
+      ),
+    }));
+  };
+
+  const handleDeleteSuccessStory = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      successStories: prev.successStories.filter((_, i) => i !== index),
+    }));
+  };
+
+  // Tabs configuration
   const tabs = [
-    { id: "banner", label: "Banner Image", icon: Film },
+    { id: "banner", label: "Banner & Details", icon: Film },
     { id: "hero", label: "Hero Images", icon: ImageIcon },
     { id: "table", label: "Progress Table", icon: Table },
-    { id: "details", label: "Patient Details", icon: Settings },
+    { id: "details", label: "Patient Details", icon: User },
+    { id: "stats", label: "Stats", icon: BarChart },
+    { id: "protocols", label: "Protocols", icon: Layers },
+    { id: "outcomes", label: "Outcomes", icon: TrendingUp },
+    { id: "stories", label: "Success Stories", icon: Users },
     { id: "content", label: "Content", icon: Type },
     { id: "video", label: "Video", icon: Video },
     { id: "faq", label: "FAQs", icon: HelpCircle },
-    { id: "seo", label: "SEO Settings", icon: Globe }, // New SEO tab
+    { id: "seo", label: "SEO", icon: Globe },
   ];
 
   if (loading) {
@@ -511,69 +665,69 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
         </div>
       </div>
 
-     {/* Basic Info Row */}
-<div className="bg-white rounded-xl shadow-sm p-4 grid grid-cols-1 md:grid-cols-5 gap-4">
-  <div>
-    <label className="block text-sm font-medium mb-1">Case Study Name</label>
-    <input
-      type="text"
-      value={formData.name}
-      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-      className="w-full p-2 border rounded-lg"
-      placeholder="e.g., Lokesh Lohia"
-    />
-  </div>
-  <div>
-    <label className="block text-sm font-medium mb-1">Page Title</label>
-    <input
-      type="text"
-      value={formData.title}
-      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-      className="w-full p-2 border rounded-lg"
-      placeholder="Page title"
-    />
-  </div>
-  <div>
-    <label className="block text-sm font-medium mb-1">Category</label>
-    <select
-      value={formData.category}
-      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-      className="w-full p-2 border rounded-lg"
-    >
-      <option value="hair">Hair Transplant</option>
-      <option value="nose">Rhinoplasty</option>
-      <option value="jaw">Jaw Surgery</option>
-      <option value="face">Facial Surgery</option>
-      <option value="beard">Beard Transplant</option>
-      <option value="eyebrow">Eyebrow Transplant</option>
-    </select>
-  </div>
-  <div>
-    <label className="block text-sm font-medium mb-1">Status</label>
-    <select
-      value={formData.status}
-      onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-      className="w-full p-2 border rounded-lg"
-    >
-      <option value="draft">Draft</option>
-      <option value="published">Published</option>
-    </select>
-  </div>
-  <div className="flex items-center justify-center">
-    <div className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg w-full">
-      <input
-        type="checkbox"
-        id="best"
-        checked={formData.best || false}
-        onChange={(e) => setFormData({ ...formData, best: e.target.checked })}
-        className="w-5 h-5 text-[#9E4A47] border-gray-300 rounded focus:ring-[#9E4A47]"
-      />
-      <label htmlFor="best" className="text-sm font-medium text-gray-700">
-        Best Case Study
-      </label>
-    </div>
-  </div>
-</div>
+      {/* Basic Info Row */}
+      <div className="bg-white rounded-xl shadow-sm p-4 grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div>
+          <label className="block text-sm font-medium mb-1">Case Study Name</label>
+          <input
+            type="text"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="w-full p-2 border rounded-lg"
+            placeholder="e.g., Prashant"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Page Title</label>
+          <input
+            type="text"
+            value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            className="w-full p-2 border rounded-lg"
+            placeholder="Page title"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Category</label>
+          <select
+            value={formData.category}
+            onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+            className="w-full p-2 border rounded-lg"
+          >
+            <option value="hair">Hair Transplant</option>
+            <option value="nose">Rhinoplasty</option>
+            <option value="jaw">Jaw Surgery</option>
+            <option value="face">Facial Surgery</option>
+            <option value="beard">Beard Transplant</option>
+            <option value="eyebrow">Eyebrow Transplant</option>
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Status</label>
+          <select
+            value={formData.status}
+            onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+            className="w-full p-2 border rounded-lg"
+          >
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+          </select>
+        </div>
+        <div className="flex items-center justify-center">
+          <div className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg w-full">
+            <input
+              type="checkbox"
+              id="best"
+              checked={formData.best || false}
+              onChange={(e) => setFormData({ ...formData, best: e.target.checked })}
+              className="w-5 h-5 text-[#9E4A47] border-gray-300 rounded focus:ring-[#9E4A47]"
+            />
+            <label htmlFor="best" className="text-sm font-medium text-gray-700">
+              Best Case Study
+            </label>
+          </div>
+        </div>
+      </div>
 
       {/* Tabs */}
       {!previewMode && (
@@ -605,84 +759,203 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
           </div>
         ) : (
           <>
-            {/* Banner Image Tab */}
+            {/* ================= BANNER & DETAILS TAB (NEW) ================= */}
             {activeTab === "banner" && (
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div className="flex items-center gap-2 mb-4">
                   <Film className="text-[#9E4A47]" size={20} />
                   <h3 className="text-lg font-semibold text-[#2B333C]">
-                    Banner Image
+                    Banner Image & Details
                   </h3>
                 </div>
 
-                
-
+                {/* Banner Image Upload */}
                 <div className="flex flex-col md:flex-row gap-8">
-                  {/* Image Uploader */}
                   <div className="w-full md:w-96">
                     <ImageUploader
                       currentPreview={formData.bannerImage?.url}
                       onUpload={handleBannerUpload}
-                      onRemove={
-                        formData.bannerImage ? handleBannerDelete : undefined
-                      }
+                      onRemove={formData.bannerImage ? handleBannerDelete : undefined}
                       uploading={uploading}
                       label="Upload Banner Image"
                     />
                   </div>
-
-                  {/* Info and Preview */}
                   <div className="flex-1">
                     <p className="text-sm text-gray-600 mb-2">
-                      <span className="font-medium">Current Banner:</span>{" "}
-                      {formData.bannerImage ? "Uploaded" : "Not set"}
+                      <span className="font-medium">Recommended:</span> 1920×1080 pixels (16:9 ratio)
                     </p>
+                    <p className="text-sm text-gray-600">
+                      This image will appear at the top of your case study page.
+                    </p>
+                  </div>
+                </div>
 
-                    {formData.bannerImage && (
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                            ✓ Banner image ready
-                          </span>
-                        </div>
+                {/* Banner Details Section */}
+                <div className="border-t pt-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Info className="text-[#9E4A47]" size={20} />
+                    <h4 className="font-medium text-[#2B333C]">Banner Information</h4>
+                  </div>
 
-                        {/* Preview */}
-                        <div className="border rounded-lg overflow-hidden max-w-md">
-                          <img
-                            src={formData.bannerImage.url}
-                            alt="Banner preview"
-                            className="w-full h-auto"
-                          />
-                        </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Patient Name */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Patient Name
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.bannerDetails?.patientName || ""}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            bannerDetails: {
+                              ...formData.bannerDetails,
+                              patientName: e.target.value,
+                            },
+                          })
+                        }
+                        className="w-full p-2 border rounded-lg"
+                        placeholder="e.g., Prashant"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">
+                        This will appear as: "Patient Name: Prashant" on the banner
+                      </p>
+                    </div>
 
-                        {/* Image details */}
-                        <div className="text-xs text-gray-500 space-y-1">
-                          <p>
-                            🖼️ This image will appear on the Before/After page
-                            gallery
-                          </p>
-                          <p>
-                            📱 Will be automatically optimized for mobile
-                            devices
-                          </p>
-                        </div>
+                    {/* Sessions */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Sessions
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.bannerDetails?.sessions || ""}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            bannerDetails: {
+                              ...formData.bannerDetails,
+                              sessions: e.target.value,
+                            },
+                          })
+                        }
+                        className="w-full p-2 border rounded-lg"
+                        placeholder="e.g., 2 Sessions"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Total Grafts Section */}
+                  <div className="mt-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Scissors className="text-[#9E4A47]" size={18} />
+                      <label className="text-sm font-medium text-gray-700">
+                        Total Grafts Implanted
+                      </label>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs text-gray-500 mb-1">
+                          1st Surgery
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.bannerDetails?.totalGrafts?.first || ""}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              bannerDetails: {
+                                ...formData.bannerDetails,
+                                totalGrafts: {
+                                  ...formData.bannerDetails?.totalGrafts,
+                                  first: e.target.value,
+                                },
+                              },
+                            })
+                          }
+                          className="w-full p-2 border rounded-lg"
+                          placeholder="e.g., 3000"
+                        />
                       </div>
-                    )}
-
-                    {!formData.bannerImage && (
-                      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                        <p className="text-sm text-gray-600">
-                          No banner image uploaded yet. Upload a high-quality
-                          image to make your case study stand out on the gallery
-                          page.
-                        </p>
+                      <div>
+                        <label className="block text-xs text-gray-500 mb-1">
+                          2nd Surgery (Optional)
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.bannerDetails?.totalGrafts?.second || ""}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              bannerDetails: {
+                                ...formData.bannerDetails,
+                                totalGrafts: {
+                                  ...formData.bannerDetails?.totalGrafts,
+                                  second: e.target.value,
+                                },
+                              },
+                            })
+                          }
+                          className="w-full p-2 border rounded-lg"
+                          placeholder="e.g., 3400"
+                        />
                       </div>
-                    )}
+                      <div>
+                        <label className="block text-xs text-gray-500 mb-1">
+                          Grafts Technique
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.bannerDetails?.totalGrafts?.technique || "MHT (FUT + FUE)"}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              bannerDetails: {
+                                ...formData.bannerDetails,
+                                totalGrafts: {
+                                  ...formData.bannerDetails?.totalGrafts,
+                                  technique: e.target.value,
+                                },
+                              },
+                            })
+                          }
+                          className="w-full p-2 border rounded-lg"
+                          placeholder="e.g., MHT (FUT + FUE)"
+                        />
+                      </div>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-2">
+                      Format will appear as: "1st Surgery: X grafts using MHT (FUT + FUE)"
+                    </p>
+                  </div>
+
+                  {/* Technique Used */}
+                  <div className="mt-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Technique Used
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.bannerDetails?.techniqueUsed || "MHT (FUT + FUE)"}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          bannerDetails: {
+                            ...formData.bannerDetails,
+                            techniqueUsed: e.target.value,
+                          },
+                        })
+                      }
+                      className="w-full p-2 border rounded-lg"
+                      placeholder="e.g., MHT (FUT + FUE)"
+                    />
                   </div>
                 </div>
               </div>
             )}
-            {/* Hero Images Tab */}
+
+            {/* ================= HERO IMAGES TAB ================= */}
             {activeTab === "hero" && (
               <div className="space-y-8">
                 {/* Before Images */}
@@ -703,13 +976,10 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                           <ImageUploader
                             key={`before-uploader-${idx}-${image?._id || "empty"}`}
                             currentPreview={image?.url}
-                            onUpload={(file) =>
-                              handleHeroUpload("before", file, idx)
-                            }
+                            onUpload={(file) => handleHeroUpload("before", file, idx)}
                             onRemove={
                               image
-                                ? () =>
-                                    handleHeroDelete("before", image._id, idx)
+                                ? () => handleHeroDelete("before", image._id, idx)
                                 : undefined
                             }
                             uploading={uploading}
@@ -720,9 +990,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                             value={image?.name || `Before View ${idx + 1}`}
                             onChange={(e) => {
                               if (image) {
-                                const newImages = [
-                                  ...formData.heroImages.before,
-                                ];
+                                const newImages = [...formData.heroImages.before];
                                 newImages[idx] = {
                                   ...image,
                                   name: e.target.value,
@@ -764,13 +1032,10 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                           <ImageUploader
                             key={`after-uploader-${idx}-${image?._id || "empty"}`}
                             currentPreview={image?.url}
-                            onUpload={(file) =>
-                              handleHeroUpload("after", file, idx)
-                            }
+                            onUpload={(file) => handleHeroUpload("after", file, idx)}
                             onRemove={
                               image
-                                ? () =>
-                                    handleHeroDelete("after", image._id, idx)
+                                ? () => handleHeroDelete("after", image._id, idx)
                                 : undefined
                             }
                             uploading={uploading}
@@ -781,9 +1046,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                             value={image?.name || `After View ${idx + 1}`}
                             onChange={(e) => {
                               if (image) {
-                                const newImages = [
-                                  ...formData.heroImages.after,
-                                ];
+                                const newImages = [...formData.heroImages.after];
                                 newImages[idx] = {
                                   ...image,
                                   name: e.target.value,
@@ -807,19 +1070,105 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                   </div>
                 </div>
 
-                {/* Preview Note */}
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-700">
                   <p className="font-medium mb-1">📸 Hero Section Preview:</p>
                   <p>
-                    The first image from Before and After sets will be shown in
-                    the hero slider. Users can navigate through all 4 views
-                    using the arrows.
+                    The first image from Before and After sets will be shown in the hero slider.
                   </p>
                 </div>
               </div>
             )}
 
-            {/* Patient Details Tab */}
+            {/* ================= PROGRESS TABLE TAB ================= */}
+            {activeTab === "table" && (
+              <div className="space-y-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full border">
+                    <thead>
+                      <tr className="bg-[#9E4A47] text-white">
+                        <th className="p-3 border text-left">View</th>
+                        {formData.tableData.columns.map((col) => (
+                          <th key={col.id} className="p-3 border min-w-[180px]">
+                            <input
+                              type="text"
+                              value={col.label}
+                              onChange={(e) => {
+                                const newCols = formData.tableData.columns.map((c) =>
+                                  c.id === col.id ? { ...c, label: e.target.value } : c
+                                );
+                                setFormData({
+                                  ...formData,
+                                  tableData: {
+                                    ...formData.tableData,
+                                    columns: newCols,
+                                  },
+                                });
+                              }}
+                              className="bg-transparent text-white border-b border-white/30 px-2 py-1 w-full text-center"
+                              placeholder="Column label"
+                            />
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {formData.tableData.rows.map((row) => (
+                        <tr key={row.id}>
+                          <td className="p-3 border bg-[#9E4A47]/10 font-medium">
+                            <input
+                              type="text"
+                              value={row.label}
+                              onChange={(e) => {
+                                const newRows = formData.tableData.rows.map((r) =>
+                                  r.id === row.id ? { ...r, label: e.target.value } : r
+                                );
+                                setFormData({
+                                  ...formData,
+                                  tableData: {
+                                    ...formData.tableData,
+                                    rows: newRows,
+                                  },
+                                });
+                              }}
+                              className="bg-transparent border-b border-gray-300 px-2 py-1 w-full"
+                              placeholder="Row label"
+                            />
+                          </td>
+                          {formData.tableData.columns.map((col) => {
+                            const imageKey = `${row.id}_${col.id}`;
+                            const image = formData.tableData.images[imageKey];
+
+                            return (
+                              <td key={col.id} className="p-2 border">
+                                <ImageUploader
+                                  key={`table-${imageKey}-${image?._id || "empty"}`}
+                                  currentPreview={image?.url}
+                                  onUpload={(file) =>
+                                    handleTableImageUpload(row.id, col.id, file)
+                                  }
+                                  onRemove={image ? () => {} : undefined}
+                                  uploading={uploading}
+                                  label="Upload"
+                                />
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                   </table>
+                </div>
+
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-700">
+                  <p className="font-medium mb-1">📊 Progress Table:</p>
+                  <p>
+                    Each cell represents a specific view at a specific stage. Upload images for each combination.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* ================= PATIENT DETAILS TAB ================= */}
             {activeTab === "details" && (
               <div className="space-y-6">
                 <div className="flex items-center gap-2 mb-4">
@@ -830,7 +1179,6 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Left Column */}
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -874,26 +1222,47 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Gender
+                          Duration (months)
                         </label>
-                        <select
-                          value={formData.patientDetails.gender}
+                        <input
+                          type="text"
+                          value={formData.patientDetails.duration}
                           onChange={(e) =>
                             setFormData({
                               ...formData,
                               patientDetails: {
                                 ...formData.patientDetails,
-                                gender: e.target.value,
+                                duration: e.target.value,
                               },
                             })
                           }
                           className="w-full p-2 border rounded-lg"
-                        >
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                          <option value="Other">Other</option>
-                        </select>
+                          placeholder="e.g., 28"
+                        />
                       </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Gender
+                      </label>
+                      <select
+                        value={formData.patientDetails.gender}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            patientDetails: {
+                              ...formData.patientDetails,
+                              gender: e.target.value,
+                            },
+                          })
+                        }
+                        className="w-full p-2 border rounded-lg"
+                      >
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                      </select>
                     </div>
 
                     <div>
@@ -939,7 +1308,6 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                     </div>
                   </div>
 
-                  {/* Right Column */}
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -988,49 +1356,44 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                         Medications
                       </label>
                       <div className="space-y-2">
-                        {formData.patientDetails.medications?.map(
-                          (med, idx) => (
-                            <div key={idx} className="flex gap-2">
-                              <input
-                                type="text"
-                                value={med}
-                                onChange={(e) => {
-                                  const newMeds = [
-                                    ...formData.patientDetails.medications,
-                                  ];
-                                  newMeds[idx] = e.target.value;
-                                  setFormData({
-                                    ...formData,
-                                    patientDetails: {
-                                      ...formData.patientDetails,
-                                      medications: newMeds,
-                                    },
-                                  });
-                                }}
-                                className="flex-1 p-2 border rounded-lg"
-                                placeholder="Medication"
-                              />
-                              <button
-                                onClick={() => {
-                                  const newMeds =
-                                    formData.patientDetails.medications.filter(
-                                      (_, i) => i !== idx,
-                                    );
-                                  setFormData({
-                                    ...formData,
-                                    patientDetails: {
-                                      ...formData.patientDetails,
-                                      medications: newMeds,
-                                    },
-                                  });
-                                }}
-                                className="p-2 text-red-600 hover:bg-red-50 rounded"
-                              >
-                                <Trash2 size={16} />
-                              </button>
-                            </div>
-                          ),
-                        )}
+                        {formData.patientDetails.medications?.map((med, idx) => (
+                          <div key={idx} className="flex gap-2">
+                            <input
+                              type="text"
+                              value={med}
+                              onChange={(e) => {
+                                const newMeds = [...formData.patientDetails.medications];
+                                newMeds[idx] = e.target.value;
+                                setFormData({
+                                  ...formData,
+                                  patientDetails: {
+                                    ...formData.patientDetails,
+                                    medications: newMeds,
+                                  },
+                                });
+                              }}
+                              className="flex-1 p-2 border rounded-lg"
+                              placeholder="Medication"
+                            />
+                            <button
+                              onClick={() => {
+                                const newMeds = formData.patientDetails.medications.filter(
+                                  (_, i) => i !== idx
+                                );
+                                setFormData({
+                                  ...formData,
+                                  patientDetails: {
+                                    ...formData.patientDetails,
+                                    medications: newMeds,
+                                  },
+                                });
+                              }}
+                              className="p-2 text-red-600 hover:bg-red-50 rounded"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+                        ))}
                         <button
                           onClick={() => {
                             const newMeds = [
@@ -1193,111 +1556,303 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
               </div>
             )}
 
-            {/* Table Tab */}
-            {activeTab === "table" && (
+            {/* ================= STATS TAB (NEW) ================= */}
+            {activeTab === "stats" && (
               <div className="space-y-6">
-                <div className="overflow-x-auto">
-                  <table className="w-full border">
-                    <thead>
-                      <tr className="bg-[#9E4A47] text-white">
-                        <th className="p-3 border text-left">View</th>
-                        {formData.tableData.columns.map((col) => (
-                          <th key={col.id} className="p-3 border min-w-[180px]">
-                            <input
-                              type="text"
-                              value={col.label}
-                              onChange={(e) => {
-                                const newCols = formData.tableData.columns.map(
-                                  (c) =>
-                                    c.id === col.id
-                                      ? { ...c, label: e.target.value }
-                                      : c,
-                                );
-                                setFormData({
-                                  ...formData,
-                                  tableData: {
-                                    ...formData.tableData,
-                                    columns: newCols,
-                                  },
-                                });
-                              }}
-                              className="bg-transparent text-white border-b border-white/30 px-2 py-1 w-full text-center"
-                              placeholder="Column label"
-                            />
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {formData.tableData.rows.map((row) => (
-                        <tr key={row.id}>
-                          <td className="p-3 border bg-[#9E4A47]/10 font-medium">
-                            <input
-                              type="text"
-                              value={row.label}
-                              onChange={(e) => {
-                                const newRows = formData.tableData.rows.map(
-                                  (r) =>
-                                    r.id === row.id
-                                      ? { ...r, label: e.target.value }
-                                      : r,
-                                );
-                                setFormData({
-                                  ...formData,
-                                  tableData: {
-                                    ...formData.tableData,
-                                    rows: newRows,
-                                  },
-                                });
-                              }}
-                              className="bg-transparent border-b border-gray-300 px-2 py-1 w-full"
-                              placeholder="Row label"
-                            />
-                          </td>
-                          {formData.tableData.columns.map((col) => {
-                            const imageKey = `${row.id}_${col.id}`;
-                            const image = formData.tableData.images[imageKey];
-
-                            return (
-                              <td key={col.id} className="p-2 border">
-                                <ImageUploader
-                                  key={`table-${imageKey}-${image?._id || "empty"}`}
-                                  currentPreview={image?.url}
-                                  onUpload={(file) =>
-                                    handleTableImageUpload(row.id, col.id, file)
-                                  }
-                                  onRemove={
-                                    image
-                                      ? () => {
-                                          // Handle delete
-                                        }
-                                      : undefined
-                                  }
-                                  uploading={uploading}
-                                  label="Upload"
-                                />
-                              </td>
-                            );
-                          })}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <BarChart className="text-[#9E4A47]" size={20} />
+                    <h3 className="text-lg font-semibold text-[#2B333C]">
+                      Treatment Statistics
+                    </h3>
+                  </div>
+                  <button
+                    onClick={handleAddStat}
+                    className="flex items-center gap-2 px-3 py-1 bg-[#9E4A47] text-white rounded-lg text-sm"
+                  >
+                    <Plus size={14} /> Add Stat
+                  </button>
                 </div>
 
-                {/* Table Note */}
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-700">
-                  <p className="font-medium mb-1">📊 Progress Table:</p>
-                  <p>
-                    Each cell represents a specific view at a specific stage.
-                    Upload images for each combination to show the patient's
-                    progress.
-                  </p>
+                <div className="space-y-4">
+                  {formData.stats.map((stat, index) => (
+                    <div key={index} className="border rounded-lg p-4 bg-gray-50">
+                      <div className="flex justify-between items-start mb-3">
+                        <span className="text-sm font-medium">Stat #{index + 1}</span>
+                        <button
+                          onClick={() => handleDeleteStat(index)}
+                          className="p-1 text-red-600 hover:bg-red-50 rounded"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Value</label>
+                          <input
+                            type="text"
+                            value={stat.value}
+                            onChange={(e) => handleUpdateStat(index, "value", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., 94"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Unit</label>
+                          <input
+                            type="text"
+                            value={stat.unit || ""}
+                            onChange={(e) => handleUpdateStat(index, "unit", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., %"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Label</label>
+                          <input
+                            type="text"
+                            value={stat.label}
+                            onChange={(e) => handleUpdateStat(index, "label", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., DENSITY RESTORED"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
+
+                {formData.stats.length === 0 && (
+                  <div className="text-center py-8 text-gray-500">
+                    Click "Add Stat" to add treatment statistics
+                  </div>
+                )}
               </div>
             )}
 
-            {/* Content Tab */}
+            {/* ================= PROTOCOLS TAB ================= */}
+            {activeTab === "protocols" && (
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <Layers className="text-[#9E4A47]" size={20} />
+                    <h3 className="text-lg font-semibold text-[#2B333C]">
+                      Treatment Protocols
+                    </h3>
+                  </div>
+                  <button
+                    onClick={handleAddProtocol}
+                    className="flex items-center gap-2 px-3 py-1 bg-[#9E4A47] text-white rounded-lg text-sm"
+                  >
+                    <Plus size={14} /> Add Protocol
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {formData.protocols.map((protocol, index) => (
+                    <div key={index} className="border rounded-lg p-4 bg-gray-50">
+                      <div className="flex justify-between items-start mb-3">
+                        <span className="text-sm font-medium">Protocol #{protocol.id || index + 1}</span>
+                        <button
+                          onClick={() => handleDeleteProtocol(index)}
+                          className="p-1 text-red-600 hover:bg-red-50 rounded"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">ID</label>
+                          <input
+                            type="text"
+                            value={protocol.id}
+                            onChange={(e) => handleUpdateProtocol(index, "id", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., 01"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Title</label>
+                          <input
+                            type="text"
+                            value={protocol.title}
+                            onChange={(e) => handleUpdateProtocol(index, "title", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., Low-Level Laser Therapy"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Description</label>
+                          <textarea
+                            value={protocol.description}
+                            onChange={(e) => handleUpdateProtocol(index, "description", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            rows="3"
+                            placeholder="Protocol description"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Placeholder Text</label>
+                          <input
+                            type="text"
+                            value={protocol.placeholder}
+                            onChange={(e) => handleUpdateProtocol(index, "placeholder", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., LLLT TREATMENT IMAGE"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {formData.protocols.length === 0 && (
+                  <div className="text-center py-8 text-gray-500">
+                    Click "Add Protocol" to add treatment protocols
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* ================= OUTCOMES TAB ================= */}
+            {activeTab === "outcomes" && (
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="text-[#9E4A47]" size={20} />
+                    <h3 className="text-lg font-semibold text-[#2B333C]">
+                      Measured Outcomes
+                    </h3>
+                  </div>
+                  <button
+                    onClick={handleAddOutcome}
+                    className="flex items-center gap-2 px-3 py-1 bg-[#9E4A47] text-white rounded-lg text-sm"
+                  >
+                    <Plus size={14} /> Add Outcome
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {formData.outcomes.map((outcome, index) => (
+                    <div key={index} className="border rounded-lg p-4 bg-gray-50">
+                      <div className="flex justify-between items-start mb-3">
+                        <span className="text-sm font-medium">Outcome #{index + 1}</span>
+                        <button
+                          onClick={() => handleDeleteOutcome(index)}
+                          className="p-1 text-red-600 hover:bg-red-50 rounded"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Label</label>
+                          <input
+                            type="text"
+                            value={outcome.label}
+                            onChange={(e) => handleUpdateOutcome(index, "label", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., Hair Density"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Value (%)</label>
+                          <input
+                            type="number"
+                            value={outcome.value}
+                            onChange={(e) => handleUpdateOutcome(index, "value", parseInt(e.target.value) || 0)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., 94"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {formData.outcomes.length === 0 && (
+                  <div className="text-center py-8 text-gray-500">
+                    Click "Add Outcome" to add measured outcomes
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* ================= SUCCESS STORIES TAB ================= */}
+            {activeTab === "stories" && (
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <Users className="text-[#9E4A47]" size={20} />
+                    <h3 className="text-lg font-semibold text-[#2B333C]">
+                      Success Stories
+                    </h3>
+                  </div>
+                  <button
+                    onClick={handleAddSuccessStory}
+                    className="flex items-center gap-2 px-3 py-1 bg-[#9E4A47] text-white rounded-lg text-sm"
+                  >
+                    <Plus size={14} /> Add Story
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {formData.successStories.map((story, index) => (
+                    <div key={index} className="border rounded-lg p-4 bg-gray-50">
+                      <div className="flex justify-between items-start mb-3">
+                        <span className="text-sm font-medium">Success Story #{index + 1}</span>
+                        <button
+                          onClick={() => handleDeleteSuccessStory(index)}
+                          className="p-1 text-red-600 hover:bg-red-50 rounded"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Treatment</label>
+                          <input
+                            type="text"
+                            value={story.treatment}
+                            onChange={(e) => handleUpdateSuccessStory(index, "treatment", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., HAIR RESTORATION · 18 MONTHS"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Name</label>
+                          <input
+                            type="text"
+                            value={story.name}
+                            onChange={(e) => handleUpdateSuccessStory(index, "name", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., Arun, 29"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs text-gray-500 mb-1">Details</label>
+                          <input
+                            type="text"
+                            value={story.details}
+                            onChange={(e) => handleUpdateSuccessStory(index, "details", e.target.value)}
+                            className="w-full p-2 border rounded"
+                            placeholder="e.g., Norwood Grade IV · PRP Protocol"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {formData.successStories.length === 0 && (
+                  <div className="text-center py-8 text-gray-500">
+                    Click "Add Story" to add success stories
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* ================= CONTENT TAB ================= */}
             {activeTab === "content" && (
               <div className="space-y-6">
                 <div className="flex justify-between items-center">
@@ -1328,19 +1883,13 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
 
                 <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
                   {formData.content.map((section, index) => (
-                    <div
-                      key={section.id}
-                      className="border rounded-lg p-4 bg-gray-50"
-                    >
+                    <div key={section.id} className="border rounded-lg p-4 bg-gray-50">
                       <div className="flex justify-between items-start mb-3">
                         <div className="flex items-center gap-2">
                           <span className="px-2 py-1 bg-gray-200 rounded text-xs">
-                            {section.type}{" "}
-                            {section.level && `- ${section.level}`}
+                            {section.type} {section.level && `- ${section.level}`}
                           </span>
-                          <span className="text-xs text-gray-500">
-                            Order: {index + 1}
-                          </span>
+                          <span className="text-xs text-gray-500">Order: {index + 1}</span>
                         </div>
                         <div className="flex items-center gap-1">
                           <button
@@ -1348,28 +1897,14 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                             className="p-1 hover:bg-gray-200 rounded"
                             disabled={index === 0}
                           >
-                            <ChevronUp
-                              size={16}
-                              className={
-                                index === 0 ? "text-gray-300" : "text-gray-600"
-                              }
-                            />
+                            <ChevronUp size={16} className={index === 0 ? "text-gray-300" : "text-gray-600"} />
                           </button>
                           <button
-                            onClick={() =>
-                              handleMoveContent(section.id, "down")
-                            }
+                            onClick={() => handleMoveContent(section.id, "down")}
                             className="p-1 hover:bg-gray-200 rounded"
                             disabled={index === formData.content.length - 1}
                           >
-                            <ChevronDown
-                              size={16}
-                              className={
-                                index === formData.content.length - 1
-                                  ? "text-gray-300"
-                                  : "text-gray-600"
-                              }
-                            />
+                            <ChevronDown size={16} className={index === formData.content.length - 1 ? "text-gray-300" : "text-gray-600"} />
                           </button>
                           <button
                             onClick={() => handleDeleteContent(section.id)}
@@ -1384,11 +1919,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                         <div className="space-y-2">
                           <select
                             value={section.level || "h2"}
-                            onChange={(e) =>
-                              handleUpdateContent(section.id, {
-                                level: e.target.value,
-                              })
-                            }
+                            onChange={(e) => handleUpdateContent(section.id, { level: e.target.value })}
                             className="p-2 border rounded text-sm"
                           >
                             <option value="h1">H1 - Main Title</option>
@@ -1399,11 +1930,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                           <input
                             type="text"
                             value={section.content || ""}
-                            onChange={(e) =>
-                              handleUpdateContent(section.id, {
-                                content: e.target.value,
-                              })
-                            }
+                            onChange={(e) => handleUpdateContent(section.id, { content: e.target.value })}
                             className="w-full p-2 border rounded"
                             placeholder="Heading text"
                           />
@@ -1414,11 +1941,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                         <div>
                           <textarea
                             value={section.content || ""}
-                            onChange={(e) =>
-                              handleUpdateContent(section.id, {
-                                content: e.target.value,
-                              })
-                            }
+                            onChange={(e) => handleUpdateContent(section.id, { content: e.target.value })}
                             className="w-full p-2 border rounded"
                             rows="4"
                             placeholder="Paragraph text"
@@ -1426,11 +1949,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                           <input
                             type="text"
                             value={section.className || ""}
-                            onChange={(e) =>
-                              handleUpdateContent(section.id, {
-                                className: e.target.value,
-                              })
-                            }
+                            onChange={(e) => handleUpdateContent(section.id, { className: e.target.value })}
                             className="w-full p-2 border rounded mt-2 text-sm"
                             placeholder="CSS classes (optional)"
                           />
@@ -1447,21 +1966,15 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                                 onChange={(e) => {
                                   const newItems = [...section.items];
                                   newItems[idx] = e.target.value;
-                                  handleUpdateContent(section.id, {
-                                    items: newItems,
-                                  });
+                                  handleUpdateContent(section.id, { items: newItems });
                                 }}
                                 className="flex-1 p-2 border rounded"
                                 placeholder={`List item ${idx + 1}`}
                               />
                               <button
                                 onClick={() => {
-                                  const newItems = section.items.filter(
-                                    (_, i) => i !== idx,
-                                  );
-                                  handleUpdateContent(section.id, {
-                                    items: newItems,
-                                  });
+                                  const newItems = section.items.filter((_, i) => i !== idx);
+                                  handleUpdateContent(section.id, { items: newItems });
                                 }}
                                 className="p-2 text-red-600 hover:bg-red-50 rounded"
                               >
@@ -1471,13 +1984,8 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                           ))}
                           <button
                             onClick={() => {
-                              const newItems = [
-                                ...(section.items || []),
-                                "New item",
-                              ];
-                              handleUpdateContent(section.id, {
-                                items: newItems,
-                              });
+                              const newItems = [...(section.items || []), "New item"];
+                              handleUpdateContent(section.id, { items: newItems });
                             }}
                             className="flex items-center gap-2 px-3 py-1 bg-gray-200 rounded-lg text-sm"
                           >
@@ -1488,10 +1996,16 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                     </div>
                   ))}
                 </div>
+
+                {formData.content.length === 0 && (
+                  <div className="text-center py-8 text-gray-500">
+                    Click "Heading", "Paragraph", or "List" to add content
+                  </div>
+                )}
               </div>
             )}
 
-            {/* Video Tab */}
+            {/* ================= VIDEO TAB ================= */}
             {activeTab === "video" && (
               <div className="space-y-4 max-w-2xl">
                 <div>
@@ -1511,8 +2025,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                     placeholder="https://www.youtube.com/embed/..."
                   />
                   <p className="text-xs text-gray-500 mt-1">
-                    Use the embed URL format:
-                    https://www.youtube.com/embed/VIDEO_ID
+                    Use the embed URL format: https://www.youtube.com/embed/VIDEO_ID
                   </p>
                 </div>
 
@@ -1534,7 +2047,6 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                   />
                 </div>
 
-                {/* Video Preview */}
                 {formData.video.url && (
                   <div className="mt-4 aspect-video bg-gray-100 rounded-lg overflow-hidden">
                     <iframe
@@ -1548,7 +2060,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
               </div>
             )}
 
-            {/* FAQs Tab */}
+            {/* ================= FAQS TAB ================= */}
             {activeTab === "faq" && (
               <div className="space-y-6">
                 <div className="flex justify-between items-center">
@@ -1576,16 +2088,12 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                   {formData.faqs.map((faq, idx) => (
                     <div key={faq.id} className="border rounded-lg p-4">
                       <div className="flex justify-between items-start mb-3">
-                        <span className="text-sm font-medium">
-                          FAQ #{idx + 1}
-                        </span>
+                        <span className="text-sm font-medium">FAQ #{idx + 1}</span>
                         <button
                           onClick={() => {
                             setFormData({
                               ...formData,
-                              faqs: formData.faqs.filter(
-                                (f) => f.id !== faq.id,
-                              ),
+                              faqs: formData.faqs.filter((f) => f.id !== faq.id),
                             });
                           }}
                           className="p-1 text-red-600 hover:bg-red-50 rounded"
@@ -1620,10 +2128,16 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                     </div>
                   ))}
                 </div>
+
+                {formData.faqs.length === 0 && (
+                  <div className="text-center py-8 text-gray-500">
+                    Click "Add FAQ" to add frequently asked questions
+                  </div>
+                )}
               </div>
             )}
 
-            {/* ===== SEO TAB - WITH OG IMAGE UPLOADER ===== */}
+            {/* ================= SEO TAB ================= */}
             {activeTab === "seo" && (
               <div className="space-y-6">
                 <div className="flex items-center gap-2 mb-4">
@@ -1634,7 +2148,6 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                 </div>
 
                 <div className="space-y-4">
-                  {/* Meta Title */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Meta Title
@@ -1659,7 +2172,6 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                     </p>
                   </div>
 
-                  {/* Meta Description */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Meta Description
@@ -1680,26 +2192,18 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                       }
                       className="w-full p-2 border rounded-lg"
                       rows="3"
-                      placeholder={`View ${formData.name}'s hair transplant case study. See before and after results, graft details (${formData.patientDetails?.grafts?.first || "2700"} grafts), and transformation journey at Satya Skin & Hair.`}
+                      placeholder={`View ${formData.name}'s hair transplant case study. See before and after results, graft details, and transformation journey at Satya Skin & Hair.`}
                     />
-                    <p className="text-xs text-gray-500 mt-1">
-                      Leave empty to auto-generate from patient details
-                    </p>
                   </div>
 
-                  {/* ===== OG IMAGE WITH UPLOADER ===== */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-3">
                       OG Image (Social Media Feature Image)
                     </label>
                     <div className="flex flex-col md:flex-row gap-6">
-                      {/* Image Uploader */}
                       <div className="w-64">
                         <ImageUploader
-                          currentPreview={
-                            formData.seo?.ogImage ||
-                            formData.heroImages?.after?.[0]?.url
-                          }
+                          currentPreview={formData.seo?.ogImage || null}
                           onUpload={async (file) => {
                             if (!caseStudy?._id) {
                               setSaveStatus({
@@ -1713,7 +2217,7 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                             try {
                               const response = await uploadAPI.uploadOGImage(
                                 caseStudy._id,
-                                file,
+                                file
                               );
                               setFormData((prev) => ({
                                 ...prev,
@@ -1750,25 +2254,13 @@ export default function CaseStudyEditor({ caseStudy, onBack, onSave }) {
                           label="Upload OG Image"
                         />
                       </div>
-
-                      {/* Info and Preview */}
                       <div className="flex-1">
                         <p className="text-sm text-gray-600 mb-2">
-                          <span className="font-medium">Recommended:</span>{" "}
-                          1200×630 pixels (1.91:1 ratio)
+                          <span className="font-medium">Recommended:</span> 1200×630 pixels (1.91:1 ratio)
                         </p>
-                        <p className="text-sm text-gray-600 mb-2">
-                          This image will appear when your case study is shared
-                          on WhatsApp, Facebook, Twitter, and other social
-                          platforms.
+                        <p className="text-sm text-gray-600">
+                          This image will appear when your case study is shared on social media.
                         </p>
-                        <p className="text-sm text-gray-500">
-                          {formData.seo?.ogImage
-                            ? "Custom image uploaded"
-                            : "Using default image from case study"}
-                        </p>
-
-                        {/* Size indicator */}
                         {formData.seo?.ogImage && (
                           <div className="mt-2 flex items-center gap-2">
                             <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">

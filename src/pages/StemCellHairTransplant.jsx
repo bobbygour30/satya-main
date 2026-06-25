@@ -408,7 +408,7 @@ export default function StemCellHairTransplant() {
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90 text-center">
             Currently:
 
-            * Stem Cell Hair Transplant is not approved by the US Food and Drug Administration (FDA)\
+            * Stem Cell Hair Transplant is not approved by the US Food and Drug Administration (FDA)
               Stem Cell Hair Transplant
 
             * It remains in experimental and clinical trial stages

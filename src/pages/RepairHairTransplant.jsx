@@ -271,12 +271,7 @@ export default function RepairHairTransplant() {
             </h2>
             <p className="md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
               A Repair Hair Transplant is a corrective procedure designed to improve or fix problems caused by a previous hair transplant, rather than starting from scratch.
-              It may involve:\
-               • Redesigning an unnatural hairline\
-               • Improving patchy or low density\
-               • Correcting wrong hair direction or angles\
-               • Repairing donor over-harvesting\
-               • Using FUT, FUE, or Body Hair Transplant strategically
+              It may involve: • Redesigning an unnatural hairline • Improving patchy or low density • Correcting wrong hair direction or angles • Repairing donor over-harvesting • Using FUT, FUE, or Body Hair Transplant strategically
               Repair cases require far more planning and skill than first-time transplants.
             </p>
           </motion.div>
@@ -526,36 +521,23 @@ export default function RepairHairTransplant() {
             {[
               {
                 title: "Detailed Consultation & Analysis",
-                text: "• Assessment of previous transplant\
- • Donor mapping and reserve estimation\
- • Understanding patient expectations\
- • Long-term planning",
+                text: "• Assessment of previous transplant • Donor mapping and reserve estimation • Understanding patient expectations • Long-term planning",
               },
               {
                 title: "Strategy Selection",
-                text: "Depending on the case, we may use:\
- • FUT to preserve donor\
- • FUE selectively\
- • Body Hair Transplant (BHT) for support\
- • Hairline redesign or density redistribution",
+                text: "Depending on the case, we may use: • FUT to preserve donor • FUE selectively • Body Hair Transplant (BHT) for support • Hairline redesign or density redistribution",
               },
               {
                 title: "Graft Extraction & Preparation",
-                text: "• Extreme caution during extraction\
- • Preservation of remaining donor\
- • Grafts prepared under magnification",
+                text: "• Extreme caution during extraction • Preservation of remaining donor • Grafts prepared under magnification",
               },
               {
                 title: "Slit Creation & Implantation",
-                text: "• Correction of hair angles and direction\
- • Natural density planning\
- • Surgeon-controlled, no-touch technique",
+                text: "• Correction of hair angles and direction • Natural density planning • Surgeon-controlled, no-touch technique",
               },
               {
                 title: "Post-Operative Care",
-                text: "• Conservative medication approach\
- • No unnecessary PRP or add-ons\
- • Long-term follow-up and monitoring",
+                text: "• Conservative medication approach • No unnecessary PRP or add-ons • Long-term follow-up and monitoring",
               },
             ].map((step, i) => (
               <motion.div
@@ -580,14 +562,8 @@ export default function RepairHairTransplant() {
             Recovery After Repair Hair Transplant
           </h2>
           <p className="md:text-xl text-[#2B333C]/80 max-w-3xl mx-auto">
-            How long it takes to heal depends on how hard the repair is:
-            • Mild swelling and redness for a few days\
-             • The time it takes to heal may be a little longer than the first surgery.\
-             • It takes time for scars and fibrosis to soften.
-            Hair growth timeline:
-            • 3–4 months: Initial growth\
-             • 6–8 months: Visible improvement\
-             • 9–12 months: Final corrected result
+            How long it takes to heal depends on how hard the repair is: • Mild swelling and redness for a few days • The time it takes to heal may be a little longer than the first surgery. • It takes time for scars and fibrosis to soften.
+            Hair growth timeline: • 3–4 months: Initial growth • 6–8 months: Visible improvement • 9–12 months: Final corrected result
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -625,12 +601,7 @@ export default function RepairHairTransplant() {
             Repair Hair Transplant Cost in Delhi & Gurgaon
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
-            The price of Repair Hair Transplant in Delhi and Gurgaon depends on:
-            • Severity of previous damage\
-             • Number of grafts required\
-             • Donor availability (scalp or body hair)\
-             • Technique used (FUT / FUE / BHT / combination)\
-             • Surgical complexity
+            The price of Repair Hair Transplant in Delhi and Gurgaon depends on: • Severity of previous damage • Number of grafts required • Donor availability (scalp or body hair) • Technique used (FUT / FUE / BHT / combination) • Surgical complexity
             Repair transplants are usually harder than first-time procedures, but at Satya Skin & Hair Solutions, the prices are still clear and fair.
           </p>
         </div>
@@ -641,10 +612,7 @@ export default function RepairHairTransplant() {
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
             Not every failed transplant can be made perfect.
-            Repair hair transplant is about:\
-             • Improvement, not miracles\
-             • Preserving what is left\
-             • Realistic outcomes
+            Repair hair transplant is about: • Improvement, not miracles • Preserving what is left • Realistic outcomes
             Honest counselling is as important as surgical skill.
           </p>
         </div>
@@ -657,7 +625,7 @@ export default function RepairHairTransplant() {
             Book Your Repair Hair Transplant Consultation in Delhi & Gurgaon
           </h2>
           <p className="md:text-xl opacity-90">
-            If you’re considering a Repair Hair Transplant in Delhi or Gurgaon, expert evaluation is the most important step to avoid further damage.
+            If you're considering a Repair Hair Transplant in Delhi or Gurgaon, expert evaluation is the most important step to avoid further damage.
           </p>
           <button
             onClick={() => setShowPopup(true)}

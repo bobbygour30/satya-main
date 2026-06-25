@@ -270,10 +270,7 @@ export default function LongHairTransplant() {
             </h2>
             <p className="md:text-xl text-[#2B333C]/80 max-w-4xl mx-auto leading-relaxed">
               A Long Hair Transplant is a type of FUE or FUT that keeps the length of the hair that is already there during the procedure.
-              Instead of shaving the whole head:\
-               • The hair on the recipient area is kept long\
-               • Careful placement of grafts between existing hairs\
-               • The area where the transplant was done is still hidden from view
+              Instead of shaving the whole head: • The hair on the recipient area is kept long • Careful placement of grafts between existing hairs • The area where the transplant was done is still hidden from view
               This method requires a lot of surgical skill, patience, and accuracy because it's hard to see and handle the graft.
             </p>
           </motion.div>
@@ -418,34 +415,23 @@ export default function LongHairTransplant() {
             {[
               {
                 title: "Consultation & Suitability Assessment",
-                text: "• Hair loss pattern analysis\
- • Donor density evaluation\
- • Determining if non-shaven approach is feasible",
+                text: "• Hair loss pattern analysis • Donor density evaluation • Determining if non-shaven approach is feasible",
               },
               {
                 title: "Donor Hair Extraction",
-                text: "• Donor area may be partially shaved or concealed\
- • Safe donor zones strictly followed\
- • Donor aesthetics preserved",
+                text: "• Donor area may be partially shaved or concealed • Safe donor zones strictly followed • Donor aesthetics preserved",
               },
               {
                 title: "Graft Preparation",
-                text: "• Grafts prepared under magnification\
- • Special care due to limited visibility\
- • Graft survival prioritised",
+                text: "• Grafts prepared under magnification • Special care due to limited visibility • Graft survival prioritised",
               },
               {
                 title: "Slit Creation & Implantation",
-                text: "• Slits created between existing long hair\
- • Angle and direction meticulously controlled\
- • Surgeon-led, no-touch implantation",
+                text: "• Slits created between existing long hair • Angle and direction meticulously controlled • Surgeon-led, no-touch implantation",
               },
               {
                 title: "Post-Operative Care",
-                text: "• Simple aftercare instructions\
- • Minimal medication\
- • No unnecessary PRP sessions\
- • Regular follow-ups",
+                text: "• Simple aftercare instructions • Minimal medication • No unnecessary PRP sessions • Regular follow-ups",
               },
             ].map((step, i) => (
               <motion.div
@@ -471,13 +457,9 @@ export default function LongHairTransplant() {
           </h2>
           <p className="md:text-xl text-[#2B333C]/80 max-w-3xl mx-auto">
             Recovery is similar to standard hair transplant but visually more discreet.
-            • Mild redness settles within days\
-             • Tiny scabs fall off in 7–10 days\
-             • No visible shaved patches
+            • Mild redness settles within days • Tiny scabs fall off in 7–10 days • No visible shaved patches
             Hair growth timeline:
-            • 3–4 months: New growth starts\
-             • 6–8 months: Density improves\
-             • 9–12 months: Final result
+            • 3–4 months: New growth starts • 6–8 months: Density improves • 9–12 months: Final result
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -516,10 +498,7 @@ export default function LongHairTransplant() {
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
             The cost of Long Hair Transplant in Delhi and Gurgaon depends on:
-            • Number of grafts required\
-             • Technique used (FUE / FUT non-shaven)\
-             • Surgical complexity\
-             • Time involved
+            • Number of grafts required • Technique used (FUE / FUT non-shaven) • Surgical complexity • Time involved
             Because it is more labour-intensive, long hair transplant may cost more than standard shaved procedures. At Satya Skin & Hair Solutions, pricing remains transparent and ethical.
           </p>
         </div>
@@ -530,16 +509,10 @@ export default function LongHairTransplant() {
           </h2>
           <p className="md:text-lg leading-relaxed text-[#2B333C]/90">
             Long Hair Transplant is a skill-based procedure, not a shortcut.
-            Poor technique can lead to:\
-             • Poor graft survival\
-             • Damage to existing hair\
-             • Uneven density
+            Poor technique can lead to: • Poor graft survival • Damage to existing hair • Uneven density
             This is why it should only be performed by experienced hair transplant surgeons, not volume-driven clinics.
             Long Hair Transplant is not suitable for everyone.
-            • Takes longer surgical time\
-             • Technically more demanding\
-             • Limited graft numbers per session\
-             • Requires excellent donor quality
+            • Takes longer surgical time • Technically more demanding • Limited graft numbers per session • Requires excellent donor quality
             This technique is selected only when it truly benefits the patient, not as a marketing gimmick.
           </p>
         </div>
@@ -552,7 +525,7 @@ export default function LongHairTransplant() {
             Book Your Long Hair Transplant Consultation in Delhi & Gurgaon
           </h2>
           <p className="md:text-xl opacity-90">
-            If you’re considering a Long Hair Transplant in Delhi or Gurgaon, expert evaluation is essential to determine whether this technique is right for you.
+            If you're considering a Long Hair Transplant in Delhi or Gurgaon, expert evaluation is essential to determine whether this technique is right for you.
           </p>
           <button
             onClick={() => setShowPopup(true)}

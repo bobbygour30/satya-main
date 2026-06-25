@@ -11,7 +11,8 @@ import {
   Image as ImageIcon,
   AlertCircle,
   CheckCircle,
-  XCircle
+  XCircle,
+  Star
 } from 'lucide-react';
 import { caseStudyAPI } from '../../services/api';
 import LoadingSpinner from '../common/LoadingSpinner';
@@ -56,45 +57,37 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
   };
 
   const calculateDropdownPosition = (buttonRect) => {
-    const dropdownWidth = 192; // w-48
-    const dropdownHeight = 280; // approximate height
+    const dropdownWidth = 192;
+    const dropdownHeight = 280;
     
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     const scrollY = window.scrollY;
     const scrollX = window.scrollX;
     
-    // Default position (below and right-aligned)
     let top = buttonRect.bottom + scrollY + 5;
     let left = buttonRect.right + scrollX - dropdownWidth;
     
-    // Check if dropdown goes off the right edge
     if (left + dropdownWidth > scrollX + viewportWidth - 10) {
       left = scrollX + viewportWidth - dropdownWidth - 10;
     }
     
-    // Check if dropdown goes off the left edge
     if (left < scrollX + 10) {
       left = scrollX + 10;
     }
     
-    // Check if dropdown goes off the bottom edge
     const wouldGoOffBottom = buttonRect.bottom + dropdownHeight + 10 > viewportHeight;
     
     if (wouldGoOffBottom) {
-      // Try to place above the button
       const topAbove = buttonRect.top + scrollY - dropdownHeight - 5;
       
-      // Check if placing above goes off the top edge
       if (topAbove < scrollY + 10) {
-        // If both below and above don't work, center vertically in viewport
         top = scrollY + (viewportHeight / 2) - (dropdownHeight / 2);
       } else {
         top = topAbove;
       }
     }
     
-    // Ensure dropdown stays within vertical bounds
     const minTop = scrollY + 10;
     const maxTop = scrollY + viewportHeight - dropdownHeight - 10;
     top = Math.max(minTop, Math.min(top, maxTop));
@@ -114,7 +107,6 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
     setSelectedId(id);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (!selectedId) return;
@@ -134,7 +126,6 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [selectedId]);
 
-  // Close dropdown on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (selectedId) {
@@ -146,7 +137,6 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
     return () => window.removeEventListener('scroll', handleScroll, true);
   }, [selectedId]);
 
-  // Close dropdown on escape key
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape' && selectedId) {
@@ -158,11 +148,9 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
     return () => window.removeEventListener('keydown', handleEsc);
   }, [selectedId]);
 
-  // Reposition dropdown on window resize
   useEffect(() => {
     const handleResize = () => {
       if (selectedId) {
-        // Find the button and recalculate position
         const button = buttonRefs.current[selectedId];
         if (button) {
           const rect = button.getBoundingClientRect();
@@ -176,7 +164,6 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
     return () => window.removeEventListener('resize', handleResize);
   }, [selectedId]);
 
-  // Helper function to get the first after image
   const getFirstAfterImage = (caseStudy) => {
     try {
       if (caseStudy.heroImages?.after && Array.isArray(caseStudy.heroImages.after) && caseStudy.heroImages.after.length > 0) {
@@ -193,7 +180,6 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
     return <LoadingSpinner />;
   }
 
-  // Dropdown menu component using Portal
   const DropdownMenu = () => {
     if (!selectedId) return null;
     
@@ -318,6 +304,15 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
                     </div>
                   )}
                   
+                  {/* Best Badge */}
+                  {cs.best && (
+                    <div className="absolute top-2 left-2">
+                      <span className="flex items-center gap-1 px-2 py-1 bg-yellow-500 text-white text-xs rounded-full shadow-md">
+                        <Star size={12} /> Best
+                      </span>
+                    </div>
+                  )}
+                  
                   {/* Image count badge */}
                   {cs.heroImages?.after && cs.heroImages.after.length > 0 && (
                     <div className="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
@@ -358,6 +353,13 @@ export default function CaseStudyList({ caseStudies, loading, onEdit, onRefresh 
                       <MoreVertical size={18} />
                     </button>
                   </div>
+
+                  {/* Banner Details Preview */}
+                  {cs.bannerDetails?.patientName && (
+                    <div className="text-xs text-gray-500 mt-2">
+                      <span className="font-medium">Patient:</span> {cs.bannerDetails.patientName}
+                    </div>
+                  )}
 
                   {/* Meta */}
                   <div className="flex items-center gap-2 text-xs text-gray-500 mt-3">

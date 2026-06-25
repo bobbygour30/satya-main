@@ -73,7 +73,7 @@ const MENU = [
     title: "Results",
     items: [
       // { label: "Hair Results", path: "/hair-result" },
-      { label: "Case Studies", path: "/before-after" },
+      { label: "Hair Results", path: "/before-after" },
       { label: "Skin Results", path: "https://satyaskinhairsolutions.com/skin-results" },
     ],
   },

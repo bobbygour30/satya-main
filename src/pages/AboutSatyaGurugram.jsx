@@ -1,13 +1,102 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { FcGoogle } from "react-icons/fc";
+import assets from "../assets/assets";
+
+/* ================= IMAGE SETS ================= */
+// Using only Gurugram images
+const GURUGRAM_IMAGES = [
+  assets.gurgao1,
+  assets.gurgao2,
+  assets.gurgao3,
+  assets.gurgao5,
+  assets.gurgao6,
+  assets.gurgao7,
+];
+
+/* ================= SLIDER HOOK ================= */
+function useAutoSlider(images, delay = 4000) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, delay);
+    return () => clearInterval(interval);
+  }, [images.length, delay]);
+
+  return index;
+}
+
+/* ================= STAR RATING ================= */
+function StarRating({ rating }) {
+  const percentage = (rating / 5) * 100;
+
+  return (
+    <div className="flex items-center justify-center gap-3 mt-1">
+      <FcGoogle className="text-lg" />
+      <div className="relative text-[18px] leading-none">
+        <div className="text-[#E5E7EB] tracking-[1px]">★★★★★</div>
+        <div
+          className="absolute inset-0 overflow-hidden text-[#F5B301] tracking-[1px]"
+          style={{ width: `${percentage}%` }}
+        >
+          ★★★★★
+        </div>
+      </div>
+      <span className="text-sm font-medium text-[#2B333C]">{rating}</span>
+    </div>
+  );
+}
 
 export default function AboutSatyaGurugram() {
+  const sliderIndex = useAutoSlider(GURUGRAM_IMAGES, 4000);
+
   return (
     <main className="bg-[#FFF8EF] text-[#2B333C]">
 
+      {/* ================= IMAGE SLIDER ================= */}
+      <section className="w-full px-4 sm:px-6 md:px-12 lg:px-20 pt-6 sm:pt-8 md:pt-10">
+        <div className="max-w-5xl mx-auto">
+          {/* Slider Container */}
+          <div className="relative rounded-xl md:rounded-2xl overflow-hidden h-[220px] sm:h-[320px] md:h-[420px] lg:h-[480px] shadow-xl">
+            {GURUGRAM_IMAGES.map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                alt={`Satya Gurugram Clinic ${i + 1}`}
+                className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out
+                  ${i === sliderIndex ? "opacity-100 scale-105" : "opacity-0 scale-100"}
+                `}
+              />
+            ))}
+
+            {/* Gradient Overlay for better text visibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
+
+            {/* Location Badge */}
+            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-10">
+              <span className="px-4 py-1.5 md:px-5 md:py-2 bg-black/50 backdrop-blur-sm rounded-full text-white text-[10px] sm:text-xs uppercase tracking-[0.15em] border border-white/20">
+                Satya Gurugram Clinic
+              </span>
+            </div>
+          </div>
+
+          {/* Rating and Location Name */}
+          <div className="mt-4 md:mt-5 text-center">
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#2B333C]">
+              Satya Gurugram Clinic
+            </h3>
+            <StarRating rating={4.8} />
+            <p className="text-xs sm:text-sm text-[#828D9C] mt-1">
+              Gurugram, India
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ================= PAGE HEADER ================= */}
-      <section className="max-w-5xl mx-auto px-6 md:px-12 lg:px-20 pt-12 sm:pt-16">
+      <section className="max-w-5xl mx-auto px-6 md:px-12 lg:px-20 pt-8 sm:pt-12 md:pt-14">
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -17,11 +106,11 @@ export default function AboutSatyaGurugram() {
           About Satya Gurugram Clinic
         </motion.h1>
 
-        <p className="mt-4 max-w-3xl text-[#828D9C] leading-relaxed">
+        <p className="mt-4 max-w-3xl text-[#828D9C] leading-relaxed text-sm sm:text-base">
           Satya Gurugram Clinic was created with a clear intent: to offer hair and skin care
           that is guided by medical judgment rather than trends or commercial pressure.
           The clinic functions as a doctor-led centre where every treatment decision begins
-          with understanding the patient’s condition, not with pre-decided procedures.
+          with understanding the patient's condition, not with pre-decided procedures.
         </p>
       </section>
 
@@ -207,6 +296,43 @@ whether its approach aligns with what you are looking for.`}
         </div>
       </section>
 
+      {/* ================= GOOGLE MAP SECTION ================= */}
+      <section className="w-full px-4 sm:px-6 md:px-12 lg:px-20 pb-12 sm:pb-16 md:pb-20">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            <h2 className="text-xl sm:text-2xl font-semibold text-[#9E4A47] text-center">
+              Visit Our Gurugram Clinic
+            </h2>
+            <p className="text-[#828D9C] text-sm sm:text-base text-center max-w-2xl mx-auto">
+              Find us at our Gurugram location. We're conveniently located for easy access.
+            </p>
+
+            {/* Google Map Embed */}
+            <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden shadow-lg h-[250px] sm:h-[350px] md:h-[400px] lg:h-[450px] mt-4">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14029.740853278143!2d77.06744513514674!3d28.466437149407515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d198f5f49c53b%3A0xe0b42c1f0611df3a!2sSatya%20Skin%20%26%20Hair%20Solutions!5e0!3m2!1sen!2sin!4v1782391221901!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Satya Gurugram Clinic Location"
+                className="absolute inset-0"
+              />
+            </div>
+
+           
+          </motion.div>
+        </div>
+      </section>
+
     </main>
   );
 }
@@ -224,7 +350,7 @@ function ContentBlock({ title, text }) {
       <h2 className="text-xl sm:text-2xl font-semibold text-[#9E4A47]">
         {title}
       </h2>
-      <p className="text-[#828D9C] leading-relaxed whitespace-pre-line">
+      <p className="text-[#828D9C] leading-relaxed whitespace-pre-line text-sm sm:text-base">
         {text}
       </p>
     </motion.div>

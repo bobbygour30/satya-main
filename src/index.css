@@ -217,15 +217,17 @@
 .uagb-buttons-repeater {
   background: #B65E3C !important;
   color: #ffffff !important;
-  padding: 16px 34px !important;
+  padding: 9px 20px !important;
   border-radius: 8px !important;
   text-decoration: none !important;
   display: inline-block !important;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
+  line-height: 1.2;
   border: 2px solid #7b3f2b !important;
   box-shadow: 0 4px 0 #7b3f2b;
   transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 /* Hover */
@@ -482,4 +484,61 @@ body {
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   z-index: 10 !important;
+}
+
+/* Responsive Table Styling */
+.wp-block-table {
+  width: 100%;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.wp-block-table table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 16px;
+}
+
+.wp-block-table th {
+  background: #B65E3C;
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+}
+
+.wp-block-table td {
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.wp-block-table tbody tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.wp-block-table tbody tr:hover {
+  background: #f3ebe8;
+  transition: background 0.2s ease;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .wp-block-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .wp-block-table table {
+    min-width: 650px;
+  }
+
+  .wp-block-table th,
+  .wp-block-table td {
+    padding: 12px;
+    font-size: 14px;
+  }
 }

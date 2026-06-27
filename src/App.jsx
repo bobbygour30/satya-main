@@ -150,7 +150,7 @@ export default function App() {
 
         {/* ================= CASE STUDIES ================= */}
         {/* <Route path="/case/prakhar" element={<CaseDetailPage />} /> */}
-        <Route path="/case/:slug" element={<CompleteCaseStudyPage />} />
+        <Route path="/case/:slug" element={<DynamicCaseStudy />} />
 
         {/* ================= CLINIC ================= */}
         <Route path="/delhi" element={<AboutSatyaDelhi />} />

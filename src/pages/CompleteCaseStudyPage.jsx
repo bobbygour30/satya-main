@@ -226,19 +226,96 @@ const protocols = [
     sessions: ""
   };
 
-  // Format grafts text for display
-  const formatGraftsText = () => {
-    const { first, second, technique } = bannerDetails.totalGrafts;
-    if (first && second && second !== "N/A" && second !== "") {
-      return `1st Surgery: ${first} grafts using ${technique} | 2nd Surgery: ${second} grafts using ${technique}`;
-    } else if (first) {
-      return `1st Surgery: ${first} grafts using ${technique}`;
-    }
-    return "";
-  };
-
   // Tabs for ProgressGallery
   const tabs = ["FRONT VIEW", "RIGHT PROFILE", "LEFT PROFILE", "TOP / BACK"];
+
+  // ============================================
+  // SMART IMAGE LOADING FOR VISUAL EVIDENCE
+  // ============================================
+  
+  // Helper to get ALL available images grouped by view
+  const getImagesByView = () => {
+    const viewGroups = {
+      front: { before: null, immediate: null, month14: null, month28: null },
+      right: { before: null, immediate: null, month14: null, month28: null },
+      left: { before: null, immediate: null, month14: null, month28: null },
+      back: { before: null, immediate: null, month14: null, month28: null }
+    };
+    
+    for (const [key, value] of Object.entries(tableImages)) {
+      const parts = key.split('_');
+      if (parts.length === 2) {
+        const view = parts[0];
+        const col = parts[1];
+        if (viewGroups[view] && ['before', 'immediate', 'month14', 'month28'].includes(col)) {
+          viewGroups[view][col] = value?.url || value;
+        }
+      }
+    }
+    
+    return viewGroups;
+  };
+
+  // Get all available images by view
+  const imagesByView = getImagesByView();
+
+  // Helper to get image for a view and time period with smart fallback
+  const getVisualEvidenceImage = (view, timePeriod) => {
+    // Try exact match first
+    if (imagesByView[view] && imagesByView[view][timePeriod]) {
+      return imagesByView[view][timePeriod];
+    }
+    
+    // Try to find any image from the same view
+    if (imagesByView[view]) {
+      const periods = ['before', 'immediate', 'month14', 'month28'];
+      for (const period of periods) {
+        if (imagesByView[view][period]) {
+          return imagesByView[view][period];
+        }
+      }
+    }
+    
+    // Try front view as fallback (for crown section)
+    if (view !== 'front' && imagesByView['front']) {
+      const periods = ['before', 'immediate', 'month14', 'month28'];
+      for (const period of periods) {
+        if (imagesByView['front'][period]) {
+          return imagesByView['front'][period];
+        }
+      }
+    }
+    
+    // Try right view as fallback (for profile section)
+    if (view !== 'right' && imagesByView['right']) {
+      const periods = ['before', 'immediate', 'month14', 'month28'];
+      for (const period of periods) {
+        if (imagesByView['right'][period]) {
+          return imagesByView['right'][period];
+        }
+      }
+    }
+    
+    // Try any view
+    for (const viewName of ['front', 'right', 'left', 'back']) {
+      if (imagesByView[viewName]) {
+        const periods = ['before', 'immediate', 'month14', 'month28'];
+        for (const period of periods) {
+          if (imagesByView[viewName][period]) {
+            return imagesByView[viewName][period];
+          }
+        }
+      }
+    }
+    
+    // Final fallback to hero images
+    return timePeriod === 'before' || timePeriod === 'immediate' || timePeriod === 'month14' 
+      ? heroBeforeImage 
+      : heroAfterImage;
+  };
+
+  // Debug: Log available images to console
+  console.log('Images by view:', imagesByView);
 
   return (
     <>
@@ -439,7 +516,7 @@ const protocols = [
   </div>
 </div>
 
-        {/* TreatmentStatsComponent - FIXED: No slider on mobile, responsive grid */}
+        {/* TreatmentStatsComponent */}
 <div className="w-full bg-[#C8734B]">
   <div className="grid grid-cols-2 lg:grid-cols-4">
     {stats.map((stat, index) => (
@@ -450,7 +527,7 @@ const protocols = [
         } ${index < 2 ? "border-b lg:border-b-0" : ""} lg:border-r lg:last:border-r-0`}
       >
         <div className="flex items-start justify-center mb-2">
-          <span className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-[#F3EFE0] leading-none">
+          <span className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-[#F3EFE0] leading-none">
             {stat.value}
           </span>
           {stat.unit && (
@@ -580,8 +657,7 @@ const protocols = [
           
         </div>
 
-        {/* TransformationProtocols - Dynamic from API */}
-        {/* TransformationProtocols - Hardcoded with local assets */}
+        {/* TransformationProtocols */}
 <div className="bg-[#F8F5F0] text-[#2D1B13] font-sans antialiased selection:bg-[#C8734B]/20">
   <div className="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-24 py-20 lg:py-32">
     <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] items-center gap-10 lg:gap-24 mb-20 lg:mb-28">
@@ -641,7 +717,7 @@ const protocols = [
   </div>
 </div>
 
-        {/* ProgressGallery - FIXED: Better mobile, full images like modal */}
+        {/* ProgressGallery */}
         <div className="w-full min-h-screen bg-[#F7F4EE] text-[#4A3B32] font-sans p-4 md:p-8 flex flex-col justify-between selection:bg-[#B07355] selection:text-white">
           
           {/* HEADER SECTION */}
@@ -682,7 +758,7 @@ const protocols = [
             </div>
           </div>
 
-          {/* PHOTO GRID MATRIX - FIXED: Full images on mobile */}
+          {/* PHOTO GRID MATRIX */}
           <main className="max-w-7xl w-full mx-auto bg-[#312219] grid grid-cols-1 md:grid-cols-[60px_1fr] overflow-hidden shadow-sm">
             
             {/* Left Side Label Column - hidden on mobile */}
@@ -692,20 +768,20 @@ const protocols = [
               </span>
             </div>
 
-            {/* Timeline Columns Container - FIXED: Better on mobile */}
+            {/* Timeline Columns Container */}
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 divide-x divide-[#F7F4EE]">
               {timelineColumns.map((col, index) => {
                 const imageUrl = getImageForTabAndColumn(tableColumns[index]?.id);
                 return (
                   <div key={index} className="flex flex-col bg-[#DDD7CB]">
                     
-                    {/* Header Label for Timeline Stage - smaller on mobile */}
+                    {/* Header Label for Timeline Stage */}
                     <div className={`bg-[#B07355] text-white text-center py-1.5 md:py-2 text-[7px] md:text-[10px] tracking-widest font-semibold uppercase relative px-1`}>
                       <span className="truncate block">{col.label}</span>
                       <div className={`absolute bottom-0 left-0 right-0 h-[2px] md:h-[3px] ${col.statusColor}`} />
                     </div>
 
-                    {/* Photo Slot - FULL IMAGE on mobile */}
+                    {/* Photo Slot */}
                     <div className="aspect-square md:aspect-[3/4] md:h-[550px] flex flex-col items-center justify-center p-2 md:p-6 text-center group cursor-pointer hover:bg-[#D5CEBF] transition-colors duration-300 relative bg-[#DDD7CB]">
                       
                       {imageUrl ? (
@@ -750,7 +826,7 @@ const protocols = [
               All photographs taken under standardised clinic lighting. Results are patient-specific and may vary.
             </p>
             
-            {/* Color Legend mapping - smaller on mobile */}
+            {/* Color Legend mapping */}
             <div className="flex flex-wrap gap-2 md:gap-4 items-center justify-center">
               <div className="flex items-center gap-1">
                 <span className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#8E867A] block rounded-sm" />
@@ -772,7 +848,7 @@ const protocols = [
           </footer>
         </div>
 
-        {/* MeasuredOutcomesSection - Dynamic from API */}
+        {/* MeasuredOutcomesSection */}
         <div className="bg-[#2D1B13] text-[#DFD0BA] font-sans antialiased selection:bg-[#C8734B]/30 selection:text-white">
           <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-32 p-6 md:p-10 lg:p-16 xl:p-24 items-start">
             <div className="space-y-8 md:space-y-12">
@@ -823,7 +899,9 @@ const protocols = [
           </div>
         </div>
 
-        {/* VisualEvidenceComponent */}
+        {/* ============================================================
+            VisualEvidenceComponent - UPDATED WITH SMART IMAGE LOADING
+            ============================================================ */}
         <div className="w-full bg-[#EFEBE3] text-[#2D1B13] font-sans antialiased">
           <div className="p-6 md:p-10 lg:p-16 xl:p-24 pb-8 md:pb-12">
             <div className="flex items-center gap-4 mb-4 md:mb-6">
@@ -838,85 +916,123 @@ const protocols = [
             </h2>
           </div>
 
+          {/* CROWN SECTION - 3 images using front view with different time periods */}
           <div className="grid grid-cols-1 md:grid-cols-3 border-t border-[#2D1B13]/10">
             {[
-              { label: "BEFORE", status: "CROWN — BEFORE", image: heroBeforeImage },
-              { label: "MID TREATMENT", status: "CROWN — MONTH 14", image: heroBeforeImage },
-              { label: "AFTER", status: "CROWN — MONTH 28", image: heroAfterImage },
-            ].map((photo, idx) => (
-              <div 
-                key={idx} 
-                className={`min-h-[350px] md:min-h-[450px] bg-[#D6CEC1] p-6 md:p-8 flex flex-col justify-between relative group
-                  ${idx !== 2 ? "md:border-r border-[#2D1B13]/10" : ""}
-                  border-b md:border-b-0
-                `}
-              >
-                <div className="absolute top-4 md:top-6 left-4 md:left-6">
-                  <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[7px] md:text-[9px] font-bold tracking-widest uppercase text-white 
-                    ${photo.label === "AFTER" ? "bg-[#C8734B]" : "bg-[#2D1B13]/40"}`}
-                  >
-                    {photo.label}
-                  </span>
-                </div>
-                <div className="flex-1 flex flex-col items-center justify-center transition-all group-hover:opacity-100">
-                  {photo.image ? (
-                    <div className="w-full max-w-[200px] md:max-w-[250px] mx-auto aspect-square rounded-lg overflow-hidden">
-                      <img src={photo.image} alt={photo.label} className="w-full h-full object-cover object-center" />
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center gap-3 md:gap-4 opacity-40">
-                      <div className="w-8 h-8 md:w-10 md:h-10 border border-[#2D1B13] rounded-sm flex items-center justify-center">
-                        <div className="w-4 h-4 md:w-5 md:h-5 border border-[#2D1B13] rounded-full" />
+              { 
+                label: "BEFORE", 
+                status: "CROWN — BEFORE", 
+                view: "front",
+                period: "before",
+                badgeColor: "bg-[#2D1B13]/40"
+              },
+              { 
+                label: "MID TREATMENT", 
+                status: "CROWN — MONTH 14", 
+                view: "front",
+                period: "month14",
+                badgeColor: "bg-[#2D1B13]/40"
+              },
+              { 
+                label: "AFTER", 
+                status: "CROWN — MONTH 28", 
+                view: "front",
+                period: "month28",
+                badgeColor: "bg-[#C8734B]"
+              },
+            ].map((photo, idx) => {
+              const imageUrl = getVisualEvidenceImage(photo.view, photo.period);
+              return (
+                <div 
+                  key={idx} 
+                  className={`min-h-[350px] md:min-h-[450px] bg-[#D6CEC1] p-6 md:p-8 flex flex-col justify-between relative group
+                    ${idx !== 2 ? "md:border-r border-[#2D1B13]/10" : ""}
+                    border-b md:border-b-0
+                  `}
+                >
+                  <div className="absolute top-4 md:top-6 left-4 md:left-6">
+                    <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[7px] md:text-[9px] font-bold tracking-widest uppercase text-white 
+                      ${photo.label === "AFTER" ? "bg-[#C8734B]" : "bg-[#2D1B13]/40"}`}
+                    >
+                      {photo.label}
+                    </span>
+                  </div>
+                  <div className="flex-1 flex flex-col items-center justify-center transition-all group-hover:opacity-100">
+                    {imageUrl ? (
+                      <div className="w-full max-w-[200px] md:max-w-[250px] mx-auto aspect-square rounded-lg overflow-hidden">
+                        <img src={imageUrl} alt={photo.label} className="w-full h-full object-cover object-center" />
                       </div>
-                      <span className="text-[7px] md:text-[9px] tracking-[0.2em] font-bold uppercase">PROGRESS PHOTO</span>
-                    </div>
-                  )}
+                    ) : (
+                      <div className="flex flex-col items-center gap-3 md:gap-4 opacity-40">
+                        <div className="w-8 h-8 md:w-10 md:h-10 border border-[#2D1B13] rounded-sm flex items-center justify-center">
+                          <div className="w-4 h-4 md:w-5 md:h-5 border border-[#2D1B13] rounded-full" />
+                        </div>
+                        <span className="text-[7px] md:text-[9px] tracking-[0.2em] font-bold uppercase">PROGRESS PHOTO</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-[8px] md:text-[10px] tracking-[0.15em] font-bold text-[#2D1B13]/40 uppercase text-center mt-3 md:mt-4">
+                    {photo.status}
+                  </div>
                 </div>
-                <div className="text-[8px] md:text-[10px] tracking-[0.15em] font-bold text-[#2D1B13]/40 uppercase text-center mt-3 md:mt-4">
-                  {photo.status}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
+          {/* FULL PROFILE SECTION - 2 images using right view */}
           <div className="grid grid-cols-1 md:grid-cols-2 border-t border-[#2D1B13]/10">
             {[
-              { label: "BEFORE — FULL VIEW", status: "FULL PROFILE — BEFORE", image: heroBeforeImage, isAfter: false },
-              { label: "AFTER — FULL VIEW", status: "FULL PROFILE — AFTER", image: heroAfterImage, isAfter: true },
-            ].map((photo, idx) => (
-              <div 
-                key={idx} 
-                className={`min-h-[400px] md:min-h-[500px] bg-[#D6CEC1] p-6 md:p-8 flex flex-col justify-between relative group
-                  ${idx === 0 ? "md:border-r border-[#2D1B13]/10" : ""}
-                  border-b md:border-b-0
-                `}
-              >
-                <div className="absolute top-4 md:top-6 left-4 md:left-6">
-                  <span className={`px-3 md:px-4 py-0.5 md:py-1.5 rounded-full text-[7px] md:text-[9px] font-bold tracking-widest uppercase text-white 
-                    ${photo.isAfter ? "bg-[#C8734B]" : "bg-[#2D1B13]/40"}`}
-                  >
-                    {photo.label}
-                  </span>
-                </div>
-                <div className="flex-1 flex flex-col items-center justify-center transition-all group-hover:opacity-100">
-                  {photo.image ? (
-                    <div className="w-full max-w-[250px] md:max-w-[300px] mx-auto aspect-square rounded-xl overflow-hidden shadow-lg">
-                      <img src={photo.image} alt={photo.label} className="w-full h-full object-cover object-center" />
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center gap-3 md:gap-4 opacity-40">
-                      <div className="w-10 h-10 md:w-12 md:h-12 border border-[#2D1B13] rounded-sm flex items-center justify-center">
-                        <div className="w-5 h-5 md:w-6 md:h-6 border border-[#2D1B13] rounded-full" />
+              { 
+                label: "BEFORE — FULL VIEW", 
+                status: "FULL PROFILE — BEFORE", 
+                view: "right",
+                period: "before",
+                isAfter: false 
+              },
+              { 
+                label: "AFTER — FULL VIEW", 
+                status: "FULL PROFILE — AFTER", 
+                view: "right",
+                period: "month28",
+                isAfter: true 
+              },
+            ].map((photo, idx) => {
+              const imageUrl = getVisualEvidenceImage(photo.view, photo.period);
+              return (
+                <div 
+                  key={idx} 
+                  className={`min-h-[400px] md:min-h-[500px] bg-[#D6CEC1] p-6 md:p-8 flex flex-col justify-between relative group
+                    ${idx === 0 ? "md:border-r border-[#2D1B13]/10" : ""}
+                    border-b md:border-b-0
+                  `}
+                >
+                  <div className="absolute top-4 md:top-6 left-4 md:left-6">
+                    <span className={`px-3 md:px-4 py-0.5 md:py-1.5 rounded-full text-[7px] md:text-[9px] font-bold tracking-widest uppercase text-white 
+                      ${photo.isAfter ? "bg-[#C8734B]" : "bg-[#2D1B13]/40"}`}
+                    >
+                      {photo.label}
+                    </span>
+                  </div>
+                  <div className="flex-1 flex flex-col items-center justify-center transition-all group-hover:opacity-100">
+                    {imageUrl ? (
+                      <div className="w-full max-w-[250px] md:max-w-[300px] mx-auto aspect-square rounded-xl overflow-hidden shadow-lg">
+                        <img src={imageUrl} alt={photo.label} className="w-full h-full object-cover object-center" />
                       </div>
-                      <span className="text-[8px] md:text-[10px] tracking-[0.2em] font-bold uppercase">FULL PROFILE PHOTO</span>
-                    </div>
-                  )}
+                    ) : (
+                      <div className="flex flex-col items-center gap-3 md:gap-4 opacity-40">
+                        <div className="w-10 h-10 md:w-12 md:h-12 border border-[#2D1B13] rounded-sm flex items-center justify-center">
+                          <div className="w-5 h-5 md:w-6 md:h-6 border border-[#2D1B13] rounded-full" />
+                        </div>
+                        <span className="text-[8px] md:text-[10px] tracking-[0.2em] font-bold uppercase">FULL PROFILE PHOTO</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-[8px] md:text-[10px] tracking-[0.15em] font-bold text-[#2D1B13]/40 uppercase text-center mt-3 md:mt-4">
+                    {photo.status}
+                  </div>
                 </div>
-                <div className="text-[8px] md:text-[10px] tracking-[0.15em] font-bold text-[#2D1B13]/40 uppercase text-center mt-3 md:mt-4">
-                  {photo.status}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="py-6 md:py-8 bg-[#EFEBE3] text-center border-t border-[#2D1B13]/5">
@@ -973,11 +1089,7 @@ const protocols = [
           <div className="container mx-auto px-4 md:px-8 lg:px-12 xl:px-24 py-12 md:py-16 lg:py-20 xl:py-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start">
             <div className="md:col-span-5 lg:col-span-4 relative flex flex-col items-center">
               <div className="aspect-square w-full max-w-[280px] md:max-w-[350px] mx-auto bg-[#EFEBE3] border-4 border-[#C8734B]/20 rounded-full overflow-hidden flex flex-col items-center justify-center text-center shadow-xl">
-                
-                  <img src={assets.drshailteam} alt="Doctor" className="w-full h-full object-cover object-center" />
-                
-                
-                
+                <img src={assets.drshailteam} alt="Doctor" className="w-full h-full object-cover object-center" />
               </div>
             </div>
             <div className="md:col-span-7 lg:col-span-8 space-y-8 md:space-y-10 lg:space-y-12">
@@ -1021,57 +1133,6 @@ const protocols = [
             </div>
           </div>
         </div>
-
-        {/* SuccessStoriesComponent - Dynamic from API */}
-        {/* <div className="bg-[#EFEBE3] min-h-screen text-[#2D1B13] font-sans antialiased">
-          <div className="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-24 py-20 lg:py-32">
-            <div className="flex justify-between items-center mb-16 lg:mb-24 gap-12">
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-6 h-px bg-[#C8734B]" />
-                  <h2 className="text-[10px] uppercase tracking-[0.3em] font-medium text-[#C8734B]">MORE TRANSFORMATIONS</h2>
-                </div>
-                <h1 className="text-5xl md:text-6xl font-serif leading-tight">
-                  Other <span className="italic text-[#C8734B] font-medium">success stories</span>
-                </h1>
-              </div>
-              <a href="#" className="flex items-center gap-2 group text-[10px] uppercase tracking-[0.2em] font-bold text-[#2D1B13] opacity-80 hover:opacity-100 transition-opacity">
-                VIEW ALL CASES
-                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" className="transform transition-transform group-hover:translate-x-1">
-                  <path d="M13 1L17 5M17 5L13 9M17 5H1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-[#2D1B13]/5 rounded-sm overflow-hidden">
-              {successStories.map((story, index) => (
-                <div key={index} className={`flex flex-col group ${index !== 2 ? "md:border-r border-[#2D1B13]/5" : ""}`}>
-                  <div className="aspect-square bg-[#D6CEC1] border-b border-[#2D1B13]/5 flex items-center justify-center p-8 group-hover:bg-[#DED8CE] transition-colors relative overflow-hidden">
-                    {story.image ? (
-                      <img src={story.image} alt={story.name} className="w-full h-full object-cover object-center" />
-                    ) : (
-                      <div className="text-center opacity-40 flex flex-col items-center gap-3">
-                        <div className="w-10 h-10 border border-[#2D1B13] rounded-sm flex items-center justify-center">
-                          <div className="w-5 h-5 border-2 border-[#2D1B13] rounded-full flex items-center justify-center">
-                            <div className="w-1 h-1 bg-[#2D1B13] rounded-full"></div>
-                          </div>
-                        </div>
-                        <span className="text-[9px] tracking-[0.2em] font-bold uppercase">PATIENT PHOTO</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="bg-[#EFEBE3] p-10 md:p-12 lg:p-14 space-y-6 flex-grow">
-                    <div className="space-y-1">
-                      <p className="text-[9px] tracking-[0.2em] font-bold uppercase text-[#2D1B13]/60">{story.treatment}</p>
-                      <h3 className="text-3xl font-serif text-[#2D1B13]">{story.name}</h3>
-                    </div>
-                    <div className="w-12 h-px bg-[#2D1B13]/10"></div>
-                    <p className="text-sm leading-relaxed text-[#2D1B13]/70 font-sans">{story.details}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div> */}
 
         {/* Video Section from API */}
         {caseData?.video?.url && (
@@ -1151,7 +1212,7 @@ const protocols = [
                   </svg>
                 </button>
                 <button className="w-full lg:w-80 border border-white/20 hover:border-white/40 text-white py-4 md:py-5 px-6 md:px-8 text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase transition-all">
-                  CALL +91 12345 67890
+                  CALL +919910094945
                 </button>
               </div>
             </div>

@@ -145,30 +145,7 @@ export default function CompleteCaseStudyPage() {
     },
   ];
 
-  // Get protocols - Hardcoded with local assets
-const protocols = [
-  {
-    id: "01",
-    title: "Low-Level Laser Therapy",
-    description: "650nm photobiomodulation to stimulate follicular activity, increase ATP production, and improve scalp circulation — a non-invasive foundation for all other treatments.",
-    placeholder: "LLLT TREATMENT IMAGE",
-    image: assets.lowlazor,
-  },
-  {
-    id: "02",
-    title: "PRP Hair Treatment",
-    description: "Autologous platelet-rich plasma derived from the patient's own blood, concentrated and injected to deliver growth factors directly to dormant follicles.",
-    placeholder: "PRP PROCEDURE IMAGE",
-    image: assets.prp4,
-  },
-  {
-    id: "03",
-    title: "GFC Therapy",
-    description: "Growth Factor Concentrate — a next-generation evolution of PRP with significantly higher concentration, delivering superior follicular regeneration outcomes.",
-    placeholder: "GFC THERAPY IMAGE",
-    image: assets.gfc,
-  },
-];
+
 
   // Get outcomes from API or use defaults
   const outcomes = caseData?.outcomes && caseData.outcomes.length > 0 ? caseData.outcomes : [
@@ -657,65 +634,7 @@ const protocols = [
           
         </div>
 
-        {/* TransformationProtocols */}
-<div className="bg-[#F8F5F0] text-[#2D1B13] font-sans antialiased selection:bg-[#C8734B]/20">
-  <div className="max-w-[1600px] mx-auto px-8 md:px-16 lg:px-24 py-20 lg:py-32">
-    <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] items-center gap-10 lg:gap-24 mb-20 lg:mb-28">
-      <div>
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-7 h-[1px] bg-[#C8734B]" />
-          <span className="text-[10px] tracking-[0.32em] uppercase text-[#C8734B] font-medium">
-            Protocols Used
-          </span>
-        </div>
-        <h2 className="font-serif text-[52px] sm:text-[64px] lg:text-[78px] leading-[0.98] tracking-[-0.03em] text-[#2D1B13]">
-          What made
-          <br />
-          <span className="italic text-[#C8734B] font-normal">the transformation</span>{" "}
-          possible
-        </h2>
-      </div>
-      <div className="lg:pt-10 flex lg:justify-end">
-        <p className="max-w-[520px] text-[15px] leading-[2] text-[#8B776D] font-light">
-          A multi-modal approach where each treatment built on the last —
-          not a single solution, but a precisely sequenced combination
-          tailored to Lokesh's biology.
-        </p>
-      </div>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-[#2D1B13]/10">
-      {protocols.map((protocol, index) => (
-        <div 
-          key={protocol.id} 
-          className={`pt-12 pb-16 lg:px-12 first:pl-0 last:pr-0 
-            ${index !== protocols.length - 1 ? "md:border-r border-[#2D1B13]/10" : ""}
-            ${index === 1 ? "lg:px-12" : ""}
-          `}
-        >
-          <div className="space-y-10">
-            <span className="block text-5xl font-serif text-[#C8734B]/20 font-light">
-              {protocol.id}
-            </span>
-            <div className="aspect-square max-w-[300px] mx-auto bg-[#EAE4D8] border border-[#2D1B13]/5 flex items-center justify-center p-8 group cursor-pointer hover:bg-[#E2DBCF] transition-colors overflow-hidden">
-              {protocol.image ? (
-                <img src={protocol.image} alt={protocol.title} className="w-full h-full object-cover object-center" />
-              ) : (
-                <span className="text-[9px] tracking-[0.25em] font-bold text-[#2D1B13]/30 uppercase text-center leading-loose">
-                  {protocol.placeholder}
-                </span>
-              )}
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-2xl font-serif text-[#2D1B13]">{protocol.title}</h3>
-              <p className="text-sm leading-relaxed text-[#2D1B13]/70">{protocol.description}</p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
+    
 
         {/* ProgressGallery */}
         <div className="w-full min-h-screen bg-[#F7F4EE] text-[#4A3B32] font-sans p-4 md:p-8 flex flex-col justify-between selection:bg-[#B07355] selection:text-white">
@@ -848,56 +767,7 @@ const protocols = [
           </footer>
         </div>
 
-        {/* MeasuredOutcomesSection */}
-        <div className="bg-[#2D1B13] text-[#DFD0BA] font-sans antialiased selection:bg-[#C8734B]/30 selection:text-white">
-          <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-32 p-6 md:p-10 lg:p-16 xl:p-24 items-start">
-            <div className="space-y-8 md:space-y-12">
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-8 h-px bg-[#DFD0BA]/30" />
-                  <h2 className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-medium text-[#DFD0BA]/80">
-                    MEASURED OUTCOMES
-                  </h2>
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif leading-[1.15] text-white">
-                  Results that <br />
-                  <span className="italic text-[#C8734B] font-medium">speak for themselves</span>
-                </h1>
-              </div>
-              <div className="max-w-xl space-y-4 md:space-y-6 text-[#DFD0BA]/90 text-sm md:text-base leading-relaxed">
-                <p>
-                  Every metric was objectively measured using trichoscopy and
-                  standardised photography at baseline, 12 months, and final
-                  assessment at 28 months.
-                </p>
-                <p className="border-t border-[#DFD0BA]/10 pt-4 md:pt-6">
-                  Numbers represent improvement percentage from {bannerDetails.patientName}'s
-                  baseline measurements at initial consultation.
-                </p>
-              </div>
-            </div>
-            <div className="space-y-6 md:space-y-8 lg:space-y-10 md:pt-8 lg:pt-16">
-              {outcomes.map((item, index) => (
-                <div key={index} className="space-y-2 md:space-y-3 group">
-                  <div className="flex justify-between items-baseline gap-4">
-                    <span className="text-[10px] md:text-xs uppercase tracking-widest text-[#DFD0BA]/70 group-hover:text-white transition-colors">
-                      {item.label}
-                    </span>
-                    <span className="text-xl md:text-2xl lg:text-3xl font-serif font-light text-[#DFD0BA]">
-                      {item.value}%
-                    </span>
-                  </div>
-                  <div className="h-0.5 bg-[#DFD0BA]/10 w-full relative overflow-hidden rounded-full">
-                    <div 
-                      className="absolute left-0 top-0 h-full bg-[#C8734B]"
-                      style={{ width: `${item.value}%` }} 
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+       
 
         {/* ============================================================
             VisualEvidenceComponent - UPDATED WITH SMART IMAGE LOADING
@@ -1099,7 +969,7 @@ const protocols = [
                   <h2 className="text-[10px] uppercase tracking-[0.3em] font-medium text-[#C8734B]">YOUR SPECIALIST</h2>
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2D1B13] leading-tight">
-                  Dr. <span className="italic text-[#C8734B] font-medium">Satya’s</span> Team
+                  Dr. <span className="italic text-[#C8734B] font-medium">Shail's</span> Team
                 </h1>
                 <p className="text-[10px] uppercase tracking-[0.25em] font-medium text-[#2D1B13]/70">LEAD DERMATOLOGIST & TRICHOLOGIST</p>
               </div>
